@@ -11,6 +11,7 @@
   text-decoration: none;
   list-style: none;
   transition-duration: 300ms;
+  outline: none;
 }
 
 body {
@@ -24,4 +25,8 @@ main {
   width: 90%;
   max-width: 80rem;
   margin: 1rem auto;
+}
+
+button {
+  cursor: pointer;
 }
