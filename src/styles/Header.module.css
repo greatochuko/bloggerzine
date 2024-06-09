@@ -1,0 +1,75 @@
+.header {
+  box-shadow: #efefef 0 1px 10px 0;
+  padding: 0.5rem;
+}
+
+.logo {
+  font-weight: 600;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 80rem;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.nav-links a {
+  padding: 0.5rem;
+  display: block;
+  color: #666;
+  font-weight: 500;
+}
+
+.nav-links a.active {
+  color: var(--blue-100);
+}
+
+.nav-links a:hover {
+  color: var(--blue-100);
+}
+
+.auth-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.auth-links a {
+  font-weight: 500;
+  display: block;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+}
+
+.auth-links a.register {
+  border: solid 1px #ccc;
+  color: #666;
+}
+
+.auth-links a.login {
+  border: solid 1px var(--blue-100);
+  background-color: var(--blue-100);
+  color: white;
+}
+
+.auth-links a.login:hover {
+  background-color: var(--blue-200);
+}
+
+.auth-links a.register:hover {
+  border: solid 1px var(--blue-100);
+  background-color: var(--blue-100);
+  color: white;
+}
+
+.auth-links a:active {
+  background-color: var(--blue-300);
+}
