@@ -20,14 +20,16 @@ export default function MobileNav({
       className={`${styles["mobile-nav"]} ${isOpen ? styles["open"] : ""}`}
       onClick={(e) => e.stopPropagation()}
     >
-      <p className="logo">Bloggerzine</p>
+      <Link href={"/"} className="logo">
+        Bloggerzine
+      </Link>
       <p className={styles["subtitle"]}>
         Welcome to our next-generation blog, your ultimate destination for the
         latest news and captivating stories!
       </p>
       <ul className={styles["mobile-nav-links"]}>
         {navLinks.map((navLink) => (
-          <li key={navLink.name}>
+          <li key={navLink.name} onClick={closeMobileNav}>
             <Link
               href={navLink.href}
               className={

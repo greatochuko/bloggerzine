@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Nunito_Sans, Rubik } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 const nunitoSans = Nunito_Sans({ subsets: ["latin"], display: "swap" });
@@ -22,6 +23,7 @@ export default function RootLayout({
       <body className={rubik.className}>
         <Header />
         <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );
