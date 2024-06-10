@@ -15,7 +15,7 @@ const navLinks = [
 
 export default function Header() {
   const pathname = usePathname();
-  const [showSearchForm, setShowSearchForm] = useState(true);
+  const [showSearchForm, setShowSearchForm] = useState(false);
 
   return (
     <div className={styles.header}>
@@ -34,6 +34,8 @@ export default function Header() {
               </Link>
             </li>
           ))}
+        </ul>
+        <div className={styles["right-container"]}>
           <button
             className={styles["search-btn"]}
             onClick={() => setShowSearchForm((curr) => !curr)}
@@ -80,14 +82,63 @@ export default function Header() {
             <input type="text" />
             <button type="submit">Search</button>
           </form>
-        </ul>
-        <div className={styles["auth-links"]}>
-          <Link href={"/login"} className={styles["login"]}>
-            Login
-          </Link>
-          <Link href={"/register"} className={styles["register"]}>
-            Signup
-          </Link>
+          <div className={styles["auth-links"]}>
+            <Link href={"/login"} className={styles["login"]}>
+              Login
+            </Link>
+            <Link href={"/register"} className={styles["register"]}>
+              Signup
+            </Link>
+          </div>{" "}
+          <button className={styles["menu-btn"]}>
+            <svg
+              viewBox="0 0 24 24"
+              height={28}
+              width={28}
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+              <g
+                id="SVGRepo_tracerCarrier"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              ></g>
+              <g id="SVGRepo_iconCarrier">
+                {" "}
+                <line
+                  x1="5"
+                  y1="7"
+                  x2="19"
+                  y2="7"
+                  stroke="#000000"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                ></line>{" "}
+                <line
+                  x1="5"
+                  y1="12"
+                  x2="19"
+                  y2="12"
+                  stroke="#000000"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                ></line>{" "}
+                <line
+                  x1="5"
+                  y1="17"
+                  x2="19"
+                  y2="17"
+                  stroke="#000000"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                ></line>{" "}
+              </g>
+            </svg>
+          </button>
         </div>
       </div>
     </div>
