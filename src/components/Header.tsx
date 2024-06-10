@@ -10,7 +10,8 @@ import Overlay from "./Overlay";
 export const navLinks = [
   { name: "Home", href: "/" },
   { name: "Tech", href: "#" },
-  { name: "Gadgets", href: "#" },
+  { name: "Business", href: "#" },
+  { name: "Travel", href: "#" },
   { name: "Lifestyle", href: "#" },
   { name: "Sports", href: "#" },
 ];
