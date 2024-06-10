@@ -3,9 +3,6 @@
   padding: 0.5rem;
 }
 
-.logo {
-  font-weight: 600;
-}
 
 .header-container {
   display: flex;
@@ -156,6 +153,9 @@
 .auth-links a:active {
   background-color: var(--blue-300);
 }
+
+
+/* ------------------------ MOBILE STYLES ----------------------------------- */
 
 @media screen and (max-width: 992px) {
   .nav-links {
