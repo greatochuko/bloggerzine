@@ -25,6 +25,7 @@ main {
   width: 95%;
   max-width: 80rem;
   margin: 1rem auto;
+  margin-bottom: 3rem;
 }
 
 button {

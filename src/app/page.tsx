@@ -113,7 +113,7 @@ export default function Home() {
       <Hero blogPosts={blogPosts.slice(0, 4)} />
       <MainArea
         topPosts={blogPosts.slice(0, 6)}
-        recentPosts={blogPosts.slice(6)}
+        recentPosts={blogPosts.slice(6, 10)}
       />
     </div>
   );

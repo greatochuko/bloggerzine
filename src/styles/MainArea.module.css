@@ -39,6 +39,7 @@
   color: #666;
   font-weight: 700;
   text-decoration: underline;
+  text-underline-offset: 0.2rem;
   display: block;
   padding: 0.5rem;
 }
@@ -95,6 +96,10 @@
   overflow: hidden;
 }
 
+.recent-post .image-container img {
+  object-fit: cover;
+}
+
 .recent-post .post-details {
   flex: 1;
   display: flex;
@@ -104,6 +109,11 @@
 
 .recent-post .post-details h3 {
   font-size: 1rem;
+  text-underline-offset: 0.2rem;
+}
+
+.recent-post:hover .post-details h3 {
+  text-decoration: underline;
 }
 
 .recent-post .post-details p {

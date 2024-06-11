@@ -156,12 +156,12 @@ export default function Footer() {
   return (
     <footer className={styles["footer"]}>
       <div className={styles["footer-container"]}>
-        <p className={styles["copyright"]}>
-          &copy; {new Date().getFullYear()} Bloggerzine. All rights reserved
-        </p>
         <Link href={"/"} className="logo" style={{ color: "white" }}>
           Bloggerzine
         </Link>
+        <p className={styles["copyright"]}>
+          &copy; {new Date().getFullYear()} Bloggerzine. All rights reserved
+        </p>
         <ul className={styles["social-links"]}>
           {socialLinks.map((socialLink) => (
             <li key={socialLink.name}>

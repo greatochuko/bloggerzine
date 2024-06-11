@@ -23,7 +23,7 @@ export default function MainArea({
   return (
     <div className={styles["main-area"]}>
       <div className={styles["highlights"]}>
-        <h2>Today&apos;s top highlights</h2>
+        <h2>Top highlights</h2>
         <div className={styles["blog-grid"]}>
           {topPosts.map((topPost) => (
             <Blog key={topPost.id} blog={topPost} />
@@ -51,7 +51,11 @@ export default function MainArea({
           <h2 className={styles["section-heading"]}>Recent Posts</h2>
           <div className={styles["recent-posts"]}>
             {recentPosts.map((recentPost) => (
-              <div className={styles["recent-post"]} key={recentPost.id}>
+              <Link
+                href={`/blog/${recentPost.id}`}
+                className={styles["recent-post"]}
+                key={recentPost.id}
+              >
                 <div className={styles["image-container"]}>
                   <Image
                     src={recentPost.imageUrl}
@@ -63,7 +67,7 @@ export default function MainArea({
                   <h3>{recentPost.title}</h3>
                   <p>{recentPost.lastModified}</p>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
