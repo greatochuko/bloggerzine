@@ -13,7 +13,7 @@
   align-items: center;
   justify-content: space-between;
   max-width: 80rem;
-  width: 90%;
+  width: 95%;
   margin: 0 auto;
 }
 
@@ -159,7 +159,7 @@
 
 /* ------------------------ MOBILE STYLES ----------------------------------- */
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 1024px) {
   .nav-links {
     display: none;
   }

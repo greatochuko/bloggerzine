@@ -1,0 +1,27 @@
+.blog {
+  display: flex;
+  gap: 0.9rem;
+  flex-direction: column;
+  color: #333;
+}
+
+.image-container {
+  position: relative;
+  aspect-ratio: 15/9;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.blog-title {
+  font-size: min(max(1.2rem, 2vw), 1.5rem);
+  font-weight: 700;
+}
+
+.blog-title:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.25rem;
+}
+
+.blog > p {
+  color: #666;
+}

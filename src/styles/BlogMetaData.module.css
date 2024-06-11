@@ -1,0 +1,37 @@
+.blog-meta-data {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 0.9rem;
+}
+.author {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.author:hover {
+  text-decoration: underline;
+}
+
+.image-container {
+  position: relative;
+  width: 2.5rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.blog-meta-data p {
+  font-weight: 500;
+}
+
+.blog-meta-data p span {
+  color: ccc;
+}
+
+@media screen and (max-width: 767px) {
+  .read-time {
+    display: none;
+  }
+}
