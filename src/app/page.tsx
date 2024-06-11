@@ -2,7 +2,7 @@ import Hero from "@/components/Hero";
 import styles from "./page.module.css";
 import MainArea from "@/components/MainArea";
 
-const blogPosts = [
+export const blogPosts = [
   {
     id: 1,
     title:

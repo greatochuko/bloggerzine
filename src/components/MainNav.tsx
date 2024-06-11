@@ -5,11 +5,11 @@ import styles from "@/styles/Header.module.css";
 
 export const navLinks = [
   { name: "Home", href: "/" },
-  { name: "Tech", href: "#" },
-  { name: "Business", href: "#" },
-  { name: "Travel", href: "#" },
-  { name: "Lifestyle", href: "#" },
-  { name: "Sports", href: "#" },
+  { name: "Technology", href: "/category/technology" },
+  { name: "Business", href: "/category/business" },
+  { name: "Travel", href: "/category/travel" },
+  { name: "Lifestyle", href: "/category/lifestyle" },
+  { name: "Sports", href: "/category/sports" },
 ];
 
 export default function MainNav({
@@ -29,9 +29,7 @@ export default function MainNav({
           <li key={navLink.name}>
             <Link
               href={navLink.href}
-              className={
-                pathname.startsWith(navLink.href) ? styles["active"] : ""
-              }
+              className={pathname === navLink.href ? styles["active"] : ""}
             >
               {navLink.name}
             </Link>

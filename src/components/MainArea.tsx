@@ -1,16 +1,16 @@
 import React from "react";
 import styles from "@/styles/MainArea.module.css";
 import { BlogPost } from "./Hero";
-import Blog from "./Blog";
 import Image from "next/image";
 import Link from "next/link";
+import BlogGrid from "./BlogGrid";
 
-const categories = [
-  { name: "tech", imageUrl: "/tech.jpg" },
-  { name: "business", imageUrl: "/business.jpg" },
-  { name: "travel", imageUrl: "/travel.jpg" },
-  { name: "lifestyle", imageUrl: "/lifestyle.jpg" },
-  { name: "sports", imageUrl: "/sports.jpg" },
+export const categories = [
+  { name: "technology", imageUrl: "/tech.jpg", color: "#d83939" },
+  { name: "business", imageUrl: "/business.jpg", color: "#54a1d4" },
+  { name: "travel", imageUrl: "/travel.jpg", color: "#dcad38" },
+  { name: "lifestyle", imageUrl: "/lifestyle.jpg", color: "#9d2dda" },
+  { name: "sports", imageUrl: "/sports.jpg", color: "#54d481" },
 ];
 
 export default function MainArea({
@@ -24,11 +24,7 @@ export default function MainArea({
     <div className={styles["main-area"]}>
       <div className={styles["highlights"]}>
         <h2>Top highlights</h2>
-        <div className={styles["blog-grid"]}>
-          {topPosts.map((topPost) => (
-            <Blog key={topPost.id} blog={topPost} />
-          ))}
-        </div>
+        <BlogGrid blogposts={topPosts} />
       </div>
       <section className={styles["side"]}>
         <div>

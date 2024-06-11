@@ -1,0 +1,41 @@
+import React from "react";
+import styles from "@/styles/CategoryPage.module.css";
+import Image from "next/image";
+import { categories } from "@/components/MainArea";
+import { notFound } from "next/navigation";
+import Blog from "@/components/Blog";
+import { blogPosts } from "@/app/page";
+import BlogGrid from "@/components/BlogGrid";
+
+export default function CategoryPage({
+  params: { categoryName },
+}: {
+  params: { categoryName: string };
+}) {
+  const category = categories.find((c) => c.name === categoryName);
+
+  if (!category) notFound();
+
+  const blogposts = blogPosts.filter(
+    (post) => post.category.toLowerCase() === category.name.toLowerCase()
+  );
+
+  return (
+    <div className={styles["category-page"]}>
+      <div className={styles["category-banner"]}>
+        <Image src={category.imageUrl} alt={category.name} fill></Image>
+
+        <div className={styles["category-info"]}>
+          <h1 style={{ backgroundColor: category.color }}>{category.name}</h1>
+          <p>14 posts</p>
+        </div>
+      </div>
+      <div className={styles["category-page-main"]}>
+        <BlogGrid blogposts={blogposts} />
+        <div className={styles["other-categories"]}>
+          <h2>Other Categories</h2>
+        </div>
+      </div>
+    </div>
+  );
+}
