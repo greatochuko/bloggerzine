@@ -1,8 +1,11 @@
 .header {
-  box-shadow: #efefef 0 1px 10px 0;
+  box-shadow: #efefef 0 1px 2px 0;
   padding: 0.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: white;
 }
-
 
 .header-container {
   display: flex;
@@ -153,7 +156,6 @@
 .auth-links a:active {
   background-color: var(--blue-300);
 }
-
 
 /* ------------------------ MOBILE STYLES ----------------------------------- */
 
