@@ -111,7 +111,10 @@ export default function Home() {
   return (
     <div className={styles["home-page"]}>
       <Hero blogPosts={blogPosts.slice(0, 4)} />
-      <MainArea blogPosts={blogPosts.slice(0, 6)} />
+      <MainArea
+        topPosts={blogPosts.slice(0, 6)}
+        recentPosts={blogPosts.slice(6)}
+      />
     </div>
   );
 }
