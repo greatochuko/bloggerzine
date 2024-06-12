@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styles from "@/styles/Header.module.css";
+import SearchForm from "./SearchForm";
 
 export const navLinks = [
   { name: "Home", href: "/" },
@@ -75,14 +76,11 @@ export default function MainNav({
             </g>
           </svg>
         </button>
-        <form
-          className={`${styles["search-form"]} ${
-            showSearchForm ? styles["visible"] : ""
-          }`}
-        >
-          <input type="text" />
-          <button type="submit">Search</button>
-        </form>
+        <SearchForm
+          show={showSearchForm}
+          close={() => setShowSearchForm(false)}
+        />
+
         <div className={styles["auth-links"]}>
           <Link href={"/login"} className={styles["login"]}>
             Login

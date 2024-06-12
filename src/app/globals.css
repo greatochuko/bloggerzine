@@ -30,6 +30,7 @@ main {
 
 button {
   cursor: pointer;
+  font-family: inherit;
 }
 
 .logo {

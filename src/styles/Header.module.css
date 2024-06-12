@@ -81,45 +81,6 @@
   transform: scale(1.05);
 }
 
-.search-form.visible {
-  visibility: visible;
-  opacity: 1;
-  top: 100%;
-}
-
-.search-form {
-  opacity: 0;
-  visibility: hidden;
-  position: absolute;
-  top: 130%;
-  right: 50%;
-  display: flex;
-  padding: 0.5rem;
-  box-shadow: #eee 0 0 5px 0;
-  border-radius: 0.25rem;
-  background-color: white;
-}
-
-.search-form input {
-  padding: 0.5rem;
-  border: solid 1px var(--blue-100);
-  border-radius: 0.25rem 0 0 0.25rem;
-}
-
-.search-form button {
-  border-radius: 0 0.25rem 0.25rem 0;
-  border: solid 1px var(--blue-100);
-  background-color: var(--blue-100);
-  color: white;
-  font-weight: 500;
-  padding: 0 0.5rem;
-}
-
-.search-form button:hover {
-  background-color: var(--blue-200);
-  border-color: var(--blue-200);
-}
-
 .auth-links {
   display: flex;
   gap: 1rem;
