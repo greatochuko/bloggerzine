@@ -37,6 +37,7 @@
   gap: 1rem;
   padding: 0.8rem 1.5rem;
   text-transform: capitalize;
+  font-size: calc(1.1rem + 0.25vw);
 }
 
 .category-info h1::before {
@@ -87,5 +88,11 @@
   .other-categories {
     grid-column: span 3;
     position: static;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .category-banner {
+    height: 15rem;
   }
 }

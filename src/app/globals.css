@@ -24,7 +24,7 @@ body {
 
 main {
   flex: 1;
-  width: 95%;
+  width: 90%;
   max-width: 80rem;
   margin: 1rem auto;
   margin-bottom: 3rem;
@@ -42,4 +42,12 @@ button {
 
 a {
   color: inherit;
+}
+
+/* ------------------------ MOBILE STYLES ----------------------------------- */
+
+@media screen and (max-width: 640px) {
+  main {
+    width: 95%;
+  }
 }

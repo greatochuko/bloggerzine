@@ -13,7 +13,7 @@
   align-items: center;
   justify-content: space-between;
   max-width: 80rem;
-  width: 95%;
+  width: 90%;
   margin: 0 auto;
 }
 
@@ -132,5 +132,8 @@
 @media screen and (max-width: 640px) {
   .auth-links {
     display: none;
+  }
+  .header-container {
+    width: 95%;
   }
 }
