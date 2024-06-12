@@ -3,9 +3,9 @@ import styles from "@/styles/CategoryPage.module.css";
 import Image from "next/image";
 import { categories } from "@/components/MainArea";
 import { notFound } from "next/navigation";
-import Blog from "@/components/Blog";
 import { blogPosts } from "@/app/page";
 import BlogGrid from "@/components/BlogGrid";
+import CategoryList from "@/components/CategoryList";
 
 export default function CategoryPage({
   params: { categoryName },
@@ -34,6 +34,7 @@ export default function CategoryPage({
         <BlogGrid blogposts={blogposts} />
         <div className={styles["other-categories"]}>
           <h2>Other Categories</h2>
+          <CategoryList categories={categories} />
         </div>
       </div>
     </div>

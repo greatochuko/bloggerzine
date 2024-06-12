@@ -4,6 +4,7 @@ import { BlogPost } from "./Hero";
 import Image from "next/image";
 import Link from "next/link";
 import BlogGrid from "./BlogGrid";
+import CategoryList from "./CategoryList";
 
 export const categories = [
   { name: "technology", imageUrl: "/tech.jpg", color: "#d83939" },
@@ -29,19 +30,7 @@ export default function MainArea({
       <section className={styles["side"]}>
         <div>
           <h2 className={styles["section-heading"]}>Trending Topics</h2>
-          <div className={styles["categories"]}>
-            {categories.map((category) => (
-              <Link
-                href={`/categories/${category.name}`}
-                className={styles["category"]}
-                key={category.name}
-              >
-                <Image src={category.imageUrl} alt={category.name} fill></Image>
-                <p>{category.name}</p>
-              </Link>
-            ))}
-            <Link href={"/categories"}>View all categories</Link>
-          </div>
+          <CategoryList categories={categories} />
         </div>
         <div>
           <h2 className={styles["section-heading"]}>Recent Posts</h2>

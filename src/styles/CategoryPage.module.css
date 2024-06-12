@@ -64,6 +64,12 @@
   grid-column: span 3;
 }
 
+.other-categories {
+  position: sticky;
+  top: 4rem;
+  height: fit-content;
+}
+
 .other-categories h2 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
@@ -73,12 +79,13 @@
 /* ------------------------ MOBILE STYLES ----------------------------------- */
 
 @media screen and (max-width: 1024px) {
-  .main-area {
+  .category-page-main {
     grid-template-columns: repeat(3, 1fr);
     gap: 3rem;
   }
 
   .other-categories {
     grid-column: span 3;
+    position: static;
   }
 }
