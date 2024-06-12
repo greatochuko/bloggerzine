@@ -6,11 +6,11 @@ import SearchForm from "./SearchForm";
 
 export const navLinks = [
   { name: "Home", href: "/" },
-  { name: "Technology", href: "/category/technology" },
-  { name: "Business", href: "/category/business" },
-  { name: "Travel", href: "/category/travel" },
-  { name: "Lifestyle", href: "/category/lifestyle" },
-  { name: "Sports", href: "/category/sports" },
+  { name: "Technology", href: "/categories/technology" },
+  { name: "Business", href: "/categories/business" },
+  { name: "Travel", href: "/categories/travel" },
+  { name: "Lifestyle", href: "/categories/lifestyle" },
+  { name: "Sports", href: "/categories/sports" },
 ];
 
 export default function MainNav({
