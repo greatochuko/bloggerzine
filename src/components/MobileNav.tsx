@@ -34,9 +34,7 @@ export default function MobileNav({
             <li key={navLink.name} onClick={closeMobileNav}>
               <Link
                 href={navLink.href}
-                className={
-                  pathname.startsWith(navLink.href) ? styles["active"] : ""
-                }
+                className={pathname === navLink.href ? styles["active"] : ""}
               >
                 {navLink.name}
               </Link>
