@@ -20,6 +20,10 @@ export default function CategoryPage({
     (post) => post.category.toLowerCase() === category.name.toLowerCase()
   );
 
+  const otherCategories = categories.filter(
+    (c) => c.name.toLowerCase() !== category.name.toLowerCase()
+  );
+
   return (
     <div className={styles["category-page"]}>
       <div className={styles["category-banner"]}>
@@ -34,7 +38,7 @@ export default function CategoryPage({
         <BlogGrid blogposts={blogposts} />
         <div className={styles["other-categories"]}>
           <h2>Other Categories</h2>
-          <CategoryList categories={categories} />
+          <CategoryList categories={otherCategories} />
         </div>
       </div>
     </div>
