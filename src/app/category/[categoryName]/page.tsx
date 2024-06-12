@@ -6,6 +6,23 @@ import { notFound } from "next/navigation";
 import { blogPosts } from "@/app/page";
 import BlogGrid from "@/components/BlogGrid";
 import CategoryList from "@/components/CategoryList";
+import { Metadata } from "next";
+
+export function generateMetadata({
+  params: { categoryName },
+}: {
+  params: { categoryName: string };
+}): Metadata {
+  const category = categories.find((c) => c.name === categoryName);
+  if (!category)
+    return {
+      title: "Category",
+    };
+
+  return {
+    title: category?.name[0].toUpperCase() + category?.name.slice(1),
+  };
+}
 
 export default function CategoryPage({
   params: { categoryName },

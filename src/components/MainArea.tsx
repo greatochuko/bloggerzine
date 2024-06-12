@@ -8,11 +8,31 @@ import CategoryList from "./CategoryList";
 import Paginator from "./Paginator";
 
 export const categories = [
-  { name: "technology", imageUrl: "/tech.jpg", color: "#d83939" },
-  { name: "business", imageUrl: "/business.jpg", color: "#54a1d4" },
-  { name: "travel", imageUrl: "/travel.jpg", color: "#dcad38" },
-  { name: "lifestyle", imageUrl: "/lifestyle.jpg", color: "#9d2dda" },
-  { name: "sports", imageUrl: "/sports.jpg", color: "#54d481" },
+  {
+    name: "technology",
+    imageUrl: "/tech.jpg",
+    color: "#d83939",
+  },
+  {
+    name: "business",
+    imageUrl: "/business.jpg",
+    color: "#54a1d4",
+  },
+  {
+    name: "travel",
+    imageUrl: "/travel.jpg",
+    color: "#dcad38",
+  },
+  {
+    name: "lifestyle",
+    imageUrl: "/lifestyle.jpg",
+    color: "#9d2dda",
+  },
+  {
+    name: "sports",
+    imageUrl: "/sports.jpg",
+    color: "#54d481",
+  },
 ];
 
 export default function MainArea({

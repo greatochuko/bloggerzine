@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ["latin"] });
 const nunitoSans = Nunito_Sans({ subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {
-  title: "Bloggerzine",
+  title: { absolute: "Bloggerzine", template: "%s - Bloggerzine" },
   description:
     "Welcome to our next-generation blog, your ultimate destination for the latest news and captivating stories!",
 };
