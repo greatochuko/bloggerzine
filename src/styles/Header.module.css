@@ -94,8 +94,9 @@
 }
 
 .auth-links a.register {
-  border: solid 1px #ccc;
-  color: #666;
+  color: var(--blue-100);
+  background-color: var(--light-blue-100);
+  border: solid 1px var(--light-blue-200);
 }
 
 .auth-links a.login {
@@ -109,7 +110,6 @@
 }
 
 .auth-links a.register:hover {
-  border: solid 1px var(--blue-100);
   background-color: var(--blue-100);
   color: white;
 }

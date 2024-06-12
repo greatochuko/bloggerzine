@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import BlogGrid from "./BlogGrid";
 import CategoryList from "./CategoryList";
+import Paginator from "./Paginator";
 
 export const categories = [
   { name: "technology", imageUrl: "/tech.jpg", color: "#d83939" },
@@ -26,6 +27,7 @@ export default function MainArea({
       <div className={styles["highlights"]}>
         <h2>Top highlights</h2>
         <BlogGrid blogposts={topPosts} />
+        <button className={styles["load-more-btn"]}>Load More</button>
       </div>
       <section className={styles["side"]}>
         <div>
