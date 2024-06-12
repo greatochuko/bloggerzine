@@ -8,6 +8,7 @@
 
 @media screen and (max-width: 640px) {
   .blog-grid {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
   }
 }

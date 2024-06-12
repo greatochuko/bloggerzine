@@ -35,7 +35,7 @@ export default function CategoryPage({
         </div>
       </div>
       <div className={styles["category-page-main"]}>
-        <BlogGrid blogposts={blogposts} />
+        <BlogGrid blogposts={blogposts} showPaginator />
         <div className={styles["other-categories"]}>
           <h2>Other Categories</h2>
           <CategoryList categories={otherCategories} />

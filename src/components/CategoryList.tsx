@@ -17,7 +17,7 @@ export default function CategoryList({
     <div className={styles["category-list"]}>
       {categories.map((category) => (
         <Link
-          href={`/categories/${category.name}`}
+          href={`/category/${category.name}`}
           className={styles["category"]}
           key={category.name}
         >
