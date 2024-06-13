@@ -12,6 +12,13 @@ export default function SearchForm({
   const router = useRouter();
   const [query, setQuery] = useState("");
 
+  function handleSearch(e: React.FormEvent) {
+    e.preventDefault();
+    console.log(`searching for ${query}`);
+    router.push(`/search?query=${query}`);
+    close();
+  }
+
   return (
     <div className={`${styles["search-form"]} ${show ? styles["show"] : ""}`}>
       <button className={styles["close-btn"]} onClick={close}>
@@ -36,7 +43,7 @@ export default function SearchForm({
           </g>
         </svg>
       </button>
-      <form onSubmit={() => router.push(`/search?q=${query}`)}>
+      <form onSubmit={handleSearch}>
         <input
           type="text"
           value={query}

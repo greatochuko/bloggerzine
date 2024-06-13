@@ -29,7 +29,9 @@ export default function CategoryPage({
 }: {
   params: { categoryName: string };
 }) {
-  const category = categories.find((c) => c.name === categoryName);
+  const category = categories.find(
+    (c) => c.name.toLowerCase() === categoryName.toLowerCase()
+  );
 
   if (!category) notFound();
 
