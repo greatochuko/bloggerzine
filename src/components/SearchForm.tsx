@@ -49,7 +49,6 @@ export default function SearchForm({
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search..."
-          autoFocus
         />
         <button type="submit">Search</button>
       </form>
