@@ -20,6 +20,8 @@
   flex: 1;
   padding: 1rem;
   border: none;
+  font-size: 1rem;
+  width: 0px;
 }
 
 .search-page-form button {

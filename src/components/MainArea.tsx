@@ -25,7 +25,7 @@ export default function MainArea({
       <section className={styles["side"]}>
         <div>
           <h2 className={styles["section-heading"]}>Trending Topics</h2>
-          <CategoryList categories={categories} />
+          <CategoryList categories={categories.slice(0, 5)} />
         </div>
         <div>
           <h2 className={styles["section-heading"]}>Recent Posts</h2>
@@ -50,6 +50,7 @@ export default function MainArea({
                 </div>
               </Link>
             ))}
+            <Link href={"/blog"}>View all Blogposts</Link>
           </div>
         </div>
       </section>
