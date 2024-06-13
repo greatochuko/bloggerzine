@@ -1,12 +1,12 @@
 import React from "react";
 import styles from "@/styles/CategoryPage.module.css";
 import Image from "next/image";
-import { categories } from "@/components/MainArea";
 import { notFound } from "next/navigation";
 import { blogPosts } from "@/app/page";
 import BlogGrid from "@/components/BlogGrid";
 import CategoryList from "@/components/CategoryList";
 import { Metadata } from "next";
+import { categories } from "../page";
 
 export function generateMetadata({
   params: { categoryName },
@@ -37,9 +37,9 @@ export default function CategoryPage({
     (post) => post.category.toLowerCase() === category.name.toLowerCase()
   );
 
-  const otherCategories = categories.filter(
-    (c) => c.name.toLowerCase() !== category.name.toLowerCase()
-  );
+  const otherCategories = categories
+    .filter((c) => c.name.toLowerCase() !== category.name.toLowerCase())
+    .slice(0, 5);
 
   return (
     <div className={styles["category-page"]}>
