@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "@/styles/SearchForm.module.css";
+import { useRouter } from "next/navigation";
 
 export default function SearchForm({
   show,
@@ -8,6 +9,9 @@ export default function SearchForm({
   show: boolean;
   close: () => void;
 }) {
+  const router = useRouter();
+  const [query, setQuery] = useState("");
+
   return (
     <div className={`${styles["search-form"]} ${show ? styles["show"] : ""}`}>
       <button className={styles["close-btn"]} onClick={close}>
@@ -32,8 +36,14 @@ export default function SearchForm({
           </g>
         </svg>
       </button>
-      <form>
-        <input type="text" placeholder="Search..." autoFocus />
+      <form onSubmit={() => router.push(`/search?q=${query}`)}>
+        <input
+          type="text"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Search..."
+          autoFocus
+        />
         <button type="submit">Search</button>
       </form>
     </div>
