@@ -46,7 +46,12 @@ export default function CategoryPage({
   return (
     <div className={styles["category-page"]}>
       <div className={styles["category-banner"]}>
-        <Image src={category.imageUrl} alt={category.name} fill></Image>
+        <Image
+          src={category.imageUrl}
+          alt={category.name}
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 33vw, 25vw"
+        ></Image>
 
         <div className={styles["category-info"]}>
           <h1 style={{ backgroundColor: category.color }}>{category.name}</h1>

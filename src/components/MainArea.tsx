@@ -41,6 +41,7 @@ export default function MainArea({
                     src={recentPost.imageUrl}
                     alt={recentPost.title}
                     fill
+                    sizes="(max-width: 640px) 25vw, 15vw"
                   ></Image>
                 </div>
                 <div className={styles["post-details"]}>

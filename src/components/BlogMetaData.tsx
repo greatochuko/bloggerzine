@@ -9,7 +9,12 @@ export default function BlogMetaData({ blog }: { blog: BlogPost }) {
     <div className={styles["blog-meta-data"]}>
       <Link href={"#"} className={styles["author"]}>
         <div className={styles["image-container"]}>
-          <Image src={blog.author.imageUrl} fill alt={blog.author.name}></Image>
+          <Image
+            src={blog.author.imageUrl}
+            fill
+            alt={blog.author.name}
+            sizes="(max-width: 640px) 10vw, 6vw"
+          ></Image>
         </div>
         <p>
           <span>by </span>

@@ -105,7 +105,12 @@ export default function CategoryPage() {
             key={category.name}
             className={styles["category"]}
           >
-            <Image src={category.imageUrl} alt={category.name} fill></Image>
+            <Image
+              src={category.imageUrl}
+              alt={category.name}
+              fill
+              sizes="(max-width: 1120px) 50vw, 33vw"
+            ></Image>
             <div className={styles["overlay"]}>
               <h2>{category.name}</h2>
               <p style={{ backgroundColor: category.color }}>14 posts</p>

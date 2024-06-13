@@ -5,17 +5,23 @@ import { type BlogPost } from "./Hero";
 import BlogMetaData from "./BlogMetaData";
 import Link from "next/link";
 
-export default function Blog({ blog }: { blog: BlogPost }) {
+export default function SearchBlog({ blog }: { blog: BlogPost }) {
   return (
-    <div className={styles["blog"]}>
+    <Link href={`/blog/${blog.id}`} className={styles["search-blog"]}>
       <div className={styles["image-container"]}>
-        <Image src={blog.imageUrl} alt={blog.title} fill></Image>
+        <Image
+          src={blog.imageUrl}
+          alt={blog.title}
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 33vw, 25vw"
+        ></Image>
       </div>
-      <Link href={`/blog/${blog.id}`} className={styles["blog-title"]}>
-        {blog.title}
-      </Link>
-      <p>{blog.content.slice(0, 150)}...</p>
-      <BlogMetaData blog={blog} />
-    </div>
+      <h3 className={styles["blog-title"]}>{blog.title}</h3>
+      <p>
+        {blog.author.name}
+        <span>&#183;</span>
+        {blog.lastModified}
+      </p>
+    </Link>
   );
 }

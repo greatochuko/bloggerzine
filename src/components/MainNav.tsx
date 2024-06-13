@@ -7,7 +7,7 @@ import SearchForm from "./SearchForm";
 export const navLinks = [
   { name: "Home", href: "/" },
   { name: "Technology", href: "/categories/technology" },
-  { name: "Business", href: "/categories/business" },
+  { name: "Finance", href: "/categories/finance" },
   { name: "Travel", href: "/categories/travel" },
   { name: "Lifestyle", href: "/categories/lifestyle" },
   { name: "Sports", href: "/categories/sports" },
