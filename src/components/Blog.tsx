@@ -9,7 +9,12 @@ export default function Blog({ blog }: { blog: BlogPost }) {
   return (
     <div className={styles["blog"]}>
       <div className={styles["image-container"]}>
-        <Image src={blog.imageUrl} alt={blog.title} fill></Image>
+        <Image
+          src={blog.imageUrl}
+          alt={blog.title}
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+        ></Image>
       </div>
       <Link href={`/blog/${blog.id}`} className={styles["blog-title"]}>
         {blog.title}

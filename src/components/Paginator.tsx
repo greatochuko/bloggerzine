@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import styles from "@/styles/Paginator.module.css";
 import { usePathname, useSearchParams } from "next/navigation";
@@ -10,7 +11,10 @@ export default function Paginator({ numPages }: { numPages: number }) {
 
   const currentPage = Number(searchParams.get("page")) || 1;
 
-  const pages = Array.from({ length: numPages }, (_, index) => index + 1);
+  const pages = Array.from(
+    { length: Math.ceil(numPages / 8) },
+    (_, index) => index + 1
+  );
 
   function nextPage() {
     if (currentPage >= pages[pages.length - 1]) return;

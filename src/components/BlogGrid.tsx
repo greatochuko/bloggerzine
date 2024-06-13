@@ -17,8 +17,8 @@ export default function BlogGrid({
   const currentPage = Number(searchParams.get("page")) || 1;
 
   const filteredPosts = blogposts.slice(
-    (currentPage - 1) * 6,
-    (currentPage - 1) * 6 + 6
+    (currentPage - 1) * 8,
+    (currentPage - 1) * 8 + 8
   );
 
   return (

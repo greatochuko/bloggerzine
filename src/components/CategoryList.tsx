@@ -21,7 +21,12 @@ export default function CategoryList({
           className={styles["category"]}
           key={category.name}
         >
-          <Image src={category.imageUrl} alt={category.name} fill></Image>
+          <Image
+            src={category.imageUrl}
+            alt={category.name}
+            fill
+            sizes="(max-width: 640px) 100vw, 25vw"
+          ></Image>
           <p>{category.name}</p>
         </Link>
       ))}

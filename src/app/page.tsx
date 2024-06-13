@@ -40,7 +40,7 @@ export const blogPosts = [
     title: "Strategies for Successful Remote Team Management",
     content:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
-    category: "business",
+    category: "finance",
     imageUrl: "/blog-4.jpg",
     author: { name: "Great", imageUrl: "/profile-pic.jpg" },
     lastModified: "24 may 2024",
@@ -90,7 +90,7 @@ export const blogPosts = [
     title: "How to Secure Funding for Your Startup",
     content:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
-    category: "business",
+    category: "finance",
     imageUrl: "/blog-9.jpg",
     author: { name: "Great", imageUrl: "/profile-pic.jpg" },
     lastModified: "24 may 2024",
