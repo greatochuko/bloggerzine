@@ -1,0 +1,13 @@
+.heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+  color: #333;
+}
+
+.heading h1 {
+  font-size: calc(1.5rem + 0.25vw);
+  font-weight: 600;
+}
