@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import styles from "@/styles/BlogListPage.module.css";
+import styles from "./page.module.css";
 import { blogPosts } from "../page";
 import PostCard from "@/components/PostCard";
 import Paginator from "@/components/Paginator";
