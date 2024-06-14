@@ -3,6 +3,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styles from "@/styles/Header.module.css";
 import SearchForm from "./SearchForm";
+import { useUserContext } from "@/context/UserContext";
+import Image from "next/image";
 
 export const navLinks = [
   { name: "Home", href: "/" },
@@ -20,6 +22,9 @@ export default function MainNav({
 }) {
   const pathname = usePathname();
   const [showSearchForm, setShowSearchForm] = useState(false);
+
+  const { user } = useUserContext();
+
   return (
     <div className={styles["header-container"]}>
       <Link href={"/"} className="logo">
@@ -81,14 +86,23 @@ export default function MainNav({
           close={() => setShowSearchForm(false)}
         />
 
-        <div className={styles["auth-links"]}>
-          <Link href={"/login"} className={styles["login"]}>
-            Login
-          </Link>
-          <Link href={"/signup"} className={styles["signup"]}>
-            Signup
-          </Link>
-        </div>
+        {!user ? (
+          <div className={styles["auth-links"]}>
+            <Link href={"/login"} className={styles["login"]}>
+              Login
+            </Link>
+            <Link href={"/signup"} className={styles["signup"]}>
+              Signup
+            </Link>
+          </div>
+        ) : (
+          <div className={styles["user"]}>
+            <div className={styles["image-container"]}>
+              <Image src={user.imageUrl} alt={user.name} fill sizes=""></Image>
+            </div>
+          </div>
+        )}
+
         <button className={styles["menu-btn"]} onClick={openMobileNav}>
           <svg
             viewBox="0 0 24 24"

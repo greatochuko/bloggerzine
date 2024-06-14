@@ -3,6 +3,7 @@ import { Inter, Nunito_Sans, Rubik } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import UserProvider from "@/context/UserContext";
 
 const inter = Inter({ subsets: ["latin"] });
 const nunitoSans = Nunito_Sans({ subsets: ["latin"], display: "swap" });
@@ -19,12 +20,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={nunitoSans.className}>
-        <Header />
-        <main>{children}</main>
-        <Footer />
-      </body>
-    </html>
+    <UserProvider>
+      <html lang="en">
+        <body className={nunitoSans.className}>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+        </body>
+      </html>
+    </UserProvider>
   );
 }
