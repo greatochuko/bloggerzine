@@ -54,9 +54,10 @@
   display: block;
   padding: 0.5rem 1rem;
   border-radius: 0.25rem;
+  text-align: center;
 }
 
-.auth-links a.register {
+.auth-links a.signup {
   color: var(--blue-100);
   background-color: var(--light-blue-100);
   border: solid 1px var(--light-blue-200);
@@ -72,7 +73,7 @@
   background-color: var(--blue-200);
 }
 
-.auth-links a.register:hover {
+.auth-links a.signup:hover {
   border: solid 1px var(--blue-100);
   background-color: var(--blue-100);
   color: white;

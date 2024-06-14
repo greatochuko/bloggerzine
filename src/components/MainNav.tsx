@@ -85,7 +85,7 @@ export default function MainNav({
           <Link href={"/login"} className={styles["login"]}>
             Login
           </Link>
-          <Link href={"/register"} className={styles["register"]}>
+          <Link href={"/signup"} className={styles["signup"]}>
             Signup
           </Link>
         </div>
