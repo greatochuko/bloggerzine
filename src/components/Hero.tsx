@@ -33,7 +33,10 @@ export default function Hero({ blogPosts }: { blogPosts: BlogPost[] }) {
               {blogpost.category}
             </p>
             <Link
-              href={`/blog/${blogpost.id}`}
+              href={`/blog/${blogpost.title
+                .split(" ")
+                .join("-")
+                .toLowerCase()}-${blogpost.id}`}
               className={styles["blog-title"]}
             >
               {blogpost.title}

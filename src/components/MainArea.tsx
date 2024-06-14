@@ -32,7 +32,10 @@ export default function MainArea({
           <div className={styles["recent-posts"]}>
             {recentPosts.map((recentPost) => (
               <Link
-                href={`/blog/${recentPost.id}`}
+                href={`/blog/${recentPost.title
+                  .split(" ")
+                  .join("-")
+                  .toLowerCase()}-${recentPost.id}`}
                 className={styles["recent-post"]}
                 key={recentPost.id}
               >
