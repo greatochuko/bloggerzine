@@ -12,7 +12,7 @@ export default function Paginator({ numPages }: { numPages: number }) {
   const currentPage = Number(searchParams.get("page")) || 1;
 
   const pages = Array.from(
-    { length: Math.ceil(numPages / 8) },
+    { length: numPages },
     (_, index) => index + 1
   );
 

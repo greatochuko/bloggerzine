@@ -84,6 +84,20 @@
   font-size: 0.8rem;
 }
 
+.recent-posts > a:not(.recent-post) {
+  text-align: center;
+  color: #666;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 0.2rem;
+  display: block;
+  padding: 0.5rem;
+}
+
+.recent-posts > a:not(.recent-post):hover {
+  color: var(--blue-100);
+}
+
 /* ------------------------ MOBILE STYLES ----------------------------------- */
 
 @media screen and (max-width: 1024px) {

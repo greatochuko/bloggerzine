@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "@/styles/CategoryPage.module.css";
+import styles from "./page.module.css";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { blogPosts } from "@/app/page";

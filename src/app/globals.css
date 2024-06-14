@@ -45,14 +45,7 @@ a {
   color: inherit;
 }
 
-input {
+input,
+textarea {
   font-family: inherit;
-}
-
-/* ------------------------ MOBILE STYLES ----------------------------------- */
-
-@media screen and (max-width: 640px) {
-  main {
-    width: 95%;
-  }
 }
