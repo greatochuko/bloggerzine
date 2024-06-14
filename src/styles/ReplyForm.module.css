@@ -1,0 +1,54 @@
+.reply-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.reply-form h2 {
+  font-size: min(max(1rem, 3vw), 2rem);
+}
+
+.reply-form textarea {
+  border: solid 1px #ccc;
+  height: 10rem;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+  resize: none;
+  padding: 1rem;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.actions button {
+  width: fit-content;
+  background-color: #eee;
+  border: solid 1px #ccc;
+  color: #333;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.reply-form button:hover {
+  background-color: rgb(255, 0, 55);
+  border-color: rgb(255, 0, 55);
+  color: white;
+}
+
+.reply-form button[type="submit"] {
+  color: white;
+  border: none;
+  background-color: var(--blue-100);
+}
+
+.reply-form button[type="submit"]:hover {
+  background-color: var(--blue-200);
+}
+
+.reply-form button:active {
+  scale: 0.95;
+}

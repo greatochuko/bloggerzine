@@ -1,0 +1,46 @@
+.comment-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.comment-form textarea {
+  border: solid 1px #ccc;
+  aspect-ratio: 5;
+  min-height: 10rem;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+  resize: none;
+  padding: 1rem;
+}
+
+.comment-form button {
+  width: fit-content;
+  background-color: var(--blue-100);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+}
+
+.comment-form button:hover {
+  background-color: var(--blue-200);
+}
+
+.comment-form button:active {
+  scale: 0.95;
+}

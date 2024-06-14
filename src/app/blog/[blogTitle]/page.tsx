@@ -1,47 +1,154 @@
-import Link from "next/link";
 import React from "react";
 import styles from "./page.module.css";
+import { blogPosts } from "@/app/page";
+import { notFound } from "next/navigation";
+import BlogMetaData from "@/components/BlogMetaData";
+import Image from "next/image";
+import { categories } from "@/app/categories/page";
+import CategoryList from "@/components/CategoryList";
+import Link from "next/link";
+import CommentSection from "@/components/CommentSection";
 
-export default function page() {
+const comments = [
+  {
+    id: 1,
+    user: {
+      name: "Great Ochuko",
+      imageUrl: "/profile-pic.jpg",
+      id: 1,
+    },
+    comment:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio.",
+    dateCreated: "June 11, 2022 at 6:01 am",
+    parentId: null,
+  },
+  {
+    id: 2,
+    user: {
+      name: "Great Ochuko",
+      imageUrl: "/profile-pic.jpg",
+      id: 1,
+    },
+    comment:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio.",
+    dateCreated: "June 11, 2022 at 6:01 am",
+    parentId: 1,
+  },
+
+  {
+    id: 4,
+    user: {
+      name: "Great Ochuko",
+      imageUrl: "/profile-pic.jpg",
+      id: 1,
+    },
+    comment:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio.",
+    dateCreated: "June 11, 2022 at 6:01 am",
+    parentId: null,
+  },
+  {
+    id: 5,
+    user: {
+      name: "Great Ochuko",
+      imageUrl: "/profile-pic.jpg",
+      id: 1,
+    },
+    comment:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio.",
+    dateCreated: "June 11, 2022 at 6:01 am",
+    parentId: 4,
+  },
+  {
+    id: 7,
+    user: {
+      name: "Great Ochuko",
+      imageUrl: "/profile-pic.jpg",
+      id: 1,
+    },
+    comment:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio.",
+    dateCreated: "June 11, 2022 at 6:01 am",
+    parentId: 5,
+  },
+];
+
+export default function page({
+  params: { blogTitle },
+}: {
+  params: { blogTitle: string };
+}) {
+  const blogpost = blogPosts.find(
+    (b) => b.id === Number(blogTitle.split("-").at(-1))
+  );
+
+  if (!blogpost) notFound();
+
   return (
-    <div>
+    <div className={styles["blog-page"]}>
       <div className={styles["header"]}>
-        <h1>Categories</h1>
-        <p>
-          <Link href={"/"}>
-            <svg
-              height={16}
-              width={16}
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+        <Image
+          src={blogpost.imageUrl}
+          alt={blogpost.title}
+          sizes="950vw"
+          fill
+        ></Image>
+        <div className={styles["overlay"]}>
+          <p
+            className={styles["blog-category"]}
+            style={{
+              backgroundColor: categories.find(
+                (cat) =>
+                  cat.name.toLowerCase() === blogpost.category.toLowerCase()
+              )?.color,
+            }}
+          >
+            {blogpost.category}
+          </p>
+          <h1>{blogpost.title}</h1>
+          <BlogMetaData blog={blogpost} />
+        </div>
+      </div>
+      <div className={styles["main-section"]}>
+        <div className={styles["blog-content"]}>
+          <p>{blogpost.content}</p>
+
+          <section className={styles["about-the-author"]}>
+            <Link
+              href={`/authors/${blogpost.author.name
+                .split(" ")
+                .join("-")
+                .toLowerCase()}-${blogpost.author.id}`}
+              className={styles["image-container"]}
             >
-              <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-              <g
-                id="SVGRepo_tracerCarrier"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              ></g>
-              <g id="SVGRepo_iconCarrier">
-                {" "}
-                <path
-                  d="M22 12.2039V13.725C22 17.6258 22 19.5763 20.8284 20.7881C19.6569 22 17.7712 22 14 22H10C6.22876 22 4.34315 22 3.17157 20.7881C2 19.5763 2 17.6258 2 13.725V12.2039C2 9.91549 2 8.77128 2.5192 7.82274C3.0384 6.87421 3.98695 6.28551 5.88403 5.10813L7.88403 3.86687C9.88939 2.62229 10.8921 2 12 2C13.1079 2 14.1106 2.62229 16.116 3.86687L18.116 5.10812C20.0131 6.28551 20.9616 6.87421 21.4808 7.82274"
-                  stroke="#fff"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                ></path>{" "}
-                <path
-                  d="M15 18H9"
-                  stroke="#fff"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                ></path>{" "}
-              </g>
-            </svg>
-            Home
-          </Link>{" "}
-          / categories
-        </p>
+              <Image
+                src={blogpost.author.imageUrl}
+                alt={blogpost.author.name}
+                fill
+                sizes=""
+              ></Image>
+            </Link>
+            <div className={styles["text"]}>
+              <Link
+                href={`/authors/${blogpost.author.name
+                  .split(" ")
+                  .join("-")
+                  .toLowerCase()}-${blogpost.author.id}`}
+              >
+                {blogpost.author.name}
+              </Link>
+              <p>{blogpost.author.bio}</p>
+            </div>
+          </section>
+
+          <CommentSection comments={comments} />
+        </div>
+        <section className={styles["side"]}>
+          <div>
+            <h2 className={styles["section-heading"]}>Trending Topics</h2>
+            <CategoryList categories={categories.slice(0, 5)} />
+          </div>
+        </section>
       </div>
     </div>
   );

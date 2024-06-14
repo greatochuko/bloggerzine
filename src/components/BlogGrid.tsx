@@ -24,7 +24,7 @@ export default function BlogGrid({
   return (
     <div className={styles["blog-grid"]}>
       {filteredPosts.map((blogpost) => (
-        <Blog key={blogpost.id} blog={blogpost} />
+        <Blog key={blogpost.id} blogpost={blogpost} />
       ))}
       {showPaginator ? (
         <Paginator numPages={Math.ceil(blogposts.length / 8) || 1} />

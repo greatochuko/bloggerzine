@@ -1,0 +1,143 @@
+.blog-page {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.header {
+  position: relative;
+  aspect-ratio: 3;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.header img {
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.overlay h1 {
+  font-size: calc(2rem + 0.5vw);
+  text-align: center;
+}
+
+.blog-category {
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.5rem;
+  font-size: calc(0.9rem + 0.25vw);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.blog-category::before {
+  content: "";
+  display: block;
+  height: 0.75rem;
+  aspect-ratio: 1;
+  background-color: white;
+  border-radius: 50%;
+}
+
+.main-section {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  color: #333;
+}
+
+.blog-content {
+  grid-column: span 3;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  color: #333;
+}
+
+.side {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.section-heading {
+  margin-bottom: 1.5rem;
+}
+
+.about-the-author {
+  display: flex;
+  background-color: var(--light-blue-100);
+  padding: calc(1rem + 0.5vw);
+  gap: 1rem;
+  align-items: flex-start;
+  border-radius: 0.5rem;
+}
+
+.about-the-author .image-container {
+  position: relative;
+  width: 5rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.image-container img {
+  object-fit: cover;
+}
+
+.about-the-author .text {
+  flex: 1;
+}
+
+.about-the-author .text a {
+  font-size: calc(1.2rem + 0.25vw);
+  font-weight: 650;
+  margin-bottom: 0.5rem;
+}
+
+.about-the-author .text a:hover {
+  color: var(--blue-100);
+  text-decoration: underline;
+}
+
+/* ------------------------ MOBILE STYLES ----------------------------------- */
+
+@media screen and (max-width: 1024px) {
+  .header {
+    aspect-ratio: 2;
+  }
+
+  .main-section {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+  }
+
+  .side {
+    grid-column: span 3;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .overlay h1 {
+    font-size: calc(1rem + 0.25vw);
+  }
+
+  .about-the-author .image-container {
+    width: 3rem;
+  }
+}
