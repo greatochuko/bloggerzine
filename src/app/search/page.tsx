@@ -35,7 +35,7 @@ export default function SearchPage({
           <SearchBlog blog={blogpost} key={blogpost.id} />
         ))}
       </div>
-      <Paginator numPages={blogPosts.length} />
+      <Paginator numPages={Math.ceil(blogPosts.length / 8) || 1} />
     </div>
   );
 }

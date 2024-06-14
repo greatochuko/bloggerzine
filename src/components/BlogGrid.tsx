@@ -27,7 +27,7 @@ export default function BlogGrid({
         <Blog key={blogpost.id} blog={blogpost} />
       ))}
       {showPaginator ? (
-        <Paginator numPages={Math.ceil(blogposts.length / 6) || 1} />
+        <Paginator numPages={Math.ceil(blogposts.length / 8) || 1} />
       ) : null}
     </div>
   );

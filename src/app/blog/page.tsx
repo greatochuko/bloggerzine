@@ -3,8 +3,16 @@ import React from "react";
 import styles from "@/styles/BlogListPage.module.css";
 import { blogPosts } from "../page";
 import PostCard from "@/components/PostCard";
+import Paginator from "@/components/Paginator";
 
-export default function page() {
+export default function page({
+  searchParams,
+}: {
+  searchParams: { page: string };
+}) {
+  const currentPage = Number(searchParams.page) || 1;
+  const filteredPosts = blogPosts.slice((currentPage - 1) * 8, currentPage * 8);
+
   return (
     <div className={styles["blog-list-page"]}>
       <div className={styles["header"]}>
@@ -46,10 +54,11 @@ export default function page() {
         </p>
       </div>
       <div className={styles["blog-list"]}>
-        {blogPosts.map((blogpost) => (
+        {filteredPosts.map((blogpost) => (
           <PostCard blogpost={blogpost} />
         ))}
       </div>
+      <Paginator numPages={Math.ceil(blogPosts.length / 8) || 1} />
     </div>
   );
 }
