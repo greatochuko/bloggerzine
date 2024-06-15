@@ -10,10 +10,15 @@ import Image from "next/image";
 
 export default function ArticleList({ authorId }: { authorId: number }) {
   const [currentPage, setCurrentPage] = useState(1);
-  const maxPage = Math.ceil(blogPosts.length / 5) || 1;
-  const pages = Array.from({ length: maxPage }, (_, i) => i + 1);
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const filteredPosts = blogPosts.filter((b) => b.author.id === authorId);
+  const filteredPosts = blogPosts
+    .filter((b) => b.author.id === authorId)
+    .filter((b) => b.title.toLowerCase().includes(searchQuery));
+
+  const postPerPage = filteredPosts.length > 5 ? 5 : filteredPosts.length;
+  const maxPage = Math.ceil(filteredPosts.length / postPerPage) || 1;
+  const pages = Array.from({ length: maxPage }, (_, i) => i + 1);
 
   const paginatedPosts = filteredPosts.slice(
     (currentPage - 1) * 5,
@@ -34,13 +39,32 @@ export default function ArticleList({ authorId }: { authorId: number }) {
     <div className={styles["article-list"]}>
       <div className={styles["header"]}>
         <h2>Blog Posts</h2>
+        <Link href={"/create-new"}>Add New</Link>
       </div>
       <div className={styles["main"]}>
+        <div className={styles["main-header"]}>
+          <input
+            type="search"
+            placeholder="Search"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+          <select name="sort" id="sort">
+            <option value="newest">Newest</option>
+            <option value="oldest">Oldest</option>
+            <option value="views">Views</option>
+          </select>
+          <select name="filter" id="filter">
+            <option value="all">Filter</option>
+            <option value="published">Published</option>
+            <option value="draft">Draft</option>
+          </select>
+        </div>
         <table>
           <thead>
             <tr>
               <th>Blog Title</th>
-              <th>Date Published</th>
+              <th>Date</th>
               <th>Total Views</th>
               <th>Category</th>
               <th>Status</th>
@@ -206,10 +230,10 @@ export default function ArticleList({ authorId }: { authorId: number }) {
       </div>
       <div className={styles["footer"]}>
         <p>
-          Showing {(currentPage - 1) * 5 + 1}-
+          Showing {(currentPage - 1) * postPerPage + 1}-
           {currentPage === pages.at(-1)
             ? filteredPosts.length
-            : (currentPage - 1) * 5 + 5}{" "}
+            : (currentPage - 1) * postPerPage + postPerPage}{" "}
           of {filteredPosts.length} entries
         </p>
         <div className={paginatorStyles["paginator"]}>
