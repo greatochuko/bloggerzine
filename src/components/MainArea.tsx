@@ -7,6 +7,7 @@ import BlogGrid from "./BlogGrid";
 import CategoryList from "./CategoryList";
 import Paginator from "./Paginator";
 import { categories } from "@/app/categories/page";
+import convertToUrl from "@/utils/convertToUrl";
 
 export default function MainArea({
   topPosts,
@@ -32,10 +33,9 @@ export default function MainArea({
           <div className={styles["recent-posts"]}>
             {recentPosts.map((recentPost) => (
               <Link
-                href={`/blog/${recentPost.title
-                  .split(" ")
-                  .join("-")
-                  .toLowerCase()}-${recentPost.id}`}
+                href={`/blog/${convertToUrl(recentPost.title)}-${
+                  recentPost.id
+                }`}
                 className={styles["recent-post"]}
                 key={recentPost.id}
               >

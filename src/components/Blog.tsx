@@ -4,6 +4,7 @@ import Image from "next/image";
 import { type BlogPost } from "./Hero";
 import BlogMetaData from "./BlogMetaData";
 import Link from "next/link";
+import convertToUrl from "@/utils/convertToUrl";
 
 export default function Blog({ blogpost }: { blogpost: BlogPost }) {
   return (
@@ -17,7 +18,7 @@ export default function Blog({ blogpost }: { blogpost: BlogPost }) {
         ></Image>
       </div>
       <Link
-        href={`/blog/${blogpost.title.split(" ").join("-").toLowerCase()}-${
+        href={`/blog/${convertToUrl(blogpost.title)}-${
           blogpost.id
         }`}
         className={styles["blog-title"]}

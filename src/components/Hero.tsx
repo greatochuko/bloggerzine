@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import BlogMetaData from "./BlogMetaData";
 import { categories } from "@/app/categories/page";
+import convertToUrl from "@/utils/convertToUrl";
 
 export type BlogPost = {
   id: number;
@@ -11,7 +12,7 @@ export type BlogPost = {
   content: string;
   category: string;
   imageUrl: string;
-  author: { name: string; imageUrl: string };
+  author: { name: string; imageUrl: string; id: number };
   lastModified: string;
 };
 
@@ -33,10 +34,7 @@ export default function Hero({ blogPosts }: { blogPosts: BlogPost[] }) {
               {blogpost.category}
             </p>
             <Link
-              href={`/blog/${blogpost.title
-                .split(" ")
-                .join("-")
-                .toLowerCase()}-${blogpost.id}`}
+              href={`/blog/${convertToUrl(blogpost.title)}-${blogpost.id}`}
               className={styles["blog-title"]}
             >
               {blogpost.title}

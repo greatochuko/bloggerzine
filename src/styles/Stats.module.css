@@ -54,11 +54,20 @@
     gap: 1rem;
   }
 
+  .stat {
+    gap: 0.5rem;
+  }
+
   .stat .text h3 {
     font-size: 1.2rem;
   }
 
   .stat-icon {
-    width: 3.5rem;
+    width: 3rem;
+  }
+
+  .stat-icon svg {
+    height: 1.5rem;
+    aspect-ratio: 1;
   }
 }

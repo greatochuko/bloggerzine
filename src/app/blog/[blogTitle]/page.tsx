@@ -8,14 +8,20 @@ import { categories } from "@/app/categories/page";
 import CategoryList from "@/components/CategoryList";
 import Link from "next/link";
 import CommentSection from "@/components/CommentSection";
+import convertToUrl from "@/utils/convertToUrl";
 
-const comments = [
+export const comments = [
   {
     id: 1,
-    user: {
-      name: "Great Ochuko",
-      imageUrl: "/profile-pic.jpg",
+    blog: {
+      title:
+        "The Future of AI: How Artificial Intelligence is Transforming Industries",
       id: 1,
+    },
+    user: {
+      name: "John Doe",
+      imageUrl: "/user-2.jpg",
+      id: 2,
     },
     comment:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio.",
@@ -24,6 +30,11 @@ const comments = [
   },
   {
     id: 2,
+    blog: {
+      title:
+        "The Future of AI: How Artificial Intelligence is Transforming Industries",
+      id: 1,
+    },
     user: {
       name: "Great Ochuko",
       imageUrl: "/profile-pic.jpg",
@@ -37,6 +48,11 @@ const comments = [
 
   {
     id: 4,
+    blog: {
+      title:
+        "The Future of AI: How Artificial Intelligence is Transforming Industries",
+      id: 1,
+    },
     user: {
       name: "Great Ochuko",
       imageUrl: "/profile-pic.jpg",
@@ -49,6 +65,11 @@ const comments = [
   },
   {
     id: 5,
+    blog: {
+      title:
+        "The Future of AI: How Artificial Intelligence is Transforming Industries",
+      id: 1,
+    },
     user: {
       name: "Great Ochuko",
       imageUrl: "/profile-pic.jpg",
@@ -61,6 +82,11 @@ const comments = [
   },
   {
     id: 7,
+    blog: {
+      title:
+        "The Future of AI: How Artificial Intelligence is Transforming Industries",
+      id: 1,
+    },
     user: {
       name: "Great Ochuko",
       imageUrl: "/profile-pic.jpg",
@@ -115,10 +141,9 @@ export default function page({
 
           <section className={styles["about-the-author"]}>
             <Link
-              href={`/authors/${blogpost.author.name
-                .split(" ")
-                .join("-")
-                .toLowerCase()}-${blogpost.author.id}`}
+              href={`/authors/${convertToUrl(blogpost.author.name)}-${
+                blogpost.author.id
+              }`}
               className={styles["image-container"]}
             >
               <Image
@@ -130,10 +155,9 @@ export default function page({
             </Link>
             <div className={styles["text"]}>
               <Link
-                href={`/authors/${blogpost.author.name
-                  .split(" ")
-                  .join("-")
-                  .toLowerCase()}-${blogpost.author.id}`}
+                href={`/authors/${convertToUrl(blogpost.author.name)}-${
+                  blogpost.author.id
+                }`}
               >
                 {blogpost.author.name}
               </Link>

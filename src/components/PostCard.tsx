@@ -4,13 +4,12 @@ import { type BlogPost } from "./Hero";
 import Image from "next/image";
 import { categories } from "@/app/categories/page";
 import Link from "next/link";
+import convertToUrl from "@/utils/convertToUrl";
 
 export default function PostCard({ blogpost }: { blogpost: BlogPost }) {
   return (
     <Link
-      href={`/blog/${blogpost.title.split(" ").join("-").toLowerCase()}-${
-        blogpost.id
-      }`}
+      href={`/blog/${convertToUrl(blogpost.title)}-${blogpost.id}`}
       className={styles["post-card"]}
     >
       <Image

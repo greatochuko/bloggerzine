@@ -4,11 +4,12 @@ import Image from "next/image";
 import { type BlogPost } from "./Hero";
 import BlogMetaData from "./BlogMetaData";
 import Link from "next/link";
+import convertToUrl from "@/utils/convertToUrl";
 
 export default function SearchBlog({ blog }: { blog: BlogPost }) {
   return (
     <Link
-      href={`/blog/${blog.title.split(" ").join("-").toLowerCase()}-${blog.id}`}
+      href={`/blog/${convertToUrl(blog.title)}-${blog.id}`}
       className={styles["search-blog"]}
     >
       <div className={styles["image-container"]}>

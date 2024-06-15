@@ -13,10 +13,10 @@ export const blogPosts = [
     category: "technology",
     imageUrl: "/blog-1.jpg",
     author: {
-      name: "Great Ochuko",
-      imageUrl: "/profile-pic.jpg",
+      name: "John Doe",
+      imageUrl: "/user-2.jpg",
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
-      id: 1,
+      id: 2,
     },
     lastModified: "24 may 2024",
   },

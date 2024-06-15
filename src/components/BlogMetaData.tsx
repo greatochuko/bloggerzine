@@ -3,11 +3,15 @@ import { type BlogPost } from "./Hero";
 import Link from "next/link";
 import Image from "next/image";
 import styles from "@/styles/BlogMetaData.module.css";
+import convertToUrl from "@/utils/convertToUrl";
 
 export default function BlogMetaData({ blog }: { blog: BlogPost }) {
   return (
     <div className={styles["blog-meta-data"]}>
-      <Link href={"#"} className={styles["author"]}>
+      <Link
+        href={`/authors/${convertToUrl(blog.author.name)}-${blog.author.id}`}
+        className={styles["author"]}
+      >
         <div className={styles["image-container"]}>
           <Image
             src={blog.author.imageUrl}

@@ -5,6 +5,7 @@ import styles from "@/styles/MainNav.module.css";
 import SearchForm from "./SearchForm";
 import { useUserContext } from "@/context/UserContext";
 import Image from "next/image";
+import convertToUrl from "@/utils/convertToUrl";
 
 export const navLinks = [
   { name: "Home", href: "/" },
@@ -106,11 +107,9 @@ export default function MainNav({
             {showDropdown ? (
               <div className={styles["options"]}>
                 <Link
-                  href={`/authors/${user.name
-                    .split(" ")
-                    .join("-")
-                    .toLowerCase()}-${user.id}`}
+                  href={`/authors/${convertToUrl(user.name)}-${user.id}`}
                   className={styles["user-details"]}
+                  onClick={() => setShowDropdown(false)}
                 >
                   <div className={styles["image-container"]}>
                     <Image

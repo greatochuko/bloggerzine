@@ -63,13 +63,13 @@
   border: solid 1px var(--light-blue-200);
 }
 
-.auth-links a.login {
+.auth-links a:is(.login, .profile) {
   border: solid 1px var(--blue-100);
   background-color: var(--blue-100);
   color: white;
 }
 
-.auth-links a.login:hover {
+.auth-links a:is(.login, .profile):hover {
   background-color: var(--blue-200);
 }
 
