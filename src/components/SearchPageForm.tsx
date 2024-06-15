@@ -13,8 +13,7 @@ export default function SearchPageForm({
 
   function handleSearch(e: React.FormEvent) {
     e.preventDefault();
-    console.log(`searching for ${query}`);
-    router.push(`/search?query=${query}`);
+    router.push(`/search?query=${query.split(" ").join("-")}`);
     close();
   }
   return (
