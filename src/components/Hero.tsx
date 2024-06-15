@@ -8,12 +8,14 @@ import convertToUrl from "@/utils/convertToUrl";
 
 export type BlogPost = {
   id: number;
+  views: number;
+  status: "published" | "draft";
   title: string;
   content: string;
   category: string;
   imageUrl: string;
-  author: { name: string; imageUrl: string; id: number };
-  lastModified: string;
+  author: { name: string; imageUrl: string; id: number; bio: string };
+  dateCreated: string;
 };
 
 export default function Hero({ blogPosts }: { blogPosts: BlogPost[] }) {

@@ -25,7 +25,7 @@ export default function BlogMetaData({ blog }: { blog: BlogPost }) {
           {blog.author.name}
         </p>
       </Link>
-      <div className={styles["date"]}>{blog.lastModified}</div>
+      <div className={styles["date"]}>{blog.dateCreated}</div>
       <div className={styles["read-time"]}>5 min read</div>
     </div>
   );

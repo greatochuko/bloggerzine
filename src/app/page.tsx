@@ -1,10 +1,12 @@
-import Hero from "@/components/Hero";
+import Hero, { BlogPost } from "@/components/Hero";
 import styles from "./page.module.css";
 import MainArea from "@/components/MainArea";
 
-export const blogPosts = [
+export const blogPosts: BlogPost[] = [
   {
     id: 1,
+    views: 243,
+    status: "published",
     title:
       "The Future of AI: How Artificial Intelligence is Transforming Industries",
     content:
@@ -18,10 +20,12 @@ export const blogPosts = [
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
       id: 2,
     },
-    lastModified: "24 may 2024",
+    dateCreated: "24 may 2024",
   },
   {
     id: 2,
+    views: 243,
+    status: "draft",
     title: "10 Tips for Organizing Your Home Like a Pro",
     content:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
@@ -33,10 +37,12 @@ export const blogPosts = [
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
       id: 1,
     },
-    lastModified: "24 may 2024",
+    dateCreated: "24 may 2024",
   },
   {
     id: 3,
+    views: 243,
+    status: "published",
     title: "The Ultimate Guide to Backpacking Through Europe",
     content:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
@@ -48,10 +54,12 @@ export const blogPosts = [
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
       id: 1,
     },
-    lastModified: "24 may 2024",
+    dateCreated: "24 may 2024",
   },
   {
     id: 4,
+    views: 243,
+    status: "published",
     title: "Strategies for Successful Remote Team Management",
     content:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
@@ -63,10 +71,12 @@ export const blogPosts = [
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
       id: 1,
     },
-    lastModified: "24 may 2024",
+    dateCreated: "24 may 2024",
   },
   {
     id: 5,
+    views: 243,
+    status: "draft",
     title: "Analyzing the Greatest NBA Finals of All Time",
     content:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
@@ -78,10 +88,12 @@ export const blogPosts = [
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
       id: 1,
     },
-    lastModified: "24 may 2024",
+    dateCreated: "24 may 2024",
   },
   {
     id: 6,
+    views: 243,
+    status: "published",
     title: "5G Technology: Revolutionizing Mobile Connectivity",
     content:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
@@ -93,10 +105,12 @@ export const blogPosts = [
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
       id: 1,
     },
-    lastModified: "24 may 2024",
+    dateCreated: "24 may 2024",
   },
   {
     id: 7,
+    views: 243,
+    status: "published",
     title: "How to Create a Capsule Wardrobe for Every Season",
     content:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
@@ -108,10 +122,12 @@ export const blogPosts = [
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
       id: 1,
     },
-    lastModified: "24 may 2024",
+    dateCreated: "24 may 2024",
   },
   {
     id: 8,
+    views: 243,
+    status: "published",
     title: "Top 10 Beaches to Visit in Southeast Asia",
     content:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
@@ -123,10 +139,12 @@ export const blogPosts = [
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
       id: 1,
     },
-    lastModified: "24 may 2024",
+    dateCreated: "24 may 2024",
   },
   {
     id: 9,
+    views: 243,
+    status: "published",
     title: "How to Secure Funding for Your Startup",
     content:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
@@ -138,10 +156,12 @@ export const blogPosts = [
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
       id: 1,
     },
-    lastModified: "24 may 2024",
+    dateCreated: "24 may 2024",
   },
   {
     id: 10,
+    views: 243,
+    status: "published",
     title: "The Evolution of Soccer Tactics Over the Decades",
     content:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
@@ -153,7 +173,7 @@ export const blogPosts = [
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
       id: 1,
     },
-    lastModified: "24 may 2024",
+    dateCreated: "24 may 2024",
   },
 ];
 

@@ -10,6 +10,10 @@
   padding: 1rem;
 }
 
+.header h2 {
+  font-size: min(max(1.2rem, 4vw), 1.5rem);
+}
+
 .main {
   display: flex;
   flex-direction: column;
@@ -35,7 +39,7 @@
 .recent-comment .image-container {
   position: relative;
   overflow: hidden;
-  border-radius: 0.25rem;
+  border-radius: 50%;
   width: 4rem;
   aspect-ratio: 1;
 }

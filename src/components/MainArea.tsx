@@ -49,7 +49,7 @@ export default function MainArea({
                 </div>
                 <div className={styles["post-details"]}>
                   <h3>{recentPost.title}</h3>
-                  <p>{recentPost.lastModified}</p>
+                  <p>{recentPost.dateCreated}</p>
                 </div>
               </Link>
             ))}

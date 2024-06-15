@@ -24,7 +24,7 @@ export default function RecentComments() {
                   src={comment.user.imageUrl}
                   alt={comment.user.name}
                   fill
-                  sizes=""
+                  sizes="80px"
                 ></Image>
               </div>
               <div className={styles["text"]}>

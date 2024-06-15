@@ -32,7 +32,7 @@ export default function PostCard({ blogpost }: { blogpost: BlogPost }) {
         </p>
         <h2>{blogpost.title}</h2>
         <p>
-          by {blogpost.author.name} {blogpost.lastModified}
+          by {blogpost.author.name} {blogpost.dateCreated}
         </p>
       </div>
     </Link>

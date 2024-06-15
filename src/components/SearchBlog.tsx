@@ -24,7 +24,7 @@ export default function SearchBlog({ blog }: { blog: BlogPost }) {
       <p>
         {blog.author.name}
         <span>&#183;</span>
-        {blog.lastModified}
+        {blog.dateCreated}
       </p>
     </Link>
   );

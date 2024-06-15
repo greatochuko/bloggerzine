@@ -102,7 +102,12 @@ export default function MainNav({
               className={styles["image-container"]}
               onClick={() => setShowDropdown((curr) => !curr)}
             >
-              <Image src={user.imageUrl} alt={user.name} fill sizes=""></Image>
+              <Image
+                src={user.imageUrl}
+                alt={user.name}
+                fill
+                sizes="80px"
+              ></Image>
             </div>
             {showDropdown ? (
               <div className={styles["options"]}>
@@ -116,7 +121,7 @@ export default function MainNav({
                       src={user.imageUrl}
                       alt={user.name}
                       fill
-                      sizes=""
+                      sizes="80px"
                     ></Image>
                   </div>
                   <div className={styles["text"]}>

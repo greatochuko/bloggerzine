@@ -4,6 +4,8 @@ import Stats from "@/components/Stats";
 import AboutAuthor from "@/components/AboutAuthor";
 import RecentComments from "@/components/RecentComments";
 import { notFound } from "next/navigation";
+import ArticleList from "@/components/ArticleList";
+import { Metadata } from "next";
 
 const users = [
   {
@@ -24,6 +26,16 @@ const users = [
   },
 ];
 
+export function generateMetadata({
+  params,
+}: {
+  params: { authorId: string };
+}): Metadata {
+  const authorId = Number(params.authorId.split("-").at(-1));
+  const user = users.find((u) => u.id === authorId);
+  return { title: user?.name };
+}
+
 export default function ProfilePage({
   params,
 }: {
@@ -40,6 +52,7 @@ export default function ProfilePage({
       <div className={styles["main"]}>
         <AboutAuthor user={user} />
         <RecentComments />
+        <ArticleList authorId={authorId} />
       </div>
     </div>
   );

@@ -8,6 +8,7 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 1rem;
+  row-gap: 2rem;
 }
 
 /* ------------------------ MOBILE STYLES ----------------------------------- */
