@@ -106,7 +106,7 @@ export default function MainNav({
             {showDropdown ? (
               <div className={styles["options"]}>
                 <Link
-                  href={`/profile/${user.name
+                  href={`/authors/${user.name
                     .split(" ")
                     .join("-")
                     .toLowerCase()}-${user.id}`}

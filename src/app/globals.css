@@ -2,8 +2,8 @@
   --blue-100: #2163e8;
   --blue-200: #1c54c5;
   --blue-300: #1a4fba;
-  --light-blue-100: hwb(220 90% 0%);
-  --light-blue-200: hsl(220, 100%, 80%);
+  --light-blue-100: #e6eeff;
+  --light-blue-200: #99bbff;
 }
 
 * {
