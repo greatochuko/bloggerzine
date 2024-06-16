@@ -2,8 +2,6 @@ import SearchPageForm from "@/components/SearchPageForm";
 import React, { Suspense } from "react";
 import styles from "./page.module.css";
 import { Metadata } from "next";
-import { blogPosts } from "../page";
-import Paginator from "@/components/Paginator";
 import LoadingIndicator from "@/components/LoadingIndicator";
 import SearchResults from "@/components/SearchResults";
 
@@ -17,33 +15,22 @@ export function generateMetadata({
   };
 }
 
-export default function SearchPage({
+export default async function SearchPage({
   searchParams,
 }: {
   searchParams: { query: string; page: string };
 }) {
-  const currentPage = Number(searchParams.page) || 1;
-  const postPerPage = 8;
-  const searchResults = blogPosts
-    .filter((blog) =>
-      blog.title
-        .toLowerCase()
-        .includes(searchParams.query.split("-").join(" ").toLowerCase())
-    )
-    .slice((currentPage - 1) * postPerPage, currentPage * postPerPage);
+  const searchQuery = searchParams.query || "";
 
   return (
     <div className={styles["search-page"]}>
       <div className={styles["heading"]}>
-        <SearchPageForm searchQuery={searchParams.query.split("-").join(" ")} />
-        <h1>Search results for "{searchParams.query.split("-").join(" ")}"</h1>
+        <SearchPageForm searchQuery={searchQuery.split("-").join(" ")} />
+        <h1>Search results for "{searchQuery.split("-").join(" ")}"</h1>
       </div>
-      <Suspense fallback={<LoadingIndicator />} key={searchParams.query}>
-        <SearchResults searchResults={searchResults} />
+      <Suspense fallback={<LoadingIndicator />} key={searchQuery}>
+        <SearchResults query={searchQuery} page={searchParams.page} />
       </Suspense>
-      <Paginator
-        numPages={Math.ceil(searchResults.length / postPerPage) || 1}
-      />
     </div>
   );
 }

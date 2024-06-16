@@ -173,29 +173,30 @@ const blogposts = [
   },
 ];
 
-export function getBlogposts(){
-    return blogposts
+export function getBlogposts() {
+  return blogposts;
 }
 
-export function getBlogpost(id:string){
-return blogposts.find(
-    (blogpost) => blogpost.id === Number(id)
-  );
+export function getBlogpost(id: string) {
+  return blogposts.find((blogpost) => blogpost.id === Number(id));
 }
 
-
-export function getBlogpostByAuthor(authorId:string){
+export function getBlogpostByAuthor(authorId: string) {
   return blogposts.filter(
-    (blogpost) =>
-      blogpost.author.id === Number(authorId)
+    (blogpost) => blogpost.author.id === Number(authorId)
   );
 }
 
-
-export function getBlogpostByCategory(category:string){
+export function getBlogpostByCategory(category: string) {
   return blogposts.filter(
-    (blogpost) =>
-      blogpost.category.toLowerCase() === category.toLowerCase()
+    (blogpost) => blogpost.category.toLowerCase() === category.toLowerCase()
   );
 }
 
+export async function searchBlog(query: string) {
+  await new Promise((res) => setTimeout(res, 2000));
+
+  return blogposts.filter((blog) =>
+    blog.title.toLowerCase().includes(query.split("-").join(" ").toLowerCase())
+  );
+}
