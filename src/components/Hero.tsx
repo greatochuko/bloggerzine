@@ -9,7 +9,7 @@ import convertToUrl from "@/utils/convertToUrl";
 export type BlogPost = {
   id: number;
   views: number;
-  status: "published" | "draft";
+  status: string;
   title: string;
   content: string;
   category: string;
@@ -18,10 +18,10 @@ export type BlogPost = {
   dateCreated: string;
 };
 
-export default function Hero({ blogPosts }: { blogPosts: BlogPost[] }) {
+export default function Hero({ blogposts }: { blogposts: BlogPost[] }) {
   return (
     <div className={styles["hero"]}>
-      {blogPosts.map((blogpost) => (
+      {blogposts.map((blogpost) => (
         <div key={blogpost.id}>
           <div className={styles["overlay"]}>
             <p

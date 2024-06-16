@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
 import Link from "next/link";
+import { getBlogpostByCategory } from "@/services/blogServices";
 
 export const categories = [
   {
@@ -113,7 +114,9 @@ export default function CategoryPage() {
             ></Image>
             <div className={styles["overlay"]}>
               <h2>{category.name}</h2>
-              <p style={{ backgroundColor: category.color }}>14 posts</p>
+              <p style={{ backgroundColor: category.color }}>
+                {getBlogpostByCategory(category.name).length} posts
+              </p>
             </div>
           </Link>
         ))}

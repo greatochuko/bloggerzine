@@ -1,11 +1,13 @@
 import React from "react";
 import styles from "@/styles/RecentComments.module.css";
-import { comments } from "@/app/blog/[blogTitle]/page";
 import Link from "next/link";
 import convertToUrl from "@/utils/convertToUrl";
 import Image from "next/image";
+import { getCommentsByAuthor } from "@/services/commentServices";
 
-export default function RecentComments() {
+export default function RecentComments({ authorId }: { authorId: string }) {
+  const comments = getCommentsByAuthor(authorId);
+
   return (
     <div className={styles["recent-comments"]}>
       <div className={styles["header"]}>

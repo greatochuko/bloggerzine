@@ -6,33 +6,15 @@ import RecentComments from "@/components/RecentComments";
 import { notFound } from "next/navigation";
 import ArticleList from "@/components/ArticleList";
 import { Metadata } from "next";
-
-const users = [
-  {
-    name: "Great Ochuko",
-    occupation: "Web Developer",
-    email: "great@gmail.com",
-    imageUrl: "/profile-pic.jpg",
-    bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
-    id: 1,
-  },
-  {
-    name: "John Doe",
-    occupation: "Graphics Designer",
-    email: "john@gmail.com",
-    imageUrl: "/user-2.jpg",
-    bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
-    id: 2,
-  },
-];
+import { getUser, getUsers } from "@/services/userServices";
 
 export function generateMetadata({
   params,
 }: {
   params: { authorId: string };
 }): Metadata {
-  const authorId = Number(params.authorId.split("-").at(-1));
-  const user = users.find((u) => u.id === authorId);
+  const authorId = params.authorId.split("-").at(-1);
+  const user = getUser(authorId as string);
   return { title: user?.name };
 }
 
@@ -41,17 +23,17 @@ export default function ProfilePage({
 }: {
   params: { authorId: string };
 }) {
-  const authorId = Number(params.authorId.split("-").at(-1));
-  const user = users.find((u) => u.id === authorId);
+  const authorId = params.authorId.split("-").at(-1);
+  const user = getUser(authorId as string);
 
-  if (!user) notFound();
+  if (!user || !authorId) notFound();
 
   return (
     <div className={styles["profile-page"]}>
       <Stats />
       <div className={styles["main"]}>
         <AboutAuthor user={user} />
-        <RecentComments />
+        <RecentComments authorId={authorId} />
         <ArticleList authorId={authorId} />
       </div>
     </div>

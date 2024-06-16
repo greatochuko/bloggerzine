@@ -2,21 +2,22 @@
 import React, { useState } from "react";
 import styles from "@/styles/ArticleList.module.css";
 import paginatorStyles from "@/styles/Paginator.module.css";
-import { blogPosts } from "@/app/page";
 import { categories } from "@/app/categories/page";
 import Link from "next/link";
 import convertToUrl from "@/utils/convertToUrl";
 import Image from "next/image";
+import { getBlogpostByAuthor } from "@/services/blogServices";
 
-export default function ArticleList({ authorId }: { authorId: number }) {
+export default function ArticleList({ authorId }: { authorId: string }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState("newest");
   const [filter, setFilter] = useState("all");
 
-  let filteredPosts = blogPosts.filter(
-    (b) =>
-      b.author.id === authorId && b.title.toLowerCase().includes(searchQuery)
+  let blogposts = getBlogpostByAuthor(authorId);
+
+  let filteredPosts = blogposts.filter((post) =>
+    post.title.toLowerCase().includes(searchQuery)
   );
 
   // Filter posts

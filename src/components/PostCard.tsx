@@ -32,7 +32,12 @@ export default function PostCard({ blogpost }: { blogpost: BlogPost }) {
         </p>
         <h2>{blogpost.title}</h2>
         <p>
-          by {blogpost.author.name} {blogpost.dateCreated}
+          by {blogpost.author.name}{" "}
+          {new Date(blogpost.dateCreated)
+            .toDateString()
+            .split(" ")
+            .slice(1)
+            .join(" ")}
         </p>
       </div>
     </Link>

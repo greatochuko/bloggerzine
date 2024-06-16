@@ -21,7 +21,6 @@ export default function MainArea({
       <div className={styles["highlights"]}>
         <h2>Top highlights</h2>
         <BlogGrid blogposts={topPosts} />
-        <button className={styles["load-more-btn"]}>Load More</button>
       </div>
       <section className={styles["side"]}>
         <div>
@@ -49,7 +48,13 @@ export default function MainArea({
                 </div>
                 <div className={styles["post-details"]}>
                   <h3>{recentPost.title}</h3>
-                  <p>{recentPost.dateCreated}</p>
+                  <p>
+                    {new Date(recentPost.dateCreated)
+                      .toDateString()
+                      .split(" ")
+                      .slice(1)
+                      .join(" ")}
+                  </p>
                 </div>
               </Link>
             ))}

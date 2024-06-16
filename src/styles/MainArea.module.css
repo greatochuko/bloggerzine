@@ -12,24 +12,6 @@
   gap: 1rem;
 }
 
-.load-more-btn {
-  background-color: var(--light-blue-100);
-  padding: 1rem 2rem;
-  border-radius: 0.5rem;
-  width: fit-content;
-  color: var(--blue-100);
-  font-size: calc(1rem + 0.25vw);
-  font-weight: bold;
-  border: none;
-  margin: 2rem auto 0;
-  border: solid 1px var(--light-blue-200);
-}
-
-.load-more-btn:hover {
-  background-color: var(--blue-100);
-  color: white;
-}
-
 .side {
   display: flex;
   flex-direction: column;

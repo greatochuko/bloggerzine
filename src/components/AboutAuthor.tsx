@@ -3,11 +3,13 @@ import React from "react";
 import styles from "@/styles/AboutAuthor.module.css";
 import Link from "next/link";
 import Image from "next/image";
-import { blogPosts } from "@/app/page";
 import { UserType, useUserContext } from "@/context/UserContext";
+import { getBlogposts } from "@/services/blogServices";
 
 export default function AboutAuthor({ user: userProfile }: { user: UserType }) {
   const { user } = useUserContext();
+  const blogposts = getBlogposts();
+
   return (
     <div className={styles["about-author"]}>
       <div className={styles["header"]}>
@@ -34,9 +36,9 @@ export default function AboutAuthor({ user: userProfile }: { user: UserType }) {
           </div>
           <p>
             {
-              blogPosts.filter((blog) => blog.author.id === userProfile.id)
+              blogposts.filter((blog) => blog.author.id === userProfile.id)
                 .length
-            }
+            }{" "}
             Posts
           </p>
         </div>

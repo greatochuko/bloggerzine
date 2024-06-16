@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./page.module.css";
-import { blogPosts } from "@/app/page";
 import { notFound } from "next/navigation";
 import BlogMetaData from "@/components/BlogMetaData";
 import Image from "next/image";
@@ -9,106 +8,19 @@ import CategoryList from "@/components/CategoryList";
 import Link from "next/link";
 import CommentSection from "@/components/CommentSection";
 import convertToUrl from "@/utils/convertToUrl";
-
-export const comments = [
-  {
-    id: 1,
-    blog: {
-      title:
-        "The Future of AI: How Artificial Intelligence is Transforming Industries",
-      id: 1,
-    },
-    user: {
-      name: "John Doe",
-      imageUrl: "/user-2.jpg",
-      id: 2,
-    },
-    comment:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio.",
-    dateCreated: "June 11, 2022 at 6:01 am",
-    parentId: null,
-  },
-  {
-    id: 2,
-    blog: {
-      title:
-        "The Future of AI: How Artificial Intelligence is Transforming Industries",
-      id: 1,
-    },
-    user: {
-      name: "Great Ochuko",
-      imageUrl: "/profile-pic.jpg",
-      id: 1,
-    },
-    comment:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio.",
-    dateCreated: "June 11, 2022 at 6:01 am",
-    parentId: 1,
-  },
-
-  {
-    id: 4,
-    blog: {
-      title:
-        "The Future of AI: How Artificial Intelligence is Transforming Industries",
-      id: 1,
-    },
-    user: {
-      name: "Great Ochuko",
-      imageUrl: "/profile-pic.jpg",
-      id: 1,
-    },
-    comment:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio.",
-    dateCreated: "June 11, 2022 at 6:01 am",
-    parentId: null,
-  },
-  {
-    id: 5,
-    blog: {
-      title:
-        "The Future of AI: How Artificial Intelligence is Transforming Industries",
-      id: 1,
-    },
-    user: {
-      name: "Great Ochuko",
-      imageUrl: "/profile-pic.jpg",
-      id: 1,
-    },
-    comment:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio.",
-    dateCreated: "June 11, 2022 at 6:01 am",
-    parentId: 4,
-  },
-  {
-    id: 7,
-    blog: {
-      title:
-        "The Future of AI: How Artificial Intelligence is Transforming Industries",
-      id: 1,
-    },
-    user: {
-      name: "Great Ochuko",
-      imageUrl: "/profile-pic.jpg",
-      id: 1,
-    },
-    comment:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio.",
-    dateCreated: "June 11, 2022 at 6:01 am",
-    parentId: 5,
-  },
-];
+import { getBlogpost, getBlogposts } from "@/services/blogServices";
+import { getComments } from "@/services/commentServices";
 
 export default function page({
   params: { blogTitle },
 }: {
   params: { blogTitle: string };
 }) {
-  const blogpost = blogPosts.find(
-    (b) => b.id === Number(blogTitle.split("-").at(-1))
-  );
+  const blogpost = getBlogpost(blogTitle.split("-").at(-1) as string);
 
   if (!blogpost) notFound();
+
+  const comments = getComments(blogpost.id.toString());
 
   return (
     <div className={styles["blog-page"]}>

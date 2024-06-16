@@ -24,7 +24,11 @@ export default function SearchBlog({ blog }: { blog: BlogPost }) {
       <p>
         {blog.author.name}
         <span>&#183;</span>
-        {blog.dateCreated}
+        {new Date(blog.dateCreated)
+          .toDateString()
+          .split(" ")
+          .slice(1)
+          .join(" ")}
       </p>
     </Link>
   );

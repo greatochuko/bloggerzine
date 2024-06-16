@@ -42,7 +42,13 @@ export default function Comment({
         </div>
         <div className={styles["details"]}>
           <h3>{comment.user.name}</h3>
-          <time>{comment.dateCreated}</time>
+          <time>
+            {new Date(comment.dateCreated)
+              .toDateString()
+              .split(" ")
+              .slice(1)
+              .join(" ")}
+          </time>
           <p className={styles["content"]}>{comment.comment}</p>
           <button onClick={() => setReplyFormId(comment.id)}>Reply</button>
           {replyFormId === comment.id ? (

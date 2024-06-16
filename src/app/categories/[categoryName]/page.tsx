@@ -2,11 +2,11 @@ import React from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { blogPosts } from "@/app/page";
 import BlogGrid from "@/components/BlogGrid";
 import CategoryList from "@/components/CategoryList";
 import { Metadata } from "next";
 import { categories } from "../page";
+import { getBlogpostByCategory, getBlogposts } from "@/services/blogServices";
 
 export function generateMetadata({
   params: { categoryName },
@@ -35,7 +35,10 @@ export default function CategoryPage({
 
   if (!category) notFound();
 
-  const blogposts = blogPosts.filter(
+  const blogposts = getBlogposts();
+  const categoryPosts = getBlogpostByCategory(categoryName);
+
+  const filteredPosts = blogposts.filter(
     (post) => post.category.toLowerCase() === category.name.toLowerCase()
   );
 
@@ -55,11 +58,11 @@ export default function CategoryPage({
 
         <div className={styles["category-info"]}>
           <h1 style={{ backgroundColor: category.color }}>{category.name}</h1>
-          <p>14 posts</p>
+          <p>{categoryPosts.length} posts</p>
         </div>
       </div>
       <div className={styles["category-page-main"]}>
-        <BlogGrid blogposts={blogposts} showPaginator />
+        <BlogGrid blogposts={filteredPosts} showPaginator />
         <div className={styles["other-categories"]}>
           <h2>Other Categories</h2>
           <CategoryList categories={otherCategories} />
