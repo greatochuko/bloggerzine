@@ -13,7 +13,7 @@ export default function AboutAuthor({ user: userProfile }: { user: UserType }) {
   return (
     <div className={styles["about-author"]}>
       <div className={styles["header"]}>
-        <h1>About Author</h1>
+        <h1>About You</h1>
         {userProfile.id === user?.id ? (
           <Link href={"/edit-profile"}>Edit Profile</Link>
         ) : null}

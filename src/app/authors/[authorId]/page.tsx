@@ -1,41 +1,23 @@
+import { getUser } from "@/services/userServices";
+import { Metadata } from "next";
 import React from "react";
 import styles from "./page.module.css";
-import Stats from "@/components/Stats";
-import AboutAuthor from "@/components/AboutAuthor";
-import RecentComments from "@/components/RecentComments";
-import { notFound } from "next/navigation";
-import ArticleList from "@/components/ArticleList";
-import { Metadata } from "next";
-import { getUser, getUsers } from "@/services/userServices";
 
 export function generateMetadata({
   params,
 }: {
   params: { authorId: string };
 }): Metadata {
-  const authorId = params.authorId.split("-").at(-1);
-  const user = getUser(authorId as string);
+  const user = getUser(params.authorId);
   return { title: user?.name };
 }
 
-export default function ProfilePage({
+export default function AuthorPage({
   params,
 }: {
   params: { authorId: string };
 }) {
-  const authorId = params.authorId.split("-").at(-1);
-  const user = getUser(authorId as string);
+  const author = getUser(params.authorId);
 
-  if (!user || !authorId) notFound();
-
-  return (
-    <div className={styles["profile-page"]}>
-      <Stats authorId={authorId} />
-      <div className={styles["main"]}>
-        <AboutAuthor user={user} />
-        <RecentComments authorId={authorId} />
-        <ArticleList authorId={authorId} />
-      </div>
-    </div>
-  );
+  return <div className={styles["author-page"]}>AuthorPage</div>;
 }
