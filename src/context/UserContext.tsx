@@ -6,6 +6,7 @@ export type UserType = {
   occupation: string;
   email: string;
   imageUrl: string;
+  coverImageUrl: string;
   bio: string;
   id: number;
 };
@@ -20,6 +21,7 @@ const great = {
   occupation: "Web Developer",
   email: "great@gmail.com",
   imageUrl: "/profile-pic.jpg",
+  coverImageUrl: "/cover-image.jpg",
   bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
   id: 1,
 };
