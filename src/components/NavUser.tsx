@@ -17,11 +17,13 @@ export default function NavUser({ user }: { user: UserType }) {
         <Image src={user.imageUrl} alt={user.name} fill sizes="80px"></Image>
       </div>
       {showDropdown ? (
-        <div className={styles["options"]}>
+        <div
+          className={styles["options"]}
+          onClick={() => setShowDropdown(false)}
+        >
           <Link
             href={`/authors/${convertToUrl(user.name)}-${user.id}`}
             className={styles["user-details"]}
-            onClick={() => setShowDropdown(false)}
           >
             <div className={styles["image-container"]}>
               <Image
@@ -80,7 +82,7 @@ export default function NavUser({ user }: { user: UserType }) {
               </Link>
             </li>
             <li>
-              <Link href={`/profile/${convertToUrl(user.name)}-${user.id}`}>
+              <Link href={`/authors/${convertToUrl(user.name)}-${user.id}`}>
                 <svg
                   height={20}
                   width={20}
