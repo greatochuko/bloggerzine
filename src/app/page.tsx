@@ -20,11 +20,11 @@ export const blogPosts: BlogPost[] = [
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
       id: 2,
     },
-    dateCreated: "24 may 2024",
+    dateCreated: "2024-05-22T23:00:00.000Z",
   },
   {
     id: 2,
-    views: 243,
+    views: 24,
     status: "draft",
     title: "10 Tips for Organizing Your Home Like a Pro",
     content:
@@ -37,7 +37,7 @@ export const blogPosts: BlogPost[] = [
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
       id: 1,
     },
-    dateCreated: "24 may 2024",
+    dateCreated: "2024-04-22T23:00:00.000Z",
   },
   {
     id: 3,
@@ -54,7 +54,7 @@ export const blogPosts: BlogPost[] = [
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
       id: 1,
     },
-    dateCreated: "24 may 2024",
+    dateCreated: "2024-05-22T23:00:00.000Z",
   },
   {
     id: 4,
@@ -71,7 +71,7 @@ export const blogPosts: BlogPost[] = [
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
       id: 1,
     },
-    dateCreated: "24 may 2024",
+    dateCreated: "2024-05-22T23:00:00.000Z",
   },
   {
     id: 5,
@@ -88,7 +88,7 @@ export const blogPosts: BlogPost[] = [
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
       id: 1,
     },
-    dateCreated: "24 may 2024",
+    dateCreated: "2024-05-22T23:00:00.000Z",
   },
   {
     id: 6,
@@ -105,7 +105,7 @@ export const blogPosts: BlogPost[] = [
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
       id: 1,
     },
-    dateCreated: "24 may 2024",
+    dateCreated: "2024-05-22T23:00:00.000Z",
   },
   {
     id: 7,
@@ -122,7 +122,7 @@ export const blogPosts: BlogPost[] = [
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
       id: 1,
     },
-    dateCreated: "24 may 2024",
+    dateCreated: "2024-05-22T23:00:00.000Z",
   },
   {
     id: 8,
@@ -139,7 +139,7 @@ export const blogPosts: BlogPost[] = [
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
       id: 1,
     },
-    dateCreated: "24 may 2024",
+    dateCreated: "2024-05-22T23:00:00.000Z",
   },
   {
     id: 9,
@@ -156,7 +156,7 @@ export const blogPosts: BlogPost[] = [
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
       id: 1,
     },
-    dateCreated: "24 may 2024",
+    dateCreated: "2024-05-22T23:00:00.000Z",
   },
   {
     id: 10,
@@ -173,7 +173,7 @@ export const blogPosts: BlogPost[] = [
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
       id: 1,
     },
-    dateCreated: "24 may 2024",
+    dateCreated: "2024-05-22T23:00:00.000Z",
   },
 ];
 

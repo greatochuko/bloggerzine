@@ -28,6 +28,10 @@
   gap: 1rem;
 }
 
+.main :last-child a {
+  border: none;
+}
+
 .recent-comment a:hover .text :first-child {
   color: var(--blue-100);
 }

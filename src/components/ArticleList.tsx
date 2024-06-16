@@ -11,10 +11,45 @@ import Image from "next/image";
 export default function ArticleList({ authorId }: { authorId: number }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
+  const [sortBy, setSortBy] = useState("newest");
+  const [filter, setFilter] = useState("all");
 
-  const filteredPosts = blogPosts
-    .filter((b) => b.author.id === authorId)
-    .filter((b) => b.title.toLowerCase().includes(searchQuery));
+  let filteredPosts = blogPosts.filter(
+    (b) =>
+      b.author.id === authorId && b.title.toLowerCase().includes(searchQuery)
+  );
+
+  // Filter posts
+  if (filter !== "all")
+    filteredPosts = filteredPosts.filter((post) => post.status === filter);
+
+  // Sort posts
+  switch (sortBy) {
+    case "lowest-views":
+      filteredPosts = [...filteredPosts].sort((a, b) => a.views - b.views);
+      break;
+
+    case "highest-views":
+      filteredPosts = [...filteredPosts].sort((a, b) => b.views - a.views);
+      break;
+
+    case "newest":
+      filteredPosts = [...filteredPosts].sort(
+        (a, b) =>
+          new Date(b.dateCreated).getTime() - new Date(a.dateCreated).getTime()
+      );
+      break;
+
+    case "oldest":
+      filteredPosts = [...filteredPosts].sort(
+        (a, b) =>
+          new Date(a.dateCreated).getTime() - new Date(b.dateCreated).getTime()
+      );
+      break;
+
+    default:
+      break;
+  }
 
   const postPerPage = filteredPosts.length > 5 ? 5 : filteredPosts.length;
   const maxPage = Math.ceil(filteredPosts.length / postPerPage) || 1;
@@ -49,12 +84,23 @@ export default function ArticleList({ authorId }: { authorId: number }) {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
-          <select name="sort" id="sort">
+          <select
+            name="sort"
+            id="sort"
+            value={sortBy}
+            onChange={(e) => setSortBy(e.target.value)}
+          >
             <option value="newest">Newest</option>
             <option value="oldest">Oldest</option>
-            <option value="views">Views</option>
+            <option value="lowest-views">Lowest Views</option>
+            <option value="highest-views">Highest Views</option>
           </select>
-          <select name="filter" id="filter">
+          <select
+            name="filter"
+            id="filter"
+            value={filter}
+            onChange={(e) => setFilter(e.target.value)}
+          >
             <option value="all">Filter</option>
             <option value="published">Published</option>
             <option value="draft">Draft</option>
@@ -79,7 +125,13 @@ export default function ArticleList({ authorId }: { authorId: number }) {
                     {blog.title}
                   </Link>
                 </td>
-                <td>{blog.dateCreated}</td>
+                <td>
+                  {new Date(blog.dateCreated)
+                    .toDateString()
+                    .split(" ")
+                    .slice(1)
+                    .join(" ")}
+                </td>
                 <td>{blog.views}</td>
                 <td className={styles["category"]}>
                   <p
@@ -209,7 +261,11 @@ export default function ArticleList({ authorId }: { authorId: number }) {
                 </p>
                 <p>
                   <span>Date Created:</span>
-                  {blog.dateCreated}
+                  {new Date(blog.dateCreated)
+                    .toDateString()
+                    .split(" ")
+                    .slice(1)
+                    .join(" ")}
                 </p>
                 <p>
                   <span>Views:</span>
