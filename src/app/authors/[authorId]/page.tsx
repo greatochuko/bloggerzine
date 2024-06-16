@@ -7,6 +7,7 @@ import { notFound } from "next/navigation";
 import { getBlogpostByAuthor } from "@/services/blogServices";
 import SearchBlog from "@/components/SearchBlog";
 import Paginator from "@/components/Paginator";
+import Link from "next/link";
 
 export function generateMetadata({
   params,
@@ -58,11 +59,11 @@ export default function AuthorPage({
           </div>
           <div className={styles["text"]}>
             <h1>{author.name}</h1>
-            <h3>
+            <p>
               <span>
                 <svg
-                  height={20}
-                  width={20}
+                  height={18}
+                  width={18}
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -102,8 +103,8 @@ export default function AuthorPage({
               </span>
               <span>
                 <svg
-                  height={20}
-                  width={20}
+                  height={18}
+                  width={18}
                   viewBox="-0.5 0 15 15"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="#333"
@@ -126,7 +127,7 @@ export default function AuthorPage({
                 </svg>
                 Joined on Jan 25 2024
               </span>
-            </h3>
+            </p>
           </div>
         </div>
       </div>
