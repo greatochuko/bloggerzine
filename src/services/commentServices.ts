@@ -9,7 +9,7 @@ const comments = [
       id: 2,
     },
     user: {
-      name: "John Doe",
+      fullname: "John Doe",
       imageUrl: "/user-2.jpg",
       id: 2,
     },
@@ -26,7 +26,7 @@ const comments = [
       id: 2,
     },
     user: {
-      name: "Great Ochuko",
+      fullname: "Great Ochuko",
       imageUrl: "/profile-pic.jpg",
       id: 1,
     },
@@ -44,7 +44,7 @@ const comments = [
       id: 2,
     },
     user: {
-      name: "Great Ochuko",
+      fullname: "Great Ochuko",
       imageUrl: "/profile-pic.jpg",
       id: 1,
     },
@@ -61,7 +61,7 @@ const comments = [
       id: 2,
     },
     user: {
-      name: "Great Ochuko",
+      fullname: "Great Ochuko",
       imageUrl: "/profile-pic.jpg",
       id: 1,
     },
@@ -78,7 +78,7 @@ const comments = [
       id: 2,
     },
     user: {
-      name: "Great Ochuko",
+      fullname: "Great Ochuko",
       imageUrl: "/profile-pic.jpg",
       id: 1,
     },
@@ -87,15 +87,17 @@ const comments = [
     dateCreated: "2024-05-22T23:00:00.000Z",
     parentId: 5,
   },
-]
+];
 
-export function getComments(blogId:string){
-    return comments.filter(comment=>comment.blog.id.toString()===blogId);
+export function getComments(blogId: string) {
+  return comments.filter((comment) => comment.blog.id.toString() === blogId);
 }
 
-export function getCommentsByAuthor(authorId:string){
-  const authorPosts = getBlogpostByAuthor(authorId)
-  const authorPostIds = authorPosts.map(post=>post.id)
-  const authorComments = comments.filter(comment=>authorPostIds.includes(comment.blog.id))
-  return authorComments
+export function getCommentsByAuthor(authorId: string) {
+  const authorPosts = getBlogpostByAuthor(authorId);
+  const authorPostIds = authorPosts.map((post) => post.id);
+  const authorComments = comments.filter((comment) =>
+    authorPostIds.includes(comment.blog.id)
+  );
+  return authorComments;
 }

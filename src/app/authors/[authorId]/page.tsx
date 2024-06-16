@@ -43,7 +43,7 @@ export default function AuthorPage({
         <div className={styles["cover-photo-container"]}>
           <Image
             src={author.coverImageUrl}
-            alt={author.name}
+            alt={author.fullname}
             fill
             sizes=""
           ></Image>
@@ -52,13 +52,13 @@ export default function AuthorPage({
           <div className={styles["image-container"]}>
             <Image
               src={author.imageUrl}
-              alt={author.name}
+              alt={author.fullname}
               fill
               sizes=""
             ></Image>
           </div>
           <div className={styles["text"]}>
-            <h1>{author.name}</h1>
+            <h1>{author.fullname}</h1>
             <p>
               <span>
                 <svg
@@ -99,7 +99,7 @@ export default function AuthorPage({
                     ></path>{" "}
                   </g>
                 </svg>
-                {author.occupation}
+                {author.jobTitle}
               </span>
               <span>
                 <svg

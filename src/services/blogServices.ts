@@ -11,7 +11,7 @@ const blogposts = [
     category: "technology",
     imageUrl: "/blog-1.jpg",
     author: {
-      name: "John Doe",
+      fullname: "John Doe",
       imageUrl: "/user-2.jpg",
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
       id: 2,
@@ -28,7 +28,7 @@ const blogposts = [
     category: "lifestyle",
     imageUrl: "/blog-2.jpg",
     author: {
-      name: "Great Ochuko",
+      fullname: "Great Ochuko",
       imageUrl: "/profile-pic.jpg",
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
       id: 1,
@@ -45,7 +45,7 @@ const blogposts = [
     category: "travel",
     imageUrl: "/blog-3.jpg",
     author: {
-      name: "Great Ochuko",
+      fullname: "Great Ochuko",
       imageUrl: "/profile-pic.jpg",
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
       id: 1,
@@ -62,7 +62,7 @@ const blogposts = [
     category: "finance",
     imageUrl: "/blog-4.jpg",
     author: {
-      name: "Great Ochuko",
+      fullname: "Great Ochuko",
       imageUrl: "/profile-pic.jpg",
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
       id: 1,
@@ -79,7 +79,7 @@ const blogposts = [
     category: "sports",
     imageUrl: "/blog-5.jpg",
     author: {
-      name: "Great Ochuko",
+      fullname: "Great Ochuko",
       imageUrl: "/profile-pic.jpg",
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
       id: 1,
@@ -96,7 +96,7 @@ const blogposts = [
     category: "technology",
     imageUrl: "/blog-6.jpg",
     author: {
-      name: "Great Ochuko",
+      fullname: "Great Ochuko",
       imageUrl: "/profile-pic.jpg",
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
       id: 1,
@@ -113,7 +113,7 @@ const blogposts = [
     category: "lifestyle",
     imageUrl: "/blog-7.jpg",
     author: {
-      name: "Great Ochuko",
+      fullname: "Great Ochuko",
       imageUrl: "/profile-pic.jpg",
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
       id: 1,
@@ -130,7 +130,7 @@ const blogposts = [
     category: "travel",
     imageUrl: "/blog-8.jpg",
     author: {
-      name: "Great Ochuko",
+      fullname: "Great Ochuko",
       imageUrl: "/profile-pic.jpg",
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
       id: 1,
@@ -147,7 +147,7 @@ const blogposts = [
     category: "finance",
     imageUrl: "/blog-9.jpg",
     author: {
-      name: "Great Ochuko",
+      fullname: "Great Ochuko",
       imageUrl: "/profile-pic.jpg",
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
       id: 1,
@@ -164,7 +164,7 @@ const blogposts = [
     category: "sports",
     imageUrl: "/blog-10.jpg",
     author: {
-      name: "Great Ochuko",
+      fullname: "Great Ochuko",
       imageUrl: "/profile-pic.jpg",
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
       id: 1,

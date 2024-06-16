@@ -7,16 +7,17 @@ import { notFound } from "next/navigation";
 import ArticleList from "@/components/ArticleList";
 import { Metadata } from "next";
 import { getUserDashboard } from "@/services/userServices";
+import Navigate from "@/components/Navigate";
 
 export function generateMetadata(): Metadata {
   const user = getUserDashboard();
-  return { title: user.name };
+  return { title: user.fullname };
 }
 
 export default function Dashboard() {
   const user = getUserDashboard();
 
-  if (!user) notFound();
+  if (!user) return <Navigate to="/login" />;
 
   return (
     <div className={styles["profile-page"]}>

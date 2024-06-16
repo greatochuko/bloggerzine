@@ -53,25 +53,25 @@ export default function page({
 
           <section className={styles["about-the-author"]}>
             <Link
-              href={`/authors/${convertToUrl(blogpost.author.name)}-${
+              href={`/authors/${convertToUrl(blogpost.author.fullname)}-${
                 blogpost.author.id
               }`}
               className={styles["image-container"]}
             >
               <Image
                 src={blogpost.author.imageUrl}
-                alt={blogpost.author.name}
+                alt={blogpost.author.fullname}
                 fill
                 sizes=""
               ></Image>
             </Link>
             <div className={styles["text"]}>
               <Link
-                href={`/authors/${convertToUrl(blogpost.author.name)}-${
+                href={`/authors/${convertToUrl(blogpost.author.fullname)}-${
                   blogpost.author.id
                 }`}
               >
-                {blogpost.author.name}
+                {blogpost.author.fullname}
               </Link>
               <p>{blogpost.author.bio}</p>
             </div>

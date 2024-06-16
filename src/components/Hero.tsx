@@ -14,7 +14,7 @@ export type BlogPost = {
   content: string;
   category: string;
   imageUrl: string;
-  author: { name: string; imageUrl: string; id: number; bio: string };
+  author: { fullname: string; imageUrl: string; id: number; bio: string };
   dateCreated: string;
 };
 

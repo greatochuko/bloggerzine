@@ -24,14 +24,14 @@ export default function RecentComments({ authorId }: { authorId: string }) {
               <div className={styles["image-container"]}>
                 <Image
                   src={comment.user.imageUrl}
-                  alt={comment.user.name}
+                  alt={comment.user.fullname}
                   fill
                   sizes="80px"
                 ></Image>
               </div>
               <div className={styles["text"]}>
                 <p>{comment.comment}...</p>
-                <p>by {comment.user.name}</p>
+                <p>by {comment.user.fullname}</p>
               </div>
             </Link>
           </li>

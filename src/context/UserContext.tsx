@@ -2,8 +2,9 @@
 import React, { createContext, useContext, useState } from "react";
 
 export type UserType = {
-  name: string;
-  occupation: string;
+  fullname: string;
+  username: string;
+  jobTitle: string;
   email: string;
   imageUrl: string;
   coverImageUrl: string;
@@ -17,8 +18,9 @@ type UserContextType = {
 };
 
 const great = {
-  name: "Great Ochuko",
-  occupation: "Web Developer",
+  fullname: "Great Ochuko",
+  username: "greatochuko",
+  jobTitle: "Web Developer",
   email: "great@gmail.com",
   imageUrl: "/profile-pic.jpg",
   coverImageUrl: "/cover-image.jpg",

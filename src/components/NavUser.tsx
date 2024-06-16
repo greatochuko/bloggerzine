@@ -14,7 +14,12 @@ export default function NavUser({ user }: { user: UserType }) {
         className={styles["image-container"]}
         onClick={() => setShowDropdown((curr) => !curr)}
       >
-        <Image src={user.imageUrl} alt={user.name} fill sizes="80px"></Image>
+        <Image
+          src={user.imageUrl}
+          alt={user.fullname}
+          fill
+          sizes="80px"
+        ></Image>
       </div>
       {showDropdown ? (
         <div
@@ -22,19 +27,19 @@ export default function NavUser({ user }: { user: UserType }) {
           onClick={() => setShowDropdown(false)}
         >
           <Link
-            href={`/authors/${convertToUrl(user.name)}-${user.id}`}
+            href={`/authors/${convertToUrl(user.fullname)}-${user.id}`}
             className={styles["user-details"]}
           >
             <div className={styles["image-container"]}>
               <Image
                 src={user.imageUrl}
-                alt={user.name}
+                alt={user.fullname}
                 fill
                 sizes="80px"
               ></Image>
             </div>
             <div className={styles["text"]}>
-              <h4>{user.name}</h4>
+              <h4>{user.fullname}</h4>
               <p>{user.email}</p>
             </div>
           </Link>
@@ -82,7 +87,7 @@ export default function NavUser({ user }: { user: UserType }) {
               </Link>
             </li>
             <li>
-              <Link href={`/authors/${convertToUrl(user.name)}-${user.id}`}>
+              <Link href={`/authors/${convertToUrl(user.fullname)}-${user.id}`}>
                 <svg
                   height={20}
                   width={20}

@@ -7,7 +7,7 @@ import ReplyForm from "./ReplyForm";
 export type CommentType = {
   id: number;
   user: {
-    name: string;
+    fullname: string;
     imageUrl: string;
     id: number;
   };
@@ -35,13 +35,13 @@ export default function Comment({
         <div className={styles["image-container"]}>
           <Image
             src={comment.user.imageUrl}
-            alt={comment.user.name}
+            alt={comment.user.fullname}
             fill
             sizes=""
           ></Image>
         </div>
         <div className={styles["details"]}>
-          <h3>{comment.user.name}</h3>
+          <h3>{comment.user.fullname}</h3>
           <time>
             {new Date(comment.dateCreated)
               .toDateString()
