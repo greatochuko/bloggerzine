@@ -2,11 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import styles from "@/styles/CategoryList.module.css";
-
-export type Category = {
-  name: string;
-  imageUrl: string;
-};
+import { type Category } from "./Category";
 
 export default function CategoryList({
   categories,
