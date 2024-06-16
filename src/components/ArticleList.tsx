@@ -250,7 +250,7 @@ export default function ArticleList({ authorId }: { authorId: string }) {
                   src={blog.imageUrl}
                   alt={blog.title}
                   fill
-                  sizes=""
+                  sizes="128px"
                 ></Image>
               </div>
               <div className={styles["text"]}>

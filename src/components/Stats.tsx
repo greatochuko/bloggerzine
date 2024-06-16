@@ -1,41 +1,15 @@
 import React from "react";
 import styles from "@/styles/Stats.module.css";
+import { convertToAbbrString } from "@/utils/numberFormatter";
+import { getBlogpostByAuthor } from "@/services/blogServices";
+import { getCommentsByAuthor } from "@/services/commentServices";
 
-export default function Stats() {
+export default function Stats({ authorId }: { authorId: string }) {
+  const authorPosts = getBlogpostByAuthor(authorId);
+  const authorComments = getCommentsByAuthor(authorId);
+
   return (
     <div className={styles["stats"]}>
-      <div className={styles["stat"]}>
-        <div
-          className={styles["stat-icon"]}
-          style={{ backgroundColor: "#D0FBE3" }}
-        >
-          <svg
-            height={40}
-            width={40}
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-            <g
-              id="SVGRepo_tracerCarrier"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            ></g>
-            <g id="SVGRepo_iconCarrier">
-              <circle cx="12" cy="6" r="4" fill="#00a86b"></circle>
-              <path
-                d="M20 17.5C20 19.9853 20 22 12 22C4 22 4 19.9853 4 17.5C4 15.0147 7.58172 13 12 13C16.4183 13 20 15.0147 20 17.5Z"
-                fill="#00a86b"
-              ></path>
-            </g>
-          </svg>
-        </div>
-        <div className={styles["text"]}>
-          <h3>136k</h3>
-          <p>Views</p>
-        </div>
-      </div>
       <div className={styles["stat"]}>
         <div
           className={styles["stat-icon"]}
@@ -62,8 +36,41 @@ export default function Stats() {
           </svg>
         </div>
         <div className={styles["text"]}>
-          <h3>13</h3>
+          <h3>{authorPosts.length}</h3>
           <p>Posts</p>
+        </div>
+      </div>
+      <div className={styles["stat"]}>
+        <div
+          className={styles["stat-icon"]}
+          style={{ backgroundColor: "#FFF5C5" }}
+        >
+          <svg
+            height={40}
+            width={40}
+            fill="#FFA500"
+            viewBox="0 0 1920 1920"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+            <g
+              id="SVGRepo_tracerCarrier"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            ></g>
+            <g id="SVGRepo_iconCarrier">
+              {" "}
+              <path d="M746.667 106.667H1173.33V1493.33H746.667V106.667ZM533.333 533.333H106.667V1493.33H533.333V533.333ZM1920 1706.67H0V1824H1920V1706.67ZM1813.33 746.667H1386.67V1493.33H1813.33V746.667Z"></path>{" "}
+            </g>
+          </svg>
+        </div>
+        <div className={styles["text"]}>
+          <h3>
+            {convertToAbbrString(
+              authorPosts.reduce((acc, curr) => acc + curr.views, 0)
+            )}
+          </h3>
+          <p>Reads</p>
         </div>
       </div>
       <div className={styles["stat"]}>
@@ -100,14 +107,17 @@ export default function Stats() {
       <div className={styles["stat"]}>
         <div
           className={styles["stat-icon"]}
-          style={{ backgroundColor: "#FFF5C5" }}
+          style={{ backgroundColor: "#D0FBE3" }}
         >
           <svg
             height={40}
             width={40}
-            fill="#FFA500"
-            viewBox="0 0 1920 1920"
+            version="1.0"
+            id="Layer_1"
             xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 64 64"
+            enableBackground="new 0 0 64 64"
+            fill="#000000"
           >
             <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
             <g
@@ -117,13 +127,16 @@ export default function Stats() {
             ></g>
             <g id="SVGRepo_iconCarrier">
               {" "}
-              <path d="M746.667 106.667H1173.33V1493.33H746.667V106.667ZM533.333 533.333H106.667V1493.33H533.333V533.333ZM1920 1706.67H0V1824H1920V1706.67ZM1813.33 746.667H1386.67V1493.33H1813.33V746.667Z"></path>{" "}
+              <path
+                fill="#00a86b"
+                d="M60,0H4C1.789,0,0,1.789,0,4v40c0,2.211,1.789,4,4,4h8v15c0,0.404,0.243,0.77,0.617,0.924 C12.741,63.976,12.871,64,13,64c0.26,0,0.516-0.102,0.707-0.293L29.414,48H60c2.211,0,4-1.789,4-4V4C64,1.789,62.211,0,60,0z M15,14 h16c0.553,0,1,0.447,1,1s-0.447,1-1,1H15c-0.553,0-1-0.447-1-1S14.447,14,15,14z M45,34H15c-0.553,0-1-0.447-1-1s0.447-1,1-1h30 c0.553,0,1,0.447,1,1S45.553,34,45,34z M14,27c0-0.553,0.447-1,1-1h24c0.553,0,1,0.447,1,1s-0.447,1-1,1H15 C14.447,28,14,27.553,14,27z M49,22H15c-0.553,0-1-0.447-1-1s0.447-1,1-1h34c0.553,0,1,0.447,1,1S49.553,22,49,22z"
+              ></path>{" "}
             </g>
           </svg>
         </div>
         <div className={styles["text"]}>
-          <h3>136k</h3>
-          <p>Reads</p>
+          <h3>{convertToAbbrString(authorComments.length)}</h3>
+          <p>Comments</p>
         </div>
       </div>
     </div>

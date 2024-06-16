@@ -30,7 +30,7 @@ export default function ProfilePage({
 
   return (
     <div className={styles["profile-page"]}>
-      <Stats />
+      <Stats authorId={authorId} />
       <div className={styles["main"]}>
         <AboutAuthor user={user} />
         <RecentComments authorId={authorId} />
