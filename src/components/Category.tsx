@@ -23,7 +23,7 @@ export default function Category({ category }: { category: Category }) {
             src={category.imageUrl}
             alt={category.name}
             fill
-            sizes=""
+            sizes="600px"
           ></Image>
         </div>
         <h2>{category.name}</h2>
