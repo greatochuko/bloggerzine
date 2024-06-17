@@ -8,7 +8,7 @@ import CategoryList from "@/components/CategoryList";
 import Link from "next/link";
 import CommentSection from "@/components/CommentSection";
 import convertToUrl from "@/utils/convertToUrl";
-import { getBlogpost, getBlogposts } from "@/services/blogServices";
+import { getBlogpost } from "@/services/blogServices";
 import { getComments } from "@/services/commentServices";
 
 export default function page({
@@ -53,9 +53,7 @@ export default function page({
 
           <section className={styles["about-the-author"]}>
             <Link
-              href={`/authors/${convertToUrl(blogpost.author.fullname)}-${
-                blogpost.author.id
-              }`}
+              href={`/authors/${convertToUrl(blogpost.author.username)}`}
               className={styles["image-container"]}
             >
               <Image
@@ -66,11 +64,7 @@ export default function page({
               ></Image>
             </Link>
             <div className={styles["text"]}>
-              <Link
-                href={`/authors/${convertToUrl(blogpost.author.fullname)}-${
-                  blogpost.author.id
-                }`}
-              >
+              <Link href={`/authors/${convertToUrl(blogpost.author.username)}`}>
                 {blogpost.author.fullname}
               </Link>
               <p>{blogpost.author.bio}</p>

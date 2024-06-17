@@ -27,8 +27,9 @@ export function getUsers() {
   return users;
 }
 
-export function getUser(userId: string) {
-  return users.find((u) => u.id === Number(userId));
+export function getUser(username: string) {
+  console.log(username);
+  return users.find((user) => user.username === username);
 }
 
 export function getUserDashboard() {

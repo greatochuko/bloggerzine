@@ -14,7 +14,13 @@ export type BlogPost = {
   content: string;
   category: string;
   imageUrl: string;
-  author: { fullname: string; imageUrl: string; id: number; bio: string };
+  author: {
+    fullname: string;
+    username: string;
+    imageUrl: string;
+    id: number;
+    bio: string;
+  };
   dateCreated: string;
 };
 
@@ -36,7 +42,7 @@ export default function Hero({ blogposts }: { blogposts: BlogPost[] }) {
               {blogpost.category}
             </p>
             <Link
-              href={`/blog/${convertToUrl(blogpost.title)}-${blogpost.id}`}
+              href={`/blog/${convertToUrl(blogpost.author.username)}`}
               className={styles["blog-title"]}
             >
               {blogpost.title}

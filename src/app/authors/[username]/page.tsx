@@ -7,14 +7,13 @@ import { notFound } from "next/navigation";
 import { getBlogpostByAuthor } from "@/services/blogServices";
 import SearchBlog from "@/components/SearchBlog";
 import Paginator from "@/components/Paginator";
-import Link from "next/link";
 
 export function generateMetadata({
   params,
 }: {
-  params: { authorId: string };
+  params: { username: string };
 }): Metadata {
-  const author = getUser(params.authorId.split("-").at(-1) as string);
+  const author = getUser(params.username);
   return { title: author?.username };
 }
 
@@ -22,10 +21,10 @@ export default function AuthorPage({
   params,
   searchParams,
 }: {
+  params: { username: string };
   searchParams: { page: string };
-  params: { authorId: string };
 }) {
-  const author = getUser(params.authorId.split("-").at(-1) as string);
+  const author = getUser(params.username);
   if (!author) notFound();
 
   const currentPage = Number(searchParams.page) || 1;
@@ -132,7 +131,9 @@ export default function AuthorPage({
         </div>
       </div>
       <div className={styles["main"]}>
-        <h2>Articles</h2>
+        <h2>
+          Articles <span>{blogposts.length}</span>
+        </h2>
         <div className={styles["blog-list"]}>
           {paginatedPosts.map((blog) => (
             <SearchBlog blog={blog} key={blog.id} />

@@ -9,7 +9,7 @@ import Overlay from "./Overlay";
 
 export default function NavUser({ user }: { user: UserType }) {
   const [showDropdown, setShowDropdown] = useState(false);
-  const [signoutModal, setSignoutModal] = useState(true);
+  const [signoutModal, setSignoutModal] = useState(false);
 
   return (
     <>
@@ -31,7 +31,7 @@ export default function NavUser({ user }: { user: UserType }) {
             onClick={() => setShowDropdown(false)}
           >
             <Link
-              href={`/authors/${convertToUrl(user.fullname)}-${user.id}`}
+              href={`/authors/${convertToUrl(user.username)}`}
               className={styles["user-details"]}
             >
               <div className={styles["image-container"]}>
@@ -92,7 +92,7 @@ export default function NavUser({ user }: { user: UserType }) {
               </li>
               <li>
                 <Link
-                  href={`/authors/${convertToUrl(user.fullname)}-${user.id}`}
+                  href={`/authors/${convertToUrl(user.username)}`}
                 >
                   <svg
                     height={20}

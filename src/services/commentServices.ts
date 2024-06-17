@@ -10,6 +10,7 @@ const comments = [
     },
     user: {
       fullname: "John Doe",
+      username: "johndoe",
       imageUrl: "/user-2.jpg",
       id: 2,
     },
@@ -27,6 +28,7 @@ const comments = [
     },
     user: {
       fullname: "Great Ochuko",
+      username: "greatochuko",
       imageUrl: "/profile-pic.jpg",
       id: 1,
     },
@@ -45,6 +47,7 @@ const comments = [
     },
     user: {
       fullname: "Great Ochuko",
+      username: "greatochuko",
       imageUrl: "/profile-pic.jpg",
       id: 1,
     },
@@ -62,6 +65,7 @@ const comments = [
     },
     user: {
       fullname: "Great Ochuko",
+      username: "greatochuko",
       imageUrl: "/profile-pic.jpg",
       id: 1,
     },
@@ -79,6 +83,7 @@ const comments = [
     },
     user: {
       fullname: "Great Ochuko",
+      username: "greatochuko",
       imageUrl: "/profile-pic.jpg",
       id: 1,
     },
@@ -95,6 +100,15 @@ export function getComments(blogId: string) {
 
 export function getCommentsByAuthor(authorId: string) {
   const authorPosts = getBlogpostByAuthor(authorId);
+  const authorPostIds = authorPosts.map((post) => post.id);
+  const authorComments = comments.filter((comment) =>
+    authorPostIds.includes(comment.blog.id)
+  );
+  return authorComments;
+}
+
+export function getUserComments() {
+  const authorPosts = getBlogpostByAuthor("1");
   const authorPostIds = authorPosts.map((post) => post.id);
   const authorComments = comments.filter((comment) =>
     authorPostIds.includes(comment.blog.id)

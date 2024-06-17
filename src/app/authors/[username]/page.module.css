@@ -69,7 +69,19 @@
 }
 
 .main h2 {
-  text-align: center;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.main h2 span {
+  background-color: var(--light-blue-100);
+  color: var(--blue-100);
+  font-weight: 600;
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.75rem;
 }
 
 .blog-list {

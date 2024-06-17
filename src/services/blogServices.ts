@@ -12,6 +12,7 @@ const blogposts = [
     imageUrl: "/blog-1.jpg",
     author: {
       fullname: "John Doe",
+      username: "johndoe",
       imageUrl: "/user-2.jpg",
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
       id: 2,
@@ -29,6 +30,7 @@ const blogposts = [
     imageUrl: "/blog-2.jpg",
     author: {
       fullname: "Great Ochuko",
+      username: "greatochuko",
       imageUrl: "/profile-pic.jpg",
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
       id: 1,
@@ -46,6 +48,7 @@ const blogposts = [
     imageUrl: "/blog-3.jpg",
     author: {
       fullname: "Great Ochuko",
+      username: "greatochuko",
       imageUrl: "/profile-pic.jpg",
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
       id: 1,
@@ -63,6 +66,7 @@ const blogposts = [
     imageUrl: "/blog-4.jpg",
     author: {
       fullname: "Great Ochuko",
+      username: "greatochuko",
       imageUrl: "/profile-pic.jpg",
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
       id: 1,
@@ -80,6 +84,7 @@ const blogposts = [
     imageUrl: "/blog-5.jpg",
     author: {
       fullname: "Great Ochuko",
+      username: "greatochuko",
       imageUrl: "/profile-pic.jpg",
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
       id: 1,
@@ -97,6 +102,7 @@ const blogposts = [
     imageUrl: "/blog-6.jpg",
     author: {
       fullname: "Great Ochuko",
+      username: "greatochuko",
       imageUrl: "/profile-pic.jpg",
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
       id: 1,
@@ -114,6 +120,7 @@ const blogposts = [
     imageUrl: "/blog-7.jpg",
     author: {
       fullname: "Great Ochuko",
+      username: "greatochuko",
       imageUrl: "/profile-pic.jpg",
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
       id: 1,
@@ -131,6 +138,7 @@ const blogposts = [
     imageUrl: "/blog-8.jpg",
     author: {
       fullname: "Great Ochuko",
+      username: "greatochuko",
       imageUrl: "/profile-pic.jpg",
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
       id: 1,
@@ -148,6 +156,7 @@ const blogposts = [
     imageUrl: "/blog-9.jpg",
     author: {
       fullname: "Great Ochuko",
+      username: "greatochuko",
       imageUrl: "/profile-pic.jpg",
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
       id: 1,
@@ -165,6 +174,7 @@ const blogposts = [
     imageUrl: "/blog-10.jpg",
     author: {
       fullname: "Great Ochuko",
+      username: "greatochuko",
       imageUrl: "/profile-pic.jpg",
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
       id: 1,

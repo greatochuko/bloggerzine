@@ -37,6 +37,9 @@ export default function RecentComments({ authorId }: { authorId: string }) {
           </li>
         ))}
       </ul>
+      <div className={styles["footer"]}>
+        <Link href={"/comments"}>View all comments</Link>
+      </div>
     </div>
   );
 }

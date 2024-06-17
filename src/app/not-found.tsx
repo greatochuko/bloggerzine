@@ -1,6 +1,11 @@
 import React from "react";
 import styles from "./not-found.module.css";
 import BackButton from "@/components/BackButton";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "404 Page not found",
+};
 
 export default function NotFoundPage() {
   return (
