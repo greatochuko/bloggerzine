@@ -45,6 +45,8 @@ export default function SearchForm({
       <form onSubmit={handleSearch}>
         <input
           type="text"
+          id="search"
+          name="search"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search..."

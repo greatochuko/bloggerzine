@@ -32,7 +32,12 @@ export default function ProfileForm({ user }: { user: UserType }) {
       <label htmlFor="profile-picture">Profile Picture</label>
       <div className={styles["profile-picture"]}>
         <div className={styles["profile-picture-container"]}>
-          <Image src={profilePicture} alt={user.fullname} fill sizes=""></Image>
+          <Image
+            src={profilePicture}
+            alt={user.fullname}
+            fill
+            sizes="112px"
+          ></Image>
         </div>
         <input type="file" name="profile-picture" id="profile-picture" />
       </div>

@@ -10,6 +10,7 @@ export type UserType = {
   coverImageUrl: string;
   bio: string;
   id: number;
+  socialLinks: { facebook?: string; twitter?: string; linkedin?: string };
 };
 
 type UserContextType = {
@@ -26,6 +27,7 @@ const great = {
   coverImageUrl: "/cover-image.jpg",
   bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
   id: 1,
+  socialLinks: {},
 };
 
 const initialState = { user: null, setUser: null };

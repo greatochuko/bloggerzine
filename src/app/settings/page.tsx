@@ -3,6 +3,12 @@ import styles from "./page.module.css";
 import { getUserDashboard } from "@/services/userServices";
 import ProfileForm from "@/components/ProfileForm";
 import Navigate from "@/components/Navigate";
+import SocialLinksForm from "@/components/SocialLinksForm";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Settings",
+};
 
 export default function SettingsPage() {
   const user = getUserDashboard();
@@ -14,6 +20,10 @@ export default function SettingsPage() {
       <div className={styles["section"]}>
         <h2 className="title">Profile</h2>
         <ProfileForm user={user} />
+      </div>
+      <div className={styles["section"]}>
+        <h2 className="title">Social Links</h2>
+        <SocialLinksForm user={user} />
       </div>
     </div>
   );

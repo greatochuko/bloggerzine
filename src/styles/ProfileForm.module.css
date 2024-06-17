@@ -44,9 +44,11 @@
   font-weight: 600;
 }
 
-.profile-form input[type="file"] {
-  /* display: none; */
+.profile-form :is(input, textarea):focus-visible {
+  border-color: var(--blue-100);
+}
 
+.profile-form input[type="file"] {
   width: fit-content;
 }
 
