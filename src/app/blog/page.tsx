@@ -1,9 +1,10 @@
 import Link from "next/link";
 import React from "react";
 import styles from "./page.module.css";
-import { blogPosts } from "../page";
 import PostCard from "@/components/PostCard";
 import Paginator from "@/components/Paginator";
+import { getBlogposts } from "@/services/blogServices";
+import SearchBlog from "@/components/SearchBlog";
 
 export default function page({
   searchParams,
@@ -11,7 +12,8 @@ export default function page({
   searchParams: { page: string };
 }) {
   const currentPage = Number(searchParams.page) || 1;
-  const filteredPosts = blogPosts.slice((currentPage - 1) * 8, currentPage * 8);
+  const blogposts = getBlogposts();
+  const filteredPosts = blogposts.slice((currentPage - 1) * 8, currentPage * 8);
 
   return (
     <div className={styles["blog-list-page"]}>
@@ -55,10 +57,10 @@ export default function page({
       </div>
       <div className={styles["blog-list"]}>
         {filteredPosts.map((blogpost) => (
-          <PostCard blogpost={blogpost} />
+          <SearchBlog blog={blogpost} />
         ))}
       </div>
-      <Paginator numPages={Math.ceil(blogPosts.length / 8) || 1} />
+      <Paginator numPages={Math.ceil(blogposts.length / 8) || 1} />
     </div>
   );
 }

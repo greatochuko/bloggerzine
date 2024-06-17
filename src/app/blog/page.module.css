@@ -43,14 +43,6 @@
 .blog-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
   gap: 1.5rem;
-}
-
-/* ------------------------ MOBILE STYLES ----------------------------------- */
-
-@media screen and (max-width: 992px) {
-  .blog-list {
-    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
-  }
 }
