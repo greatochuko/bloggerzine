@@ -24,13 +24,13 @@ export default function AboutAuthor({ user: userProfile }: { user: UserType }) {
             <div className={styles["image-container"]}>
               <Image
                 src={userProfile.imageUrl}
-                alt={userProfile.name}
+                alt={userProfile.username}
                 fill
                 sizes="80px"
               ></Image>
             </div>
             <div>
-              <h3>{userProfile.name}</h3>
+              <h3>{userProfile.username}</h3>
               <p>{userProfile.jobTitle}</p>
             </div>
           </div>

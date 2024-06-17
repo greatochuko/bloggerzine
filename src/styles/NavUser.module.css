@@ -67,7 +67,7 @@
 .signout-btn {
   padding: 0.7rem;
   border: none;
-  background-color: #e32636;
+  background-color: var(--red-100);
   color: white;
   border-radius: 0.25rem;
   font-size: 0.875rem;
@@ -78,5 +78,5 @@
 }
 
 .signout-btn:hover {
-  background-color: #ce202e;
+  background-color: var(--red-200);
 }

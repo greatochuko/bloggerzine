@@ -15,7 +15,7 @@ export function generateMetadata({
   params: { authorId: string };
 }): Metadata {
   const author = getUser(params.authorId.split("-").at(-1) as string);
-  return { title: author?.name };
+  return { title: author?.username };
 }
 
 export default function AuthorPage({
