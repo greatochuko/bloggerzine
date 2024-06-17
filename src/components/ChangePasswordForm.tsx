@@ -108,10 +108,7 @@ export default function ChangePasswordForm() {
         value={confirmPassword}
         onChange={(e) => setConfirmPassword(e.target.value)}
       />
-      <div className={styles["actions"]}>
-        <button type="reset">Reset</button>
-        <button type="submit">Save Changes</button>
-      </div>
+      <button type="submit">Save Changes</button>
     </form>
   );
 }
