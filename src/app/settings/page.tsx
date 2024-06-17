@@ -5,6 +5,7 @@ import ProfileForm from "@/components/ProfileForm";
 import Navigate from "@/components/Navigate";
 import SocialLinksForm from "@/components/SocialLinksForm";
 import { Metadata } from "next";
+import ChangePasswordForm from "@/components/ChangePasswordForm";
 
 export const metadata: Metadata = {
   title: "Settings",
@@ -18,12 +19,16 @@ export default function SettingsPage() {
   return (
     <div className={styles["settings-page"]}>
       <div className={styles["section"]}>
-        <h2 className="title">Profile</h2>
+        <h2>Profile</h2>
         <ProfileForm user={user} />
       </div>
       <div className={styles["section"]}>
-        <h2 className="title">Social Links</h2>
+        <h2>Social Links</h2>
         <SocialLinksForm user={user} />
+      </div>
+      <div className={styles["section"]}>
+        <h2>Change Password</h2>
+        <ChangePasswordForm />
       </div>
     </div>
   );

@@ -42,10 +42,15 @@
   margin-bottom: 0.5rem;
   font-size: 1rem;
   font-weight: 600;
+  color: inherit;
 }
 
 .profile-form :is(input, textarea):focus-visible {
   border-color: var(--blue-100);
+}
+
+.profile-form :is(input, textarea)::placeholder {
+  color: #aaa;
 }
 
 .profile-form input[type="file"] {
@@ -61,7 +66,7 @@
 .profile-form .actions {
   display: flex;
   justify-content: flex-end;
-  gap: 2rem;
+  gap: 1rem;
 }
 
 .profile-form .actions button {

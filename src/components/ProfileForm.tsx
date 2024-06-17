@@ -11,13 +11,18 @@ export default function ProfileForm({ user }: { user: UserType }) {
   const [jobTitle, setJobTitle] = useState(user.jobTitle);
   const [bio, setBio] = useState(user.bio);
 
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+  }
+
   return (
-    <form className={styles["profile-form"]}>
+    <form className={styles["profile-form"]} onSubmit={handleSubmit}>
       <label htmlFor="fullname">Fullname</label>
       <input
         type="text"
         id="fullname"
         name="fullname"
+        placeholder="Enter fullname"
         value={fullname}
         onChange={(e) => setFullname(e.target.value)}
       />
@@ -26,6 +31,7 @@ export default function ProfileForm({ user }: { user: UserType }) {
         type="text"
         id="username"
         name="username"
+        placeholder="Enter username"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
       />
@@ -46,6 +52,7 @@ export default function ProfileForm({ user }: { user: UserType }) {
         type="text"
         id="job-title"
         name="job-title"
+        placeholder="Enter job title"
         value={jobTitle}
         onChange={(e) => setJobTitle(e.target.value)}
       />
@@ -53,6 +60,7 @@ export default function ProfileForm({ user }: { user: UserType }) {
       <textarea
         name="bio"
         id="bio"
+        placeholder="Write about yourself"
         value={bio}
         onChange={(e) => setBio(e.target.value)}
       ></textarea>

@@ -8,13 +8,18 @@ export default function SocialLinksForm({ user }: { user: UserType }) {
   const [twitterLink, setTwitterLink] = useState(user.socialLinks.twitter);
   const [linkedinLink, setLinkedinLink] = useState(user.socialLinks.linkedin);
 
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+  }
+
   return (
-    <form className={styles["social-links-form"]}>
+    <form className={styles["social-links-form"]} onSubmit={handleSubmit}>
       <label htmlFor="facebook">Facebook</label>
       <input
         type="text"
         id="facebook"
         name="facebook"
+        placeholder="Enter facebook URL"
         value={facebookLink}
         onChange={(e) => setFacebookLink(e.target.value)}
       />
@@ -23,6 +28,7 @@ export default function SocialLinksForm({ user }: { user: UserType }) {
         type="text"
         id="twitter"
         name="twitter"
+        placeholder="Enter twitter URL"
         value={twitterLink}
         onChange={(e) => setTwitterLink(e.target.value)}
       />
@@ -31,6 +37,7 @@ export default function SocialLinksForm({ user }: { user: UserType }) {
         type="text"
         id="linkedin"
         name="linkedin"
+        placeholder="Enter linkedin URL"
         value={linkedinLink}
         onChange={(e) => setLinkedinLink(e.target.value)}
       />

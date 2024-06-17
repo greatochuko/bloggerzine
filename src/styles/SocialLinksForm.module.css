@@ -17,6 +17,11 @@
   margin-bottom: 0.5rem;
   font-size: 1rem;
   font-weight: 600;
+  color: inherit;
+}
+
+.social-links-form input::placeholder {
+  color: #aaa;
 }
 
 .social-links-form input:focus-visible {
@@ -26,7 +31,7 @@
 .social-links-form .actions {
   display: flex;
   justify-content: flex-end;
-  gap: 2rem;
+  gap: 1rem;
 }
 
 .social-links-form .actions button {
