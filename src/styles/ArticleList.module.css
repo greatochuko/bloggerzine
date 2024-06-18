@@ -140,14 +140,14 @@
   color: var(--blue-100);
 }
 
-.main table td.category p {
+.main table td.category a {
   color: white;
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-.main table td.category p::before {
+.main table td.category a::before {
   content: "";
   display: block;
   width: 0.75rem;
@@ -156,7 +156,7 @@
   background-color: white;
 }
 
-.main table td p {
+.main table td :is(p, a) {
   border-radius: 0.25rem;
   padding: 0.25rem 0.5rem;
   width: fit-content;

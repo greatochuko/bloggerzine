@@ -28,7 +28,6 @@ export function getUsers() {
 }
 
 export function getUser(username: string) {
-  console.log(username);
   return users.find((user) => user.username === username);
 }
 

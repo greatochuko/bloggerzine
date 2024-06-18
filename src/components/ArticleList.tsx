@@ -75,7 +75,7 @@ export default function ArticleList({ authorId }: { authorId: string }) {
     <div className={styles["article-list"]}>
       <div className={styles["header"]}>
         <h2>Blog Posts</h2>
-        <Link href={"/create-new"}>Add New</Link>
+        <Link href={"/create-post"}>Add New</Link>
       </div>
       <div className={styles["main"]}>
         <div className={styles["main-header"]}>
@@ -135,7 +135,8 @@ export default function ArticleList({ authorId }: { authorId: string }) {
                 </td>
                 <td>{blog.views}</td>
                 <td className={styles["category"]}>
-                  <p
+                  <Link
+                    href={`/categories/${blog.category}`}
                     style={{
                       backgroundColor: categories.find(
                         (cat) =>
@@ -144,7 +145,7 @@ export default function ArticleList({ authorId }: { authorId: string }) {
                     }}
                   >
                     {blog.category}
-                  </p>
+                  </Link>
                 </td>
                 <td className={styles[blog.status]}>
                   <p>{blog.status}</p>

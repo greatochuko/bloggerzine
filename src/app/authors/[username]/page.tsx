@@ -27,6 +27,8 @@ export default function AuthorPage({
   const author = getUser(params.username);
   if (!author) notFound();
 
+  // if (!author) throw new Error();
+
   const currentPage = Number(searchParams.page) || 1;
   const blogposts = getBlogpostByAuthor(author.id.toString());
   const postsPerPage = 8;
@@ -59,7 +61,7 @@ export default function AuthorPage({
           <div className={styles["text"]}>
             <h1>{author.fullname}</h1>
             <p>
-              <span>
+              {author.jobTitle?<span>
                 <svg
                   height={18}
                   width={18}
@@ -99,7 +101,7 @@ export default function AuthorPage({
                   </g>
                 </svg>
                 {author.jobTitle}
-              </span>
+              </span>:null}
               <span>
                 <svg
                   height={18}

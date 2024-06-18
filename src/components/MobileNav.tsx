@@ -64,13 +64,22 @@ export default function MobileNav({
               </Link>
             </>
           ) : (
-            <Link
-              href={`/authors/${convertToUrl(user.username)}`}
-              className={styles["profile"]}
-              onClick={closeMobileNav}
-            >
-              Profile
-            </Link>
+            <>
+              <Link
+                href={`/authors/${convertToUrl(user.username)}`}
+                className={styles["profile"]}
+                onClick={closeMobileNav}
+              >
+                Profile
+              </Link>
+              <Link
+                href={`/dashboard`}
+                className={styles["profile"]}
+                onClick={closeMobileNav}
+              >
+                Dashboard
+              </Link>
+            </>
           )}
         </div>
         <p className={styles["copyright"]}>

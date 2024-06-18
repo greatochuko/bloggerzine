@@ -1,0 +1,82 @@
+.create-post-form {
+  width: 100%;
+  height: fit-content;
+  border: solid 1px #ddd;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+.create-post-form h2 {
+  border-bottom: solid 1px #ddd;
+  padding: 1rem;
+}
+
+.create-post-form .input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.create-post-form label {
+  color: #666;
+  font-weight: 600;
+  width: fit-content;
+}
+
+.create-post-form :is(input, textarea, select) {
+  padding: 0.75rem;
+  border-radius: 0.25rem;
+  border: solid 1px #ddd;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: inherit;
+}
+
+.create-post-form .input-group.tags {
+  flex: 2;
+}
+
+.create-post-form :is(input, textarea, select):focus-visible {
+  border-color: var(--blue-100);
+}
+
+.create-post-form section {
+  display: flex;
+  gap: 1rem;
+}
+
+.create-post-form select {
+  font: inherit;
+}
+
+.checkbox-input-group {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.create-post-form button[type="submit"] {
+  padding: 0.5rem;
+  font-weight: 600;
+  color: white;
+  background-color: var(--blue-100);
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.25rem;
+}
+
+.create-post-form button[type="submit"]:hover {
+  background-color: var(--blue-200);
+}
+
+/* ------------------------ MOBILE STYLES ----------------------------------- */
+
+@media screen and (max-width: 640px) {
+  .create-post-form section {
+    flex-direction: column;
+  }
+}

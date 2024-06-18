@@ -24,6 +24,7 @@ export default function ChangePasswordForm() {
         id="current-password"
         name="current-password"
         placeholder="Enter current password"
+        required
         value={currentPassword}
         onChange={(e) => setCurrentPassword(e.target.value)}
       />
@@ -34,6 +35,7 @@ export default function ChangePasswordForm() {
           id="new-password"
           name="new-password"
           placeholder="Enter new password"
+          required
           value={newPassword}
           onChange={(e) => setNewPassword(e.target.value)}
         />
@@ -105,6 +107,7 @@ export default function ChangePasswordForm() {
         id="confirm-password"
         name="confirm-password"
         placeholder="Re-Enter new password"
+        required
         value={confirmPassword}
         onChange={(e) => setConfirmPassword(e.target.value)}
       />

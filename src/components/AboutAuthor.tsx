@@ -31,7 +31,7 @@ export default function AboutAuthor({ user: userProfile }: { user: UserType }) {
             </div>
             <div>
               <h3>{userProfile.username}</h3>
-              <p>{userProfile.jobTitle}</p>
+             {userProfile.jobTitle? <p>{userProfile.jobTitle}</p>:null}
             </div>
           </div>
           <p>

@@ -24,6 +24,7 @@ export default function ProfileForm({ user }: { user: UserType }) {
         id="fullname"
         name="fullname"
         placeholder="Enter fullname"
+        required
         value={fullname}
         onChange={(e) => setFullname(e.target.value)}
       />
@@ -33,6 +34,7 @@ export default function ProfileForm({ user }: { user: UserType }) {
         id="username"
         name="username"
         placeholder="Enter username"
+        required
         value={username}
         onChange={(e) => setUsername(e.target.value)}
       />
