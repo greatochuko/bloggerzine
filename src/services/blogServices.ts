@@ -18,6 +18,8 @@ const blogposts = [
       id: 2,
     },
     dateCreated: "2024-05-22T23:00:00.000Z",
+    isFeatured: false,
+    tags: "",
   },
   {
     id: 2,
@@ -36,6 +38,8 @@ const blogposts = [
       id: 1,
     },
     dateCreated: "2024-04-22T23:00:00.000Z",
+    isFeatured: false,
+    tags: "",
   },
   {
     id: 3,
@@ -54,6 +58,8 @@ const blogposts = [
       id: 1,
     },
     dateCreated: "2024-05-22T23:00:00.000Z",
+    isFeatured: false,
+    tags: "",
   },
   {
     id: 4,
@@ -72,6 +78,8 @@ const blogposts = [
       id: 1,
     },
     dateCreated: "2024-05-22T23:00:00.000Z",
+    isFeatured: false,
+    tags: "",
   },
   {
     id: 5,
@@ -90,6 +98,8 @@ const blogposts = [
       id: 1,
     },
     dateCreated: "2024-05-22T23:00:00.000Z",
+    isFeatured: false,
+    tags: "",
   },
   {
     id: 6,
@@ -108,6 +118,8 @@ const blogposts = [
       id: 1,
     },
     dateCreated: "2024-05-22T23:00:00.000Z",
+    isFeatured: false,
+    tags: "",
   },
   {
     id: 7,
@@ -126,6 +138,8 @@ const blogposts = [
       id: 1,
     },
     dateCreated: "2024-05-22T23:00:00.000Z",
+    isFeatured: false,
+    tags: "",
   },
   {
     id: 8,
@@ -144,6 +158,8 @@ const blogposts = [
       id: 1,
     },
     dateCreated: "2024-05-22T23:00:00.000Z",
+    isFeatured: false,
+    tags: "",
   },
   {
     id: 9,
@@ -162,6 +178,8 @@ const blogposts = [
       id: 1,
     },
     dateCreated: "2024-05-22T23:00:00.000Z",
+    isFeatured: false,
+    tags: "",
   },
   {
     id: 10,
@@ -180,6 +198,8 @@ const blogposts = [
       id: 1,
     },
     dateCreated: "2024-05-22T23:00:00.000Z",
+    isFeatured: false,
+    tags: "",
   },
 ];
 

@@ -21,6 +21,8 @@ export type BlogPost = {
     id: number;
     bio: string;
   };
+  tags: string;
+  isFeatured: boolean;
   dateCreated: string;
 };
 
