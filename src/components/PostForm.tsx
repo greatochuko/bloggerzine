@@ -1,8 +1,10 @@
 "use client";
-import React, { useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import styles from "@/styles/PostForm.module.css";
 import { categories } from "@/app/categories/page";
 import { BlogPost } from "./Hero";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 export default function CreatePostForm({ blogpost }: { blogpost?: BlogPost }) {
   const [title, setTitle] = useState(blogpost?.title || "");
@@ -10,6 +12,49 @@ export default function CreatePostForm({ blogpost }: { blogpost?: BlogPost }) {
   const [tags, setTags] = useState(blogpost?.tags || "");
   const [category, setCategory] = useState(blogpost?.category || "");
   const [isFeatured, setIsFeatured] = useState(blogpost?.isFeatured || false);
+
+  const reactQuillRef = useRef<ReactQuill | null>(null);
+
+  const imageHandler = useCallback(() => {
+    const input = document.createElement("input");
+    input.setAttribute("type", "file");
+    input.setAttribute("accept", "image/*");
+    input.click();
+    input.onchange = async () => {
+      if (input !== null && input.files !== null) {
+        const file = input.files[0];
+        console.log(file);
+        const quill = reactQuillRef.current;
+        if (quill) {
+          const range = quill.getEditorSelection();
+          range &&
+            quill.getEditor().insertEmbed(range.index, "image", "/blog-1.jpg");
+        }
+      }
+    };
+  }, []);
+
+  const modules = {
+    toolbar: {
+      container: [
+        [{ font: [] }],
+        [{ header: [1, 2, 3, 4, 5, 6, false] }],
+        ["bold", "italic", "underline", "strike"],
+        [{ color: [] }, { background: [] }],
+        [{ script: "sub" }, { script: "super" }],
+        ["blockquote", "code-block"],
+        [{ list: "ordered" }, { list: "bullet" }],
+        [{ indent: "-1" }, { indent: "+1" }, { align: [] }],
+        ["link", "image", "video"],
+        ["clean"],
+      ],
+      handlers: {
+        image: imageHandler, // <-
+      },
+    },
+  };
+
+  console.log(content);
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -30,7 +75,14 @@ export default function CreatePostForm({ blogpost }: { blogpost?: BlogPost }) {
       </div>
       <div className={styles["input-group"]}>
         <label>Post body</label>
-        <textarea name="" id=""></textarea>
+        <ReactQuill
+          ref={reactQuillRef}
+          theme="snow"
+          value={content}
+          onChange={setContent}
+          style={{ marginBottom: "0", minHeight: "20rem" }}
+          modules={modules}
+        />
       </div>
       <section>
         <div className={`${styles["input-group"]} ${styles["tags"]}`}>

@@ -1,16 +1,8 @@
 import type { Metadata } from "next";
-import { Nunito_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import UserProvider from "@/context/UserContext";
-
-// const inter = Inter({ subsets: ["latin"] });
-const nunitoSans = Nunito_Sans({
-  subsets: ["latin"],
-  display: "swap",
-  adjustFontFallback: false,
-});
 
 export const metadata: Metadata = {
   title: { absolute: "Bloggerzine", template: "%s - Bloggerzine" },
@@ -26,7 +18,7 @@ export default function RootLayout({
   return (
     <UserProvider>
       <html lang="en">
-        <body className={nunitoSans.className}>
+        <body>
           <Header />
           <main>{children}</main>
           <Footer />

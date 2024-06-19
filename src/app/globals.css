@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap");
+
 :root {
   --blue-100: #2163e8;
   --blue-200: #1c54c5;
@@ -22,6 +24,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  font-family: "nunito sans";
 }
 
 main {
@@ -50,4 +53,11 @@ a {
 input,
 textarea {
   font-family: inherit;
+}
+
+/* React Quill styles */
+
+.quill {
+  display: flex;
+  flex-direction: column;
 }
