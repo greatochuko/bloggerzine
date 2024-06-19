@@ -5,6 +5,7 @@ import { categories } from "@/app/categories/page";
 import { BlogPost } from "./Hero";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import { uploadImage } from "@/utils/imageUploader";
 
 export default function CreatePostForm({ blogpost }: { blogpost?: BlogPost }) {
   const [title, setTitle] = useState(blogpost?.title || "");
@@ -23,12 +24,12 @@ export default function CreatePostForm({ blogpost }: { blogpost?: BlogPost }) {
     input.onchange = async () => {
       if (input !== null && input.files !== null) {
         const file = input.files[0];
-        console.log(file);
         const quill = reactQuillRef.current;
+        const { url: imageUrl } = await uploadImage(file);
         if (quill) {
           const range = quill.getEditorSelection();
           range &&
-            quill.getEditor().insertEmbed(range.index, "image", "/blog-1.jpg");
+            quill.getEditor().insertEmbed(range.index, "image", imageUrl);
         }
       }
     };
