@@ -122,8 +122,13 @@
 }
 
 .main table td:first-child {
-  text-overflow: ellipsis;
   overflow: hidden;
+}
+
+.main table td:first-child a {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
 }
 

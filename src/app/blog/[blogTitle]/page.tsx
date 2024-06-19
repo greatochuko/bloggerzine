@@ -10,6 +10,16 @@ import CommentSection from "@/components/CommentSection";
 import convertToUrl from "@/utils/convertToUrl";
 import { getBlogpost } from "@/services/blogServices";
 import { getComments } from "@/services/commentServices";
+import { Metadata } from "next";
+
+export function generateMetadata({
+  params: { blogTitle },
+}: {
+  params: { blogTitle: string };
+}): Metadata {
+  const blogpost = getBlogpost(blogTitle.split("-").at(-1) as string);
+  return { title: blogpost?.title };
+}
 
 export default function page({
   params: { blogTitle },
@@ -60,7 +70,7 @@ export default function page({
                 src={blogpost.author.imageUrl}
                 alt={blogpost.author.fullname}
                 fill
-                sizes=""
+                sizes="80px"
               ></Image>
             </Link>
             <div className={styles["text"]}>

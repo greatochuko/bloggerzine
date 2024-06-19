@@ -50,19 +50,24 @@ export default function CreatePostForm({ blogpost }: { blogpost?: BlogPost }) {
         ["clean"],
       ],
       handlers: {
-        image: imageHandler, // <-
+        image: imageHandler,
       },
     },
   };
 
-  console.log(content);
+  function handleCreatePost(e: React.FormEvent) {
+    e.preventDefault();
+  }
 
-  function handleSubmit(e: React.FormEvent) {
+  function handleEditPost(e: React.FormEvent) {
     e.preventDefault();
   }
 
   return (
-    <form onSubmit={handleSubmit} className={styles["create-post-form"]}>
+    <form
+      onSubmit={blogpost ? handleEditPost : handleCreatePost}
+      className={styles["create-post-form"]}
+    >
       <div className={styles["input-group"]}>
         <label htmlFor="post-title">Post title</label>
         <input
@@ -123,7 +128,7 @@ export default function CreatePostForm({ blogpost }: { blogpost?: BlogPost }) {
         <label htmlFor="featured">Make this post featured?</label>
       </div>
 
-      <button type="submit">Create post</button>
+      <button type="submit">{blogpost ? "Save Changes" : "Create post"}</button>
     </form>
   );
 }
