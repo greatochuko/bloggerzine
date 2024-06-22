@@ -10,9 +10,9 @@ export default function LoginForm() {
   return (
     <form className={styles["login-form"]} onSubmit={handleLogin}>
       <label htmlFor="email">Email Address</label>
-      <input type="email" placeholder="Email" />
+      <input type="email" id="email" placeholder="Email" />
       <label htmlFor="password">Password</label>
-      <input type="password" placeholder="********" />
+      <input type="password" id="password" placeholder="********" />
       <div className={styles["actions"]}>
         <button type="submit">Sign In</button>
         <p>

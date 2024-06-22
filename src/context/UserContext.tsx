@@ -42,7 +42,7 @@ export default function UserProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [user, setUser] = useState<UserType | null>(great);
+  const [user, setUser] = useState<UserType | null>(null);
 
   return (
     <UserContext.Provider value={{ user, setUser }}>

@@ -1,4 +1,6 @@
+import supabase from "@/config/supabaseClient";
 import { UserType } from "@/context/UserContext";
+import { signIn } from "@/auth";
 
 const users: UserType[] = [
   {
@@ -39,4 +41,13 @@ export function getUser(username: string) {
 
 export function getUserDashboard() {
   return users[0];
+}
+
+export async function createUser(user: UserType) {
+  const { data, error } = await supabase.from("user").insert([user]).select();
+}
+
+export async function loginWithGoogle() {
+  "use server";
+  await signIn("google");
 }

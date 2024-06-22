@@ -21,6 +21,12 @@
   max-width: 35rem;
 }
 
+.form-container > form:last-child {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 button.oauth {
   display: flex;
   align-items: center;
