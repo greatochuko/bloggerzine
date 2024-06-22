@@ -3,8 +3,15 @@ import styles from "@/styles/Stats.module.css";
 import { convertToAbbrString } from "@/utils/numberFormatter";
 import { getBlogpostByAuthor } from "@/services/blogServices";
 import { getCommentsByAuthor } from "@/services/commentServices";
+import { useUserContext } from "@/context/UserContext";
+import Navigate from "./Navigate";
 
-export default function Stats({ authorId }: { authorId: string }) {
+export default function Stats() {
+  const { user } = useUserContext();
+  if (!user) return <Navigate to="/login" />;
+
+  const authorId = user._id.toString();
+
   const authorPosts = getBlogpostByAuthor(authorId);
   const authorComments = getCommentsByAuthor(authorId);
 

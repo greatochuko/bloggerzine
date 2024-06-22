@@ -7,7 +7,7 @@ import { notFound } from "next/navigation";
 import ArticleList from "@/components/ArticleList";
 import { Metadata } from "next";
 import { getUserDashboard } from "@/services/userServices";
-import Navigate from "@/components/Navigate";
+import Authenticate from "@/components/Authenticate";
 
 export function generateMetadata(): Metadata {
   const user = getUserDashboard();
@@ -15,18 +15,16 @@ export function generateMetadata(): Metadata {
 }
 
 export default function Dashboard() {
-  const user = getUserDashboard();
-
-  if (!user) return <Navigate to="/login" />;
-
   return (
-    <div className={styles["profile-page"]}>
-      <Stats authorId={user._id.toString()} />
-      <div className={styles["main"]}>
-        <AboutAuthor user={user} />
-        <RecentComments authorId={user._id.toString()} />
-        <ArticleList authorId={user._id.toString()} />
+    <Authenticate>
+      <div className={styles["profile-page"]}>
+        <Stats />
+        <div className={styles["main"]}>
+          <AboutAuthor />
+          <RecentComments />
+          <ArticleList />
+        </div>
       </div>
-    </div>
+    </Authenticate>
   );
 }

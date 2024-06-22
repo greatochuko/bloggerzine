@@ -4,8 +4,15 @@ import Link from "next/link";
 import convertToUrl from "@/utils/convertToUrl";
 import Image from "next/image";
 import { getCommentsByAuthor } from "@/services/commentServices";
+import { useUserContext } from "@/context/UserContext";
+import Navigate from "./Navigate";
 
-export default function RecentComments({ authorId }: { authorId: string }) {
+export default function RecentComments() {
+  const { user } = useUserContext();
+
+  if (!user) return <Navigate to="/login" />;
+
+  const authorId = user._id.toString();
   const comments = getCommentsByAuthor(authorId);
 
   return (

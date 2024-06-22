@@ -7,8 +7,16 @@ import Link from "next/link";
 import convertToUrl from "@/utils/convertToUrl";
 import Image from "next/image";
 import { getBlogpostByAuthor } from "@/services/blogServices";
+import { useUserContext } from "@/context/UserContext";
+import Navigate from "./Navigate";
 
-export default function ArticleList({ authorId }: { authorId: string }) {
+export default function ArticleList() {
+  const { user } = useUserContext();
+
+  if (!user) return <Navigate to="/login" />;
+
+  const authorId = user._id.toString();
+
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState("newest");

@@ -1,18 +1,11 @@
 "use client";
 import { usePathname } from "next/navigation";
-import { useRouter } from "next/router";
+import { redirect } from "next/navigation";
 
-export default function Navigate({
-  to,
-  replace = false,
-}: {
-  to: string;
-  replace?: boolean;
-}) {
-  const router = useRouter();
+export default function Navigate({ to }: { to: string }) {
   const pathname = usePathname();
 
-  replace ? router.replace(to) : router.push(to + `?redirect=${pathname}`);
+  redirect(to + `?redirect=${pathname}`);
 
   return null;
 }
