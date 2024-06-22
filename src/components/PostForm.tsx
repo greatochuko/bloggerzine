@@ -59,7 +59,7 @@ export default function CreatePostForm({ blogpost }: { blogpost?: BlogPost }) {
     e.preventDefault();
   }
 
-  function handleEditPost(e: React.FormEvent) {
+  async function handleEditPost(e: React.FormEvent) {
     e.preventDefault();
   }
 

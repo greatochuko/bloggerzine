@@ -1,8 +1,11 @@
-const blogposts = [
+import { BlogPost } from "@/components/Hero";
+import { createClient } from "@/utils/supabase/server";
+
+const blogposts: BlogPost[] = [
   {
     id: 1,
     views: 243,
-    status: "published",
+    isPublished: true,
     title:
       "The Future of AI: How Artificial Intelligence is Transforming Industries",
     content:
@@ -24,7 +27,7 @@ const blogposts = [
   {
     id: 2,
     views: 24,
-    status: "draft",
+    isPublished: true,
     title: "10 Tips for Organizing Your Home Like a Pro",
     content:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
@@ -44,7 +47,7 @@ const blogposts = [
   {
     id: 3,
     views: 243,
-    status: "published",
+    isPublished: true,
     title: "The Ultimate Guide to Backpacking Through Europe",
     content:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
@@ -64,7 +67,7 @@ const blogposts = [
   {
     id: 4,
     views: 243,
-    status: "published",
+    isPublished: true,
     title: "Strategies for Successful Remote Team Management",
     content:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
@@ -84,7 +87,7 @@ const blogposts = [
   {
     id: 5,
     views: 243,
-    status: "draft",
+    isPublished: true,
     title: "Analyzing the Greatest NBA Finals of All Time",
     content:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
@@ -104,7 +107,7 @@ const blogposts = [
   {
     id: 6,
     views: 243,
-    status: "published",
+    isPublished: true,
     title: "5G Technology: Revolutionizing Mobile Connectivity",
     content:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
@@ -124,7 +127,7 @@ const blogposts = [
   {
     id: 7,
     views: 243,
-    status: "published",
+    isPublished: true,
     title: "How to Create a Capsule Wardrobe for Every Season",
     content:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
@@ -144,7 +147,7 @@ const blogposts = [
   {
     id: 8,
     views: 243,
-    status: "published",
+    isPublished: true,
     title: "Top 10 Beaches to Visit in Southeast Asia",
     content:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
@@ -164,7 +167,7 @@ const blogposts = [
   {
     id: 9,
     views: 243,
-    status: "published",
+    isPublished: true,
     title: "How to Secure Funding for Your Startup",
     content:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
@@ -184,7 +187,7 @@ const blogposts = [
   {
     id: 10,
     views: 243,
-    status: "published",
+    isPublished: true,
     title: "The Evolution of Soccer Tactics Over the Decades",
     content:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
@@ -205,6 +208,15 @@ const blogposts = [
 
 export function getBlogposts() {
   return blogposts;
+}
+
+export async function getSupabaseBlogposts() {
+  const supabase = createClient();
+  // const { data } = await supabase.from("blogposts").select();
+
+  let { data, error } = await supabase.from("blogposts").select("*");
+
+  return { data, error };
 }
 
 export function getBlogpost(id: string) {

@@ -21,8 +21,10 @@ export default function ArticleList({ authorId }: { authorId: string }) {
   );
 
   // Filter posts
-  if (filter !== "all")
-    filteredPosts = filteredPosts.filter((post) => post.status === filter);
+  if (filter === "draft")
+    filteredPosts = filteredPosts.filter((post) => !post.isPublished);
+  if (filter === "published")
+    filteredPosts = filteredPosts.filter((post) => post.isPublished);
 
   // Sort posts
   switch (sortBy) {
@@ -147,8 +149,12 @@ export default function ArticleList({ authorId }: { authorId: string }) {
                     {blog.category}
                   </Link>
                 </td>
-                <td className={styles[blog.status]}>
-                  <p>{blog.status}</p>
+                <td
+                  className={
+                    blog.isPublished ? styles["published"] : styles["draft"]
+                  }
+                >
+                  <p>{blog.isPublished ? "published" : "draft"}</p>
                 </td>
                 <td className={styles["actions"]}>
                   <Link
@@ -279,7 +285,7 @@ export default function ArticleList({ authorId }: { authorId: string }) {
                 </p>
                 <p>
                   <span>Status:</span>
-                  {blog.status}
+                  {blog.isPublished ? "published" : "draft"}
                 </p>
               </div>
             </li>

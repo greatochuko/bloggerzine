@@ -1,18 +1,19 @@
 import Link from "next/link";
 import React from "react";
 import styles from "./page.module.css";
-import PostCard from "@/components/PostCard";
 import Paginator from "@/components/Paginator";
-import { getBlogposts } from "@/services/blogServices";
+import { getSupabaseBlogposts } from "@/services/blogServices";
 import SearchBlog from "@/components/SearchBlog";
+import { BlogPost } from "@/components/Hero";
 
-export default function page({
+export default async function page({
   searchParams,
 }: {
   searchParams: { page: string };
 }) {
   const currentPage = Number(searchParams.page) || 1;
-  const blogposts = getBlogposts();
+  const { data, error } = await getSupabaseBlogposts();
+  const blogposts = data as BlogPost[];
   const filteredPosts = blogposts.slice((currentPage - 1) * 8, currentPage * 8);
 
   return (
@@ -57,7 +58,7 @@ export default function page({
       </div>
       <div className={styles["blog-list"]}>
         {filteredPosts.map((blogpost) => (
-          <SearchBlog blog={blogpost} />
+          <SearchBlog blog={blogpost} key={blogpost.id} />
         ))}
       </div>
       <Paginator numPages={Math.ceil(blogposts.length / 8) || 1} />

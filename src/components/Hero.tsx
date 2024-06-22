@@ -9,7 +9,7 @@ import convertToUrl from "@/utils/convertToUrl";
 export type BlogPost = {
   id: number;
   views: number;
-  status: string;
+  isPublished: boolean;
   title: string;
   content: string;
   category: string;
