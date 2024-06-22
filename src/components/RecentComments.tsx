@@ -15,10 +15,10 @@ export default function RecentComments({ authorId }: { authorId: string }) {
       </div>
       <ul className={styles["main"]}>
         {comments.map((comment) => (
-          <li className={styles["recent-comment"]} key={comment.id}>
+          <li className={styles["recent-comment"]} key={comment._id}>
             <Link
               href={`/blog/${convertToUrl(comment.blog.title)}-${
-                comment.blog.id
+                comment.blog._id
               }`}
             >
               <div className={styles["image-container"]}>

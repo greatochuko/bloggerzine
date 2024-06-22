@@ -7,7 +7,7 @@ import { categories } from "@/app/categories/page";
 import convertToUrl from "@/utils/convertToUrl";
 
 export type BlogPost = {
-  id: number;
+  _id: number;
   views: number;
   isPublished: boolean;
   title: string;
@@ -18,7 +18,7 @@ export type BlogPost = {
     fullname: string;
     username: string;
     imageUrl: string;
-    id: number;
+    _id: number;
     bio: string;
   };
   tags: string;
@@ -30,7 +30,7 @@ export default function Hero({ blogposts }: { blogposts: BlogPost[] }) {
   return (
     <div className={styles["hero"]}>
       {blogposts.map((blogpost) => (
-        <div key={blogpost.id}>
+        <div key={blogpost._id}>
           <div className={styles["overlay"]}>
             <p
               className={styles["category"]}

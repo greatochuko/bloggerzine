@@ -58,7 +58,7 @@ export default async function page({
       </div>
       <div className={styles["blog-list"]}>
         {filteredPosts.map((blogpost) => (
-          <SearchBlog blog={blogpost} key={blogpost.id} />
+          <SearchBlog blog={blogpost} key={blogpost._id} />
         ))}
       </div>
       <Paginator numPages={Math.ceil(blogposts.length / 8) || 1} />

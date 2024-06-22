@@ -30,7 +30,7 @@ export default function page({
 
   if (!blogpost) notFound();
 
-  const comments = getComments(blogpost.id.toString());
+  const comments = getComments(blogpost._id.toString());
 
   return (
     <div className={styles["blog-page"]}>

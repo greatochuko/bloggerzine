@@ -122,9 +122,9 @@ export default function ArticleList({ authorId }: { authorId: string }) {
           </thead>
           <tbody>
             {paginatedPosts.map((blog) => (
-              <tr key={blog.id}>
+              <tr key={blog._id}>
                 <td>
-                  <Link href={`/blog/${convertToUrl(blog.title)}-${blog.id}`}>
+                  <Link href={`/blog/${convertToUrl(blog.title)}-${blog._id}`}>
                     {blog.title}
                   </Link>
                 </td>
@@ -158,7 +158,7 @@ export default function ArticleList({ authorId }: { authorId: string }) {
                 </td>
                 <td className={styles["actions"]}>
                   <Link
-                    href={`/edit-post/${convertToUrl(blog.title)}-${blog.id}`}
+                    href={`/edit-post/${convertToUrl(blog.title)}-${blog._id}`}
                   >
                     <svg
                       height={20}
@@ -251,7 +251,7 @@ export default function ArticleList({ authorId }: { authorId: string }) {
         </table>
         <ul>
           {paginatedPosts.map((blog) => (
-            <li className={styles["blog-card"]} key={blog.id}>
+            <li className={styles["blog-card"]} key={blog._id}>
               <div className={styles["image-container"]}>
                 <Image
                   src={blog.imageUrl}
@@ -263,7 +263,7 @@ export default function ArticleList({ authorId }: { authorId: string }) {
               <div className={styles["text"]}>
                 <p>
                   <span>Title:</span>
-                  <Link href={`/blog/${convertToUrl(blog.title)}-${blog.id}`}>
+                  <Link href={`/blog/${convertToUrl(blog.title)}-${blog._id}`}>
                     {blog.title}
                   </Link>
                 </p>

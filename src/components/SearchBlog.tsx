@@ -9,7 +9,7 @@ import convertToUrl from "@/utils/convertToUrl";
 export default function SearchBlog({ blog }: { blog: BlogPost }) {
   return (
     <Link
-      href={`/blog/${convertToUrl(blog.title)}-${blog.id}`}
+      href={`/blog/${convertToUrl(blog.title)}-${blog._id}`}
       className={styles["search-blog"]}
     >
       <div className={styles["image-container"]}>

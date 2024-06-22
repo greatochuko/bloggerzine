@@ -21,11 +21,11 @@ export default function Dashboard() {
 
   return (
     <div className={styles["profile-page"]}>
-      <Stats authorId={user.id.toString()} />
+      <Stats authorId={user._id.toString()} />
       <div className={styles["main"]}>
         <AboutAuthor user={user} />
-        <RecentComments authorId={user.id.toString()} />
-        <ArticleList authorId={user.id.toString()} />
+        <RecentComments authorId={user._id.toString()} />
+        <ArticleList authorId={user._id.toString()} />
       </div>
     </div>
   );

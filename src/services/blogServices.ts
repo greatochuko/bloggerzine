@@ -3,7 +3,7 @@ import { createClient } from "@/utils/supabase/server";
 
 const blogposts: BlogPost[] = [
   {
-    id: 1,
+    _id: 1,
     views: 243,
     isPublished: true,
     title:
@@ -18,14 +18,14 @@ const blogposts: BlogPost[] = [
       username: "johndoe",
       imageUrl: "/user-2.jpg",
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
-      id: 2,
+      _id: 2,
     },
     dateCreated: "2024-05-22T23:00:00.000Z",
     isFeatured: false,
     tags: "",
   },
   {
-    id: 2,
+    _id: 2,
     views: 24,
     isPublished: true,
     title: "10 Tips for Organizing Your Home Like a Pro",
@@ -38,14 +38,14 @@ const blogposts: BlogPost[] = [
       username: "greatochuko",
       imageUrl: "/profile-pic.jpg",
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
-      id: 1,
+      _id: 1,
     },
     dateCreated: "2024-04-22T23:00:00.000Z",
     isFeatured: false,
     tags: "",
   },
   {
-    id: 3,
+    _id: 3,
     views: 243,
     isPublished: true,
     title: "The Ultimate Guide to Backpacking Through Europe",
@@ -58,14 +58,14 @@ const blogposts: BlogPost[] = [
       username: "greatochuko",
       imageUrl: "/profile-pic.jpg",
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
-      id: 1,
+      _id: 1,
     },
     dateCreated: "2024-05-22T23:00:00.000Z",
     isFeatured: false,
     tags: "",
   },
   {
-    id: 4,
+    _id: 4,
     views: 243,
     isPublished: true,
     title: "Strategies for Successful Remote Team Management",
@@ -78,14 +78,14 @@ const blogposts: BlogPost[] = [
       username: "greatochuko",
       imageUrl: "/profile-pic.jpg",
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
-      id: 1,
+      _id: 1,
     },
     dateCreated: "2024-05-22T23:00:00.000Z",
     isFeatured: false,
     tags: "",
   },
   {
-    id: 5,
+    _id: 5,
     views: 243,
     isPublished: true,
     title: "Analyzing the Greatest NBA Finals of All Time",
@@ -98,14 +98,14 @@ const blogposts: BlogPost[] = [
       username: "greatochuko",
       imageUrl: "/profile-pic.jpg",
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
-      id: 1,
+      _id: 1,
     },
     dateCreated: "2024-05-22T23:00:00.000Z",
     isFeatured: false,
     tags: "",
   },
   {
-    id: 6,
+    _id: 6,
     views: 243,
     isPublished: true,
     title: "5G Technology: Revolutionizing Mobile Connectivity",
@@ -118,14 +118,14 @@ const blogposts: BlogPost[] = [
       username: "greatochuko",
       imageUrl: "/profile-pic.jpg",
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
-      id: 1,
+      _id: 1,
     },
     dateCreated: "2024-05-22T23:00:00.000Z",
     isFeatured: false,
     tags: "",
   },
   {
-    id: 7,
+    _id: 7,
     views: 243,
     isPublished: true,
     title: "How to Create a Capsule Wardrobe for Every Season",
@@ -138,14 +138,14 @@ const blogposts: BlogPost[] = [
       username: "greatochuko",
       imageUrl: "/profile-pic.jpg",
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
-      id: 1,
+      _id: 1,
     },
     dateCreated: "2024-05-22T23:00:00.000Z",
     isFeatured: false,
     tags: "",
   },
   {
-    id: 8,
+    _id: 8,
     views: 243,
     isPublished: true,
     title: "Top 10 Beaches to Visit in Southeast Asia",
@@ -158,14 +158,14 @@ const blogposts: BlogPost[] = [
       username: "greatochuko",
       imageUrl: "/profile-pic.jpg",
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
-      id: 1,
+      _id: 1,
     },
     dateCreated: "2024-05-22T23:00:00.000Z",
     isFeatured: false,
     tags: "",
   },
   {
-    id: 9,
+    _id: 9,
     views: 243,
     isPublished: true,
     title: "How to Secure Funding for Your Startup",
@@ -178,14 +178,14 @@ const blogposts: BlogPost[] = [
       username: "greatochuko",
       imageUrl: "/profile-pic.jpg",
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
-      id: 1,
+      _id: 1,
     },
     dateCreated: "2024-05-22T23:00:00.000Z",
     isFeatured: false,
     tags: "",
   },
   {
-    id: 10,
+    _id: 10,
     views: 243,
     isPublished: true,
     title: "The Evolution of Soccer Tactics Over the Decades",
@@ -198,7 +198,7 @@ const blogposts: BlogPost[] = [
       username: "greatochuko",
       imageUrl: "/profile-pic.jpg",
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
-      id: 1,
+      _id: 1,
     },
     dateCreated: "2024-05-22T23:00:00.000Z",
     isFeatured: false,
@@ -220,12 +220,12 @@ export async function getSupabaseBlogposts() {
 }
 
 export function getBlogpost(id: string) {
-  return blogposts.find((blogpost) => blogpost.id === Number(id));
+  return blogposts.find((blogpost) => blogpost._id === Number(id));
 }
 
 export function getBlogpostByAuthor(authorId: string) {
   return blogposts.filter(
-    (blogpost) => blogpost.author.id === Number(authorId)
+    (blogpost) => blogpost.author._id === Number(authorId)
   );
 }
 

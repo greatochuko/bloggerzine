@@ -14,7 +14,7 @@ export default function AboutAuthor({ user: userProfile }: { user: UserType }) {
     <div className={styles["about-author"]}>
       <div className={styles["header"]}>
         <h1>About You</h1>
-        {userProfile.id === user?.id ? (
+        {userProfile._id === user?._id ? (
           <Link href={"/settings"}>Edit Profile</Link>
         ) : null}
       </div>
@@ -31,12 +31,12 @@ export default function AboutAuthor({ user: userProfile }: { user: UserType }) {
             </div>
             <div>
               <h3>{userProfile.username}</h3>
-             {userProfile.jobTitle? <p>{userProfile.jobTitle}</p>:null}
+              {userProfile.jobTitle ? <p>{userProfile.jobTitle}</p> : null}
             </div>
           </div>
           <p>
             {
-              blogposts.filter((blog) => blog.author.id === userProfile.id)
+              blogposts.filter((blog) => blog.author._id === userProfile._id)
                 .length
             }{" "}
             Posts

@@ -47,11 +47,11 @@ export default function CommentsPage() {
           </thead>
           <tbody>
             {paginatedComments.map((comment) => (
-              <tr key={comment.id}>
+              <tr key={comment._id}>
                 <td>
                   <Link
                     href={`/blog/${convertToUrl(comment.blog.title)}-${
-                      comment.blog.id
+                      comment.blog._id
                     }`}
                   >
                     {comment.blog.title}
@@ -78,7 +78,7 @@ export default function CommentsPage() {
         </table>
         <ul>
           {paginatedComments.map((comment) => (
-            <li key={comment.id}>
+            <li key={comment._id}>
               <div className={styles["user-info"]}>
                 <div className={styles["image-container"]}>
                   <Image

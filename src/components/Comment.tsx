@@ -5,11 +5,11 @@ import Image from "next/image";
 import ReplyForm from "./ReplyForm";
 
 export type CommentType = {
-  id: number;
+  _id: number;
   user: {
     fullname: string;
     imageUrl: string;
-    id: number;
+    _id: number;
   };
   comment: string;
   dateCreated: string;
@@ -27,7 +27,7 @@ export default function Comment({
   replyFormId: number | null;
   setReplyFormId: React.Dispatch<React.SetStateAction<number | null>>;
 }) {
-  const replies = comments.filter((c) => c.parentId === comment.id);
+  const replies = comments.filter((c) => c.parentId === comment._id);
 
   return (
     <li className={styles["comment"]}>
@@ -50,8 +50,8 @@ export default function Comment({
               .join(" ")}
           </time>
           <p className={styles["content"]}>{comment.comment}</p>
-          <button onClick={() => setReplyFormId(comment.id)}>Reply</button>
-          {replyFormId === comment.id ? (
+          <button onClick={() => setReplyFormId(comment._id)}>Reply</button>
+          {replyFormId === comment._id ? (
             <ReplyForm close={() => setReplyFormId(null)} />
           ) : null}
         </div>
@@ -61,7 +61,7 @@ export default function Comment({
           {replies.map((comment) => (
             <Comment
               comment={comment}
-              key={comment.id}
+              key={comment._id}
               comments={comments}
               replyFormId={replyFormId}
               setReplyFormId={setReplyFormId}

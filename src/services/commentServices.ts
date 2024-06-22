@@ -2,17 +2,17 @@ import { getBlogpostByAuthor } from "./blogServices";
 
 const comments = [
   {
-    id: 1,
+    _id: 1,
     blog: {
       title:
         "The Future of AI: How Artificial Intelligence is Transforming Industries",
-      id: 2,
+      _id: 2,
     },
     user: {
       fullname: "John Doe",
       username: "johndoe",
       imageUrl: "/user-2.jpg",
-      id: 2,
+      _id: 2,
     },
     comment:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio.",
@@ -20,17 +20,17 @@ const comments = [
     parentId: null,
   },
   {
-    id: 2,
+    _id: 2,
     blog: {
       title:
         "The Future of AI: How Artificial Intelligence is Transforming Industries",
-      id: 2,
+      _id: 2,
     },
     user: {
       fullname: "Great Ochuko",
       username: "greatochuko",
       imageUrl: "/profile-pic.jpg",
-      id: 1,
+      _id: 1,
     },
     comment:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio.",
@@ -39,17 +39,17 @@ const comments = [
   },
 
   {
-    id: 4,
+    _id: 4,
     blog: {
       title:
         "The Future of AI: How Artificial Intelligence is Transforming Industries",
-      id: 2,
+      _id: 2,
     },
     user: {
       fullname: "Great Ochuko",
       username: "greatochuko",
       imageUrl: "/profile-pic.jpg",
-      id: 1,
+      _id: 1,
     },
     comment:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio.",
@@ -57,17 +57,17 @@ const comments = [
     parentId: null,
   },
   {
-    id: 5,
+    _id: 5,
     blog: {
       title:
         "The Future of AI: How Artificial Intelligence is Transforming Industries",
-      id: 2,
+      _id: 2,
     },
     user: {
       fullname: "Great Ochuko",
       username: "greatochuko",
       imageUrl: "/profile-pic.jpg",
-      id: 1,
+      _id: 1,
     },
     comment:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio.",
@@ -75,17 +75,17 @@ const comments = [
     parentId: 4,
   },
   {
-    id: 7,
+    _id: 7,
     blog: {
       title:
         "The Future of AI: How Artificial Intelligence is Transforming Industries",
-      id: 2,
+      _id: 2,
     },
     user: {
       fullname: "Great Ochuko",
       username: "greatochuko",
       imageUrl: "/profile-pic.jpg",
-      id: 1,
+      _id: 1,
     },
     comment:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio.",
@@ -95,23 +95,23 @@ const comments = [
 ];
 
 export function getComments(blogId: string) {
-  return comments.filter((comment) => comment.blog.id.toString() === blogId);
+  return comments.filter((comment) => comment.blog._id.toString() === blogId);
 }
 
 export function getCommentsByAuthor(authorId: string) {
   const authorPosts = getBlogpostByAuthor(authorId);
-  const authorPostIds = authorPosts.map((post) => post.id);
+  const authorPostIds = authorPosts.map((post) => post._id);
   const authorComments = comments.filter((comment) =>
-    authorPostIds.includes(comment.blog.id)
+    authorPostIds.includes(comment.blog._id)
   );
   return authorComments;
 }
 
 export function getUserComments() {
   const authorPosts = getBlogpostByAuthor("1");
-  const authorPostIds = authorPosts.map((post) => post.id);
+  const authorPostIds = authorPosts.map((post) => post._id);
   const authorComments = comments.filter((comment) =>
-    authorPostIds.includes(comment.blog.id)
+    authorPostIds.includes(comment.blog._id)
   );
   return authorComments;
 }

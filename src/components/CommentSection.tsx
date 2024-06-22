@@ -23,7 +23,7 @@ export default function CommentSection({
           .map((comment) => (
             <Comment
               comment={comment}
-              key={comment.id}
+              key={comment._id}
               comments={comments}
               replyFormId={replyFormId}
               setReplyFormId={setReplyFormId}
