@@ -2,9 +2,8 @@ import Link from "next/link";
 import React from "react";
 import styles from "./page.module.css";
 import Paginator from "@/components/Paginator";
-import { getSupabaseBlogposts } from "@/services/blogServices";
 import SearchBlog from "@/components/SearchBlog";
-import { BlogPost } from "@/components/Hero";
+import {  getBlogposts } from "@/services/blogServices";
 
 export default async function page({
   searchParams,
@@ -12,8 +11,7 @@ export default async function page({
   searchParams: { page: string };
 }) {
   const currentPage = Number(searchParams.page) || 1;
-  const { data, error } = await getSupabaseBlogposts();
-  const blogposts = data as BlogPost[];
+  const blogposts = getBlogposts();
   const filteredPosts = blogposts.slice((currentPage - 1) * 8, currentPage * 8);
 
   return (

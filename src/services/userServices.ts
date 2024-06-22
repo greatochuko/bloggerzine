@@ -1,4 +1,6 @@
-const users = [
+import { UserType } from "@/context/UserContext";
+
+const users: UserType[] = [
   {
     fullname: "Great Ochuko",
     username: "greatochuko",
@@ -8,7 +10,9 @@ const users = [
     coverImageUrl: "/cover-image.jpg",
     bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
     _id: 1,
-    socialLinks: {},
+    facebook: "",
+    twitter: "",
+    linkedIn: "",
   },
   {
     fullname: "John Doe",
@@ -19,7 +23,9 @@ const users = [
     coverImageUrl: "/cover-image.jpg",
     bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
     _id: 2,
-    socialLinks: {},
+    facebook: "",
+    twitter: "",
+    linkedIn: "",
   },
 ];
 
