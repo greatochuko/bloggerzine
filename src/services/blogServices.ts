@@ -13,7 +13,8 @@ const blogposts: BlogPost[] = [
     category: "technology",
     imageUrl: "/blog-1.jpg",
     author: {
-      fullname: "John Doe",
+      firstname: "John ",
+      lastname: "Doe",
       username: "johndoe",
       imageUrl: "/user-2.jpg",
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
@@ -33,7 +34,8 @@ const blogposts: BlogPost[] = [
     category: "lifestyle",
     imageUrl: "/blog-2.jpg",
     author: {
-      fullname: "Great Ochuko",
+      firstname: "Great ",
+      lastname: "Ochuko",
       username: "greatochuko",
       imageUrl: "/profile-pic.jpg",
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
@@ -53,7 +55,8 @@ const blogposts: BlogPost[] = [
     category: "travel",
     imageUrl: "/blog-3.jpg",
     author: {
-      fullname: "Great Ochuko",
+      firstname: "Great ",
+      lastname: "Ochuko",
       username: "greatochuko",
       imageUrl: "/profile-pic.jpg",
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
@@ -73,7 +76,8 @@ const blogposts: BlogPost[] = [
     category: "finance",
     imageUrl: "/blog-4.jpg",
     author: {
-      fullname: "Great Ochuko",
+      firstname: "Great ",
+      lastname: "Ochuko",
       username: "greatochuko",
       imageUrl: "/profile-pic.jpg",
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
@@ -93,7 +97,8 @@ const blogposts: BlogPost[] = [
     category: "sports",
     imageUrl: "/blog-5.jpg",
     author: {
-      fullname: "Great Ochuko",
+      firstname: "Great ",
+      lastname: "Ochuko",
       username: "greatochuko",
       imageUrl: "/profile-pic.jpg",
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
@@ -113,7 +118,8 @@ const blogposts: BlogPost[] = [
     category: "technology",
     imageUrl: "/blog-6.jpg",
     author: {
-      fullname: "Great Ochuko",
+      firstname: "Great ",
+      lastname: "Ochuko",
       username: "greatochuko",
       imageUrl: "/profile-pic.jpg",
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
@@ -133,7 +139,8 @@ const blogposts: BlogPost[] = [
     category: "lifestyle",
     imageUrl: "/blog-7.jpg",
     author: {
-      fullname: "Great Ochuko",
+      firstname: "Great ",
+      lastname: "Ochuko",
       username: "greatochuko",
       imageUrl: "/profile-pic.jpg",
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
@@ -153,7 +160,8 @@ const blogposts: BlogPost[] = [
     category: "travel",
     imageUrl: "/blog-8.jpg",
     author: {
-      fullname: "Great Ochuko",
+      firstname: "Great ",
+      lastname: "Ochuko",
       username: "greatochuko",
       imageUrl: "/profile-pic.jpg",
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
@@ -173,7 +181,8 @@ const blogposts: BlogPost[] = [
     category: "finance",
     imageUrl: "/blog-9.jpg",
     author: {
-      fullname: "Great Ochuko",
+      firstname: "Great ",
+      lastname: "Ochuko",
       username: "greatochuko",
       imageUrl: "/profile-pic.jpg",
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
@@ -193,7 +202,8 @@ const blogposts: BlogPost[] = [
     category: "sports",
     imageUrl: "/blog-10.jpg",
     author: {
-      fullname: "Great Ochuko",
+      firstname: "Great ",
+      lastname: "Ochuko",
       username: "greatochuko",
       imageUrl: "/profile-pic.jpg",
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",

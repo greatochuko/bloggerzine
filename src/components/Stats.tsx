@@ -8,9 +8,8 @@ import Navigate from "./Navigate";
 
 export default function Stats() {
   const { user } = useUserContext();
-  if (!user) return <Navigate to="/login" />;
 
-  const authorId = user.id.toString();
+  const authorId = user?.id.toString() as string;
 
   const authorPosts = getBlogpostByAuthor(authorId);
   const authorComments = getCommentsByAuthor(authorId);

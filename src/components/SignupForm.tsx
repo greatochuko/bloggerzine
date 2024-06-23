@@ -5,7 +5,7 @@ import Link from "next/link";
 import { signup } from "@/actions/userActions";
 import { useFormState, useFormStatus } from "react-dom";
 import { useUserContext } from "@/context/UserContext";
-import { redirect } from "next/navigation";
+import { redirect, useSearchParams } from "next/navigation";
 import Navigate from "./Navigate";
 import LoadingIndicator from "./LoadingIndicator";
 
@@ -19,10 +19,16 @@ export default function SignupForm() {
     errorMessage: "",
   });
 
+  const searchParams = useSearchParams();
+  const redirectTo = searchParams.get("redirect");
+
   const { data, errorMessage } = state;
 
   useEffect(() => {
-    if (data) setUser && setUser(data[0]);
+    if (data && setUser) {
+      localStorage.setItem("token", data.token);
+      setUser(data.userProfile);
+    }
   }, [data]);
 
   let passwordError;
@@ -34,7 +40,7 @@ export default function SignupForm() {
   }
 
   if (user) {
-    redirect("/");
+    redirect(redirectTo || "/");
   }
 
   return (
