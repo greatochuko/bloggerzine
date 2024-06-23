@@ -8,3 +8,18 @@ export async function hashPassword(password: string) {
     return { hashedPassword: null, bcryptError: error };
   }
 }
+
+export async function comparePassword(
+  password: string,
+  encryptedPassword: string
+) {
+  try {
+    const isSame = await bcrypt.compare(password, encryptedPassword);
+    if (isSame) {
+      return true;
+    }
+    return false;
+  } catch (error) {
+    return false;
+  }
+}

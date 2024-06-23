@@ -87,10 +87,16 @@ export default function MainNav({
 
         {!user ? (
           <div className={styles["auth-links"]}>
-            <Link href={"/login"} className={styles["login"]}>
+            <Link
+              href={"/login"}
+              className={pathname.includes("/login") ? styles["active"] : ""}
+            >
               Login
             </Link>
-            <Link href={"/signup"} className={styles["signup"]}>
+            <Link
+              href={"/signup"}
+              className={pathname.includes("/signup") ? styles["active"] : ""}
+            >
               Signup
             </Link>
           </div>

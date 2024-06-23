@@ -1,9 +1,10 @@
 "use server";
 
 import supabase from "@/config/supabaseClient";
-import { hashPassword } from "@/utils/passwordHasher";
+import { UserType } from "@/context/UserContext";
+import { comparePassword, hashPassword } from "@/utils/passwordHasher";
 
-export async function createUser(prevState: any, formData: FormData) {
+export async function signup(prevState: any, formData: FormData) {
   let errorMessage = "";
   const user = {
     firstname: formData.get("firstname"),
@@ -30,4 +31,26 @@ export async function createUser(prevState: any, formData: FormData) {
   } else {
     return { data: null, errorMessage: "Please Enter a valid password" };
   }
+}
+
+export async function login(prevState: any, formData: FormData) {
+  let errorMessage = "";
+  const email = formData.get("email");
+  const password = formData.get("password");
+
+  const { data } = await supabase.from("users").select("*").eq("email", email);
+
+  if (data) {
+    const passwordIsCorrect = await comparePassword(
+      password as string,
+      data[0].password
+    );
+    console.log(passwordIsCorrect);
+    if (passwordIsCorrect) {
+      return { data, errorMessage: null };
+    }
+  }
+
+  errorMessage = "Invalid username and password combination";
+  return { data: null, errorMessage };
 }

@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "@/styles/SignupForm.module.css";
 import Link from "next/link";
-import { createUser } from "@/actions/userActions";
+import { signup } from "@/actions/userActions";
 import { useFormState, useFormStatus } from "react-dom";
 import { useUserContext } from "@/context/UserContext";
 import { redirect } from "next/navigation";
@@ -14,7 +14,7 @@ export default function SignupForm() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const { user, setUser } = useUserContext();
 
-  const [state, formAction] = useFormState(createUser, {
+  const [state, formAction] = useFormState(signup, {
     data: null,
     errorMessage: "",
   });
@@ -29,7 +29,7 @@ export default function SignupForm() {
   if (confirmPassword.length && password !== confirmPassword) {
     passwordError = "Passwords do not match";
   }
-  if (password.length < 8) {
+  if (password.length && password.length < 8) {
     passwordError = "Password must be at least 8 characters long";
   }
 
@@ -106,11 +106,8 @@ export default function SignupForm() {
           onChange={(e) => setConfirmPassword(e.target.value)}
           required
         />
-        {passwordError ? (
-          <p className={styles["error"]}>{passwordError}</p>
-        ) : null}
-        {errorMessage ? (
-          <p className={styles["error"]}>{errorMessage}</p>
+        {passwordError || errorMessage ? (
+          <p className={styles["error"]}>{passwordError || errorMessage}</p>
         ) : null}
       </div>
       <div className={styles["actions"]}>
