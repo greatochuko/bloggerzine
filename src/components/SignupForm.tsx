@@ -3,10 +3,11 @@ import React, { useEffect, useState } from "react";
 import styles from "@/styles/SignupForm.module.css";
 import Link from "next/link";
 import { createUser } from "@/actions/userActions";
-import { useFormState } from "react-dom";
+import { useFormState, useFormStatus } from "react-dom";
 import { useUserContext } from "@/context/UserContext";
 import { redirect } from "next/navigation";
 import Navigate from "./Navigate";
+import LoadingIndicator from "./LoadingIndicator";
 
 export default function SignupForm() {
   const [password, setPassword] = useState("");
@@ -24,8 +25,13 @@ export default function SignupForm() {
     if (data) setUser && setUser(data[0]);
   }, [data]);
 
-  const passwordError =
-    confirmPassword.length && password !== confirmPassword ? true : false;
+  let passwordError;
+  if (confirmPassword.length && password !== confirmPassword) {
+    passwordError = "Passwords do not match";
+  }
+  if (password.length < 8) {
+    passwordError = "Password must be at least 8 characters long";
+  }
 
   if (user) {
     redirect("/");
@@ -101,20 +107,27 @@ export default function SignupForm() {
           required
         />
         {passwordError ? (
-          <p className={styles["error"]}>Passwords do not match</p>
+          <p className={styles["error"]}>{passwordError}</p>
         ) : null}
         {errorMessage ? (
           <p className={styles["error"]}>{errorMessage}</p>
         ) : null}
       </div>
       <div className={styles["actions"]}>
-        <button type="submit" disabled={passwordError}>
-          Sign Up
-        </button>
+        <Button passwordError={passwordError} />
         <p>
           Already have an account? <Link href={"/login"}>Login</Link>
         </p>
       </div>
     </form>
+  );
+}
+
+function Button({ passwordError }: { passwordError?: string }) {
+  const { pending } = useFormStatus();
+  return (
+    <button type="submit" disabled={!!passwordError}>
+      {pending ? <LoadingIndicator size={20} color="#fff" /> : "Sign Up"}
+    </button>
   );
 }

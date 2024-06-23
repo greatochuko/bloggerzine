@@ -55,13 +55,22 @@
   color: white;
   border: none;
   border-radius: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 7rem;
 }
 
 .signup-form button:hover {
   background-color: var(--blue-200);
 }
 
-.signup-form button:active {
+.signup-form button:disabled {
+  background-color: #666;
+  cursor: not-allowed;
+}
+
+.signup-form button:not(:disabled):active {
   scale: 0.95;
 }
 
@@ -79,5 +88,10 @@
 
   .actions p {
     font-size: 0.9rem;
+  }
+
+  .signup-form button {
+    width: 100%;
+    padding: 0.75rem 0;
   }
 }

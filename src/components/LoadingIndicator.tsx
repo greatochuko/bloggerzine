@@ -1,13 +1,13 @@
 import React from "react";
 import styles from "@/styles/LoadingIndicator.module.css";
 
-export default function LoadingIndicator() {
+export default function LoadingIndicator({ size = 30, color = "#000" }) {
   return (
     <div className={styles["loading-indicator"]}>
       <div className={styles["svg-container"]}>
         <svg
-          width={30}
-          height={30}
+          width={size}
+          height={size}
           viewBox="0 0 16 16"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -20,7 +20,7 @@ export default function LoadingIndicator() {
           ></g>
           <g id="SVGRepo_iconCarrier">
             {" "}
-            <g fill="#000000" fillRule="evenodd" clipRule="evenodd">
+            <g fill={color} fillRule="evenodd" clipRule="evenodd">
               {" "}
               <path
                 d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8z"
