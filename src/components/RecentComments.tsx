@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import styles from "@/styles/RecentComments.module.css";
 import Link from "next/link";
@@ -10,9 +11,7 @@ import Navigate from "./Navigate";
 export default function RecentComments() {
   const { user } = useUserContext();
 
-  if (!user) return <Navigate to="/login" />;
-
-  const authorId = user.id.toString();
+  const authorId = user?.id.toString() as string;
   const comments = getCommentsByAuthor(authorId);
 
   return (

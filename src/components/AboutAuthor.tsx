@@ -5,13 +5,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { UserType, useUserContext } from "@/context/UserContext";
 import { getBlogposts } from "@/services/blogServices";
-import Navigate from "./Navigate";
 
 export default function AboutAuthor() {
   const { user } = useUserContext();
-  if (!user) return <Navigate to="/login" />;
 
-  const authorId = user.id.toString();
+  const author = user as UserType;
+
   const blogposts = getBlogposts();
 
   return (
@@ -25,25 +24,25 @@ export default function AboutAuthor() {
           <div className={styles["main-info"]}>
             <div className={styles["image-container"]}>
               <Image
-                src={user.imageUrl}
-                alt={user.username}
+                src={author.imageUrl}
+                alt={author.username}
                 fill
                 sizes="80px"
               ></Image>
             </div>
             <div>
-              <h3>{user.username}</h3>
-              {user.jobTitle ? <p>{user.jobTitle}</p> : null}
+              <h3>{author.username}</h3>
+              {author.jobTitle ? <p>{author.jobTitle}</p> : null}
             </div>
           </div>
           <p>
-            {blogposts.filter((blog) => blog.author.id === user.id).length}{" "}
+            {blogposts.filter((blog) => blog.author.id === author.id).length}{" "}
             Posts
           </p>
         </div>
         <div className={styles["bio"]}>
           <h2>Bio:</h2>
-          <p>{user.bio}</p>
+          <p>{author.bio}</p>
         </div>
       </div>
     </div>

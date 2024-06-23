@@ -13,9 +13,7 @@ import Navigate from "./Navigate";
 export default function ArticleList() {
   const { user } = useUserContext();
 
-  if (!user) return <Navigate to="/login" />;
-
-  const authorId = user.id.toString();
+  const authorId = user?.id.toString() as string;
 
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");

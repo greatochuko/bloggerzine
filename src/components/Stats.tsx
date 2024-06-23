@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import styles from "@/styles/Stats.module.css";
 import { convertToAbbrString } from "@/utils/numberFormatter";
