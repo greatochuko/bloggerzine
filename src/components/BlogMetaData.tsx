@@ -16,13 +16,13 @@ export default function BlogMetaData({ blog }: { blog: BlogPost }) {
           <Image
             src={blog.author.imageUrl}
             fill
-            alt={blog.author.fullname}
+            alt={blog.author.firstname + " " + blog.author.lastname}
             sizes="(max-width: 640px) 10vw, 6vw"
           ></Image>
         </div>
         <p>
           <span>by </span>
-          {blog.author.fullname}
+          {blog.author.firstname + " " + blog.author.lastname}
         </p>
       </Link>
       <div className={styles["date"]}>

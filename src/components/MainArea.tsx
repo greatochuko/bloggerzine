@@ -33,10 +33,10 @@ export default function MainArea({
             {recentPosts.map((recentPost) => (
               <Link
                 href={`/blog/${convertToUrl(recentPost.title)}-${
-                  recentPost._id
+                  recentPost.id
                 }`}
                 className={styles["recent-post"]}
-                key={recentPost._id}
+                key={recentPost.id}
               >
                 <div className={styles["image-container"]}>
                   <Image

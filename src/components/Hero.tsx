@@ -5,22 +5,17 @@ import Link from "next/link";
 import BlogMetaData from "./BlogMetaData";
 import { categories } from "@/app/categories/page";
 import convertToUrl from "@/utils/convertToUrl";
+import { UserType } from "@/context/UserContext";
 
 export type BlogPost = {
-  _id: number;
+  id: number;
   views: number;
   isPublished: boolean;
   title: string;
   content: string;
   category: string;
   imageUrl: string;
-  author: {
-    fullname: string;
-    username: string;
-    imageUrl: string;
-    _id: number;
-    bio: string;
-  };
+  author: UserType;
   tags: string;
   isFeatured: boolean;
   dateCreated: string;
@@ -30,7 +25,7 @@ export default function Hero({ blogposts }: { blogposts: BlogPost[] }) {
   return (
     <div className={styles["hero"]}>
       {blogposts.map((blogpost) => (
-        <div key={blogpost._id}>
+        <div key={blogpost.id}>
           <div className={styles["overlay"]}>
             <p
               className={styles["category"]}

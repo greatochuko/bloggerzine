@@ -26,7 +26,7 @@ export default async function SearchResults({
       {searchResults.length ? (
         <div className={styles["search-results"]}>
           {paginatedResults.map((blogpost) => (
-            <SearchBlog blog={blogpost} key={blogpost._id} />
+            <SearchBlog blog={blogpost} key={blogpost.id} />
           ))}
         </div>
       ) : (

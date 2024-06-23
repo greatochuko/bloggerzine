@@ -12,7 +12,7 @@ export default function RecentComments() {
 
   if (!user) return <Navigate to="/login" />;
 
-  const authorId = user._id.toString();
+  const authorId = user.id.toString();
   const comments = getCommentsByAuthor(authorId);
 
   return (
@@ -22,23 +22,23 @@ export default function RecentComments() {
       </div>
       <ul className={styles["main"]}>
         {comments.map((comment) => (
-          <li className={styles["recent-comment"]} key={comment._id}>
+          <li className={styles["recent-comment"]} key={comment.id}>
             <Link
               href={`/blog/${convertToUrl(comment.blog.title)}-${
-                comment.blog._id
+                comment.blog.id
               }`}
             >
               <div className={styles["image-container"]}>
                 <Image
                   src={comment.user.imageUrl}
-                  alt={comment.user.fullname}
+                  alt={comment.user.firstname + " " + comment.user.lastname}
                   fill
                   sizes="80px"
                 ></Image>
               </div>
               <div className={styles["text"]}>
                 <p>{comment.comment}...</p>
-                <p>by {comment.user.fullname}</p>
+                <p>by {comment.user.firstname + " " + comment.user.lastname}</p>
               </div>
             </Link>
           </li>

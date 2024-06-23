@@ -47,11 +47,11 @@ export default function CommentsPage() {
           </thead>
           <tbody>
             {paginatedComments.map((comment) => (
-              <tr key={comment._id}>
+              <tr key={comment.id}>
                 <td>
                   <Link
                     href={`/blog/${convertToUrl(comment.blog.title)}-${
-                      comment.blog._id
+                      comment.blog.id
                     }`}
                   >
                     {comment.blog.title}
@@ -61,7 +61,7 @@ export default function CommentsPage() {
                   <Link
                     href={`/authors/${convertToUrl(comment.user.username)}`}
                   >
-                    {comment.user.fullname}
+                    {comment.user.firstname + ' ' + comment.user.lastname}
                   </Link>
                 </td>
                 <td>{comment.comment}</td>
@@ -78,18 +78,18 @@ export default function CommentsPage() {
         </table>
         <ul>
           {paginatedComments.map((comment) => (
-            <li key={comment._id}>
+            <li key={comment.id}>
               <div className={styles["user-info"]}>
                 <div className={styles["image-container"]}>
                   <Image
                     src={comment.user.imageUrl}
-                    alt={comment.user.fullname}
+                    alt={comment.user.firstname + ' ' + comment.user.lastname}
                     fill
                     sizes=""
                   ></Image>
                 </div>
                 <div className={styles["text"]}>
-                  <h4>{comment.user.fullname}</h4>
+                  <h4>{comment.user.firstname + ' ' + comment.user.lastname}</h4>
                   <p>
                     {new Date(comment.dateCreated)
                       .toDateString()

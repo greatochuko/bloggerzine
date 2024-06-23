@@ -2,7 +2,8 @@
 import React, { createContext, useContext, useState } from "react";
 
 export type UserType = {
-  fullname: string;
+  firstname: string;
+  lastname: string;
   username: string;
   jobTitle: string;
   email: string;
@@ -12,7 +13,7 @@ export type UserType = {
   facebook: string;
   twitter: string;
   linkedIn: string;
-  _id: number;
+  id: number;
 };
 
 type UserContextType = {
@@ -31,7 +32,7 @@ const great = {
   twitter: "",
   linkedIn: "",
   bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
-  _id: 1,
+  id: 1,
 };
 
 const initialState = { user: null, setUser: null };

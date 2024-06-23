@@ -30,7 +30,7 @@ export default function page({
 
   if (!blogpost) notFound();
 
-  const comments = getComments(blogpost._id.toString());
+  const comments = getComments(blogpost.id.toString());
 
   return (
     <div className={styles["blog-page"]}>
@@ -68,14 +68,14 @@ export default function page({
             >
               <Image
                 src={blogpost.author.imageUrl}
-                alt={blogpost.author.fullname}
+                alt={blogpost.author.firstname + " " + blogpost.author.lastname}
                 fill
                 sizes="80px"
               ></Image>
             </Link>
             <div className={styles["text"]}>
               <Link href={`/authors/${convertToUrl(blogpost.author.username)}`}>
-                {blogpost.author.fullname}
+                {blogpost.author.firstname + " " + blogpost.author.lastname}
               </Link>
               <p>{blogpost.author.bio}</p>
             </div>

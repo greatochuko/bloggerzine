@@ -15,7 +15,7 @@ export default function ArticleList() {
 
   if (!user) return <Navigate to="/login" />;
 
-  const authorId = user._id.toString();
+  const authorId = user.id.toString();
 
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
@@ -130,9 +130,9 @@ export default function ArticleList() {
           </thead>
           <tbody>
             {paginatedPosts.map((blog) => (
-              <tr key={blog._id}>
+              <tr key={blog.id}>
                 <td>
-                  <Link href={`/blog/${convertToUrl(blog.title)}-${blog._id}`}>
+                  <Link href={`/blog/${convertToUrl(blog.title)}-${blog.id}`}>
                     {blog.title}
                   </Link>
                 </td>
@@ -166,7 +166,7 @@ export default function ArticleList() {
                 </td>
                 <td className={styles["actions"]}>
                   <Link
-                    href={`/edit-post/${convertToUrl(blog.title)}-${blog._id}`}
+                    href={`/edit-post/${convertToUrl(blog.title)}-${blog.id}`}
                   >
                     <svg
                       height={20}
@@ -259,7 +259,7 @@ export default function ArticleList() {
         </table>
         <ul>
           {paginatedPosts.map((blog) => (
-            <li className={styles["blog-card"]} key={blog._id}>
+            <li className={styles["blog-card"]} key={blog.id}>
               <div className={styles["image-container"]}>
                 <Image
                   src={blog.imageUrl}
@@ -271,7 +271,7 @@ export default function ArticleList() {
               <div className={styles["text"]}>
                 <p>
                   <span>Title:</span>
-                  <Link href={`/blog/${convertToUrl(blog.title)}-${blog._id}`}>
+                  <Link href={`/blog/${convertToUrl(blog.title)}-${blog.id}`}>
                     {blog.title}
                   </Link>
                 </p>

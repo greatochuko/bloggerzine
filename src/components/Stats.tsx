@@ -10,7 +10,7 @@ export default function Stats() {
   const { user } = useUserContext();
   if (!user) return <Navigate to="/login" />;
 
-  const authorId = user._id.toString();
+  const authorId = user.id.toString();
 
   const authorPosts = getBlogpostByAuthor(authorId);
   const authorComments = getCommentsByAuthor(authorId);

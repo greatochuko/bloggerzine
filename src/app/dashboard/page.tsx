@@ -3,16 +3,14 @@ import styles from "./page.module.css";
 import Stats from "@/components/Stats";
 import AboutAuthor from "@/components/AboutAuthor";
 import RecentComments from "@/components/RecentComments";
-import { notFound } from "next/navigation";
 import ArticleList from "@/components/ArticleList";
 import { Metadata } from "next";
 import { getUserDashboard } from "@/services/userServices";
 import Authenticate from "@/components/Authenticate";
 
-export function generateMetadata(): Metadata {
-  const user = getUserDashboard();
-  return { title: user.fullname };
-}
+export const metadata: Metadata = {
+  title: "Dashboard",
+};
 
 export default function Dashboard() {
   return (

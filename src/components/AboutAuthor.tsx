@@ -11,7 +11,7 @@ export default function AboutAuthor() {
   const { user } = useUserContext();
   if (!user) return <Navigate to="/login" />;
 
-  const authorId = user._id.toString();
+  const authorId = user.id.toString();
   const blogposts = getBlogposts();
 
   return (
@@ -37,7 +37,7 @@ export default function AboutAuthor() {
             </div>
           </div>
           <p>
-            {blogposts.filter((blog) => blog.author._id === user._id).length}{" "}
+            {blogposts.filter((blog) => blog.author.id === user.id).length}{" "}
             Posts
           </p>
         </div>

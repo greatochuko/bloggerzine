@@ -30,7 +30,7 @@ export default function AuthorPage({
   // if (!author) throw new Error();
 
   const currentPage = Number(searchParams.page) || 1;
-  const blogposts = getBlogpostByAuthor(author._id.toString());
+  const blogposts = getBlogpostByAuthor(author.id.toString());
   const postsPerPage = 8;
   const paginatedPosts = blogposts.slice(
     (currentPage - 1) * postsPerPage,
@@ -44,7 +44,7 @@ export default function AuthorPage({
         <div className={styles["cover-photo-container"]}>
           <Image
             src={author.coverImageUrl}
-            alt={author.fullname}
+            alt={author.firstname + " " + author.lastname}
             fill
             sizes=""
           ></Image>
@@ -53,13 +53,13 @@ export default function AuthorPage({
           <div className={styles["image-container"]}>
             <Image
               src={author.imageUrl}
-              alt={author.fullname}
+              alt={author.firstname + " " + author.lastname}
               fill
               sizes=""
             ></Image>
           </div>
           <div className={styles["text"]}>
-            <h1>{author.fullname}</h1>
+            <h1>{author.firstname + " " + author.lastname}</h1>
             <p>
               {author.jobTitle ? (
                 <span>
@@ -140,7 +140,7 @@ export default function AuthorPage({
         </h2>
         <div className={styles["blog-list"]}>
           {paginatedPosts.map((blog) => (
-            <SearchBlog blog={blog} key={blog._id} />
+            <SearchBlog blog={blog} key={blog.id} />
           ))}
         </div>
         <Paginator numPages={maxPage} />

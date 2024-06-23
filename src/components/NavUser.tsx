@@ -20,7 +20,7 @@ export default function NavUser({ user }: { user: UserType }) {
         >
           <Image
             src={user.imageUrl}
-            alt={user.fullname}
+            alt={user.firstname + " " + user.lastname}
             fill
             sizes="80px"
           ></Image>
@@ -37,13 +37,13 @@ export default function NavUser({ user }: { user: UserType }) {
               <div className={styles["image-container"]}>
                 <Image
                   src={user.imageUrl}
-                  alt={user.fullname}
+                  alt={user.firstname + " " + user.lastname}
                   fill
                   sizes="80px"
                 ></Image>
               </div>
               <div className={styles["text"]}>
-                <h4>{user.fullname}</h4>
+                <h4>{user.firstname + " " + user.lastname}</h4>
                 <p>{user.email}</p>
               </div>
             </Link>
@@ -91,9 +91,7 @@ export default function NavUser({ user }: { user: UserType }) {
                 </Link>
               </li>
               <li>
-                <Link
-                  href={`/authors/${convertToUrl(user.username)}`}
-                >
+                <Link href={`/authors/${convertToUrl(user.username)}`}>
                   <svg
                     height={20}
                     width={20}

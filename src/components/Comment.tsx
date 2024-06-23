@@ -3,14 +3,13 @@ import React, { useState } from "react";
 import styles from "@/styles/Comment.module.css";
 import Image from "next/image";
 import ReplyForm from "./ReplyForm";
+import { UserType } from "@/context/UserContext";
+import { BlogPost } from "./Hero";
 
 export type CommentType = {
-  _id: number;
-  user: {
-    fullname: string;
-    imageUrl: string;
-    _id: number;
-  };
+  id: number;
+  blog: BlogPost;
+  user: UserType;
   comment: string;
   dateCreated: string;
   parentId: null | number;
@@ -27,7 +26,7 @@ export default function Comment({
   replyFormId: number | null;
   setReplyFormId: React.Dispatch<React.SetStateAction<number | null>>;
 }) {
-  const replies = comments.filter((c) => c.parentId === comment._id);
+  const replies = comments.filter((c) => c.parentId === comment.id);
 
   return (
     <li className={styles["comment"]}>
@@ -35,13 +34,13 @@ export default function Comment({
         <div className={styles["image-container"]}>
           <Image
             src={comment.user.imageUrl}
-            alt={comment.user.fullname}
+            alt={comment.user.firstname + " " + comment.user.lastname}
             fill
             sizes=""
           ></Image>
         </div>
         <div className={styles["details"]}>
-          <h3>{comment.user.fullname}</h3>
+          <h3>{comment.user.firstname + " " + comment.user.lastname}</h3>
           <time>
             {new Date(comment.dateCreated)
               .toDateString()
@@ -50,8 +49,8 @@ export default function Comment({
               .join(" ")}
           </time>
           <p className={styles["content"]}>{comment.comment}</p>
-          <button onClick={() => setReplyFormId(comment._id)}>Reply</button>
-          {replyFormId === comment._id ? (
+          <button onClick={() => setReplyFormId(comment.id)}>Reply</button>
+          {replyFormId === comment.id ? (
             <ReplyForm close={() => setReplyFormId(null)} />
           ) : null}
         </div>
@@ -61,7 +60,7 @@ export default function Comment({
           {replies.map((comment) => (
             <Comment
               comment={comment}
-              key={comment._id}
+              key={comment.id}
               comments={comments}
               replyFormId={replyFormId}
               setReplyFormId={setReplyFormId}

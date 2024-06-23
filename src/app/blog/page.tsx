@@ -3,7 +3,7 @@ import React from "react";
 import styles from "./page.module.css";
 import Paginator from "@/components/Paginator";
 import SearchBlog from "@/components/SearchBlog";
-import {  getBlogposts } from "@/services/blogServices";
+import { getBlogposts } from "@/services/blogServices";
 
 export default async function page({
   searchParams,
@@ -56,7 +56,7 @@ export default async function page({
       </div>
       <div className={styles["blog-list"]}>
         {filteredPosts.map((blogpost) => (
-          <SearchBlog blog={blogpost} key={blogpost._id} />
+          <SearchBlog blog={blogpost} key={blogpost.id} />
         ))}
       </div>
       <Paginator numPages={Math.ceil(blogposts.length / 8) || 1} />

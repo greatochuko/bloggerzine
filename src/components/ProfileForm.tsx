@@ -7,7 +7,7 @@ import styles from "@/styles/ProfileForm.module.css";
 export default function ProfileForm({ user }: { user: UserType }) {
   const [profilePicture, setProfilePicture] = useState(user.imageUrl);
   const [coverPhoto, setCoverPhoto] = useState(user.coverImageUrl);
-  const [fullname, setFullname] = useState(user.fullname);
+  const [fullname, setFullname] = useState(user.firstname + " " + user.lastname);
   const [username, setUsername] = useState(user.username);
   const [jobTitle, setJobTitle] = useState(user.jobTitle);
   const [bio, setBio] = useState(user.bio);
@@ -46,7 +46,7 @@ export default function ProfileForm({ user }: { user: UserType }) {
         >
           <Image
             src={profilePicture}
-            alt={user.fullname}
+            alt={user.firstname + " " + user.lastname}
             fill
             sizes="112px"
           ></Image>
@@ -84,7 +84,7 @@ export default function ProfileForm({ user }: { user: UserType }) {
         >
           <Image
             src={coverPhoto}
-            alt={user.fullname}
+            alt={user.firstname + " " + user.lastname}
             fill
             sizes="320px"
           ></Image>
