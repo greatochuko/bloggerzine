@@ -29,15 +29,24 @@ export default function RecentComments() {
             >
               <div className={styles["image-container"]}>
                 <Image
-                  src={comment.user.imageUrl}
-                  alt={comment.user.firstname + " " + comment.user.lastname}
+                  src={comment.user.user_metadata.imageUrl}
+                  alt={
+                    comment.user.user_metadata.firstname +
+                    " " +
+                    comment.user.user_metadata.lastname
+                  }
                   fill
                   sizes="80px"
                 ></Image>
               </div>
               <div className={styles["text"]}>
                 <p>{comment.comment}...</p>
-                <p>by {comment.user.firstname + " " + comment.user.lastname}</p>
+                <p>
+                  by{" "}
+                  {comment.user.user_metadata.firstname +
+                    " " +
+                    comment.user.user_metadata.lastname}
+                </p>
               </div>
             </Link>
           </li>

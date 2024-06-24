@@ -3,13 +3,13 @@ import React, { useState } from "react";
 import styles from "@/styles/Comment.module.css";
 import Image from "next/image";
 import ReplyForm from "./ReplyForm";
-import { UserType } from "@/context/UserContext";
 import { BlogPost } from "./Hero";
+import { User } from "@supabase/supabase-js";
 
 export type CommentType = {
   id: number;
   blog: BlogPost;
-  user: UserType;
+  user: User;
   comment: string;
   dateCreated: string;
   parentId: null | number;
@@ -33,14 +33,22 @@ export default function Comment({
       <div className={styles["main"]}>
         <div className={styles["image-container"]}>
           <Image
-            src={comment.user.imageUrl}
-            alt={comment.user.firstname + " " + comment.user.lastname}
+            src={comment.user.user_metadata.imageUrl}
+            alt={
+              comment.user.user_metadata.firstname +
+              " " +
+              comment.user.user_metadata.lastname
+            }
             fill
             sizes=""
           ></Image>
         </div>
         <div className={styles["details"]}>
-          <h3>{comment.user.firstname + " " + comment.user.lastname}</h3>
+          <h3>
+            {comment.user.user_metadata.firstname +
+              " " +
+              comment.user.user_metadata.lastname}
+          </h3>
           <time>
             {new Date(comment.dateCreated)
               .toDateString()

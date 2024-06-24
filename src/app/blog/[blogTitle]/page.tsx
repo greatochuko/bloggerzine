@@ -63,21 +63,27 @@ export default function page({
 
           <section className={styles["about-the-author"]}>
             <Link
-              href={`/authors/${convertToUrl(blogpost.author.username)}`}
+              href={`/authors/${convertToUrl(
+                blogpost.author.user_metadata.username
+              )}`}
               className={styles["image-container"]}
             >
               <Image
-                src={blogpost.author.imageUrl}
+                src={blogpost.author.user_metadata.imageUrl}
                 alt={blogpost.author.firstname + " " + blogpost.author.lastname}
                 fill
                 sizes="80px"
               ></Image>
             </Link>
             <div className={styles["text"]}>
-              <Link href={`/authors/${convertToUrl(blogpost.author.username)}`}>
+              <Link
+                href={`/authors/${convertToUrl(
+                  blogpost.author.user_metadata.username
+                )}`}
+              >
                 {blogpost.author.firstname + " " + blogpost.author.lastname}
               </Link>
-              <p>{blogpost.author.bio}</p>
+              <p>{blogpost.author.user_metadata.bio}</p>
             </div>
           </section>
 

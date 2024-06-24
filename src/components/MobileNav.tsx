@@ -66,7 +66,7 @@ export default function MobileNav({
           ) : (
             <>
               <Link
-                href={`/authors/${convertToUrl(user.username)}`}
+                href={`/authors/${convertToUrl(user.user_metadata.username)}`}
                 className={styles["profile"]}
                 onClick={closeMobileNav}
               >

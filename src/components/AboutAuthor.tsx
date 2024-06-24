@@ -3,13 +3,14 @@ import React from "react";
 import styles from "@/styles/AboutAuthor.module.css";
 import Link from "next/link";
 import Image from "next/image";
-import { UserType, useUserContext } from "@/context/UserContext";
+import { useUserContext } from "@/context/UserContext";
 import { getBlogposts } from "@/services/blogServices";
+import { User } from "@supabase/supabase-js";
 
 export default function AboutAuthor() {
   const { user } = useUserContext();
 
-  const author = user as UserType;
+  const author = user as User;
 
   const blogposts = getBlogposts();
 
@@ -24,15 +25,17 @@ export default function AboutAuthor() {
           <div className={styles["main-info"]}>
             <div className={styles["image-container"]}>
               <Image
-                src={author.imageUrl}
-                alt={author.username}
+                src={author.user_metadata.imageUrl}
+                alt={author.user_metadata.username}
                 fill
                 sizes="80px"
               ></Image>
             </div>
             <div>
-              <h3>{author.username}</h3>
-              {author.jobTitle ? <p>{author.jobTitle}</p> : null}
+              <h3>{author.user_metadata.username}</h3>
+              {author.user_metadata.jobTitle ? (
+                <p>{author.user_metadata.jobTitle}</p>
+              ) : null}
             </div>
           </div>
           <p>
@@ -42,7 +45,7 @@ export default function AboutAuthor() {
         </div>
         <div className={styles["bio"]}>
           <h2>Bio:</h2>
-          <p>{author.bio}</p>
+          <p>{author.user_metadata.bio}</p>
         </div>
       </div>
     </div>

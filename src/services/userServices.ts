@@ -1,33 +1,37 @@
-import { UserType } from "@/context/UserContext";
+import { User } from "@supabase/supabase-js";
 
-const users: UserType[] = [
+const users: User[] = [
   {
-    firstname: "Great",
-    lastname: "Ochuko",
-    username: "greatochuko",
-    jobTitle: "Web Developer",
+    user_metadata: {
+      firstname: "Great",
+      lastname: "Ochuko",
+      username: "greatochuko",
+      jobTitle: "Web Developer",
+      imageUrl: "/profile-pic.jpg",
+      coverImageUrl: "/cover-image.jpg",
+      bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
+      facebook: "",
+      twitter: "",
+      linkedIn: "",
+    },
     email: "great@gmail.com",
-    imageUrl: "/profile-pic.jpg",
-    coverImageUrl: "/cover-image.jpg",
-    bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
-    id: 1,
-    facebook: "",
-    twitter: "",
-    linkedIn: "",
+    id: "1",
   },
   {
-    firstname: "John",
-    lastname: "Doe",
-    username: "johndoe",
-    jobTitle: "Graphics Designer",
+    user_metadata: {
+      firstname: "John",
+      lastname: "Doe",
+      username: "johndoe",
+      jobTitle: "Graphics Designer",
+      imageUrl: "/user-2.jpg",
+      coverImageUrl: "/cover-image.jpg",
+      bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
+      facebook: "",
+      twitter: "",
+      linkedIn: "",
+    },
     email: "john@gmail.com",
-    imageUrl: "/user-2.jpg",
-    coverImageUrl: "/cover-image.jpg",
-    bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
-    id: 2,
-    facebook: "",
-    twitter: "",
-    linkedIn: "",
+    id: "2",
   },
 ];
 
@@ -36,7 +40,7 @@ export function getUsers() {
 }
 
 export function getUser(username: string) {
-  return users.find((user) => user.username === username);
+  return users.find((user) => user.user_metadata.username === username);
 }
 
 export function getUserDashboard() {

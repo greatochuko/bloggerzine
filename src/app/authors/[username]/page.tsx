@@ -52,7 +52,7 @@ export default function AuthorPage({
         <div className={styles["author-details"]}>
           <div className={styles["image-container"]}>
             <Image
-              src={author.imageUrl}
+              src={author.user_metadata.imageUrl}
               alt={author.firstname + " " + author.lastname}
               fill
               sizes=""
@@ -61,7 +61,7 @@ export default function AuthorPage({
           <div className={styles["text"]}>
             <h1>{author.firstname + " " + author.lastname}</h1>
             <p>
-              {author.jobTitle ? (
+              {author.user_metadata.jobTitle ? (
                 <span>
                   <svg
                     height={18}
@@ -101,7 +101,7 @@ export default function AuthorPage({
                       ></path>{" "}
                     </g>
                   </svg>
-                  {author.jobTitle}
+                  {author.user_metadata.jobTitle}
                 </span>
               ) : null}
               <span>

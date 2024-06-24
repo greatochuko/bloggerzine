@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import Image from "next/image";
 import convertToUrl from "@/utils/convertToUrl";
 import styles from "@/styles/NavUser.module.css";
-import { UserType } from "@/context/UserContext";
 import Link from "next/link";
 import SignoutModal from "./SignoutModal";
 import Overlay from "./Overlay";
+import { User } from "@supabase/supabase-js";
 
-export default function NavUser({ user }: { user: UserType }) {
+export default function NavUser({ user }: { user: User }) {
   const [showDropdown, setShowDropdown] = useState(false);
   const [signoutModal, setSignoutModal] = useState(false);
 
@@ -19,8 +19,8 @@ export default function NavUser({ user }: { user: UserType }) {
           onClick={() => setShowDropdown((curr) => !curr)}
         >
           <Image
-            src={user.imageUrl}
-            alt={user.firstname + " " + user.lastname}
+            src={user.user_metadata.imageUrl}
+            alt={user.user_metadata.username + " " + user.user_metadata.lastname}
             fill
             sizes="80px"
           ></Image>
@@ -31,19 +31,19 @@ export default function NavUser({ user }: { user: UserType }) {
             onClick={() => setShowDropdown(false)}
           >
             <Link
-              href={`/authors/${convertToUrl(user.username)}`}
+              href={`/authors/${convertToUrl(user.user_metadata.username)}`}
               className={styles["user-details"]}
             >
               <div className={styles["image-container"]}>
                 <Image
-                  src={user.imageUrl}
-                  alt={user.firstname + " " + user.lastname}
+                  src={user.user_metadata.imageUrl}
+                  alt={user.user_metadata.username + " " + user.user_metadata.lastname}
                   fill
                   sizes="80px"
                 ></Image>
               </div>
               <div className={styles["text"]}>
-                <h4>{user.firstname + " " + user.lastname}</h4>
+                <h4>{user.user_metadata.username + " " + user.user_metadata.lastname}</h4>
                 <p>{user.email}</p>
               </div>
             </Link>
@@ -91,7 +91,7 @@ export default function NavUser({ user }: { user: UserType }) {
                 </Link>
               </li>
               <li>
-                <Link href={`/authors/${convertToUrl(user.username)}`}>
+                <Link href={`/authors/${convertToUrl(user.user_metadata.username)}`}>
                   <svg
                     height={20}
                     width={20}

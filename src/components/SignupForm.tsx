@@ -4,32 +4,19 @@ import styles from "@/styles/SignupForm.module.css";
 import Link from "next/link";
 import { signup } from "@/actions/userActions";
 import { useFormState, useFormStatus } from "react-dom";
-import { useUserContext } from "@/context/UserContext";
-import { redirect, useSearchParams } from "next/navigation";
-import Navigate from "./Navigate";
 import LoadingIndicator from "./LoadingIndicator";
 
 export default function SignupForm() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const { user, setUser } = useUserContext();
 
   const [state, formAction] = useFormState(signup, {
     data: null,
     errorMessage: "",
   });
 
-  const searchParams = useSearchParams();
-  const redirectTo = searchParams.get("redirect");
 
-  const { data, errorMessage } = state;
-
-  useEffect(() => {
-    if (data && setUser) {
-      localStorage.setItem("token", data.token);
-      setUser(data.userProfile);
-    }
-  }, [data]);
+  const { errorMessage } = state;
 
   let passwordError;
   if (confirmPassword.length && password !== confirmPassword) {
@@ -37,10 +24,6 @@ export default function SignupForm() {
   }
   if (password.length && password.length < 8) {
     passwordError = "Password must be at least 8 characters long";
-  }
-
-  if (user) {
-    redirect(redirectTo || "/");
   }
 
   return (

@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import styles from "@/styles/ChangePasswordForm.module.css";
-import { UserType } from "@/context/UserContext";
 
 export default function ChangePasswordForm() {
   const [currentPassword, setCurrentPassword] = useState("");

@@ -5,6 +5,7 @@ import styles from "@/styles/Header.module.css";
 import MobileNav from "./MobileNav";
 import { Rubik } from "next/font/google";
 import MainNav from "./MainNav";
+import { createClient } from "@/utils/supabase/server";
 
 const rubik = Rubik({ subsets: ["latin"] });
 

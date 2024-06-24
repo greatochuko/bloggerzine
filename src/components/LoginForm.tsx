@@ -23,8 +23,7 @@ export default function LoginForm() {
 
   useEffect(() => {
     if (data && setUser) {
-      localStorage.setItem("token", data.token);
-      setUser(data.userProfile);
+      setUser(data.user);
     }
   }, [data]);
 

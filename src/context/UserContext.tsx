@@ -1,24 +1,11 @@
 "use client";
-import React, { createContext, useContext, useState } from "react";
-
-export type UserType = {
-  firstname: string;
-  lastname: string;
-  username: string;
-  jobTitle: string;
-  email: string;
-  imageUrl: string;
-  coverImageUrl: string;
-  bio: string;
-  facebook: string;
-  twitter: string;
-  linkedIn: string;
-  id: number;
-};
+import { createClient } from "@/utils/supabase/client";
+import { User } from "@supabase/supabase-js";
+import React, { createContext, useContext, useEffect, useState } from "react";
 
 type UserContextType = {
-  user: UserType | null;
-  setUser: React.Dispatch<React.SetStateAction<UserType | null>> | null;
+  user: User | null;
+  setUser: React.Dispatch<React.SetStateAction<User | null>> | null;
 };
 
 const great = {
@@ -43,7 +30,20 @@ export default function UserProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [user, setUser] = useState<UserType | null>(null);
+  const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    async function fetchUser() {
+      const supabase = createClient();
+
+      const { data, error } = await supabase.auth.getUser();
+
+      if (data && !error) {
+        setUser(data.user);
+      }
+    }
+    fetchUser();
+  }, []);
 
   return (
     <UserContext.Provider value={{ user, setUser }}>
