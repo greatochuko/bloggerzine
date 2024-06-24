@@ -49,7 +49,7 @@ export default function NavUser({ user }: { user: User }) {
               </div>
               <div className={styles["text"]}>
                 <h4>
-                  {user.user_metadata.username +
+                  {user.user_metadata.firstname +
                     " " +
                     user.user_metadata.lastname}
                 </h4>

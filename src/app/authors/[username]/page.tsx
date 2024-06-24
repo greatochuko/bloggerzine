@@ -8,23 +8,26 @@ import { getBlogpostByAuthor } from "@/services/blogServices";
 import SearchBlog from "@/components/SearchBlog";
 import Paginator from "@/components/Paginator";
 
-export function generateMetadata({
+export async function generateMetadata({
   params,
 }: {
   params: { username: string };
-}): Metadata {
-  const author = getUser(params.username);
+}): Promise<Metadata> {
+  const { author } = await getUser(params.username);
   return { title: author?.user_metadata.username };
 }
 
-export default function AuthorPage({
+export default async function AuthorPage({
   params,
   searchParams,
 }: {
   params: { username: string };
   searchParams: { page: string };
 }) {
-  const author = getUser(params.username);
+  const { author } = await getUser(params.username);
+
+  console.log(author);
+
   if (!author) notFound();
 
   // if (!author) throw new Error();
@@ -155,7 +158,7 @@ export default function AuthorPage({
             <SearchBlog blog={blog} key={blog.id} />
           ))}
         </div>
-        <Paginator numPages={maxPage} />
+        {blogposts.length ? <Paginator numPages={maxPage} /> : null}
       </div>
     </div>
   );

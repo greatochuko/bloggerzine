@@ -1,37 +1,41 @@
+import { adminAuthClient } from "@/utils/supabase/adminAuthClient";
 import { User } from "@supabase/supabase-js";
 
 const users: User[] = [
   {
+    id: "e0ef9ea8-a7c1-4cc3-8985-7700b373854c",
+    aud: "authenticated",
+    role: "authenticated",
+    email: "greatochuko123@gmail.com",
+    email_confirmed_at: "2024-06-24 23:08:49.274474+00",
+    confirmation_sent_at: "2024-06-24 23:08:22.82792+00",
+    last_sign_in_at: "2024-06-24 23:08:49.276963+00",
+    app_metadata: {
+      provider: "email",
+      providers: ["email"],
+    },
     user_metadata: {
-      firstname: "Great",
-      lastname: "Ochuko",
+      bio: "",
+      sub: "e0ef9ea8-a7c1-4cc3-8985-7700b373854c",
+      email: "greatochuko123@gmail.com",
+      imageUrl: "/placeholder-profile-image.jpg",
+      jobTitle: "",
+      lastname: "Ogheneochuko",
       username: "greatochuko",
-      jobTitle: "Web Developer",
-      imageUrl: "/profile-pic.jpg",
-      coverImageUrl: "/cover-image.jpg",
-      bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
-      facebook: "",
-      twitter: "",
-      linkedIn: "",
+      firstname: "Great",
+      socialLinks: {
+        twitter: "",
+        facebook: "",
+        linkedIn: "",
+      },
+      coverImageUrl: "/placeholder-cover-image.jpg",
+      email_verified: false,
+      phone_verified: false,
     },
-    email: "great@gmail.com",
-    id: "1",
-  },
-  {
-    user_metadata: {
-      firstname: "John",
-      lastname: "Doe",
-      username: "johndoe",
-      jobTitle: "Graphics Designer",
-      imageUrl: "/user-2.jpg",
-      coverImageUrl: "/cover-image.jpg",
-      bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
-      facebook: "",
-      twitter: "",
-      linkedIn: "",
-    },
-    email: "john@gmail.com",
-    id: "2",
+    created_at: "2024-06-24 23:08:22.820636+00",
+    updated_at: "2024-06-24 23:08:49.281203+00",
+    confirmed_at: "2024-06-24 23:08:49.274474+00",
+    is_anonymous: false,
   },
 ];
 
@@ -39,8 +43,16 @@ export function getUsers() {
   return users;
 }
 
-export function getUser(username: string) {
-  return users.find((user) => user.user_metadata.username === username);
+export async function getUser(username: string) {
+  const {
+    data: { users },
+    error,
+  } = await adminAuthClient.listUsers();
+
+  if (error || !users.length) return { author: null, error };
+
+  const author = users.find((user) => user.user_metadata.username === username);
+  return { author, error: null };
 }
 
 export function getUserDashboard() {
