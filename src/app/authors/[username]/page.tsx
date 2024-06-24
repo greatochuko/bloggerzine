@@ -14,7 +14,7 @@ export function generateMetadata({
   params: { username: string };
 }): Metadata {
   const author = getUser(params.username);
-  return { title: author?.username };
+  return { title: author?.user_metadata.username };
 }
 
 export default function AuthorPage({
@@ -43,8 +43,12 @@ export default function AuthorPage({
       <div className={styles["header"]}>
         <div className={styles["cover-photo-container"]}>
           <Image
-            src={author.coverImageUrl}
-            alt={author.firstname + " " + author.lastname}
+            src={author.user_metadata.coverImageUrl}
+            alt={
+              author.user_metadata.firstname +
+              " " +
+              author.user_metadata.lastname
+            }
             fill
             sizes=""
           ></Image>
@@ -53,13 +57,21 @@ export default function AuthorPage({
           <div className={styles["image-container"]}>
             <Image
               src={author.user_metadata.imageUrl}
-              alt={author.firstname + " " + author.lastname}
+              alt={
+                author.user_metadata.firstname +
+                " " +
+                author.user_metadata.lastname
+              }
               fill
               sizes=""
             ></Image>
           </div>
           <div className={styles["text"]}>
-            <h1>{author.firstname + " " + author.lastname}</h1>
+            <h1>
+              {author.user_metadata.firstname +
+                " " +
+                author.user_metadata.lastname}
+            </h1>
             <p>
               {author.user_metadata.jobTitle ? (
                 <span>

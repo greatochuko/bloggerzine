@@ -4,7 +4,6 @@ import convertToUrl from "@/utils/convertToUrl";
 import styles from "@/styles/NavUser.module.css";
 import Link from "next/link";
 import SignoutModal from "./SignoutModal";
-import Overlay from "./Overlay";
 import { User } from "@supabase/supabase-js";
 
 export default function NavUser({ user }: { user: User }) {
@@ -20,7 +19,9 @@ export default function NavUser({ user }: { user: User }) {
         >
           <Image
             src={user.user_metadata.imageUrl}
-            alt={user.user_metadata.username + " " + user.user_metadata.lastname}
+            alt={
+              user.user_metadata.username + " " + user.user_metadata.lastname
+            }
             fill
             sizes="80px"
           ></Image>
@@ -37,13 +38,21 @@ export default function NavUser({ user }: { user: User }) {
               <div className={styles["image-container"]}>
                 <Image
                   src={user.user_metadata.imageUrl}
-                  alt={user.user_metadata.username + " " + user.user_metadata.lastname}
+                  alt={
+                    user.user_metadata.username +
+                    " " +
+                    user.user_metadata.lastname
+                  }
                   fill
                   sizes="80px"
                 ></Image>
               </div>
               <div className={styles["text"]}>
-                <h4>{user.user_metadata.username + " " + user.user_metadata.lastname}</h4>
+                <h4>
+                  {user.user_metadata.username +
+                    " " +
+                    user.user_metadata.lastname}
+                </h4>
                 <p>{user.email}</p>
               </div>
             </Link>
@@ -91,7 +100,9 @@ export default function NavUser({ user }: { user: User }) {
                 </Link>
               </li>
               <li>
-                <Link href={`/authors/${convertToUrl(user.user_metadata.username)}`}>
+                <Link
+                  href={`/authors/${convertToUrl(user.user_metadata.username)}`}
+                >
                   <svg
                     height={20}
                     width={20}

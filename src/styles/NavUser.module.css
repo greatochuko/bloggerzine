@@ -11,6 +11,10 @@
   overflow: hidden;
 }
 
+.image-container img {
+  object-fit: cover;
+}
+
 .user .options {
   position: absolute;
   right: 0;
@@ -33,6 +37,12 @@
 .user-details {
   display: flex;
   gap: 1rem;
+  align-items: flex-start;
+}
+
+.user-details .image-container {
+  width: 3rem;
+  aspect-ratio: 1;
 }
 
 .user-details .text h4 {

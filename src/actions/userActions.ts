@@ -4,13 +4,10 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 import { createClient } from "@/utils/supabase/server";
-import { User } from "@supabase/supabase-js";
 
 export async function login(prevState: any, formData: FormData) {
   const supabase = createClient();
 
-  // type-casting here for convenience
-  // in practice, you should validate your inputs
   const loginData = {
     email: formData.get("email") as string,
     password: formData.get("password") as string,
@@ -30,14 +27,12 @@ export async function login(prevState: any, formData: FormData) {
 export async function signup(prevState: any, formData: FormData) {
   const supabase = createClient();
 
-  // type-casting here for convenience
-  // in practice, you should validate your inputs
   const userMetaData = {
     firstname: formData.get("firstname") as string,
     lastname: formData.get("lastname") as string,
     username: formData.get("username") as string,
-    imageUrl: "",
-    coverImageUrl: "",
+    imageUrl: "/placeholder-profile-image.jpg",
+    coverImageUrl: "/placeholder-cover-image.jpg",
     bio: "",
     jobTitle: "",
     socialLinks: { facebook: "", twitter: "", linkedIn: "" },
