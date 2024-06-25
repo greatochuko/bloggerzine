@@ -1,18 +1,19 @@
 import React from "react";
 import styles from "./page.module.css";
-import { getUserDashboard } from "@/services/userServices";
 import Navigate from "@/components/Navigate";
 import { Metadata } from "next";
 import PostForm from "@/components/PostForm";
+import { createClient } from "@/utils/supabase/server";
 
 export const metadata: Metadata = {
   title: "Create New Post",
 };
 
-export default function CreatePostPage() {
-  const user = getUserDashboard();
+export default async function CreatePostPage() {
+  const supabase = createClient();
+  const { data, error } = await supabase.auth.getUser();
 
-  if (!user) return <Navigate to="/login" />;
+  if (!data || error) return <Navigate to="/login" />;
 
   return (
     <div className={styles["create-new-post-page"]}>

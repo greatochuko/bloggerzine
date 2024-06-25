@@ -6,16 +6,22 @@ import { Metadata } from "next";
 import PostForm from "@/components/PostForm";
 import { getBlogpost } from "@/services/blogServices";
 import { notFound } from "next/navigation";
+import { createClient } from "@/utils/supabase/server";
 
 export const metadata: Metadata = {
   title: "Edit Post",
 };
 
-export default function EditPostPage({
+export default async function EditPostPage({
   params,
 }: {
   params: { blogId: string };
 }) {
+  const supabase = createClient();
+  const { data, error } = await supabase.auth.getUser();
+
+  if (!data || error) return <Navigate to="/login" />;
+
   const blogpostId = params.blogId.split("-").at(-1);
   if (!blogpostId) notFound();
 

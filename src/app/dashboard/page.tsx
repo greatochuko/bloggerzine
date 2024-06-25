@@ -17,7 +17,7 @@ export default async function Dashboard() {
   const supabase = createClient();
   const { data, error } = await supabase.auth.getUser();
 
-  if (!data || error) return <Navigate to="/login"/>;
+  if (!data || error) return <Navigate to="/login" />;
 
   return (
     <div className={styles["profile-page"]}>

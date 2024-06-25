@@ -185,7 +185,10 @@ export default function NavUser({ user }: { user: User }) {
             <hr />
             <button
               className={styles["signout-btn"]}
-              onClick={() => setSignoutModal(true)}
+              onClick={() => {
+                setSignoutModal(true);
+                setShowDropdown(false);
+              }}
             >
               <svg
                 height={16}

@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "@/styles/SignoutModal.module.css";
+import { logout } from "@/actions/userActions";
 
 export default function SignoutModal({
   isOpen,
@@ -8,8 +9,6 @@ export default function SignoutModal({
   isOpen: boolean;
   closeSignoutModal: () => void;
 }) {
-  function handleSignout() {}
-
   return (
     <div
       className={`${styles["overlay"]} ${isOpen ? styles["open"] : ""}`}
@@ -47,7 +46,9 @@ export default function SignoutModal({
         </div>
         <div className={styles["actions"]}>
           <button onClick={closeSignoutModal}>Cancel</button>
-          <button onClick={handleSignout}>Sign out</button>
+          <form>
+            <button formAction={logout}>Sign out</button>
+          </form>
         </div>
       </div>
     </div>

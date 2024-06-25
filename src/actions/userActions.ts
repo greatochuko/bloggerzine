@@ -57,6 +57,15 @@ export async function signup(prevState: any, formData: FormData) {
   // return { data, errorMessage: null};
 }
 
+export async function logout() {
+  const supabase = createClient();
+  const { error } = await supabase.auth.signOut();
+  if (error) return;
+
+  revalidatePath("/dashboard");
+  revalidatePath("/create-post");
+}
+
 export async function updateUser(prevState: any, formData: FormData) {
   const userId = formData.get("userId") as string;
   const userMetaData = {
