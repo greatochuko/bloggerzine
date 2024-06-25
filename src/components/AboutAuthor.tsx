@@ -3,15 +3,10 @@ import React from "react";
 import styles from "@/styles/AboutAuthor.module.css";
 import Link from "next/link";
 import Image from "next/image";
-import { useUserContext } from "@/context/UserContext";
 import { getBlogposts } from "@/services/blogServices";
 import { User } from "@supabase/supabase-js";
 
-export default function AboutAuthor() {
-  const { user } = useUserContext();
-
-  const author = user as User;
-
+export default function AboutAuthor({ author }: { author: User }) {
   const blogposts = getBlogposts();
 
   return (
@@ -32,10 +27,13 @@ export default function AboutAuthor() {
               ></Image>
             </div>
             <div>
-              <h3>{author.user_metadata.username}</h3>
-              {author.user_metadata.jobTitle ? (
-                <p>{author.user_metadata.jobTitle}</p>
-              ) : null}
+              <h3>
+                {author.user_metadata.firstname} {author.user_metadata.lastname}
+              </h3>
+              <p>@{author.user_metadata.username}</p>
+              {/* {author.user_metadata.jobTitle ? ( */}
+              <p>{author.user_metadata.jobTitle}Software Developer</p>
+              {/* ) : null} */}
             </div>
           </div>
           <p>

@@ -6,19 +6,19 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Overlay from "./Overlay";
 import { navLinks } from "./MainNav";
-import { useUserContext } from "@/context/UserContext";
 import convertToUrl from "@/utils/convertToUrl";
+import { User } from "@supabase/supabase-js";
 
 export default function MobileNav({
+  user,
   closeMobileNav,
   isOpen,
 }: {
+  user: User | null;
   closeMobileNav: () => void;
   isOpen: boolean;
 }) {
   const pathname = usePathname();
-
-  const { user } = useUserContext();
 
   return (
     <Overlay closeOverlay={closeMobileNav} isOpen={isOpen}>

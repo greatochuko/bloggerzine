@@ -26,11 +26,8 @@ export default async function AuthorPage({
 }) {
   const { author } = await getUser(params.username);
 
-  console.log(author);
-
   if (!author) notFound();
 
-  // if (!author) throw new Error();
 
   const currentPage = Number(searchParams.page) || 1;
   const blogposts = getBlogpostByAuthor(author.id.toString());

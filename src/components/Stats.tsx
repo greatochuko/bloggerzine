@@ -4,13 +4,10 @@ import styles from "@/styles/Stats.module.css";
 import { convertToAbbrString } from "@/utils/numberFormatter";
 import { getBlogpostByAuthor } from "@/services/blogServices";
 import { getCommentsByAuthor } from "@/services/commentServices";
-import { useUserContext } from "@/context/UserContext";
-import Navigate from "./Navigate";
+import { User } from "@supabase/supabase-js";
 
-export default function Stats() {
-  const { user } = useUserContext();
-
-  const authorId = user?.id.toString() as string;
+export default function Stats({ author }: { author: User }) {
+  const authorId = author.id.toString() as string;
 
   const authorPosts = getBlogpostByAuthor(authorId);
   const authorComments = getCommentsByAuthor(authorId);

@@ -3,8 +3,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styles from "@/styles/MainNav.module.css";
 import SearchForm from "./SearchForm";
-import { useUserContext } from "@/context/UserContext";
 import NavUser from "./NavUser";
+import { User } from "@supabase/supabase-js";
 
 export const navLinks = [
   { name: "Home", href: "/" },
@@ -16,14 +16,14 @@ export const navLinks = [
 ];
 
 export default function MainNav({
+  user,
   openMobileNav,
 }: {
+  user: User | null;
   openMobileNav: () => void;
 }) {
   const pathname = usePathname();
   const [showSearchForm, setShowSearchForm] = useState(false);
-
-  const { user } = useUserContext();
 
   return (
     <div className={styles["header-container"]}>
@@ -85,7 +85,9 @@ export default function MainNav({
           close={() => setShowSearchForm(false)}
         />
 
-        {!user ? (
+        {user ? (
+          <NavUser user={user} />
+        ) : (
           <div className={styles["auth-links"]}>
             <Link
               href={"/login"}
@@ -100,8 +102,6 @@ export default function MainNav({
               Signup
             </Link>
           </div>
-        ) : (
-          <NavUser user={user} />
         )}
 
         <button className={styles["menu-btn"]} onClick={openMobileNav}>

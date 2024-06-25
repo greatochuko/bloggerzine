@@ -5,13 +5,10 @@ import Link from "next/link";
 import convertToUrl from "@/utils/convertToUrl";
 import Image from "next/image";
 import { getCommentsByAuthor } from "@/services/commentServices";
-import { useUserContext } from "@/context/UserContext";
-import Navigate from "./Navigate";
+import { User } from "@supabase/supabase-js";
 
-export default function RecentComments() {
-  const { user } = useUserContext();
-
-  const authorId = user?.id.toString() as string;
+export default function RecentComments({ author }: { author: User }) {
+  const authorId = author.id;
   const comments = getCommentsByAuthor(authorId);
 
   return (
@@ -19,42 +16,48 @@ export default function RecentComments() {
       <div className={styles["header"]}>
         <h2>Recent Comments</h2>
       </div>
-      <ul className={styles["main"]}>
-        {comments.map((comment) => (
-          <li className={styles["recent-comment"]} key={comment.id}>
-            <Link
-              href={`/blog/${convertToUrl(comment.blog.title)}-${
-                comment.blog.id
-              }`}
-            >
-              <div className={styles["image-container"]}>
-                <Image
-                  src={comment.user.user_metadata.imageUrl}
-                  alt={
-                    comment.user.user_metadata.firstname +
-                    " " +
-                    comment.user.user_metadata.lastname
-                  }
-                  fill
-                  sizes="80px"
-                ></Image>
-              </div>
-              <div className={styles["text"]}>
-                <p>{comment.comment}...</p>
-                <p>
-                  by{" "}
-                  {comment.user.user_metadata.firstname +
-                    " " +
-                    comment.user.user_metadata.lastname}
-                </p>
-              </div>
-            </Link>
-          </li>
-        ))}
-      </ul>
-      <div className={styles["footer"]}>
-        <Link href={"/comments"}>View all comments</Link>
-      </div>
+      {comments.length ? (
+        <ul className={styles["main"]}>
+          {comments.map((comment) => (
+            <li className={styles["recent-comment"]} key={comment.id}>
+              <Link
+                href={`/blog/${convertToUrl(comment.blog.title)}-${
+                  comment.blog.id
+                }`}
+              >
+                <div className={styles["image-container"]}>
+                  <Image
+                    src={comment.user.user_metadata.imageUrl}
+                    alt={
+                      comment.user.user_metadata.firstname +
+                      " " +
+                      comment.user.user_metadata.lastname
+                    }
+                    fill
+                    sizes="80px"
+                  ></Image>
+                </div>
+                <div className={styles["text"]}>
+                  <p>{comment.comment}...</p>
+                  <p>
+                    by{" "}
+                    {comment.user.user_metadata.firstname +
+                      " " +
+                      comment.user.user_metadata.lastname}
+                  </p>
+                </div>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p className={styles["no-comments"]}>You Currently have no comments</p>
+      )}
+      {comments.length ? (
+        <div className={styles["footer"]}>
+          <Link href={"/comments"}>View all comments</Link>
+        </div>
+      ) : null}
     </div>
   );
 }

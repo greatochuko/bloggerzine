@@ -34,9 +34,9 @@
 
 .image-container {
   position: relative;
-  width: 4rem;
+  width: 5rem;
   aspect-ratio: 1;
-  border-radius: 0.5rem;
+  border-radius: 50%;
   overflow: hidden;
 }
 
@@ -53,6 +53,8 @@
 
 .main > div:first-child {
   display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
   justify-content: space-between;
   align-items: center;
 }

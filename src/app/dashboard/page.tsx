@@ -5,24 +5,27 @@ import AboutAuthor from "@/components/AboutAuthor";
 import RecentComments from "@/components/RecentComments";
 import ArticleList from "@/components/ArticleList";
 import { Metadata } from "next";
-import Authenticate from "@/components/Authenticate";
+import { redirect } from "next/navigation";
+import { createClient } from "@/utils/supabase/server";
 
 export const metadata: Metadata = {
   title: "Dashboard",
 };
 
-export default function Dashboard() {
+export default async function Dashboard() {
+  const supabase = createClient();
+  const { data, error } = await supabase.auth.getUser();
+
+  if (!data || error) redirect(`/login`);
+
   return (
-    <Authenticate>
-      {"use client"}
-      <div className={styles["profile-page"]}>
-        <Stats />
-        <div className={styles["main"]}>
-          <AboutAuthor />
-          <RecentComments />
-          <ArticleList />
-        </div>
+    <div className={styles["profile-page"]}>
+      <Stats author={data.user} />
+      <div className={styles["main"]}>
+        <AboutAuthor author={data.user} />
+        <RecentComments author={data.user} />
+        <ArticleList author={data.user} />
       </div>
-    </Authenticate>
+    </div>
   );
 }
