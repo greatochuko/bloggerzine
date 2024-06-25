@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { BlogPost } from "./Hero";
+import { Blogpost } from "./Hero";
 import Blog from "./Blog";
 import styles from "@/styles/BlogGrid.module.css";
 import Paginator from "./Paginator";
@@ -10,7 +10,7 @@ export default function BlogGrid({
   blogposts,
   showPaginator,
 }: {
-  blogposts: BlogPost[];
+  blogposts: Blogpost[];
   showPaginator?: boolean;
 }) {
   const searchParams = useSearchParams();

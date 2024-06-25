@@ -5,12 +5,19 @@ import { convertToAbbrString } from "@/utils/numberFormatter";
 import { getBlogpostByAuthor } from "@/services/blogServices";
 import { getCommentsByAuthor } from "@/services/commentServices";
 import { User } from "@supabase/supabase-js";
+import { Blogpost } from "./Hero";
 
-export default function Stats({ author }: { author: User }) {
+export default function Stats({
+  author,
+  blogposts,
+}: {
+  author: User;
+  blogposts: Blogpost[];
+}) {
   const authorId = author.id.toString() as string;
 
-  const authorPosts = getBlogpostByAuthor(authorId);
-  const authorComments = getCommentsByAuthor(authorId);
+  // const authorComments = getCommentsByAuthor(authorId);
+  const authorComments = [];
 
   return (
     <div className={styles["stats"]}>
@@ -40,7 +47,7 @@ export default function Stats({ author }: { author: User }) {
           </svg>
         </div>
         <div className={styles["text"]}>
-          <h3>{authorPosts.length}</h3>
+          <h3>{blogposts.length}</h3>
           <p>Posts</p>
         </div>
       </div>
@@ -71,7 +78,7 @@ export default function Stats({ author }: { author: User }) {
         <div className={styles["text"]}>
           <h3>
             {convertToAbbrString(
-              authorPosts.reduce((acc, curr) => acc + curr.views, 0)
+              blogposts.reduce((acc, curr) => acc + curr.views, 0)
             )}
           </h3>
           <p>Reads</p>

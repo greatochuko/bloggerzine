@@ -4,12 +4,12 @@ import styles from "@/styles/RecentComments.module.css";
 import Link from "next/link";
 import convertToUrl from "@/utils/convertToUrl";
 import Image from "next/image";
-import { getCommentsByAuthor } from "@/services/commentServices";
 import { User } from "@supabase/supabase-js";
+import { CommentType } from "./Comment";
 
 export default function RecentComments({ author }: { author: User }) {
   const authorId = author.id;
-  const comments = getCommentsByAuthor(authorId);
+  const comments: CommentType[] = [];
 
   return (
     <div className={styles["recent-comments"]}>

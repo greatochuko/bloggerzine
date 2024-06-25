@@ -2,7 +2,7 @@
 import React, { useCallback, useRef, useState } from "react";
 import styles from "@/styles/PostForm.module.css";
 import { categories } from "@/app/categories/page";
-import { BlogPost } from "./Hero";
+import { Blogpost } from "./Hero";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { uploadImage } from "@/utils/imageUploader";
@@ -11,7 +11,7 @@ import LoadingIndicator from "./LoadingIndicator";
 import { useFormState } from "react-dom";
 import { publishPost, savePostAsDraft } from "@/actions/blogActions";
 
-export default function CreatePostForm({ blogpost }: { blogpost?: BlogPost }) {
+export default function CreatePostForm({ blogpost }: { blogpost?: Blogpost }) {
   const [title, setTitle] = useState(blogpost?.title || "");
   const [thumbnail, setThumbnail] = useState({
     loading: false,
@@ -21,8 +21,6 @@ export default function CreatePostForm({ blogpost }: { blogpost?: BlogPost }) {
   const [tags, setTags] = useState(blogpost?.tags || "");
   const [category, setCategory] = useState(blogpost?.category || "");
   const [isFeatured, setIsFeatured] = useState(blogpost?.isFeatured || false);
-
-
 
   const reactQuillRef = useRef<ReactQuill | null>(null);
 
@@ -74,9 +72,7 @@ export default function CreatePostForm({ blogpost }: { blogpost?: BlogPost }) {
   }
 
   return (
-    <form
-      className={styles["create-post-form"]}
-    >
+    <form className={styles["create-post-form"]}>
       <div className={styles["input-group"]}>
         <label htmlFor="post-title">Post title</label>
         <input

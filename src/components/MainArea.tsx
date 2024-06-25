@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "@/styles/MainArea.module.css";
-import { BlogPost } from "./Hero";
+import { Blogpost } from "./Hero";
 import Image from "next/image";
 import Link from "next/link";
 import BlogGrid from "./BlogGrid";
@@ -13,8 +13,8 @@ export default function MainArea({
   topPosts,
   recentPosts,
 }: {
-  topPosts: BlogPost[];
-  recentPosts: BlogPost[];
+  topPosts: Blogpost[];
+  recentPosts: Blogpost[];
 }) {
   return (
     <div className={styles["main-area"]}>

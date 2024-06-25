@@ -8,7 +8,7 @@ import convertToUrl from "@/utils/convertToUrl";
 import { User } from "@supabase/supabase-js";
 import { createAuthorUrl } from "@/utils/createAuthorUrl";
 
-export type BlogPost = {
+export type Blogpost = {
   id: number;
   views: number;
   isPublished: boolean;
@@ -22,7 +22,7 @@ export type BlogPost = {
   dateCreated: string;
 };
 
-export default function Hero({ blogposts }: { blogposts: BlogPost[] }) {
+export default function Hero({ blogposts }: { blogposts: Blogpost[] }) {
   return (
     <div className={styles["hero"]}>
       {blogposts.map((blogpost) => (

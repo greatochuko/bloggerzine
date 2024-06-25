@@ -6,18 +6,13 @@ import { categories } from "@/app/categories/page";
 import Link from "next/link";
 import convertToUrl from "@/utils/convertToUrl";
 import Image from "next/image";
-import { getBlogpostByAuthor } from "@/services/blogServices";
-import { User } from "@supabase/supabase-js";
+import { Blogpost } from "./Hero";
 
-export default function ArticleList({ author }: { author: User }) {
-  const authorId = author.id.toString() as string;
-
+export default function ArticleList({ blogposts }: { blogposts: Blogpost[] }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState("newest");
   const [filter, setFilter] = useState("all");
-
-  let blogposts = getBlogpostByAuthor(authorId);
 
   let filteredPosts = blogposts.filter((post) =>
     post.title.toLowerCase().includes(searchQuery)
@@ -158,9 +153,10 @@ export default function ArticleList({ author }: { author: User }) {
                       </Link>
                     </td>
                     <td
-                      className={
+                      className={`
+                        ${styles["status"]} ${
                         blog.isPublished ? styles["published"] : styles["draft"]
-                      }
+                      }`}
                     >
                       <p>{blog.isPublished ? "published" : "draft"}</p>
                     </td>

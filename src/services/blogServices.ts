@@ -1,7 +1,8 @@
-import { BlogPost } from "@/components/Hero";
+import { Blogpost } from "@/components/Hero";
 import supabase from "@/config/supabaseClient";
+import { createClient } from "@/utils/supabase/client";
 
-const blogposts: BlogPost[] = [
+const blogposts: Blogpost[] = [
   {
     id: 1,
     views: 243,
@@ -228,10 +229,10 @@ export function getBlogpost(id: string) {
   return blogposts.find((blogpost) => blogpost.id === Number(id));
 }
 
-export function getBlogpostByAuthor(authorId: string) {
-  return blogposts.filter(
-    (blogpost) => blogpost.author.id === Number(authorId)
-  );
+export async function getBlogpostByAuthor(authorId: string) {
+  const supabase = createClient();
+  const { data, error } = await supabase.from("blogposts").select("*");
+  return { data, error };
 }
 
 export function getBlogpostByCategory(category: string) {

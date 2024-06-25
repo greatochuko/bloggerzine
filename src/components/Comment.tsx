@@ -3,12 +3,12 @@ import React, { useState } from "react";
 import styles from "@/styles/Comment.module.css";
 import Image from "next/image";
 import ReplyForm from "./ReplyForm";
-import { BlogPost } from "./Hero";
+import { Blogpost } from "./Hero";
 import { User } from "@supabase/supabase-js";
 
 export type CommentType = {
   id: number;
-  blog: BlogPost;
+  blog: Blogpost;
   user: User;
   comment: string;
   dateCreated: string;

@@ -1,12 +1,12 @@
 import React from "react";
 import styles from "@/styles/SearchBlog.module.css";
 import Image from "next/image";
-import { type BlogPost } from "./Hero";
+import { type Blogpost } from "./Hero";
 import BlogMetaData from "./BlogMetaData";
 import Link from "next/link";
 import convertToUrl from "@/utils/convertToUrl";
 
-export default function SearchBlog({ blog }: { blog: BlogPost }) {
+export default function SearchBlog({ blog }: { blog: Blogpost }) {
   return (
     <Link
       href={`/blog/${convertToUrl(blog.title)}-${blog.id}`}
