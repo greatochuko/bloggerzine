@@ -65,7 +65,7 @@ export async function updateUser(prevState: any, formData: FormData) {
     imageUrl: formData.get("profile-picture") as string,
     coverImageUrl: formData.get("cover-photo") as string,
     bio: formData.get("bio") as string,
-    jobTitle: formData.get("jobTitle") as string,
+    jobTitle: formData.get("job-title") as string,
   };
 
   const {

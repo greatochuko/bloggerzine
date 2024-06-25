@@ -18,7 +18,7 @@ export async function generateMetadata({
   if (author)
     return {
       title:
-        author?.user_metadata.firstName + " " + author?.user_metadata.lastname,
+        author?.user_metadata.firstname + " " + author?.user_metadata.lastname,
     };
 
   return { title: "Author" };
@@ -147,7 +147,12 @@ export default async function AuthorPage({
                     ></path>{" "}
                   </g>
                 </svg>
-                Joined on Jan 25 2024
+                Joined on{" "}
+                {new Date(author.created_at)
+                  .toDateString()
+                  .split(" ")
+                  .slice(1)
+                  .join(" ")}
               </span>
             </p>
           </div>

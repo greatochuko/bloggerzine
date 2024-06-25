@@ -44,8 +44,6 @@ export function getUsers() {
 }
 
 export async function getUser(userId: string) {
-  console.clear();
-  console.log(userId);
   const {
     data: { user },
     error,

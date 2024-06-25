@@ -183,12 +183,14 @@ export default function ProfileForm({ user }: { user: User }) {
         type="text"
         id="job-title"
         name="job-title"
+        defaultValue={user.user_metadata.jobTitle}
         placeholder="Enter job title"
       />
       <label htmlFor="bio">Bio</label>
       <textarea
         name="bio"
         id="bio"
+        defaultValue={user.user_metadata.bio}
         placeholder="Write about yourself"
       ></textarea>
       {errorMessage && <p className={styles["error"]}>{errorMessage}</p>}

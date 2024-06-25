@@ -27,6 +27,12 @@
   padding-left: 9rem;
 }
 
+.author-details .text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
 .author-details .text h1 {
   font-size: 1.5rem;
 }

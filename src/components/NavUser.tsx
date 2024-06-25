@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import convertToUrl from "@/utils/convertToUrl";
 import styles from "@/styles/NavUser.module.css";
 import Link from "next/link";
 import SignoutModal from "./SignoutModal";
@@ -10,6 +9,19 @@ import { createAuthorUrl } from "@/utils/createAuthorUrl";
 export default function NavUser({ user }: { user: User }) {
   const [showDropdown, setShowDropdown] = useState(false);
   const [signoutModal, setSignoutModal] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  function handleClickOutside(e: MouseEvent) {
+    if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node))
+      setShowDropdown(false);
+  }
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <>
@@ -29,8 +41,9 @@ export default function NavUser({ user }: { user: User }) {
         </div>
         {showDropdown ? (
           <div
+            ref={dropdownRef}
             className={styles["options"]}
-            onClick={() => setShowDropdown(false)}
+            onClick={(e) => e.stopPropagation()}
           >
             <Link
               href={`/authors/${createAuthorUrl(user)}`}
@@ -58,7 +71,10 @@ export default function NavUser({ user }: { user: User }) {
               </div>
             </Link>
             <hr />
-            <ul className={styles["option-list"]}>
+            <ul
+              className={styles["option-list"]}
+              onClick={() => setShowDropdown(false)}
+            >
               <li>
                 <Link href={"/dashboard"}>
                   <svg
@@ -101,9 +117,7 @@ export default function NavUser({ user }: { user: User }) {
                 </Link>
               </li>
               <li>
-                <Link
-                  href={`/authors/${createAuthorUrl(user)}`}
-                >
+                <Link href={`/authors/${createAuthorUrl(user)}`}>
                   <svg
                     height={20}
                     width={20}
