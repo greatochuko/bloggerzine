@@ -25,7 +25,7 @@ export default function NavUser({ user }: { user: User }) {
 
   return (
     <>
-      <div className={styles["user"]}>
+      <div className={styles["user"]} ref={dropdownRef}>
         <div
           className={styles["image-container"]}
           onClick={() => setShowDropdown((curr) => !curr)}
@@ -41,7 +41,6 @@ export default function NavUser({ user }: { user: User }) {
         </div>
         {showDropdown ? (
           <div
-            ref={dropdownRef}
             className={styles["options"]}
             onClick={(e) => e.stopPropagation()}
           >

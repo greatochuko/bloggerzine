@@ -15,7 +15,7 @@ export type BlogPost = {
   title: string;
   content: string;
   category: string;
-  imageUrl: string;
+  thumbnail: string;
   author: User;
   tags: string;
   isFeatured: boolean;
@@ -48,7 +48,7 @@ export default function Hero({ blogposts }: { blogposts: BlogPost[] }) {
             <BlogMetaData blog={blogpost} />
           </div>
           <Image
-            src={blogpost.imageUrl}
+            src={blogpost.thumbnail}
             fill
             alt={blogpost.title}
             sizes="(max-width: 1024px) 90vw, 50vw"

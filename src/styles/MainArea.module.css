@@ -42,10 +42,6 @@
   overflow: hidden;
 }
 
-.recent-post .image-container img {
-  object-fit: cover;
-}
-
 .recent-post .post-details {
   flex: 1;
   display: flex;

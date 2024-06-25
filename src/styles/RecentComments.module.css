@@ -51,10 +51,6 @@
   aspect-ratio: 1;
 }
 
-.recent-comment .image-container img {
-  object-fit: cover;
-}
-
 .recent-comment .text {
   flex: 1;
 }

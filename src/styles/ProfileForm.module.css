@@ -67,10 +67,6 @@
   cursor: pointer;
 }
 
-.profile-form img {
-  object-fit: cover;
-}
-
 .profile-form :is(input, textarea) {
   padding: 0.5rem;
   border: solid 1px #ccc;

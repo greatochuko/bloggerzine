@@ -64,10 +64,6 @@
   border: solid 3px white;
 }
 
-:is(.image-container, .cover-photo-container) img {
-  object-fit: cover;
-}
-
 .main {
   display: flex;
   flex-direction: column;

@@ -8,11 +8,9 @@
   aspect-ratio: 1;
   border-radius: 50%;
   overflow: hidden;
+  cursor: pointer;
 }
 
-.image-container img {
-  object-fit: cover;
-}
 
 .user .options {
   position: absolute;

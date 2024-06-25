@@ -221,10 +221,6 @@
   overflow: hidden;
 }
 
-.blog-card .image-container img {
-  object-fit: cover;
-}
-
 .blog-card .text {
   flex: 1;
 }

@@ -22,10 +22,6 @@
   overflow: hidden;
 }
 
-.title .image-container img {
-  object-fit: cover;
-}
-
 .description {
   display: flex;
   flex-direction: column;

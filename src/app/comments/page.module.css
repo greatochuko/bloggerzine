@@ -115,10 +115,6 @@
   border-radius: 50%;
 }
 
-.image-container img {
-  object-fit: cover;
-}
-
 .comments-page ul li > p span {
   font-weight: bold;
 }

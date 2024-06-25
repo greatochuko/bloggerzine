@@ -6,9 +6,13 @@ import { BlogPost } from "./Hero";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { uploadImage } from "@/utils/imageUploader";
+import Image from "next/image";
 
 export default function CreatePostForm({ blogpost }: { blogpost?: BlogPost }) {
   const [title, setTitle] = useState(blogpost?.title || "");
+  const [thumbnail, setThumbnail] = useState(
+    blogpost?.thumbnail || "/placeholder-cover-image.jpg"
+  );
   const [content, setContent] = useState(blogpost?.content || "");
   const [tags, setTags] = useState(blogpost?.tags || "");
   const [category, setCategory] = useState(blogpost?.category || "");
@@ -78,6 +82,14 @@ export default function CreatePostForm({ blogpost }: { blogpost?: BlogPost }) {
           onChange={(e) => setTitle(e.target.value)}
           required
         />
+      </div>
+      <div className={styles["input-group"]}>
+        <p>Post Thumbnail</p>
+        <label htmlFor="thumbnail" className={styles["thumbnail"]}>
+          <Image src={thumbnail} alt={title} fill sizes=""></Image>
+          <div className={styles["overlay"]}></div>
+        </label>
+        <input type="file" name="thumbnail" id="thumbnail" hidden />
       </div>
       <div className={styles["input-group"]}>
         <label>Post body</label>

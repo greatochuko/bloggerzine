@@ -37,7 +37,7 @@ export default function page({
     <div className={styles["blog-page"]}>
       <div className={styles["header"]}>
         <Image
-          src={blogpost.imageUrl}
+          src={blogpost.thumbnail}
           alt={blogpost.title}
           sizes="950vw"
           fill

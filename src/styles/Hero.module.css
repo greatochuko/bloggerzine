@@ -16,10 +16,6 @@
   transition: 500ms ease-out;
 }
 
-.hero img {
-  object-fit: cover;
-}
-
 .hero > div:first-child {
   grid-row: span 2;
   grid-column: span 2;

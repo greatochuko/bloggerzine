@@ -12,10 +12,6 @@
   overflow: hidden;
 }
 
-.image-container > img {
-  object-fit: cover;
-}
-
 .search-blog:hover .image-container img {
   scale: 1.1;
 }

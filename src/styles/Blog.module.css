@@ -12,10 +12,6 @@
   overflow: hidden;
 }
 
-.image-container > img {
-  object-fit: cover;
-}
-
 .blog-title {
   font-size: min(max(1.2rem, 2vw), 1.5rem);
   font-weight: 700;

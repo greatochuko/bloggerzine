@@ -11,10 +11,6 @@
   overflow: hidden;
 }
 
-.header img {
-  object-fit: cover;
-}
-
 .overlay {
   position: absolute;
   top: 0;
@@ -94,10 +90,6 @@
   aspect-ratio: 1;
   border-radius: 50%;
   overflow: hidden;
-}
-
-.image-container img {
-  object-fit: cover;
 }
 
 .about-the-author .text {

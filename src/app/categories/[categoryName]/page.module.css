@@ -10,11 +10,6 @@
   border-radius: 1rem;
   overflow: hidden;
 }
-
-.category-banner > img {
-  object-fit: cover;
-}
-
 .category-info {
   position: absolute;
   top: 0;

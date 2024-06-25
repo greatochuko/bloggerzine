@@ -14,7 +14,7 @@ export default function SearchBlog({ blog }: { blog: BlogPost }) {
     >
       <div className={styles["image-container"]}>
         <Image
-          src={blog.imageUrl}
+          src={blog.thumbnail}
           alt={blog.title}
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 33vw, 25vw"

@@ -22,9 +22,6 @@
   overflow: hidden;
 }
 
-.image-container img {
-  object-fit: cover;
-}
 
 .blog-meta-data p {
   font-weight: 500;

@@ -12,10 +12,6 @@
   position: relative;
 }
 
-.category img {
-  object-fit: cover;
-}
-
 .category p {
   position: absolute;
   top: 0;
