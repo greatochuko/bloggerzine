@@ -1,18 +1,22 @@
 import React from "react";
 import styles from "./page.module.css";
-import { getUserDashboard } from "@/services/userServices";
+import { getUser, getUserDashboard } from "@/services/userServices";
 import ProfileForm from "@/components/ProfileForm";
 import Navigate from "@/components/Navigate";
 import SocialLinksForm from "@/components/SocialLinksForm";
 import { Metadata } from "next";
 import ChangePasswordForm from "@/components/ChangePasswordForm";
+import { createClient } from "@/utils/supabase/server";
 
 export const metadata: Metadata = {
   title: "Settings",
 };
 
-export default function SettingsPage() {
-  const user = getUserDashboard();
+export default async function SettingsPage() {
+  const supabase = createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
   if (!user) return <Navigate to="/login" />;
 

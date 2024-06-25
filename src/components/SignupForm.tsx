@@ -15,7 +15,6 @@ export default function SignupForm() {
     errorMessage: "",
   });
 
-
   const { errorMessage } = state;
 
   let passwordError;
@@ -53,16 +52,7 @@ export default function SignupForm() {
           />
         </div>
       </div>
-      <div className={styles["input-group"]}>
-        <label htmlFor="username">Username</label>
-        <input
-          type="text"
-          placeholder="Username"
-          id="username"
-          name="username"
-          required
-        />
-      </div>
+
       <div className={styles["input-group"]}>
         <label htmlFor="email">Email Address</label>
         <input

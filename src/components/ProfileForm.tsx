@@ -66,15 +66,6 @@ export default function ProfileForm({ user }: { user: User }) {
         defaultValue={user.user_metadata.lastname}
         required
       />
-      <label htmlFor="username">Username</label>
-      <input
-        type="text"
-        id="username"
-        name="username"
-        placeholder="Enter username"
-        defaultValue={user.user_metadata.username}
-        required
-      />
       <p>Profile picture</p>
       <div className={styles["profile-picture"]}>
         <label
@@ -91,7 +82,7 @@ export default function ProfileForm({ user }: { user: User }) {
           ></Image>
           <div
             className={styles["overlay"]}
-            style={{ opacity: profileImage.loading ? 1 : 0 }}
+            style={{ opacity: profileImage.loading ? 1 : "" }}
           >
             {profileImage.loading ? (
               <LoadingIndicator size={20} color="white" />
@@ -145,8 +136,11 @@ export default function ProfileForm({ user }: { user: User }) {
             fill
             sizes="320px"
           ></Image>
-          <div className={styles["overlay"]}>
-            {profileImage.loading ? (
+          <div
+            className={styles["overlay"]}
+            style={{ opacity: coverImage.loading ? 1 : "" }}
+          >
+            {coverImage.loading ? (
               <LoadingIndicator size={20} color="white" />
             ) : (
               <svg
@@ -182,7 +176,7 @@ export default function ProfileForm({ user }: { user: User }) {
           disabled={coverImage.loading}
           onChange={handleChangeCoverImage}
         />
-        <input type="hidden" name="cover-photo" value={profileImage.url} />
+        <input type="hidden" name="cover-photo" value={coverImage.url} />
       </div>
       <label htmlFor="job-title">Job title</label>
       <input

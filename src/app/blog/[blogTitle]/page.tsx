@@ -11,6 +11,7 @@ import convertToUrl from "@/utils/convertToUrl";
 import { getBlogpost } from "@/services/blogServices";
 import { getComments } from "@/services/commentServices";
 import { Metadata } from "next";
+import { createAuthorUrl } from "@/utils/createAuthorUrl";
 
 export function generateMetadata({
   params: { blogTitle },
@@ -63,25 +64,25 @@ export default function page({
 
           <section className={styles["about-the-author"]}>
             <Link
-              href={`/authors/${convertToUrl(
-                blogpost.author.user_metadata.username
-              )}`}
+              href={`/authors/${createAuthorUrl(blogpost.author)}`}
               className={styles["image-container"]}
             >
               <Image
                 src={blogpost.author.user_metadata.imageUrl}
-                alt={blogpost.author.firstname + " " + blogpost.author.lastname}
+                alt={
+                  blogpost.author.user_metadata.firstname +
+                  " " +
+                  blogpost.author.user_metadata.lastname
+                }
                 fill
                 sizes="80px"
               ></Image>
             </Link>
             <div className={styles["text"]}>
-              <Link
-                href={`/authors/${convertToUrl(
-                  blogpost.author.user_metadata.username
-                )}`}
-              >
-                {blogpost.author.firstname + " " + blogpost.author.lastname}
+              <Link href={`/authors/${createAuthorUrl(blogpost.author)}`}>
+                {blogpost.author.user_metadata.firstname +
+                  " " +
+                  blogpost.author.user_metadata.lastname}
               </Link>
               <p>{blogpost.author.user_metadata.bio}</p>
             </div>

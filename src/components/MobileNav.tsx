@@ -8,6 +8,7 @@ import Overlay from "./Overlay";
 import { navLinks } from "./MainNav";
 import convertToUrl from "@/utils/convertToUrl";
 import { User } from "@supabase/supabase-js";
+import { createAuthorUrl } from "@/utils/createAuthorUrl";
 
 export default function MobileNav({
   user,
@@ -66,7 +67,7 @@ export default function MobileNav({
           ) : (
             <>
               <Link
-                href={`/authors/${convertToUrl(user.user_metadata.username)}`}
+                href={`/authors/${createAuthorUrl(user)}`}
                 className={styles["profile"]}
                 onClick={closeMobileNav}
               >

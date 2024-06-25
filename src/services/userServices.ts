@@ -43,16 +43,17 @@ export function getUsers() {
   return users;
 }
 
-export async function getUser(username: string) {
+export async function getUser(userId: string) {
+  console.clear();
+  console.log(userId);
   const {
-    data: { users },
+    data: { user },
     error,
-  } = await adminAuthClient.listUsers();
+  } = await adminAuthClient.getUserById(userId);
 
-  if (error || !users.length) return { author: null, error };
+  if (user && !error) return { author: user, error: null };
 
-  const author = users.find((user) => user.user_metadata.username === username);
-  return { author, error: null };
+  return { author: null, error };
 }
 
 export function getUserDashboard() {

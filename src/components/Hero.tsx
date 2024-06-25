@@ -6,6 +6,7 @@ import BlogMetaData from "./BlogMetaData";
 import { categories } from "@/app/categories/page";
 import convertToUrl from "@/utils/convertToUrl";
 import { User } from "@supabase/supabase-js";
+import { createAuthorUrl } from "@/utils/createAuthorUrl";
 
 export type BlogPost = {
   id: number;
@@ -39,9 +40,7 @@ export default function Hero({ blogposts }: { blogposts: BlogPost[] }) {
               {blogpost.category}
             </p>
             <Link
-              href={`/blog/${convertToUrl(
-                blogpost.author.user_metadata.username
-              )}`}
+              href={`/blog/${createAuthorUrl(blogpost.author)}`}
               className={styles["blog-title"]}
             >
               {blogpost.title}

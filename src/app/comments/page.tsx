@@ -6,6 +6,7 @@ import { getUserComments } from "@/services/commentServices";
 import Image from "next/image";
 import Link from "next/link";
 import convertToUrl from "@/utils/convertToUrl";
+import { createAuthorUrl } from "@/utils/createAuthorUrl";
 
 export default function CommentsPage() {
   const comments = getUserComments();
@@ -59,9 +60,7 @@ export default function CommentsPage() {
                 </td>
                 <td>
                   <Link
-                    href={`/authors/${convertToUrl(
-                      comment.user.user_metadata.username
-                    )}`}
+                    href={`/authors/${createAuthorUrl(comment.user)}`}
                   >
                     {comment.user.user_metadata.firstname +
                       " " +

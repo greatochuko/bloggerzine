@@ -21,7 +21,11 @@ export default function AboutAuthor({ author }: { author: User }) {
             <div className={styles["image-container"]}>
               <Image
                 src={author.user_metadata.imageUrl}
-                alt={author.user_metadata.username}
+                alt={
+                  author.user_metadata.firstname +
+                  " " +
+                  author.user_metadata.lastname
+                }
                 fill
                 sizes="80px"
               ></Image>
@@ -30,14 +34,13 @@ export default function AboutAuthor({ author }: { author: User }) {
               <h3>
                 {author.user_metadata.firstname} {author.user_metadata.lastname}
               </h3>
-              <p>@{author.user_metadata.username}</p>
-              {/* {author.user_metadata.jobTitle ? ( */}
-              <p>{author.user_metadata.jobTitle}Software Developer</p>
-              {/* ) : null} */}
+              {author.user_metadata.jobTitle ? (
+                <p>{author.user_metadata.jobTitle}</p>
+              ) : null}
             </div>
           </div>
           <p>
-            {blogposts.filter((blog) => blog.author.id === author.id).length}{" "}
+            {/* {blogposts.filter((blog) => blog.author.id === author.id).length}{" "} */}
             Posts
           </p>
         </div>

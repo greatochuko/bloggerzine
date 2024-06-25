@@ -11,23 +11,30 @@ import Paginator from "@/components/Paginator";
 export async function generateMetadata({
   params,
 }: {
-  params: { username: string };
+  params: { userSlug: string };
 }): Promise<Metadata> {
-  const { author } = await getUser(params.username);
-  return { title: author?.user_metadata.username };
+  const userId = params.userSlug.split("_").at(-1) as string;
+  const { author } = await getUser(userId);
+  if (author)
+    return {
+      title:
+        author?.user_metadata.firstName + " " + author?.user_metadata.lastname,
+    };
+
+  return { title: "Author" };
 }
 
 export default async function AuthorPage({
   params,
   searchParams,
 }: {
-  params: { username: string };
+  params: { userSlug: string };
   searchParams: { page: string };
 }) {
-  const { author } = await getUser(params.username);
+  const userId = params.userSlug.split("_").at(-1) as string;
+  const { author } = await getUser(userId);
 
   if (!author) notFound();
-
 
   const currentPage = Number(searchParams.page) || 1;
   const blogposts = getBlogpostByAuthor(author.id.toString());

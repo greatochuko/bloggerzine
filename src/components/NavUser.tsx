@@ -5,6 +5,7 @@ import styles from "@/styles/NavUser.module.css";
 import Link from "next/link";
 import SignoutModal from "./SignoutModal";
 import { User } from "@supabase/supabase-js";
+import { createAuthorUrl } from "@/utils/createAuthorUrl";
 
 export default function NavUser({ user }: { user: User }) {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -20,7 +21,7 @@ export default function NavUser({ user }: { user: User }) {
           <Image
             src={user.user_metadata.imageUrl}
             alt={
-              user.user_metadata.username + " " + user.user_metadata.lastname
+              user.user_metadata.firstname + " " + user.user_metadata.lastname
             }
             fill
             sizes="80px"
@@ -32,14 +33,14 @@ export default function NavUser({ user }: { user: User }) {
             onClick={() => setShowDropdown(false)}
           >
             <Link
-              href={`/authors/${convertToUrl(user.user_metadata.username)}`}
+              href={`/authors/${createAuthorUrl(user)}`}
               className={styles["user-details"]}
             >
               <div className={styles["image-container"]}>
                 <Image
                   src={user.user_metadata.imageUrl}
                   alt={
-                    user.user_metadata.username +
+                    user.user_metadata.firstname +
                     " " +
                     user.user_metadata.lastname
                   }
@@ -101,7 +102,7 @@ export default function NavUser({ user }: { user: User }) {
               </li>
               <li>
                 <Link
-                  href={`/authors/${convertToUrl(user.user_metadata.username)}`}
+                  href={`/authors/${createAuthorUrl(user)}`}
                 >
                   <svg
                     height={20}

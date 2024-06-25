@@ -7,6 +7,7 @@ import ArticleList from "@/components/ArticleList";
 import { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { createClient } from "@/utils/supabase/server";
+import Navigate from "@/components/Navigate";
 
 export const metadata: Metadata = {
   title: "Dashboard",
@@ -16,7 +17,7 @@ export default async function Dashboard() {
   const supabase = createClient();
   const { data, error } = await supabase.auth.getUser();
 
-  if (!data || error) redirect(`/login`);
+  if (!data || error) return <Navigate to="/login"/>;
 
   return (
     <div className={styles["profile-page"]}>

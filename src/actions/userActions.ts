@@ -5,6 +5,8 @@ import { redirect } from "next/navigation";
 
 import { createClient } from "@/utils/supabase/server";
 import { adminAuthClient } from "@/utils/supabase/adminAuthClient";
+import convertToUrl from "@/utils/convertToUrl";
+import { createAuthorUrl } from "@/utils/createAuthorUrl";
 
 export async function login(prevState: any, formData: FormData) {
   const supabase = createClient();
@@ -20,9 +22,8 @@ export async function login(prevState: any, formData: FormData) {
     return { data: null, errorMessage: error.message };
   }
 
+  revalidatePath("/", "layout");
   return { data, errorMessage: null };
-  // revalidatePath("/", "layout");
-  // redirect("/");
 }
 
 export async function signup(prevState: any, formData: FormData) {
@@ -31,7 +32,6 @@ export async function signup(prevState: any, formData: FormData) {
   const userMetaData = {
     firstname: formData.get("firstname") as string,
     lastname: formData.get("lastname") as string,
-    username: formData.get("username") as string,
     imageUrl: "/placeholder-profile-image.jpg",
     coverImageUrl: "/placeholder-cover-image.jpg",
     bio: "",
@@ -62,14 +62,16 @@ export async function updateUser(prevState: any, formData: FormData) {
   const userMetaData = {
     firstname: formData.get("firstname") as string,
     lastname: formData.get("lastname") as string,
-    username: formData.get("username") as string,
     imageUrl: formData.get("profile-picture") as string,
     coverImageUrl: formData.get("cover-photo") as string,
     bio: formData.get("bio") as string,
     jobTitle: formData.get("jobTitle") as string,
   };
 
-  const { data: user, error } = await adminAuthClient.updateUserById(userId, {
+  const {
+    data: { user },
+    error,
+  } = await adminAuthClient.updateUserById(userId, {
     user_metadata: userMetaData,
   });
 
@@ -77,5 +79,6 @@ export async function updateUser(prevState: any, formData: FormData) {
     return { user: null, errorMessage: error?.message || null };
 
   revalidatePath("/settings");
+  revalidatePath(`/authors/${createAuthorUrl(user)}`);
   return { user, errorMessage: null };
 }
