@@ -4,15 +4,15 @@ import MainArea from "@/components/MainArea";
 import { getBlogposts } from "@/services/blogServices";
 
 export default async function Home() {
-  const blogposts = getBlogposts();
+  const blogposts = await getBlogposts();
 
   return (
     <div className={styles["home-page"]}>
-      {/* <Hero blogposts={blogposts.slice(0, 4)} />
+      <Hero blogposts={blogposts.slice(0, 4)} />
       <MainArea
         topPosts={blogposts.slice(0, 6)}
         recentPosts={blogposts.slice(6, 10)}
-      /> */}
+      />
     </div>
   );
 }

@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 import { createClient } from "@/utils/supabase/server";
+import { adminAuthClient } from "@/utils/supabase/adminAuthClient";
 
 export async function login(prevState: any, formData: FormData) {
   const supabase = createClient();
@@ -54,4 +55,27 @@ export async function signup(prevState: any, formData: FormData) {
 
   redirect("/confirm-email");
   // return { data, errorMessage: null};
+}
+
+export async function updateUser(prevState: any, formData: FormData) {
+  const userId = formData.get("userId") as string;
+  const userMetaData = {
+    firstname: formData.get("firstname") as string,
+    lastname: formData.get("lastname") as string,
+    username: formData.get("username") as string,
+    imageUrl: formData.get("profile-picture") as string,
+    coverImageUrl: formData.get("cover-photo") as string,
+    bio: formData.get("bio") as string,
+    jobTitle: formData.get("jobTitle") as string,
+  };
+
+  const { data: user, error } = await adminAuthClient.updateUserById(userId, {
+    user_metadata: userMetaData,
+  });
+
+  if (error || !user)
+    return { user: null, errorMessage: error?.message || null };
+
+  revalidatePath("/settings");
+  return { user, errorMessage: null };
 }

@@ -1,4 +1,6 @@
 import { BlogPost } from "@/components/Hero";
+import supabase from "@/config/supabaseClient";
+import { SupabaseClient } from "@supabase/supabase-js";
 
 const blogposts: BlogPost[] = [
   {
@@ -215,8 +217,12 @@ const blogposts: BlogPost[] = [
   },
 ];
 
-export function getBlogposts() {
-  return blogposts;
+export async function getBlogposts() {
+  const { data, error } = await supabase.from("blogposts").select("*");
+
+  if (!data || error) return [];
+
+  return data;
 }
 
 export function getBlogpost(id: string) {

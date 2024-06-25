@@ -15,10 +15,6 @@
   color: #555;
 }
 
-.profile-form input[type="file"] {
-  display: none;
-}
-
 .profile-form .overlay {
   position: absolute;
   top: 0;
@@ -93,10 +89,6 @@
   color: #aaa;
 }
 
-.profile-form input[type="file"] {
-  width: fit-content;
-}
-
 .profile-form textarea {
   aspect-ratio: 2;
   max-height: 10rem;
@@ -131,8 +123,16 @@
 .profile-form .actions button[type="submit"] {
   background-color: var(--blue-100);
   color: white;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
 }
 
 .profile-form .actions button[type="submit"]:hover {
   background-color: var(--blue-200);
+}
+
+.profile-form .error {
+  color: var(--red-100);
+  font-size: 0.9rem;
 }
