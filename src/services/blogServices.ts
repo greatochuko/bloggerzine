@@ -1,6 +1,5 @@
 import { BlogPost } from "@/components/Hero";
 import supabase from "@/config/supabaseClient";
-import { SupabaseClient } from "@supabase/supabase-js";
 
 const blogposts: BlogPost[] = [
   {

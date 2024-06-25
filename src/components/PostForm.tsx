@@ -7,16 +7,22 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { uploadImage } from "@/utils/imageUploader";
 import Image from "next/image";
+import LoadingIndicator from "./LoadingIndicator";
+import { useFormState } from "react-dom";
+import { publishPost, savePostAsDraft } from "@/actions/blogActions";
 
 export default function CreatePostForm({ blogpost }: { blogpost?: BlogPost }) {
   const [title, setTitle] = useState(blogpost?.title || "");
-  const [thumbnail, setThumbnail] = useState(
-    blogpost?.thumbnail || "/placeholder-cover-image.jpg"
-  );
+  const [thumbnail, setThumbnail] = useState({
+    loading: false,
+    url: blogpost?.thumbnail || "/placeholder-cover-image.jpg",
+  });
   const [content, setContent] = useState(blogpost?.content || "");
   const [tags, setTags] = useState(blogpost?.tags || "");
   const [category, setCategory] = useState(blogpost?.category || "");
   const [isFeatured, setIsFeatured] = useState(blogpost?.isFeatured || false);
+
+
 
   const reactQuillRef = useRef<ReactQuill | null>(null);
 
@@ -59,17 +65,16 @@ export default function CreatePostForm({ blogpost }: { blogpost?: BlogPost }) {
     },
   };
 
-  function handleCreatePost(e: React.FormEvent) {
-    e.preventDefault();
-  }
-
-  async function handleEditPost(e: React.FormEvent) {
-    e.preventDefault();
+  async function handleChangeThumbnail(e: React.ChangeEvent<HTMLInputElement>) {
+    setThumbnail((curr) => ({ ...curr, loading: true }));
+    const file = e.target.files && e.target.files[0];
+    if (!file) return;
+    const { url } = await uploadImage(file);
+    setThumbnail({ loading: false, url });
   }
 
   return (
     <form
-      onSubmit={blogpost ? handleEditPost : handleCreatePost}
       className={styles["create-post-form"]}
     >
       <div className={styles["input-group"]}>
@@ -77,7 +82,8 @@ export default function CreatePostForm({ blogpost }: { blogpost?: BlogPost }) {
         <input
           type="text"
           id="post-title"
-          placeholder="Post name"
+          name="title"
+          placeholder="Enter a title for your article"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           required
@@ -85,11 +91,25 @@ export default function CreatePostForm({ blogpost }: { blogpost?: BlogPost }) {
       </div>
       <div className={styles["input-group"]}>
         <p>Post Thumbnail</p>
-        <label htmlFor="thumbnail" className={styles["thumbnail"]}>
-          <Image src={thumbnail} alt={title} fill sizes=""></Image>
-          <div className={styles["overlay"]}></div>
+        <label htmlFor="thumbnail-input" className={styles["thumbnail"]}>
+          <Image src={thumbnail.url} alt={title} fill sizes=""></Image>
+          <div
+            className={styles["overlay"]}
+            style={{ opacity: thumbnail.loading ? 1 : "" }}
+          >
+            {thumbnail.loading && <LoadingIndicator color="white" />}
+          </div>
         </label>
-        <input type="file" name="thumbnail" id="thumbnail" hidden />
+        <input
+          type="file"
+          name="thumbnail-input"
+          id="thumbnail-input"
+          accept="image/*"
+          onChange={handleChangeThumbnail}
+          hidden
+          disabled={thumbnail.loading}
+        />
+        <input type="hidden" name="thumbnail" value={thumbnail.url} />
       </div>
       <div className={styles["input-group"]}>
         <label>Post body</label>
@@ -101,6 +121,7 @@ export default function CreatePostForm({ blogpost }: { blogpost?: BlogPost }) {
           style={{ marginBottom: "0", minHeight: "20rem" }}
           modules={modules}
         />
+        <input type="hidden" name="content" value={content} />
       </div>
       <section>
         <div className={`${styles["input-group"]} ${styles["tags"]}`}>
@@ -108,6 +129,7 @@ export default function CreatePostForm({ blogpost }: { blogpost?: BlogPost }) {
           <input
             type="text"
             id="tags"
+            name="tags"
             placeholder="design, programming ..."
             value={tags}
             onChange={(e) => setTags(e.target.value)}
@@ -132,15 +154,17 @@ export default function CreatePostForm({ blogpost }: { blogpost?: BlogPost }) {
       <div className={styles["checkbox-input-group"]}>
         <input
           type="checkbox"
-          name="featured"
+          name="isFeatured"
           id="featured"
           checked={isFeatured}
           onChange={() => setIsFeatured((curr) => !curr)}
         />
         <label htmlFor="featured">Make this post featured?</label>
       </div>
-
-      <button type="submit">{blogpost ? "Save Changes" : "Create post"}</button>
+      <div className={styles["actions"]}>
+        <button formAction={savePostAsDraft}>Save as Draft</button>
+        <button formAction={publishPost}>Publish</button>
+      </div>
     </form>
   );
 }

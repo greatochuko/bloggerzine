@@ -5,7 +5,6 @@ import { redirect } from "next/navigation";
 
 import { createClient } from "@/utils/supabase/server";
 import { adminAuthClient } from "@/utils/supabase/adminAuthClient";
-import convertToUrl from "@/utils/convertToUrl";
 import { createAuthorUrl } from "@/utils/createAuthorUrl";
 
 export async function login(prevState: any, formData: FormData) {

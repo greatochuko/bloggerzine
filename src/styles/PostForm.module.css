@@ -32,9 +32,11 @@
 
 .create-post-form .thumbnail .overlay {
   content: "";
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: absolute;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.5);
   top: 0;
   left: 0;
   width: 100%;
@@ -71,6 +73,10 @@
   color: inherit;
 }
 
+.create-post-form input::placeholder {
+  color: #aaa;
+}
+
 .create-post-form .input-group.tags {
   flex: 2;
 }
@@ -94,14 +100,31 @@
   gap: 0.25rem;
 }
 
-.create-post-form button[type="submit"] {
+.create-post-form .actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.create-post-form button {
+  flex: 1;
   padding: 0.5rem;
+  background-color: #eee;
+  font-size: 1rem;
   font-weight: 600;
+  border-radius: 0.25rem;
+  border: solid 1px #ddd;
+  color: #333;
+}
+
+.create-post-form button:hover {
+  background-color: #ddd;
+  border-color: #ccc;
+}
+
+.create-post-form button[type="submit"] {
   color: white;
   background-color: var(--blue-100);
-  font-size: 1rem;
   border: none;
-  border-radius: 0.25rem;
 }
 
 .create-post-form button[type="submit"]:hover {
