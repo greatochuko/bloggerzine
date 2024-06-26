@@ -4,21 +4,21 @@ import Image from "next/image";
 import Link from "next/link";
 import BlogMetaData from "./BlogMetaData";
 import { categories } from "@/app/categories/page";
-import convertToUrl from "@/utils/convertToUrl";
 import { User } from "@/services/userServices";
 import { createAuthorUrl } from "@/utils/createAuthorUrl";
 
 export type Blogpost = {
   id: number;
-  views: number;
-  isPublished: boolean;
   title: string;
   content: string;
   category: string;
   thumbnail: string;
   author: User;
   tags: string;
+  views: number;
+  likes: number;
   isFeatured: boolean;
+  isPublished: boolean;
   dateCreated: string;
 };
 
@@ -40,13 +40,12 @@ export default function Hero({ blogposts }: { blogposts: Blogpost[] }) {
               {blogpost.category}
             </p>
             <Link
-              // href={`/blog/${createAuthorUrl(blogpost.author)}`}
-              href={`#`}
+              href={`/blog/${createAuthorUrl(blogpost.author)}`}
               className={styles["blog-title"]}
             >
               {blogpost.title}
             </Link>
-            {/* <BlogMetaData blog={blogpost} /> */}
+            <BlogMetaData blog={blogpost} />
           </div>
           <Image
             src={blogpost.thumbnail}

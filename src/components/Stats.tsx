@@ -111,7 +111,7 @@ export default function Stats({
           </svg>
         </div>
         <div className={styles["text"]}>
-          <h3>136</h3>
+          <h3>{blogposts.reduce((acc, curr) => acc + curr.likes, 0)}</h3>
           <p>Likes</p>
         </div>
       </div>
