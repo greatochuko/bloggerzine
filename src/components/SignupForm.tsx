@@ -4,12 +4,17 @@ import styles from "@/styles/SignupForm.module.css";
 import Link from "next/link";
 import { useFormState, useFormStatus } from "react-dom";
 import LoadingIndicator from "./LoadingIndicator";
+import { signup } from "@/actions/authActions";
 
 export default function SignupForm() {
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [password, setPassword] = useState("14122003");
+  const [confirmPassword, setConfirmPassword] = useState("14122003");
 
-  const errorMessage = "";
+  const [state, signupAction] = useFormState(signup, {
+    errorMessage: "",
+  });
+
+  const { errorMessage } = state;
 
   let passwordError;
   if (confirmPassword.length && password !== confirmPassword) {
@@ -20,7 +25,7 @@ export default function SignupForm() {
   }
 
   return (
-    <form className={styles["signup-form"]}>
+    <form className={styles["signup-form"]} action={signupAction}>
       <div className={styles["flex-group"]}>
         <div className={styles["input-group"]}>
           <label htmlFor="firstname">First Name</label>
@@ -29,6 +34,7 @@ export default function SignupForm() {
             placeholder="First Name"
             id="firstname"
             name="firstname"
+            defaultValue={"Great"}
             required
           />
         </div>
@@ -39,6 +45,7 @@ export default function SignupForm() {
             placeholder="Last Name"
             id="lastname"
             name="lastname"
+            defaultValue={"Ogheneochuko"}
             required
           />
         </div>
@@ -51,6 +58,7 @@ export default function SignupForm() {
           placeholder="Email"
           id="email"
           name="email"
+          defaultValue={"greatochuko123@gmail.com"}
           required
         />
       </div>

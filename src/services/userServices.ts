@@ -1,6 +1,4 @@
-import supabase from "@/config/supabaseClient";
-import { adminAuthClient } from "@/utils/supabase/adminAuthClient";
-import { PostgrestError } from "@supabase/supabase-js";
+import { createClient } from "@/utils/supabase/client";
 
 export type User = {
   id: string;
@@ -45,6 +43,7 @@ export function getUsers() {
 }
 
 export async function getUser(userId: string) {
+  const supabase = createClient();
   const { data, error } = await supabase
     .from("profiles")
     .select("*")

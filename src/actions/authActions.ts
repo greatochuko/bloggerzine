@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 
 import { createClient } from "@/utils/supabase/server";
 
-export async function login(formData: FormData) {
+export async function login(initialState: any, formData: FormData) {
   const supabase = createClient();
 
   const data = {
@@ -28,22 +28,26 @@ export async function login(formData: FormData) {
   return { user, errorMessage: null };
 }
 
-export async function signup(formData: FormData) {
+export async function signup(initialState: any, formData: FormData) {
   const supabase = createClient();
 
-  const email = formData.get("email") as string;
-  const password = formData.get("password") as string;
-  const firstname = formData.get("firstname") as string;
-  const lastname = formData.get("lastname") as string;
+  const data = {
+    email: formData.get("email") as string,
+    password: formData.get("password") as string,
+  };
+
+  const metaData = {
+    firstname: formData.get("firstname") as string,
+    lastname: formData.get("lastname") as string,
+  };
 
   const { error } = await supabase.auth.signUp({
-    email,
-    password,
-    options: { data: { firstname, lastname } },
+    ...data,
+    options: { data: metaData },
   });
 
   if (error) {
-    return { user: null, errorMessage: error.message };
+    return { errorMessage: error.message };
   }
 
   revalidatePath("/", "layout");
