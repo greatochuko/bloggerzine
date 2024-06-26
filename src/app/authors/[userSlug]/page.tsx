@@ -7,6 +7,7 @@ import { notFound } from "next/navigation";
 import { getBlogpostByAuthor } from "@/services/blogServices";
 import SearchBlog from "@/components/SearchBlog";
 import Paginator from "@/components/Paginator";
+import { Blogpost } from "@/components/Hero";
 
 export async function generateMetadata({
   params,
@@ -14,7 +15,7 @@ export async function generateMetadata({
   params: { userSlug: string };
 }): Promise<Metadata> {
   const userId = params.userSlug.split("_").at(-1) as string;
-  const { author } = await getUser(userId);
+  const { user: author } = await getUser(userId);
   if (author)
     return {
       title: author?.firstname + " " + author?.lastname,
@@ -31,12 +32,13 @@ export default async function AuthorPage({
   searchParams: { page: string };
 }) {
   const userId = params.userSlug.split("_").at(-1) as string;
-  const { author } = await getUser(userId);
+  const { user: author } = await getUser(userId);
 
   if (!author) notFound();
 
   const currentPage = Number(searchParams.page) || 1;
-  const blogposts = getBlogpostByAuthor(author.id.toString());
+  // const { data: blogposts } = await getBlogpostByAuthor(author.id.toString());
+  const blogposts: Blogpost[] = [];
   const postsPerPage = 8;
   const paginatedPosts = blogposts.slice(
     (currentPage - 1) * postsPerPage,
