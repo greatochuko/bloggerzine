@@ -22,8 +22,7 @@ export default function SearchBlog({ blog }: { blog: Blogpost }) {
       </div>
       <h3 className={styles["blog-title"]}>{blog.title}</h3>
       <p>
-        {blog.author.user_metadata.firstname}{" "}
-        {blog.author.user_metadata.lastname}
+        {blog.author.firstname} {blog.author.lastname}
         <span>&#183;</span>
         {new Date(blog.dateCreated)
           .toDateString()

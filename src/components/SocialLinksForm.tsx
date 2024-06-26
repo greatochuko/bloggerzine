@@ -1,18 +1,12 @@
 "use client";
 import React, { useState } from "react";
 import styles from "@/styles/SocialLinksForm.module.css";
-import { User } from "@supabase/supabase-js";
+import { User } from "@/services/userServices";
 
 export default function SocialLinksForm({ user }: { user: User }) {
-  const [facebookLink, setFacebookLink] = useState(
-    user.user_metadata.socialLinks.facebook
-  );
-  const [twitterLink, setTwitterLink] = useState(
-    user.user_metadata.socialLinks.twitter
-  );
-  const [linkedinLink, setLinkedinLink] = useState(
-    user.user_metadata.socialLinks.linkedin
-  );
+  const [facebookLink, setFacebookLink] = useState(user.socialLinks.facebook);
+  const [twitterLink, setTwitterLink] = useState(user.socialLinks.twitter);
+  const [linkedinLink, setLinkedinLink] = useState(user.socialLinks.linkedin);
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();

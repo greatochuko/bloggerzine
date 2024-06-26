@@ -68,23 +68,17 @@ export default function page({
               className={styles["image-container"]}
             >
               <Image
-                src={blogpost.author.user_metadata.imageUrl}
-                alt={
-                  blogpost.author.user_metadata.firstname +
-                  " " +
-                  blogpost.author.user_metadata.lastname
-                }
+                src={blogpost.author.imageUrl}
+                alt={blogpost.author.firstname + " " + blogpost.author.lastname}
                 fill
                 sizes="80px"
               ></Image>
             </Link>
             <div className={styles["text"]}>
               <Link href={`/authors/${createAuthorUrl(blogpost.author)}`}>
-                {blogpost.author.user_metadata.firstname +
-                  " " +
-                  blogpost.author.user_metadata.lastname}
+                {blogpost.author.firstname + " " + blogpost.author.lastname}
               </Link>
-              <p>{blogpost.author.user_metadata.bio}</p>
+              <p>{blogpost.author.bio}</p>
             </div>
           </section>
 

@@ -218,9 +218,11 @@ const blogposts: Blogpost[] = [
 ];
 
 export async function getBlogposts() {
-  const { data, error } = await supabase.from("blogposts").select("*");
+  let { data, error } = await supabase.from("profiles").select("*");
 
-  if (!data || error) return [];
+  if (!data || error) {
+    return [];
+  }
 
   return data;
 }

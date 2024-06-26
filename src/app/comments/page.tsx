@@ -59,12 +59,8 @@ export default function CommentsPage() {
                   </Link>
                 </td>
                 <td>
-                  <Link
-                    href={`/authors/${createAuthorUrl(comment.user)}`}
-                  >
-                    {comment.user.user_metadata.firstname +
-                      " " +
-                      comment.user.user_metadata.lastname}
+                  <Link href={`/authors/${createAuthorUrl(comment.user)}`}>
+                    {comment.user.firstname + " " + comment.user.lastname}
                   </Link>
                 </td>
                 <td>{comment.comment}</td>
@@ -85,21 +81,15 @@ export default function CommentsPage() {
               <div className={styles["user-info"]}>
                 <div className={styles["image-container"]}>
                   <Image
-                    src={comment.user.user_metadata.imageUrl}
-                    alt={
-                      comment.user.user_metadata.firstname +
-                      " " +
-                      comment.user.user_metadata.lastname
-                    }
+                    src={comment.user.imageUrl}
+                    alt={comment.user.firstname + " " + comment.user.lastname}
                     fill
                     sizes=""
                   ></Image>
                 </div>
                 <div className={styles["text"]}>
                   <h4>
-                    {comment.user.user_metadata.firstname +
-                      " " +
-                      comment.user.user_metadata.lastname}
+                    {comment.user.firstname + " " + comment.user.lastname}
                   </h4>
                   <p>
                     {new Date(comment.dateCreated)

@@ -9,10 +9,10 @@ export default async function Home() {
   return (
     <div className={styles["home-page"]}>
       <Hero blogposts={blogposts.slice(0, 4)} />
-      <MainArea
+      {/* <MainArea
         topPosts={blogposts.slice(0, 6)}
         recentPosts={blogposts.slice(6, 10)}
-      />
+      /> */}
     </div>
   );
 }

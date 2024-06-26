@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "@/styles/SignupForm.module.css";
 import Link from "next/link";
-import { signup } from "@/actions/userActions";
 import { useFormState, useFormStatus } from "react-dom";
 import LoadingIndicator from "./LoadingIndicator";
 
@@ -10,26 +9,18 @@ export default function SignupForm() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  const [state, formAction] = useFormState(signup, {
-    data: null,
-    errorMessage: "",
-  });
-
-  const { errorMessage } = state;
+  const errorMessage = "";
 
   let passwordError;
   if (confirmPassword.length && password !== confirmPassword) {
     passwordError = "Passwords do not match";
   }
-  if (password.length && password.length < 8) {
-    passwordError = "Password must be at least 8 characters long";
+  if (password.length && password.length < 6) {
+    passwordError = "Password must be at least 6 characters long";
   }
 
   return (
-    <form
-      action={passwordError ? undefined : formAction}
-      className={styles["signup-form"]}
-    >
+    <form className={styles["signup-form"]}>
       <div className={styles["flex-group"]}>
         <div className={styles["input-group"]}>
           <label htmlFor="firstname">First Name</label>

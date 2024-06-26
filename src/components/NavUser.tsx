@@ -3,7 +3,7 @@ import Image from "next/image";
 import styles from "@/styles/NavUser.module.css";
 import Link from "next/link";
 import SignoutModal from "./SignoutModal";
-import { User } from "@supabase/supabase-js";
+import { User } from "@/services/userServices";
 import { createAuthorUrl } from "@/utils/createAuthorUrl";
 
 export default function NavUser({ user }: { user: User }) {
@@ -31,10 +31,8 @@ export default function NavUser({ user }: { user: User }) {
           onClick={() => setShowDropdown((curr) => !curr)}
         >
           <Image
-            src={user.user_metadata.imageUrl}
-            alt={
-              user.user_metadata.firstname + " " + user.user_metadata.lastname
-            }
+            src={user.imageUrl}
+            alt={user.firstname + " " + user.lastname}
             fill
             sizes="80px"
           ></Image>
@@ -50,22 +48,14 @@ export default function NavUser({ user }: { user: User }) {
             >
               <div className={styles["image-container"]}>
                 <Image
-                  src={user.user_metadata.imageUrl}
-                  alt={
-                    user.user_metadata.firstname +
-                    " " +
-                    user.user_metadata.lastname
-                  }
+                  src={user.imageUrl}
+                  alt={user.firstname + " " + user.lastname}
                   fill
                   sizes="80px"
                 ></Image>
               </div>
               <div className={styles["text"]}>
-                <h4>
-                  {user.user_metadata.firstname +
-                    " " +
-                    user.user_metadata.lastname}
-                </h4>
+                <h4>{user.firstname + " " + user.lastname}</h4>
                 <p>{user.email}</p>
               </div>
             </Link>

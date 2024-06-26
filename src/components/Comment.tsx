@@ -4,7 +4,7 @@ import styles from "@/styles/Comment.module.css";
 import Image from "next/image";
 import ReplyForm from "./ReplyForm";
 import { Blogpost } from "./Hero";
-import { User } from "@supabase/supabase-js";
+import { User } from "@/services/userServices";
 
 export type CommentType = {
   id: number;
@@ -33,22 +33,14 @@ export default function Comment({
       <div className={styles["main"]}>
         <div className={styles["image-container"]}>
           <Image
-            src={comment.user.user_metadata.imageUrl}
-            alt={
-              comment.user.user_metadata.firstname +
-              " " +
-              comment.user.user_metadata.lastname
-            }
+            src={comment.user.imageUrl}
+            alt={comment.user.firstname + " " + comment.user.lastname}
             fill
             sizes=""
           ></Image>
         </div>
         <div className={styles["details"]}>
-          <h3>
-            {comment.user.user_metadata.firstname +
-              " " +
-              comment.user.user_metadata.lastname}
-          </h3>
+          <h3>{comment.user.firstname + " " + comment.user.lastname}</h3>
           <time>
             {new Date(comment.dateCreated)
               .toDateString()

@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 import Overlay from "./Overlay";
 import { navLinks } from "./MainNav";
 import convertToUrl from "@/utils/convertToUrl";
-import { User } from "@supabase/supabase-js";
+import { User } from "@/services/userServices";
 import { createAuthorUrl } from "@/utils/createAuthorUrl";
 
 export default function MobileNav({

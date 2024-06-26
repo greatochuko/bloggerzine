@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "@/styles/SignoutModal.module.css";
-import { logout } from "@/actions/userActions";
 
 export default function SignoutModal({
   isOpen,
@@ -47,7 +46,7 @@ export default function SignoutModal({
         <div className={styles["actions"]}>
           <button onClick={closeSignoutModal}>Cancel</button>
           <form>
-            <button formAction={logout}>Sign out</button>
+            <button>Sign out</button>
           </form>
         </div>
       </div>

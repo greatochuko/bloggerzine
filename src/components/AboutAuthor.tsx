@@ -4,7 +4,7 @@ import styles from "@/styles/AboutAuthor.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import { getBlogposts } from "@/services/blogServices";
-import { User } from "@supabase/supabase-js";
+import { User } from "@/services/userServices";
 
 export default function AboutAuthor({ author }: { author: User }) {
   const blogposts = getBlogposts();
@@ -20,23 +20,17 @@ export default function AboutAuthor({ author }: { author: User }) {
           <div className={styles["main-info"]}>
             <div className={styles["image-container"]}>
               <Image
-                src={author.user_metadata.imageUrl}
-                alt={
-                  author.user_metadata.firstname +
-                  " " +
-                  author.user_metadata.lastname
-                }
+                src={author.imageUrl}
+                alt={author.firstname + " " + author.lastname}
                 fill
                 sizes="80px"
               ></Image>
             </div>
             <div>
               <h3>
-                {author.user_metadata.firstname} {author.user_metadata.lastname}
+                {author.firstname} {author.lastname}
               </h3>
-              {author.user_metadata.jobTitle ? (
-                <p>{author.user_metadata.jobTitle}</p>
-              ) : null}
+              {author.jobTitle ? <p>{author.jobTitle}</p> : null}
             </div>
           </div>
           <p>
@@ -46,7 +40,7 @@ export default function AboutAuthor({ author }: { author: User }) {
         </div>
         <div className={styles["bio"]}>
           <h2>Bio:</h2>
-          <p>{author.user_metadata.bio}</p>
+          <p>{author.bio}</p>
         </div>
       </div>
     </div>

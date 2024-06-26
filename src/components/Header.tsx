@@ -4,7 +4,7 @@ import styles from "@/styles/Header.module.css";
 import MobileNav from "./MobileNav";
 import { Rubik } from "next/font/google";
 import MainNav from "./MainNav";
-import { User } from "@supabase/supabase-js";
+import { User } from "@/services/userServices";
 
 const rubik = Rubik({ subsets: ["latin"] });
 

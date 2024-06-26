@@ -3,7 +3,8 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import UserProvider from "@/context/UserContext";
-import { createClient } from "@/utils/supabase/server";
+import { createClient } from "@/utils/supabase/client";
+import { getUser } from "@/services/userServices";
 
 export const metadata: Metadata = {
   title: { absolute: "Bloggerzine", template: "%s - Bloggerzine" },
@@ -17,15 +18,17 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const supabase = createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const { data } = await supabase.auth.getUser();
+
+  const user = data.user ? await getUser(data.user.id) : null;
+
+  // const user = null;
 
   return (
     <UserProvider>
       <html lang="en">
         <body>
-          <Header user={user} />
+          <Header user={user?.author} />
           <main>{children}</main>
           <Footer />
         </body>

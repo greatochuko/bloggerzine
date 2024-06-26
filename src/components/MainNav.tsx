@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import styles from "@/styles/MainNav.module.css";
 import SearchForm from "./SearchForm";
 import NavUser from "./NavUser";
-import { User } from "@supabase/supabase-js";
+import { User } from "@/services/userServices";
 
 export const navLinks = [
   { name: "Home", href: "/" },

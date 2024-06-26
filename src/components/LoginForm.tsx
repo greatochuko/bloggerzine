@@ -4,24 +4,16 @@ import styles from "@/styles/LoginForm.module.css";
 import Link from "next/link";
 import { useFormState, useFormStatus } from "react-dom";
 import LoadingIndicator from "./LoadingIndicator";
-import { login } from "@/actions/userActions";
 import { redirect, useSearchParams } from "next/navigation";
 
 export default function LoginForm() {
-  const [state, formAction] = useFormState(login, {
-    data: null,
-    errorMessage: "",
-  });
-
   const searchParams = useSearchParams();
   const redirectTo = searchParams.get("redirect");
 
-  const { data, errorMessage } = state;
-
-  if (data) redirect(redirectTo || "/");
+  const errorMessage = "";
 
   return (
-    <form className={styles["login-form"]} action={formAction}>
+    <form className={styles["login-form"]}>
       <div className={styles["input-group"]}>
         <label htmlFor="email">Email Address</label>
         <input

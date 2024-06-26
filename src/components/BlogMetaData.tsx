@@ -15,21 +15,15 @@ export default function BlogMetaData({ blog }: { blog: Blogpost }) {
       >
         <div className={styles["image-container"]}>
           <Image
-            src={blog.author.user_metadata.imageUrl}
+            src={blog.author.imageUrl}
             fill
-            alt={
-              blog.author.user_metadata.firstname +
-              " " +
-              blog.author.user_metadata.lastname
-            }
+            alt={blog.author.firstname + " " + blog.author.lastname}
             sizes="(max-width: 640px) 10vw, 6vw"
           ></Image>
         </div>
         <p>
           <span>by </span>
-          {blog.author.user_metadata.firstname +
-            " " +
-            blog.author.user_metadata.lastname}
+          {blog.author.firstname + " " + blog.author.lastname}
         </p>
       </Link>
       <div className={styles["date"]}>

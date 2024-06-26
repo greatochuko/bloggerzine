@@ -4,7 +4,7 @@ import styles from "@/styles/RecentComments.module.css";
 import Link from "next/link";
 import convertToUrl from "@/utils/convertToUrl";
 import Image from "next/image";
-import { User } from "@supabase/supabase-js";
+import { User } from "@/services/userServices";
 import { CommentType } from "./Comment";
 
 export default function RecentComments({ author }: { author: User }) {
@@ -27,12 +27,8 @@ export default function RecentComments({ author }: { author: User }) {
               >
                 <div className={styles["image-container"]}>
                   <Image
-                    src={comment.user.user_metadata.imageUrl}
-                    alt={
-                      comment.user.user_metadata.firstname +
-                      " " +
-                      comment.user.user_metadata.lastname
-                    }
+                    src={comment.user.imageUrl}
+                    alt={comment.user.firstname + " " + comment.user.lastname}
                     fill
                     sizes="80px"
                   ></Image>
@@ -40,10 +36,7 @@ export default function RecentComments({ author }: { author: User }) {
                 <div className={styles["text"]}>
                   <p>{comment.comment}...</p>
                   <p>
-                    by{" "}
-                    {comment.user.user_metadata.firstname +
-                      " " +
-                      comment.user.user_metadata.lastname}
+                    by {comment.user.firstname + " " + comment.user.lastname}
                   </p>
                 </div>
               </Link>

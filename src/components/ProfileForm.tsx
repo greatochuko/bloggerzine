@@ -1,29 +1,23 @@
 "use client";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "@/styles/ProfileForm.module.css";
-import { AuthError, User } from "@supabase/supabase-js";
 import { uploadImage } from "@/utils/imageUploader";
 import LoadingIndicator from "./LoadingIndicator";
-import { updateUser } from "@/actions/userActions";
-import { useFormState, useFormStatus } from "react-dom";
+import { useFormStatus } from "react-dom";
+import { User } from "@/services/userServices";
 
 export default function ProfileForm({ user }: { user: User }) {
   const [profileImage, setProfileImage] = useState({
     loading: false,
-    url: user.user_metadata.imageUrl,
+    url: user.imageUrl,
   });
   const [coverImage, setCoverImage] = useState({
     loading: false,
-    url: user.user_metadata.coverImageUrl,
+    url: user.coverImageUrl,
   });
 
-  const [state, formAction] = useFormState(updateUser, {
-    user: null,
-    errorMessage: null,
-  });
-
-  const { errorMessage } = state;
+  const errorMessage = "";
 
   async function handleChangeProfileImage(
     e: React.ChangeEvent<HTMLInputElement>
@@ -46,7 +40,7 @@ export default function ProfileForm({ user }: { user: User }) {
   }
 
   return (
-    <form className={styles["profile-form"]} action={formAction}>
+    <form className={styles["profile-form"]}>
       <input type="hidden" name="userId" value={user.id} />
       <label htmlFor="firstname">Firstname</label>
       <input
@@ -54,7 +48,7 @@ export default function ProfileForm({ user }: { user: User }) {
         id="firstname"
         name="firstname"
         placeholder="Enter firstname"
-        defaultValue={user.user_metadata.firstname}
+        defaultValue={user.firstname}
         required
       />
       <label htmlFor="lastname">Lastname</label>
@@ -63,7 +57,7 @@ export default function ProfileForm({ user }: { user: User }) {
         id="lastname"
         name="lastname"
         placeholder="Enter lastname"
-        defaultValue={user.user_metadata.lastname}
+        defaultValue={user.lastname}
         required
       />
       <p>Profile picture</p>
@@ -74,9 +68,7 @@ export default function ProfileForm({ user }: { user: User }) {
         >
           <Image
             src={profileImage.url}
-            alt={
-              user.user_metadata.firstname + " " + user.user_metadata.lastname
-            }
+            alt={user.firstname + " " + user.lastname}
             fill
             sizes="112px"
           ></Image>
@@ -130,9 +122,7 @@ export default function ProfileForm({ user }: { user: User }) {
         >
           <Image
             src={coverImage.url}
-            alt={
-              user.user_metadata.firstname + " " + user.user_metadata.lastname
-            }
+            alt={user.firstname + " " + user.lastname}
             fill
             sizes="320px"
           ></Image>
@@ -183,14 +173,14 @@ export default function ProfileForm({ user }: { user: User }) {
         type="text"
         id="job-title"
         name="job-title"
-        defaultValue={user.user_metadata.jobTitle}
+        defaultValue={user.jobTitle}
         placeholder="Enter job title"
       />
       <label htmlFor="bio">Bio</label>
       <textarea
         name="bio"
         id="bio"
-        defaultValue={user.user_metadata.bio}
+        defaultValue={user.bio}
         placeholder="Write about yourself"
       ></textarea>
       {errorMessage && <p className={styles["error"]}>{errorMessage}</p>}

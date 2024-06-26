@@ -4,7 +4,7 @@ import styles from "@/styles/Stats.module.css";
 import { convertToAbbrString } from "@/utils/numberFormatter";
 import { getBlogpostByAuthor } from "@/services/blogServices";
 import { getCommentsByAuthor } from "@/services/commentServices";
-import { User } from "@supabase/supabase-js";
+import { User } from "@/services/userServices";
 import { Blogpost } from "./Hero";
 
 export default function Stats({

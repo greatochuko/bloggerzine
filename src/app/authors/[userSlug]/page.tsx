@@ -17,8 +17,7 @@ export async function generateMetadata({
   const { author } = await getUser(userId);
   if (author)
     return {
-      title:
-        author?.user_metadata.firstname + " " + author?.user_metadata.lastname,
+      title: author?.firstname + " " + author?.lastname,
     };
 
   return { title: "Author" };
@@ -50,12 +49,8 @@ export default async function AuthorPage({
       <div className={styles["header"]}>
         <div className={styles["cover-photo-container"]}>
           <Image
-            src={author.user_metadata.coverImageUrl}
-            alt={
-              author.user_metadata.firstname +
-              " " +
-              author.user_metadata.lastname
-            }
+            src={author.coverImageUrl}
+            alt={author.firstname + " " + author.lastname}
             fill
             sizes=""
           ></Image>
@@ -63,24 +58,16 @@ export default async function AuthorPage({
         <div className={styles["author-details"]}>
           <div className={styles["image-container"]}>
             <Image
-              src={author.user_metadata.imageUrl}
-              alt={
-                author.user_metadata.firstname +
-                " " +
-                author.user_metadata.lastname
-              }
+              src={author.imageUrl}
+              alt={author.firstname + " " + author.lastname}
               fill
               sizes=""
             ></Image>
           </div>
           <div className={styles["text"]}>
-            <h1>
-              {author.user_metadata.firstname +
-                " " +
-                author.user_metadata.lastname}
-            </h1>
+            <h1>{author.firstname + " " + author.lastname}</h1>
             <p>
-              {author.user_metadata.jobTitle ? (
+              {author.jobTitle ? (
                 <span>
                   <svg
                     height={18}
@@ -120,7 +107,7 @@ export default async function AuthorPage({
                       ></path>{" "}
                     </g>
                   </svg>
-                  {author.user_metadata.jobTitle}
+                  {author.jobTitle}
                 </span>
               ) : null}
               <span>
@@ -148,7 +135,7 @@ export default async function AuthorPage({
                   </g>
                 </svg>
                 Joined on{" "}
-                {new Date(author.created_at)
+                {new Date(author.createdAt)
                   .toDateString()
                   .split(" ")
                   .slice(1)
