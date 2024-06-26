@@ -37,7 +37,7 @@ export default function page({
     <div className={styles["blog-page"]}>
       <div className={styles["header"]}>
         <Image
-          src={blogpost.thumbnail}
+          src={blogpost.thumbnail || ""}
           alt={blogpost.title}
           sizes="950vw"
           fill
@@ -68,7 +68,7 @@ export default function page({
               className={styles["image-container"]}
             >
               <Image
-                src={blogpost.author.imageUrl}
+                src={blogpost.author.imageUrl || ""}
                 alt={blogpost.author.firstname + " " + blogpost.author.lastname}
                 fill
                 sizes="80px"

@@ -4,8 +4,9 @@ import React, { useState } from "react";
 import styles from "@/styles/ProfileForm.module.css";
 import { uploadImage } from "@/utils/imageUploader";
 import LoadingIndicator from "./LoadingIndicator";
-import { useFormStatus } from "react-dom";
+import { useFormState, useFormStatus } from "react-dom";
 import { User } from "@/services/userServices";
+import { updateProfile } from "@/actions/authActions";
 
 export default function ProfileForm({ user }: { user: User }) {
   const [profileImage, setProfileImage] = useState({
@@ -16,8 +17,6 @@ export default function ProfileForm({ user }: { user: User }) {
     loading: false,
     url: user.coverImageUrl,
   });
-
-  const errorMessage = "";
 
   async function handleChangeProfileImage(
     e: React.ChangeEvent<HTMLInputElement>
@@ -39,8 +38,14 @@ export default function ProfileForm({ user }: { user: User }) {
     setCoverImage({ loading: false, url });
   }
 
+  const [state, updateProfileAction] = useFormState(updateProfile, {
+    errorMessage: "",
+  });
+
+  const { errorMessage } = state;
+
   return (
-    <form className={styles["profile-form"]}>
+    <form className={styles["profile-form"]} action={updateProfileAction}>
       <input type="hidden" name="userId" value={user.id} />
       <label htmlFor="firstname">Firstname</label>
       <input
@@ -67,7 +72,7 @@ export default function ProfileForm({ user }: { user: User }) {
           className={styles["profile-picture-container"]}
         >
           <Image
-            src={profileImage.url}
+            src={profileImage.url || ""}
             alt={user.firstname + " " + user.lastname}
             fill
             sizes="112px"
@@ -112,7 +117,7 @@ export default function ProfileForm({ user }: { user: User }) {
           hidden
           onChange={handleChangeProfileImage}
         />
-        <input type="hidden" name="profile-picture" value={profileImage.url} />
+        <input type="hidden" name="imageUrl" value={profileImage.url} />
       </div>
       <p>Cover photo</p>
       <div className={styles["cover-photo"]}>
@@ -121,7 +126,7 @@ export default function ProfileForm({ user }: { user: User }) {
           className={styles["cover-photo-container"]}
         >
           <Image
-            src={coverImage.url}
+            src={coverImage.url || ""}
             alt={user.firstname + " " + user.lastname}
             fill
             sizes="320px"
@@ -166,7 +171,7 @@ export default function ProfileForm({ user }: { user: User }) {
           disabled={coverImage.loading}
           onChange={handleChangeCoverImage}
         />
-        <input type="hidden" name="cover-photo" value={coverImage.url} />
+        <input type="hidden" name="coverImageUrl" value={coverImage.url} />
       </div>
       <label htmlFor="job-title">Job title</label>
       <input

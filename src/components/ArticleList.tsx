@@ -260,7 +260,7 @@ export default function ArticleList({ blogposts }: { blogposts: Blogpost[] }) {
                 <li className={styles["blog-card"]} key={blog.id}>
                   <div className={styles["image-container"]}>
                     <Image
-                      src={blog.thumbnail}
+                      src={blog.thumbnail || ""}
                       alt={blog.title}
                       fill
                       sizes="128px"

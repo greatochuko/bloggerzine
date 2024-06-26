@@ -15,7 +15,7 @@ export default function BlogMetaData({ blog }: { blog: Blogpost }) {
       >
         <div className={styles["image-container"]}>
           <Image
-            src={blog.author.imageUrl}
+            src={blog.author.imageUrl || ""}
             fill
             alt={blog.author.firstname + " " + blog.author.lastname}
             sizes="(max-width: 640px) 10vw, 6vw"

@@ -20,7 +20,7 @@ export default function Category({ category }: { category: Category }) {
       <div className={styles["title"]}>
         <div className={styles["image-container"]}>
           <Image
-            src={category.imageUrl}
+            src={category.imageUrl || ""}
             alt={category.name}
             fill
             sizes="600px"

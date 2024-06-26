@@ -50,7 +50,7 @@ export default function CategoryPage({
     <div className={styles["category-page"]}>
       <div className={styles["category-banner"]}>
         <Image
-          src={category.imageUrl}
+          src={category.imageUrl || ""}
           alt={category.name}
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 33vw, 25vw"

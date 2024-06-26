@@ -18,7 +18,7 @@ export default function CategoryList({
           key={category.name}
         >
           <Image
-            src={category.imageUrl}
+            src={category.imageUrl || ""}
             alt={category.name}
             fill
             sizes="(max-width: 640px) 100vw, 25vw"

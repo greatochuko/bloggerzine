@@ -81,7 +81,7 @@ export default function CommentsPage() {
               <div className={styles["user-info"]}>
                 <div className={styles["image-container"]}>
                   <Image
-                    src={comment.user.imageUrl}
+                    src={comment.user.imageUrl || ""}
                     alt={comment.user.firstname + " " + comment.user.lastname}
                     fill
                     sizes=""

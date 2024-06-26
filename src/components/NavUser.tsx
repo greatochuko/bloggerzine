@@ -31,7 +31,7 @@ export default function NavUser({ user }: { user: User }) {
           onClick={() => setShowDropdown((curr) => !curr)}
         >
           <Image
-            src={user.imageUrl}
+            src={user.imageUrl || ""}
             alt={user.firstname + " " + user.lastname}
             fill
             sizes="80px"
@@ -48,7 +48,7 @@ export default function NavUser({ user }: { user: User }) {
             >
               <div className={styles["image-container"]}>
                 <Image
-                  src={user.imageUrl}
+                  src={user.imageUrl || ""}
                   alt={user.firstname + " " + user.lastname}
                   fill
                   sizes="80px"

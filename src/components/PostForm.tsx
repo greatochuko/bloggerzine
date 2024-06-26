@@ -88,7 +88,7 @@ export default function CreatePostForm({ blogpost }: { blogpost?: Blogpost }) {
       <div className={styles["input-group"]}>
         <p>Post Thumbnail</p>
         <label htmlFor="thumbnail-input" className={styles["thumbnail"]}>
-          <Image src={thumbnail.url} alt={title} fill sizes=""></Image>
+          <Image src={thumbnail.url || ""} alt={title} fill sizes=""></Image>
           <div
             className={styles["overlay"]}
             style={{ opacity: thumbnail.loading ? 1 : "" }}

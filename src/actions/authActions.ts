@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 import { createClient } from "@/utils/supabase/server";
+import { createAuthorUrl } from "@/utils/createAuthorUrl";
 
 export async function login(initialState: any, formData: FormData) {
   const supabase = createClient();
@@ -52,4 +53,37 @@ export async function signup(initialState: any, formData: FormData) {
 
   revalidatePath("/", "layout");
   redirect("/confirm-email");
+}
+
+export async function updateProfile(initialState: any, formData: FormData) {
+  const supabase = createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) redirect("/login");
+
+  const data = {
+    firstname: formData.get("firstname") as string,
+    lastname: formData.get("lastname") as string,
+    bio: formData.get("bio") as string,
+    jobTitle: formData.get("job-title") as string,
+    imageUrl: formData.get("imageUrl") as string,
+    coverImageUrl: formData.get("coverImageUrl") as string,
+  };
+
+  const { data: userData, error } = await supabase
+    .from("profiles")
+    .update(data)
+    .eq("id", user.id)
+    .select();
+
+  if (error) {
+    return { errorMessage: error.message };
+  }
+
+  revalidatePath("/settings");
+  revalidatePath("/dashboard");
+  revalidatePath(`/authors/${createAuthorUrl(userData[0])}`);
+  return { errorMessage: null };
 }

@@ -13,7 +13,7 @@ export default function PostCard({ blogpost }: { blogpost: Blogpost }) {
       className={styles["post-card"]}
     >
       <Image
-        src={blogpost.thumbnail}
+        src={blogpost.thumbnail || ""}
         alt={blogpost.title}
         fill
         sizes="(max-width: 640px) 100vw, (max-width: 992px) 50vw, 33vw"

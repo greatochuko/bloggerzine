@@ -20,7 +20,7 @@ export default function AboutAuthor({ author }: { author: User }) {
           <div className={styles["main-info"]}>
             <div className={styles["image-container"]}>
               <Image
-                src={author.imageUrl}
+                src={author.imageUrl || ""}
                 alt={author.firstname + " " + author.lastname}
                 fill
                 sizes="80px"

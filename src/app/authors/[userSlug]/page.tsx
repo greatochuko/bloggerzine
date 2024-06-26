@@ -51,7 +51,7 @@ export default async function AuthorPage({
       <div className={styles["header"]}>
         <div className={styles["cover-photo-container"]}>
           <Image
-            src={author.coverImageUrl}
+            src={author.coverImageUrl || ""}
             alt={author.firstname + " " + author.lastname}
             fill
             sizes=""
@@ -60,7 +60,7 @@ export default async function AuthorPage({
         <div className={styles["author-details"]}>
           <div className={styles["image-container"]}>
             <Image
-              src={author.imageUrl}
+              src={author.imageUrl || ""}
               alt={author.firstname + " " + author.lastname}
               fill
               sizes=""
