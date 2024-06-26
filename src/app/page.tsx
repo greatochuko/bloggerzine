@@ -2,9 +2,16 @@ import Hero from "@/components/Hero";
 import styles from "./page.module.css";
 import MainArea from "@/components/MainArea";
 import { getBlogposts } from "@/services/blogServices";
+import { createClient } from "@/utils/supabase/server";
 
 export default async function Home() {
-  const blogposts = await getBlogposts();
+  const blogposts = getBlogposts();
+
+  const supabase = createClient();
+
+  const { data, error } = await supabase.auth.getUser();
+
+  console.log(error?.message);
 
   return (
     <div className={styles["home-page"]}>

@@ -1,5 +1,4 @@
 import { Blogpost } from "@/components/Hero";
-import supabase from "@/config/supabaseClient";
 import { createClient } from "@/utils/supabase/client";
 
 const blogposts: Blogpost[] = [
@@ -13,14 +12,18 @@ const blogposts: Blogpost[] = [
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
 
     category: "technology",
-    imageUrl: "/blog-1.jpg",
+    thumbnail: "/blog-1.jpg",
     author: {
+      email: "John ",
+      coverImageUrl: "John ",
+      createdAt: "John ",
+      socialLinks: { facebook: "", instagram: "", linkedIn: "", twitter: "" },
+      jobTitle: "John ",
       firstname: "John ",
       lastname: "Doe",
-      username: "johndoe",
       imageUrl: "/user-2.jpg",
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
-      id: 2,
+      id: "2",
     },
     dateCreated: "2024-05-22T23:00:00.000Z",
     isFeatured: false,
@@ -34,14 +37,18 @@ const blogposts: Blogpost[] = [
     content:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
     category: "lifestyle",
-    imageUrl: "/blog-2.jpg",
+    thumbnail: "/blog-2.jpg",
     author: {
+      email: "Great ",
+      coverImageUrl: "Great ",
+      createdAt: "Great ",
+      socialLinks: { facebook: "", instagram: "", linkedIn: "", twitter: "" },
+      jobTitle: "Great ",
       firstname: "Great ",
       lastname: "Ochuko",
-      username: "greatochuko",
       imageUrl: "/profile-pic.jpg",
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
-      id: 1,
+      id: "1",
     },
     dateCreated: "2024-04-22T23:00:00.000Z",
     isFeatured: false,
@@ -55,14 +62,18 @@ const blogposts: Blogpost[] = [
     content:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
     category: "travel",
-    imageUrl: "/blog-3.jpg",
+    thumbnail: "/blog-3.jpg",
     author: {
+      email: "Great ",
+      coverImageUrl: "Great ",
+      createdAt: "Great ",
+      socialLinks: { facebook: "", instagram: "", linkedIn: "", twitter: "" },
+      jobTitle: "Great ",
       firstname: "Great ",
       lastname: "Ochuko",
-      username: "greatochuko",
       imageUrl: "/profile-pic.jpg",
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
-      id: 1,
+      id: "1",
     },
     dateCreated: "2024-05-22T23:00:00.000Z",
     isFeatured: false,
@@ -76,14 +87,18 @@ const blogposts: Blogpost[] = [
     content:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
     category: "finance",
-    imageUrl: "/blog-4.jpg",
+    thumbnail: "/blog-4.jpg",
     author: {
+      email: "Great ",
+      coverImageUrl: "Great ",
+      createdAt: "Great ",
+      socialLinks: { facebook: "", instagram: "", linkedIn: "", twitter: "" },
+      jobTitle: "Great ",
       firstname: "Great ",
       lastname: "Ochuko",
-      username: "greatochuko",
       imageUrl: "/profile-pic.jpg",
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
-      id: 1,
+      id: "1",
     },
     dateCreated: "2024-05-22T23:00:00.000Z",
     isFeatured: false,
@@ -97,14 +112,18 @@ const blogposts: Blogpost[] = [
     content:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
     category: "sports",
-    imageUrl: "/blog-5.jpg",
+    thumbnail: "/blog-5.jpg",
     author: {
+      email: "Great ",
+      coverImageUrl: "Great ",
+      createdAt: "Great ",
+      socialLinks: { facebook: "", instagram: "", linkedIn: "", twitter: "" },
+      jobTitle: "Great ",
       firstname: "Great ",
       lastname: "Ochuko",
-      username: "greatochuko",
       imageUrl: "/profile-pic.jpg",
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
-      id: 1,
+      id: "1",
     },
     dateCreated: "2024-05-22T23:00:00.000Z",
     isFeatured: false,
@@ -118,14 +137,18 @@ const blogposts: Blogpost[] = [
     content:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
     category: "technology",
-    imageUrl: "/blog-6.jpg",
+    thumbnail: "/blog-6.jpg",
     author: {
+      email: "Great ",
+      coverImageUrl: "Great ",
+      createdAt: "Great ",
+      socialLinks: { facebook: "", instagram: "", linkedIn: "", twitter: "" },
+      jobTitle: "Great ",
       firstname: "Great ",
       lastname: "Ochuko",
-      username: "greatochuko",
       imageUrl: "/profile-pic.jpg",
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
-      id: 1,
+      id: "1",
     },
     dateCreated: "2024-05-22T23:00:00.000Z",
     isFeatured: false,
@@ -139,14 +162,18 @@ const blogposts: Blogpost[] = [
     content:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
     category: "lifestyle",
-    imageUrl: "/blog-7.jpg",
+    thumbnail: "/blog-7.jpg",
     author: {
+      email: "Great ",
+      coverImageUrl: "Great ",
+      createdAt: "Great ",
+      socialLinks: { facebook: "", instagram: "", linkedIn: "", twitter: "" },
+      jobTitle: "Great ",
       firstname: "Great ",
       lastname: "Ochuko",
-      username: "greatochuko",
       imageUrl: "/profile-pic.jpg",
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
-      id: 1,
+      id: "1",
     },
     dateCreated: "2024-05-22T23:00:00.000Z",
     isFeatured: false,
@@ -160,14 +187,18 @@ const blogposts: Blogpost[] = [
     content:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
     category: "travel",
-    imageUrl: "/blog-8.jpg",
+    thumbnail: "/blog-8.jpg",
     author: {
+      email: "Great ",
+      coverImageUrl: "Great ",
+      createdAt: "Great ",
+      socialLinks: { facebook: "", instagram: "", linkedIn: "", twitter: "" },
+      jobTitle: "Great ",
       firstname: "Great ",
       lastname: "Ochuko",
-      username: "greatochuko",
       imageUrl: "/profile-pic.jpg",
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
-      id: 1,
+      id: "1",
     },
     dateCreated: "2024-05-22T23:00:00.000Z",
     isFeatured: false,
@@ -181,14 +212,18 @@ const blogposts: Blogpost[] = [
     content:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
     category: "finance",
-    imageUrl: "/blog-9.jpg",
+    thumbnail: "/blog-9.jpg",
     author: {
+      email: "Great ",
+      coverImageUrl: "Great ",
+      createdAt: "Great ",
+      socialLinks: { facebook: "", instagram: "", linkedIn: "", twitter: "" },
+      jobTitle: "Great ",
       firstname: "Great ",
       lastname: "Ochuko",
-      username: "greatochuko",
       imageUrl: "/profile-pic.jpg",
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
-      id: 1,
+      id: "1",
     },
     dateCreated: "2024-05-22T23:00:00.000Z",
     isFeatured: false,
@@ -202,14 +237,18 @@ const blogposts: Blogpost[] = [
     content:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
     category: "sports",
-    imageUrl: "/blog-10.jpg",
+    thumbnail: "/blog-10.jpg",
     author: {
+      email: "Great ",
+      coverImageUrl: "Great ",
+      createdAt: "Great ",
+      socialLinks: { facebook: "", instagram: "", linkedIn: "", twitter: "" },
+      jobTitle: "Great ",
       firstname: "Great ",
       lastname: "Ochuko",
-      username: "greatochuko",
       imageUrl: "/profile-pic.jpg",
       bio: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio, veritatis aliquid voluptatum maxime nisi, quod sunt libero laudantium earum soluta, magnam sint dolorem impedit at omnis!",
-      id: 1,
+      id: "1",
     },
     dateCreated: "2024-05-22T23:00:00.000Z",
     isFeatured: false,
@@ -217,14 +256,8 @@ const blogposts: Blogpost[] = [
   },
 ];
 
-export async function getBlogposts() {
-  let { data, error } = await supabase.from("profiles").select("*");
-
-  if (!data || error) {
-    return [];
-  }
-
-  return data;
+export function getBlogposts() {
+  return blogposts;
 }
 
 export function getBlogpost(id: string) {
