@@ -6,7 +6,7 @@ import { User } from "@/services/userServices";
 export default function SocialLinksForm({ user }: { user: User }) {
   const [facebookLink, setFacebookLink] = useState(user.socialLinks.facebook);
   const [twitterLink, setTwitterLink] = useState(user.socialLinks.twitter);
-  const [linkedinLink, setLinkedinLink] = useState(user.socialLinks.linkedin);
+  const [linkedInLink, setLinkedinLink] = useState(user.socialLinks.linkedIn);
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -32,13 +32,13 @@ export default function SocialLinksForm({ user }: { user: User }) {
         value={twitterLink}
         onChange={(e) => setTwitterLink(e.target.value)}
       />
-      <label htmlFor="linkedin">Linkedin</label>
+      <label htmlFor="linkedIn">Linkedin</label>
       <input
         type="text"
-        id="linkedin"
-        name="linkedin"
-        placeholder="Enter linkedin URL"
-        value={linkedinLink}
+        id="linkedIn"
+        name="linkedIn"
+        placeholder="Enter linkedIn URL"
+        value={linkedInLink}
         onChange={(e) => setLinkedinLink(e.target.value)}
       />
       <div className={styles["actions"]}>

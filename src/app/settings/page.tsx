@@ -7,6 +7,7 @@ import SocialLinksForm from "@/components/SocialLinksForm";
 import { Metadata } from "next";
 import ChangePasswordForm from "@/components/ChangePasswordForm";
 import { createClient } from "@/utils/supabase/server";
+import { notFound } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Settings",
@@ -14,11 +15,13 @@ export const metadata: Metadata = {
 
 export default async function SettingsPage() {
   const supabase = createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const { data, error } = await supabase.auth.getUser();
 
-  if (!user) return <Navigate to="/login" />;
+  if (!data || error) return <Navigate to="/login" />;
+
+  const { user } = await getUser(data.user.id);
+
+  if (!user) notFound();
 
   return (
     <div className={styles["settings-page"]}>
