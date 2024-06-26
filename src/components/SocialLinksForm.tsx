@@ -1,50 +1,76 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import styles from "@/styles/SocialLinksForm.module.css";
 import { User } from "@/services/userServices";
+import { updateSocialLinks } from "@/actions/authActions";
+import { useFormState, useFormStatus } from "react-dom";
+import LoadingIndicator from "./LoadingIndicator";
 
 export default function SocialLinksForm({ user }: { user: User }) {
-  const [facebookLink, setFacebookLink] = useState(user.socialLinks.facebook);
-  const [twitterLink, setTwitterLink] = useState(user.socialLinks.twitter);
-  const [linkedInLink, setLinkedinLink] = useState(user.socialLinks.linkedIn);
+  const [state, updateSocialLinksAction] = useFormState(updateSocialLinks, {
+    errorMessage: "",
+  });
 
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-  }
+  const { errorMessage } = state;
 
   return (
-    <form className={styles["social-links-form"]} onSubmit={handleSubmit}>
+    <form
+      className={styles["social-links-form"]}
+      action={updateSocialLinksAction}
+    >
       <label htmlFor="facebook">Facebook</label>
       <input
         type="text"
         id="facebook"
         name="facebook"
+        defaultValue={user.socialLinks.facebook}
         placeholder="Enter facebook URL"
-        value={facebookLink}
-        onChange={(e) => setFacebookLink(e.target.value)}
       />
       <label htmlFor="twitter">Twitter</label>
       <input
         type="text"
         id="twitter"
         name="twitter"
+        defaultValue={user.socialLinks.twitter}
         placeholder="Enter twitter URL"
-        value={twitterLink}
-        onChange={(e) => setTwitterLink(e.target.value)}
+      />
+      <label htmlFor="instagram">Instagram</label>
+      <input
+        type="text"
+        id="instagram"
+        name="instagram"
+        defaultValue={user.socialLinks.instagram}
+        placeholder="Enter instagram URL"
       />
       <label htmlFor="linkedIn">Linkedin</label>
       <input
         type="text"
         id="linkedIn"
         name="linkedIn"
+        defaultValue={user.socialLinks.linkedIn}
         placeholder="Enter linkedIn URL"
-        value={linkedInLink}
-        onChange={(e) => setLinkedinLink(e.target.value)}
       />
+      {errorMessage && <p className={styles["error"]}>{errorMessage}</p>}
       <div className={styles["actions"]}>
         <button type="reset">Reset</button>
-        <button type="submit">Save Changes</button>
+        <Button />
       </div>
     </form>
+  );
+}
+function Button() {
+  const { pending } = useFormStatus();
+
+  return (
+    <button type="submit" disabled={pending}>
+      {pending ? (
+        <>
+          <LoadingIndicator size={20} color="white" />
+          Saving...
+        </>
+      ) : (
+        "Save Changes"
+      )}
+    </button>
   );
 }

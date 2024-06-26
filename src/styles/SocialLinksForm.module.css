@@ -56,6 +56,9 @@
 .social-links-form .actions button[type="submit"] {
   background-color: var(--blue-100);
   color: white;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
 }
 
 .social-links-form .actions button[type="submit"]:hover {

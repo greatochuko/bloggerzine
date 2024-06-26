@@ -87,3 +87,36 @@ export async function updateProfile(initialState: any, formData: FormData) {
   revalidatePath(`/authors/${createAuthorUrl(userData[0])}`);
   return { errorMessage: null };
 }
+
+export async function updateSocialLinks(initialState: any, formData: FormData) {
+  const supabase = createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) redirect("/login");
+
+  const data = {
+    socialLinks: {
+      facebook: formData.get("facebook") as string,
+      twitter: formData.get("twitter") as string,
+      linkedIn: formData.get("linkedIn") as string,
+      instagram: formData.get("instagram") as string,
+    },
+  };
+
+  const { data: userData, error } = await supabase
+    .from("profiles")
+    .update(data)
+    .eq("id", user.id)
+    .select();
+
+  if (error) {
+    return { errorMessage: error.message };
+  }
+
+  revalidatePath("/settings");
+  revalidatePath("/dashboard");
+  revalidatePath(`/authors/${createAuthorUrl(userData[0])}`);
+  return { errorMessage: null };
+}
