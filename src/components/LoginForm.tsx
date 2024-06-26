@@ -5,15 +5,24 @@ import Link from "next/link";
 import { useFormState, useFormStatus } from "react-dom";
 import LoadingIndicator from "./LoadingIndicator";
 import { redirect, useSearchParams } from "next/navigation";
+import { login } from "@/actions/authActions";
+import Navigate from "./Navigate";
 
 export default function LoginForm() {
   const searchParams = useSearchParams();
   const redirectTo = searchParams.get("redirect");
 
-  const errorMessage = "";
+  const [state, loginAction] = useFormState(login, {
+    user: null,
+    errorMessage: "",
+  });
+
+  const { user, errorMessage } = state;
+
+  if (user) redirect(redirectTo || "/");
 
   return (
-    <form className={styles["login-form"]}>
+    <form className={styles["login-form"]} action={loginAction}>
       <div className={styles["input-group"]}>
         <label htmlFor="email">Email Address</label>
         <input

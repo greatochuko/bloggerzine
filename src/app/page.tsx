@@ -9,9 +9,12 @@ export default async function Home() {
 
   const supabase = createClient();
 
-  const { data, error } = await supabase.auth.getUser();
+  const {
+    data: { user },
+    error,
+  } = await supabase.auth.getUser();
 
-  console.log(error?.message);
+  if (user) console.log(user.id);
 
   return (
     <div className={styles["home-page"]}>
