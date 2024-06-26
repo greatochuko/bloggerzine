@@ -23,7 +23,7 @@ const users: User[] = [
     id: "e0ef9ea8-a7c1-4cc3-8985-7700b373854c",
     email: "greatochuko123@gmail.com",
     bio: "",
-    imageUrl: "/placeholder-profile-image.jpg",
+    imageUrl: "/default-profile-image.jpg",
     jobTitle: "",
     lastname: "Ogheneochuko",
     firstname: "Great",
@@ -33,7 +33,7 @@ const users: User[] = [
       linkedIn: "",
       instagram: "",
     },
-    coverImageUrl: "/placeholder-cover-image.jpg",
+    coverImageUrl: "/default-cover-image.jpg",
     createdAt: "2024-06-24 23:08:22.820636+00",
   },
 ];
@@ -51,9 +51,9 @@ export async function getUser(userId: string) {
 
   const user = data ? data[0] : null;
 
-  if (user && !error) return { author: user, error: null };
+  if (user && !error) return { user, error: null };
 
-  return { author: null, error };
+  return { user: null, error };
 }
 
 export function getUserDashboard() {

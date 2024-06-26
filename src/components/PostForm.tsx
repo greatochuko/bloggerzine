@@ -15,7 +15,7 @@ export default function CreatePostForm({ blogpost }: { blogpost?: Blogpost }) {
   const [title, setTitle] = useState(blogpost?.title || "");
   const [thumbnail, setThumbnail] = useState({
     loading: false,
-    url: blogpost?.thumbnail || "/placeholder-cover-image.jpg",
+    url: blogpost?.thumbnail || "/default-cover-image.jpg",
   });
   const [content, setContent] = useState(blogpost?.content || "");
   const [tags, setTags] = useState(blogpost?.tags || "");

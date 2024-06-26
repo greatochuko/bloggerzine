@@ -40,7 +40,7 @@ export default function MainArea({
               >
                 <div className={styles["image-container"]}>
                   <Image
-                    src={recentPost.imageUrl}
+                    src={recentPost.thumbnail}
                     alt={recentPost.title}
                     fill
                     sizes="(max-width: 640px) 25vw, 15vw"

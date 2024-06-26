@@ -23,7 +23,7 @@ export default function BlogMetaData({ blog }: { blog: Blogpost }) {
         </div>
         <p>
           <span>by </span>
-          {blog.author.firstname + " " + blog.author.lastname}
+          {blog.author.firstname}
         </p>
       </Link>
       <div className={styles["date"]}>
