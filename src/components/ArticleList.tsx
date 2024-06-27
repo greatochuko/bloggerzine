@@ -22,18 +22,6 @@ export default function ArticleList({ blogposts }: { blogposts: Blogpost[] }) {
     post: null,
   });
   const [optionOpen, setOptionOpen] = useState<number | null>(null);
-  const optionsListRef = useRef<HTMLDivElement>(null);
-
-  function handleClickOutside() {
-    setOptionOpen(null);
-  }
-
-  useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
 
   let filteredPosts = blogposts.filter((post) =>
     post.title.toLowerCase().includes(searchQuery)
@@ -356,10 +344,7 @@ export default function ArticleList({ blogposts }: { blogposts: Blogpost[] }) {
                         </svg>
                       </button>
                       {optionOpen === blog.id ? (
-                        <div
-                          className={styles["options-list"]}
-                          ref={optionsListRef}
-                        >
+                        <div className={styles["options-list"]}>
                           <Link
                             href={`/edit-post/${convertToUrl(blog.title)}_${
                               blog.id
