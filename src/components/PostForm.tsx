@@ -15,7 +15,12 @@ import { uploadImage } from "@/utils/imageUploader";
 import Image from "next/image";
 import LoadingIndicator from "./LoadingIndicator";
 import { useFormState, useFormStatus } from "react-dom";
-import { publishPost, saveAsDraft } from "@/actions/blogActions";
+import {
+  publishPost,
+  saveAsDraft,
+  updateAsDraft,
+  updatePost,
+} from "@/actions/blogActions";
 
 export default function CreatePostForm({ blogpost }: { blogpost?: Blogpost }) {
   const [title, setTitle] = useState(blogpost?.title || "");
@@ -27,8 +32,6 @@ export default function CreatePostForm({ blogpost }: { blogpost?: Blogpost }) {
   const [tags, setTags] = useState(blogpost?.tags || "");
   const [category, setCategory] = useState(blogpost?.category || "");
   const [isFeatured, setIsFeatured] = useState(blogpost?.isFeatured || false);
-
-  const postFormRef = useRef<HTMLFormElement>(null);
 
   const reactQuillRef = useRef<ReactQuill | null>(null);
 
@@ -91,8 +94,29 @@ export default function CreatePostForm({ blogpost }: { blogpost?: Blogpost }) {
 
   const { errorMessage: saveErrorMessage } = saveState;
 
+  const [updateAsDraftState, updateAsDraftAction] = useFormState(
+    updateAsDraft,
+    {
+      errorMessage: "",
+    }
+  );
+
+  const { errorMessage: updateAsDraftError } = updateAsDraftState;
+
+  const [updatePostState, updatePostAction] = useFormState(updatePost, {
+    errorMessage: "",
+  });
+
+  const { errorMessage: updatePostError } = updatePostState;
+
+  const error =
+    errorMessage || saveErrorMessage || updatePostError || updateAsDraftError;
+
   return (
     <form className={styles["create-post-form"]}>
+      {blogpost ? (
+        <input type="hidden" name="blogId" defaultValue={blogpost.id} />
+      ) : null}
       <div className={styles["input-group"]}>
         <label htmlFor="post-title">Post title</label>
         <input
@@ -177,12 +201,14 @@ export default function CreatePostForm({ blogpost }: { blogpost?: Blogpost }) {
         />
         <label htmlFor="featured">Make this post featured?</label>
       </div>
-      {errorMessage || saveErrorMessage ? (
-        <p className={styles["error"]}>{errorMessage || saveErrorMessage}</p>
-      ) : null}
+      {error ? <p className={styles["error"]}>{error}</p> : null}
       <div className={styles["actions"]}>
-        <SaveAsDraftButton formAction={saveAsDraftAction} />
-        <PublishButton formAction={publishAction} />
+        <SaveAsDraftButton
+          formAction={blogpost ? updateAsDraftAction : saveAsDraftAction}
+        />
+        <PublishButton
+          formAction={blogpost ? updatePostAction : publishAction}
+        />
       </div>
     </form>
   );

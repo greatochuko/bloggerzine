@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./page.module.css";
-import { getUserDashboard } from "@/services/userServices";
 import Navigate from "@/components/Navigate";
 import { Metadata } from "next";
 import PostForm from "@/components/PostForm";
@@ -22,15 +21,11 @@ export default async function EditPostPage({
 
   if (!data || error) return <Navigate to="/login" />;
 
-  const blogpostId = params.blogId.split("-").at(-1);
+  const blogpostId = params.blogId.split("_").at(-1);
   if (!blogpostId) notFound();
 
-  const blogpost = getBlogpost(blogpostId);
+  const blogpost = await getBlogpost(blogpostId);
   if (!blogpost) notFound();
-
-  const user = getUserDashboard();
-
-  if (!user) return <Navigate to="/login" />;
 
   return (
     <div className={styles["edit-post-page"]}>

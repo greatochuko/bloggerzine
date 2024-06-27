@@ -55,7 +55,3 @@ export async function getUser(userId: string) {
 
   return { user: null, error };
 }
-
-export function getUserDashboard() {
-  return users[0];
-}

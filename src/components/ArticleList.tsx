@@ -173,7 +173,7 @@ export default function ArticleList({ blogposts }: { blogposts: Blogpost[] }) {
                       </td>
                       <td className={styles["actions"]}>
                         <Link
-                          href={`/edit-post/${convertToUrl(blog.title)}-${
+                          href={`/edit-post/${convertToUrl(blog.title)}_${
                             blog.id
                           }`}
                         >

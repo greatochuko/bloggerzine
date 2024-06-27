@@ -275,8 +275,6 @@ export async function getBlogposts() {
 }
 
 export async function getBlogpost(id: string) {
-  console.clear();
-  console.log(id);
   const supabase = createClient();
   const { data, error } = await supabase
     .from("blogposts")

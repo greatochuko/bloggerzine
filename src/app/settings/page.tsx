@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./page.module.css";
-import { getUser, getUserDashboard } from "@/services/userServices";
+import { getUser } from "@/services/userServices";
 import ProfileForm from "@/components/ProfileForm";
 import Navigate from "@/components/Navigate";
 import SocialLinksForm from "@/components/SocialLinksForm";
