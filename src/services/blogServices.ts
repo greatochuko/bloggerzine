@@ -294,10 +294,13 @@ export async function getBlogpostByAuthor(authorId: string) {
   return blogposts || [];
 }
 
-export function getBlogpostByCategory(category: string) {
-  return blogposts.filter(
-    (blogpost) => blogpost.category.toLowerCase() === category.toLowerCase()
-  );
+export async function getBlogpostByCategory(category: string) {
+  const supabase = createClient();
+  const { data: blogposts } = await supabase
+    .from("blogposts")
+    .select("*, author(*)")
+    .eq("category", category.toLowerCase());
+  return blogposts || [];
 }
 
 export async function searchBlog(query: string) {

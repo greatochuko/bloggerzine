@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "@/styles/Category.module.css";
 import Image from "next/image";
-import { getBlogpostByCategory } from "@/services/blogServices";
 import Link from "next/link";
 import convertToUrl from "@/utils/convertToUrl";
+import { Blogpost } from "./Hero";
 
 export type Category = {
   name: string;
@@ -12,9 +12,13 @@ export type Category = {
   description: string;
 };
 
-export default function Category({ category }: { category: Category }) {
-  const categoryPosts = getBlogpostByCategory(category.name);
-
+export default function Category({
+  category,
+  categoryPosts,
+}: {
+  category: Category;
+  categoryPosts: Blogpost[];
+}) {
   return (
     <div className={styles["category"]}>
       <div className={styles["title"]}>

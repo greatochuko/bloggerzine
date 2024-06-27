@@ -2,6 +2,8 @@ import React from "react";
 import styles from "./page.module.css";
 import Link from "next/link";
 import Category from "@/components/Category";
+import { getBlogposts } from "@/services/blogServices";
+import { Blogpost } from "@/components/Hero";
 
 export const categories = [
   {
@@ -76,7 +78,9 @@ export const categories = [
   },
 ];
 
-export default function CategoryPage() {
+export default async function CategoryPage() {
+  const blogposts: Blogpost[] = await getBlogposts();
+
   return (
     <div className={styles["categories-page"]}>
       <div className={styles["header"]}>
@@ -120,7 +124,14 @@ export default function CategoryPage() {
 
       <div className={styles["categories-list"]}>
         {categories.map((category) => (
-          <Category category={category} key={category.name} />
+          <Category
+            category={category}
+            key={category.name}
+            categoryPosts={blogposts.filter(
+              (post) =>
+                post.category.toLowerCase() === category.name.toLowerCase()
+            )}
+          />
         ))}
       </div>
     </div>

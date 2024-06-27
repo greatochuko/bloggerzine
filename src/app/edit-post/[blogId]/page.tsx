@@ -27,6 +27,8 @@ export default async function EditPostPage({
   const blogpost = await getBlogpost(blogpostId);
   if (!blogpost) notFound();
 
+  if (data.user.id !== blogpost.author.id) notFound();
+
   return (
     <div className={styles["edit-post-page"]}>
       <h1>Edit Post</h1>

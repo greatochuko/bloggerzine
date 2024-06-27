@@ -8,6 +8,10 @@
   margin: 0 auto;
 }
 
+.logo {
+  color: var(--blue-100);
+}
+
 .nav-links-mobile {
   display: none;
 }

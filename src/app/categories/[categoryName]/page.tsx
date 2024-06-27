@@ -24,7 +24,7 @@ export function generateMetadata({
   };
 }
 
-export default function CategoryPage({
+export default async function CategoryPage({
   params: { categoryName },
 }: {
   params: { categoryName: string };
@@ -35,12 +35,7 @@ export default function CategoryPage({
 
   if (!category) notFound();
 
-  const blogposts = getBlogposts();
-  const categoryPosts = getBlogpostByCategory(categoryName);
-
-  const filteredPosts = blogposts.filter(
-    (post) => post.category.toLowerCase() === category.name.toLowerCase()
-  );
+  const categoryPosts = await getBlogpostByCategory(categoryName);
 
   const otherCategories = categories
     .filter((c) => c.name.toLowerCase() !== category.name.toLowerCase())
@@ -62,7 +57,7 @@ export default function CategoryPage({
         </div>
       </div>
       <div className={styles["category-page-main"]}>
-        <BlogGrid blogposts={filteredPosts} showPaginator />
+        <BlogGrid blogposts={categoryPosts} showPaginator />
         <div className={styles["other-categories"]}>
           <h2>Other Categories</h2>
           <CategoryList categories={otherCategories} />

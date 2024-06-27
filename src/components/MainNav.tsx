@@ -8,6 +8,7 @@ import { User } from "@/services/userServices";
 
 export const navLinks = [
   { name: "Home", href: "/" },
+  { name: "Categories", href: "/categories" },
   { name: "Technology", href: "/categories/technology" },
   { name: "Finance", href: "/categories/finance" },
   { name: "Travel", href: "/categories/travel" },
@@ -27,7 +28,7 @@ export default function MainNav({
 
   return (
     <div className={styles["header-container"]}>
-      <Link href={"/"} className="logo">
+      <Link href={"/"} className={styles["logo"]}>
         Bloggerzine
       </Link>
       <ul className={styles["nav-links"]}>
