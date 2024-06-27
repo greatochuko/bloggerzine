@@ -120,3 +120,34 @@ export async function updateSocialLinks(initialState: any, formData: FormData) {
   revalidatePath(`/authors/${createAuthorUrl(userData[0])}`);
   return { errorMessage: null };
 }
+
+export async function logout() {
+  const supabase = createClient();
+  await supabase.auth.signOut();
+
+  revalidatePath("/settings");
+  revalidatePath("/dashboard");
+  revalidatePath("/create-post");
+  revalidatePath("/edit-post/:blogId");
+}
+
+export async function sendResetPasswordEmail(initialState: any) {
+  const supabase = createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) redirect("/login");
+
+  const { data, error } = await supabase.auth.resetPasswordForEmail(
+    user.email as string,
+    {
+      redirectTo: "http://localhost:3000/account/update-password",
+    }
+  );
+
+  return {
+    data,
+    errorMessage: error ? "An error occured please try again later" : null,
+  };
+}

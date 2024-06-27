@@ -9,7 +9,6 @@ import { uploadImage } from "@/utils/imageUploader";
 import Image from "next/image";
 import LoadingIndicator from "./LoadingIndicator";
 import { useFormState } from "react-dom";
-import { publishPost, savePostAsDraft } from "@/actions/blogActions";
 
 export default function CreatePostForm({ blogpost }: { blogpost?: Blogpost }) {
   const [title, setTitle] = useState(blogpost?.title || "");
@@ -158,8 +157,10 @@ export default function CreatePostForm({ blogpost }: { blogpost?: Blogpost }) {
         <label htmlFor="featured">Make this post featured?</label>
       </div>
       <div className={styles["actions"]}>
-        <button formAction={savePostAsDraft}>Save as Draft</button>
-        <button formAction={publishPost}>Publish</button>
+        {/* <button formAction={savePostAsDraft}>Save as Draft</button>
+        <button formAction={publishPost}>Publish</button> */}
+        <button>Save as Draft</button>
+        <button>Publish</button>
       </div>
     </form>
   );

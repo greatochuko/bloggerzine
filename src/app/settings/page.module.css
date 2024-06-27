@@ -17,3 +17,34 @@
   border-bottom: solid 1px #ddd;
   padding: 1rem;
 }
+
+.section form.reset-password {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+.section form.reset-password button {
+  background-color: var(--blue-100);
+  color: white;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.25rem;
+  font-weight: 650;
+  font-size: 1rem;
+  border: none;
+}
+
+.section form.reset-password button:hover {
+  background-color: var(--blue-200);
+}
+
+.section .error {
+  color: var(--red-100);
+  font-size: 0.9rem;
+}

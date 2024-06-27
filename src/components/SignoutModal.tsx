@@ -1,5 +1,8 @@
 import React from "react";
 import styles from "@/styles/SignoutModal.module.css";
+import { logout } from "@/actions/authActions";
+import { useFormStatus } from "react-dom";
+import LoadingIndicator from "./LoadingIndicator";
 
 export default function SignoutModal({
   isOpen,
@@ -45,11 +48,28 @@ export default function SignoutModal({
         </div>
         <div className={styles["actions"]}>
           <button onClick={closeSignoutModal}>Cancel</button>
-          <form>
-            <button>Sign out</button>
+          <form action={logout}>
+            <Button />
           </form>
         </div>
       </div>
     </div>
+  );
+}
+
+function Button() {
+  const { pending } = useFormStatus();
+
+  return (
+    <button>
+      {pending ? (
+        <>
+          <LoadingIndicator color="white" size={20} />
+          Signing out...
+        </>
+      ) : (
+        "Sign out"
+      )}
+    </button>
   );
 }

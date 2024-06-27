@@ -8,6 +8,8 @@ import { Metadata } from "next";
 import ChangePasswordForm from "@/components/ChangePasswordForm";
 import { createClient } from "@/utils/supabase/server";
 import { notFound } from "next/navigation";
+import Link from "next/link";
+import { ResetPasswordSection } from "@/components/ResetPasswordSection";
 
 export const metadata: Metadata = {
   title: "Settings",
@@ -33,10 +35,7 @@ export default async function SettingsPage() {
         <h2>Social Links</h2>
         <SocialLinksForm user={user} />
       </div>
-      <div className={styles["section"]}>
-        <h2>Change Password</h2>
-        <ChangePasswordForm />
-      </div>
+      <ResetPasswordSection />
     </div>
   );
 }

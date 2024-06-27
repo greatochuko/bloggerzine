@@ -1,12 +1,11 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import styles from "@/styles/LoginForm.module.css";
 import Link from "next/link";
 import { useFormState, useFormStatus } from "react-dom";
 import LoadingIndicator from "./LoadingIndicator";
 import { redirect, useSearchParams } from "next/navigation";
 import { login } from "@/actions/authActions";
-import Navigate from "./Navigate";
 
 export default function LoginForm() {
   const searchParams = useSearchParams();
