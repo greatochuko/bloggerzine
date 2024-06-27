@@ -304,9 +304,10 @@ export async function getBlogpostByCategory(category: string) {
 }
 
 export async function searchBlog(query: string) {
-  await new Promise((res) => setTimeout(res, 2000));
-
-  return blogposts.filter((blog) =>
-    blog.title.toLowerCase().includes(query.split("-").join(" ").toLowerCase())
-  );
+  const supabase = createClient();
+  const { data: blogposts } = await supabase
+    .from("blogposts")
+    .select("*, author(*)")
+    .ilike("title", `%${query}%`);
+  return blogposts || [];
 }

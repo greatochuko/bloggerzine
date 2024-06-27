@@ -14,7 +14,6 @@ export default function SearchPageForm({
   function handleSearch(e: React.FormEvent) {
     e.preventDefault();
     router.push(`/search?query=${query.split(" ").join("-")}`);
-    close();
   }
   return (
     <form onSubmit={handleSearch} className={styles["search-page-form"]}>
