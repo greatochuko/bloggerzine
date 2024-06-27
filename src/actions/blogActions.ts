@@ -57,3 +57,20 @@ export async function saveAsDraft(initialState: any, formData: FormData) {
 
   return { errorMessage: error.message };
 }
+
+export async function deletePost(initialState: any, formData: FormData) {
+  const supabase = createClient();
+
+  const postId = formData.get("postId") as string;
+
+  const { error } = await supabase.from("blogposts").delete().eq("id", postId);
+
+  if (!error) {
+    revalidatePath("/");
+    revalidatePath("/search");
+    revalidatePath("/dashboard");
+    revalidateTag("/authors");
+  }
+
+  return { error: error?.message || null };
+}

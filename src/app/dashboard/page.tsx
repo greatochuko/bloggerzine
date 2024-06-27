@@ -25,7 +25,7 @@ export default async function Dashboard() {
 
   if (!user) notFound();
 
-  let { data: authorBlogposts } = await getBlogpostByAuthor(data.user.id);
+  let authorBlogposts = await getBlogpostByAuthor(data.user.id);
 
   return (
     <div className={styles["profile-page"]}>
