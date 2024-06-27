@@ -1,4 +1,4 @@
-import { getUser } from "@/services/userServices";
+import { getUser, User } from "@/services/userServices";
 import { Metadata } from "next";
 import React from "react";
 import styles from "./page.module.css";
@@ -8,6 +8,7 @@ import { getBlogpostByAuthor } from "@/services/blogServices";
 import SearchBlog from "@/components/SearchBlog";
 import Paginator from "@/components/Paginator";
 import { Blogpost } from "@/components/Hero";
+import SocialLinks from "@/components/SocialLinks";
 
 export async function generateMetadata({
   params,
@@ -32,13 +33,12 @@ export default async function AuthorPage({
   searchParams: { page: string };
 }) {
   const userId = params.userSlug.split("_").at(-1) as string;
-  const { user: author } = await getUser(userId);
+  const { user: author }: { user: User | null } = await getUser(userId);
 
   if (!author) notFound();
 
   const currentPage = Number(searchParams.page) || 1;
-  // const { data: blogposts } = await getBlogpostByAuthor(author.id.toString());
-  const blogposts: Blogpost[] = [];
+  const blogposts = await getBlogpostByAuthor(author.id.toString());
   const postsPerPage = 8;
   const paginatedPosts = blogposts.slice(
     (currentPage - 1) * postsPerPage,
@@ -68,6 +68,7 @@ export default async function AuthorPage({
           </div>
           <div className={styles["text"]}>
             <h1>{author.firstname + " " + author.lastname}</h1>
+            <SocialLinks socialLinks={author.socialLinks} />
             <p>
               {author.jobTitle ? (
                 <span>

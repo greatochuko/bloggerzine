@@ -289,8 +289,11 @@ export async function getBlogpost(id: string) {
 
 export async function getBlogpostByAuthor(authorId: string) {
   const supabase = createClient();
-  const { data, error } = await supabase.from("blogposts").select("*");
-  return { data, error };
+  const { data: blogposts } = await supabase
+    .from("blogposts")
+    .select("*, author(*)")
+    .eq("author", authorId);
+  return blogposts || [];
 }
 
 export function getBlogpostByCategory(category: string) {
