@@ -359,9 +359,7 @@ export default function ArticleList({ blogposts }: { blogposts: Blogpost[] }) {
       </div>
       <DeletePostModal
         isOpen={deletePostModal.open}
-        closeSignoutModal={() =>
-          setDeletePostModal({ post: null, open: false })
-        }
+        closeModal={() => setDeletePostModal({ post: null, open: false })}
         post={deletePostModal.post}
       />
     </>

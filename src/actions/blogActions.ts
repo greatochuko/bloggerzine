@@ -72,5 +72,5 @@ export async function deletePost(initialState: any, formData: FormData) {
     revalidateTag("/authors");
   }
 
-  return { error: error?.message || null };
+  return { done: true, error: error?.message || null };
 }

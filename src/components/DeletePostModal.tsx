@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "@/styles/DeletePostModal.module.css";
 import { logout } from "@/actions/authActions";
 import { useFormState, useFormStatus } from "react-dom";
@@ -8,21 +8,30 @@ import { deletePost } from "@/actions/blogActions";
 
 export default function DeletePostModal({
   isOpen,
-  closeSignoutModal,
+  closeModal,
   post,
 }: {
   isOpen: boolean;
-  closeSignoutModal: () => void;
+  closeModal: () => void;
   post: Blogpost | null;
 }) {
-  const [state, deletePostAction] = useFormState(deletePost, { error: "" });
+  const [state, deletePostAction] = useFormState(deletePost, {
+    done: false,
+    error: "",
+  });
 
-  const { error } = state;
+  const { done, error } = state;
+
+  useEffect(() => {
+    if (done) {
+      closeModal();
+    }
+  }, [done]);
 
   return (
     <div
       className={`${styles["overlay"]} ${isOpen ? styles["open"] : ""}`}
-      onClick={closeSignoutModal}
+      onClick={closeModal}
     >
       <div
         className={styles["signout-modal"]}
@@ -55,7 +64,7 @@ export default function DeletePostModal({
           <p>Are you sure you want to delete post "{post?.title}"?</p>
         </div>
         <div className={styles["actions"]}>
-          <button onClick={closeSignoutModal}>Cancel</button>
+          <button onClick={closeModal}>Cancel</button>
           <form action={deletePostAction}>
             <input
               type="hidden"
