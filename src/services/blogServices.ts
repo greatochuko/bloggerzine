@@ -266,8 +266,12 @@ const blogposts: Blogpost[] = [
   },
 ];
 
-export function getBlogposts() {
-  return blogposts;
+export async function getBlogposts() {
+  const supabase = createClient();
+  const { data: blogposts, error } = await supabase
+    .from("blogposts")
+    .select("*, author(*)");
+  return blogposts || [];
 }
 
 export function getBlogpost(id: string) {

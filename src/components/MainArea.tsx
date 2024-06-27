@@ -49,7 +49,7 @@ export default function MainArea({
                 <div className={styles["post-details"]}>
                   <h3>{recentPost.title}</h3>
                   <p>
-                    {new Date(recentPost.dateCreated)
+                    {new Date(recentPost.createdAt)
                       .toDateString()
                       .split(" ")
                       .slice(1)

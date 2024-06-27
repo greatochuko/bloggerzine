@@ -4,7 +4,7 @@ import MainArea from "@/components/MainArea";
 import { getBlogposts } from "@/services/blogServices";
 
 export default async function Home() {
-  const blogposts = getBlogposts();
+  const blogposts = await getBlogposts();
 
   return (
     <div className={styles["home-page"]}>

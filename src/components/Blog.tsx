@@ -23,7 +23,6 @@ export default function Blog({ blogpost }: { blogpost: Blogpost }) {
       >
         {blogpost.title}
       </Link>
-      <p>{blogpost.content.slice(0, 150)}...</p>
       <BlogMetaData blog={blogpost} />
     </div>
   );
