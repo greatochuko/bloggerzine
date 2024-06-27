@@ -62,6 +62,15 @@ textarea {
   flex-direction: column;
 }
 
+.ql-container.ql-snow {
+  flex: 1;
+  display: flex;
+}
+
+.ql-editor.ql-blank {
+  flex: 1;
+}
+
 img {
   object-fit: cover;
 }

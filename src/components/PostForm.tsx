@@ -1,5 +1,11 @@
 "use client";
-import React, { useCallback, useRef, useState } from "react";
+import React, {
+  FormHTMLAttributes,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import styles from "@/styles/PostForm.module.css";
 import { categories } from "@/app/categories/page";
 import { Blogpost } from "./Hero";
@@ -8,7 +14,8 @@ import "react-quill/dist/quill.snow.css";
 import { uploadImage } from "@/utils/imageUploader";
 import Image from "next/image";
 import LoadingIndicator from "./LoadingIndicator";
-import { useFormState } from "react-dom";
+import { useFormState, useFormStatus } from "react-dom";
+import { publishPost, saveAsDraft } from "@/actions/blogActions";
 
 export default function CreatePostForm({ blogpost }: { blogpost?: Blogpost }) {
   const [title, setTitle] = useState(blogpost?.title || "");
@@ -20,6 +27,8 @@ export default function CreatePostForm({ blogpost }: { blogpost?: Blogpost }) {
   const [tags, setTags] = useState(blogpost?.tags || "");
   const [category, setCategory] = useState(blogpost?.category || "");
   const [isFeatured, setIsFeatured] = useState(blogpost?.isFeatured || false);
+
+  const postFormRef = useRef<HTMLFormElement>(null);
 
   const reactQuillRef = useRef<ReactQuill | null>(null);
 
@@ -69,6 +78,18 @@ export default function CreatePostForm({ blogpost }: { blogpost?: Blogpost }) {
     const { url } = await uploadImage(file);
     setThumbnail({ loading: false, url });
   }
+
+  const [publishState, publishAction] = useFormState(publishPost, {
+    errorMessage: "",
+  });
+
+  const { errorMessage } = publishState;
+
+  const [saveState, saveAsDraftAction] = useFormState(saveAsDraft, {
+    errorMessage: "",
+  });
+
+  const { errorMessage: saveErrorMessage } = saveState;
 
   return (
     <form className={styles["create-post-form"]}>
@@ -156,12 +177,58 @@ export default function CreatePostForm({ blogpost }: { blogpost?: Blogpost }) {
         />
         <label htmlFor="featured">Make this post featured?</label>
       </div>
+      {errorMessage || saveErrorMessage ? (
+        <p className={styles["error"]}>{errorMessage || saveErrorMessage}</p>
+      ) : null}
       <div className={styles["actions"]}>
-        {/* <button formAction={savePostAsDraft}>Save as Draft</button>
-        <button formAction={publishPost}>Publish</button> */}
-        <button>Save as Draft</button>
-        <button>Publish</button>
+        <SaveAsDraftButton formAction={saveAsDraftAction} />
+        <PublishButton formAction={publishAction} />
       </div>
     </form>
+  );
+}
+
+function PublishButton({
+  formAction,
+}: {
+  formAction: (formData: FormData) => void;
+}) {
+  const { pending } = useFormStatus();
+  return (
+    <button
+      formAction={formAction}
+      disabled={pending}
+      className={styles["submit"]}
+    >
+      {pending ? (
+        <>
+          <LoadingIndicator size={20} color="white" flex={0} />
+          Publishing...
+        </>
+      ) : (
+        "Publish"
+      )}
+    </button>
+  );
+}
+
+function SaveAsDraftButton({
+  formAction,
+}: {
+  formAction: (formData: FormData) => void;
+}) {
+  const { pending, action } = useFormStatus();
+
+  return (
+    <button formAction={formAction} disabled={pending}>
+      {pending ? (
+        <>
+          <LoadingIndicator size={20} color="#333" flex={0} />
+          Saving...
+        </>
+      ) : (
+        "Save as draft"
+      )}
+    </button>
   );
 }

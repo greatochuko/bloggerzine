@@ -19,7 +19,7 @@ export type Blogpost = {
   likes: number;
   isFeatured: boolean;
   isPublished: boolean;
-  dateCreated: string;
+  createdAt: string;
 };
 
 export default function Hero({ blogposts }: { blogposts: Blogpost[] }) {

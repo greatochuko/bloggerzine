@@ -1,6 +1,6 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import { redirect } from "next/navigation";
 
 import { createClient } from "@/utils/supabase/server";
@@ -117,7 +117,7 @@ export async function updateSocialLinks(initialState: any, formData: FormData) {
 
   revalidatePath("/settings");
   revalidatePath("/dashboard");
-  revalidatePath(`/authors/${createAuthorUrl(userData[0])}`);
+  revalidateTag("/authors");
   return { errorMessage: null };
 }
 
@@ -128,7 +128,7 @@ export async function logout() {
   revalidatePath("/settings");
   revalidatePath("/dashboard");
   revalidatePath("/create-post");
-  revalidatePath("/edit-post/:blogId");
+  revalidatePath("/edit-post/[blogId]", "page");
 }
 
 export async function sendResetPasswordEmail(initialState: any) {

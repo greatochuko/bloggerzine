@@ -114,6 +114,10 @@
   border-radius: 0.25rem;
   border: solid 1px #ddd;
   color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
 .create-post-form button:hover {
@@ -121,14 +125,19 @@
   border-color: #ccc;
 }
 
-.create-post-form button[type="submit"] {
+.create-post-form button.submit {
   color: white;
   background-color: var(--blue-100);
   border: none;
 }
 
-.create-post-form button[type="submit"]:hover {
+.create-post-form button.submit:hover {
   background-color: var(--blue-200);
+}
+
+.error {
+  color: var(--red-100);
+  font-size: 14px;
 }
 
 /* ------------------------ MOBILE STYLES ----------------------------------- */

@@ -1,9 +1,13 @@
 import React from "react";
 import styles from "@/styles/LoadingIndicator.module.css";
 
-export default function LoadingIndicator({ size = 30, color = "#000" }) {
+export default function LoadingIndicator({
+  size = 30,
+  color = "#000",
+  flex = 1,
+}) {
   return (
-    <div className={styles["loading-indicator"]}>
+    <div className={styles["loading-indicator"]} style={{ flex }}>
       <div className={styles["svg-container"]}>
         <svg
           width={size}
