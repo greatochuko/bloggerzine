@@ -32,7 +32,7 @@ export default function MainArea({
           <div className={styles["recent-posts"]}>
             {recentPosts.map((recentPost) => (
               <Link
-                href={`/blog/${convertToUrl(recentPost.title)}-${
+                href={`/blog/${convertToUrl(recentPost.title)}_${
                   recentPost.id
                 }`}
                 className={styles["recent-post"]}

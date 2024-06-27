@@ -9,7 +9,7 @@ import convertToUrl from "@/utils/convertToUrl";
 export default function SearchBlog({ blog }: { blog: Blogpost }) {
   return (
     <Link
-      href={`/blog/${convertToUrl(blog.title)}-${blog.id}`}
+      href={`/blog/${convertToUrl(blog.title)}_${blog.id}`}
       className={styles["search-blog"]}
     >
       <div className={styles["image-container"]}>
@@ -24,11 +24,7 @@ export default function SearchBlog({ blog }: { blog: Blogpost }) {
       <p>
         {blog.author.firstname} {blog.author.lastname}
         <span>&#183;</span>
-        {new Date(blog.dateCreated)
-          .toDateString()
-          .split(" ")
-          .slice(1)
-          .join(" ")}
+        {new Date(blog.createdAt).toDateString().split(" ").slice(1).join(" ")}
       </p>
     </Link>
   );

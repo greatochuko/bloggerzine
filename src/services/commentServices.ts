@@ -17,7 +17,7 @@ const comments: CommentType[] = [
     },
     comment:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio.",
-    dateCreated: "2024-05-22T23:00:00.000Z",
+    createdAt: "2024-05-22T23:00:00.000Z",
     parentId: null,
   },
   {
@@ -35,7 +35,7 @@ const comments: CommentType[] = [
     },
     comment:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio.",
-    dateCreated: "2024-05-22T23:00:00.000Z",
+    createdAt: "2024-05-22T23:00:00.000Z",
     parentId: 1,
   },
 
@@ -54,7 +54,7 @@ const comments: CommentType[] = [
     },
     comment:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio.",
-    dateCreated: "2024-05-22T23:00:00.000Z",
+    createdAt: "2024-05-22T23:00:00.000Z",
     parentId: null,
   },
   {
@@ -72,7 +72,7 @@ const comments: CommentType[] = [
     },
     comment:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio.",
-    dateCreated: "2024-05-22T23:00:00.000Z",
+    createdAt: "2024-05-22T23:00:00.000Z",
     parentId: 4,
   },
   {
@@ -90,7 +90,7 @@ const comments: CommentType[] = [
     },
     comment:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nobis voluptas dicta distinctio.",
-    dateCreated: "2024-05-22T23:00:00.000Z",
+    createdAt: "2024-05-22T23:00:00.000Z",
     parentId: 5,
   },
 ];

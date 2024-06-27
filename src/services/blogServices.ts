@@ -274,8 +274,17 @@ export async function getBlogposts() {
   return blogposts || [];
 }
 
-export function getBlogpost(id: string) {
-  return blogposts.find((blogpost) => blogpost.id === Number(id));
+export async function getBlogpost(id: string) {
+  console.clear();
+  console.log(id);
+  const supabase = createClient();
+  const { data, error } = await supabase
+    .from("blogposts")
+    .select("*, author(*)")
+    .eq("id", id);
+
+  const blogpost: Blogpost = data?.at(0);
+  return blogpost;
 }
 
 export async function getBlogpostByAuthor(authorId: string) {

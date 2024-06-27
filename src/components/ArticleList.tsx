@@ -37,14 +37,14 @@ export default function ArticleList({ blogposts }: { blogposts: Blogpost[] }) {
     case "newest":
       filteredPosts = [...filteredPosts].sort(
         (a, b) =>
-          new Date(b.dateCreated).getTime() - new Date(a.dateCreated).getTime()
+          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
       );
       break;
 
     case "oldest":
       filteredPosts = [...filteredPosts].sort(
         (a, b) =>
-          new Date(a.dateCreated).getTime() - new Date(b.dateCreated).getTime()
+          new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
       );
       break;
 
@@ -125,13 +125,13 @@ export default function ArticleList({ blogposts }: { blogposts: Blogpost[] }) {
                   <tr key={blog.id}>
                     <td>
                       <Link
-                        href={`/blog/${convertToUrl(blog.title)}-${blog.id}`}
+                        href={`/blog/${convertToUrl(blog.title)}_${blog.id}`}
                       >
                         {blog.title}
                       </Link>
                     </td>
                     <td>
-                      {new Date(blog.dateCreated)
+                      {new Date(blog.createdAt)
                         .toDateString()
                         .split(" ")
                         .slice(1)
@@ -270,14 +270,14 @@ export default function ArticleList({ blogposts }: { blogposts: Blogpost[] }) {
                     <p>
                       <span>Title:</span>
                       <Link
-                        href={`/blog/${convertToUrl(blog.title)}-${blog.id}`}
+                        href={`/blog/${convertToUrl(blog.title)}_${blog.id}`}
                       >
                         {blog.title}
                       </Link>
                     </p>
                     <p>
                       <span>Date Created:</span>
-                      {new Date(blog.dateCreated)
+                      {new Date(blog.createdAt)
                         .toDateString()
                         .split(" ")
                         .slice(1)

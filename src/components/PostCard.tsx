@@ -9,7 +9,7 @@ import convertToUrl from "@/utils/convertToUrl";
 export default function PostCard({ blogpost }: { blogpost: Blogpost }) {
   return (
     <Link
-      href={`/blog/${convertToUrl(blogpost.title)}-${blogpost.id}`}
+      href={`/blog/${convertToUrl(blogpost.title)}_${blogpost.id}`}
       className={styles["post-card"]}
     >
       <Image
@@ -33,7 +33,7 @@ export default function PostCard({ blogpost }: { blogpost: Blogpost }) {
         <h2>{blogpost.title}</h2>
         <p>
           by {blogpost.author.firstname} {blogpost.author.firstname}{" "}
-          {new Date(blogpost.dateCreated)
+          {new Date(blogpost.createdAt)
             .toDateString()
             .split(" ")
             .slice(1)

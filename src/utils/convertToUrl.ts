@@ -1,3 +1,3 @@
-export default function convertToUrl(string:string){
-    return string.split(" ").join("-").toLowerCase()
+export default function convertToUrl(string: string) {
+  return string.split(" ").join("-").toLowerCase();
 }

@@ -21,7 +21,7 @@ export default function RecentComments({ author }: { author: User }) {
           {comments.map((comment) => (
             <li className={styles["recent-comment"]} key={comment.id}>
               <Link
-                href={`/blog/${convertToUrl(comment.blog.title)}-${
+                href={`/blog/${convertToUrl(comment.blog.title)}_${
                   comment.blog.id
                 }`}
               >

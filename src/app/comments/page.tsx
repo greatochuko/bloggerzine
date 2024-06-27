@@ -51,7 +51,7 @@ export default function CommentsPage() {
               <tr key={comment.id}>
                 <td>
                   <Link
-                    href={`/blog/${convertToUrl(comment.blog.title)}-${
+                    href={`/blog/${convertToUrl(comment.blog.title)}_${
                       comment.blog.id
                     }`}
                   >
@@ -65,7 +65,7 @@ export default function CommentsPage() {
                 </td>
                 <td>{comment.comment}</td>
                 <td>
-                  {new Date(comment.dateCreated)
+                  {new Date(comment.createdAt)
                     .toDateString()
                     .split(" ")
                     .slice(1)
@@ -92,7 +92,7 @@ export default function CommentsPage() {
                     {comment.user.firstname + " " + comment.user.lastname}
                   </h4>
                   <p>
-                    {new Date(comment.dateCreated)
+                    {new Date(comment.createdAt)
                       .toDateString()
                       .split(" ")
                       .slice(1)

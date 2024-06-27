@@ -12,22 +12,24 @@ import { getBlogpost } from "@/services/blogServices";
 import { getComments } from "@/services/commentServices";
 import { Metadata } from "next";
 import { createAuthorUrl } from "@/utils/createAuthorUrl";
+import BlogpostContent from "@/components/BlogpostContent";
+import SocialLinks from "@/components/SocialLinks";
 
-export function generateMetadata({
+export async function generateMetadata({
   params: { blogTitle },
 }: {
   params: { blogTitle: string };
-}): Metadata {
-  const blogpost = getBlogpost(blogTitle.split("-").at(-1) as string);
+}): Promise<Metadata> {
+  const blogpost = await getBlogpost(blogTitle.split("_").at(-1) as string);
   return { title: blogpost?.title };
 }
 
-export default function page({
+export default async function page({
   params: { blogTitle },
 }: {
   params: { blogTitle: string };
 }) {
-  const blogpost = getBlogpost(blogTitle.split("-").at(-1) as string);
+  const blogpost = await getBlogpost(blogTitle.split("_").at(-1) as string);
 
   if (!blogpost) notFound();
 
@@ -60,7 +62,7 @@ export default function page({
       </div>
       <div className={styles["main-section"]}>
         <div className={styles["blog-content"]}>
-          <p>{blogpost.content}</p>
+          <BlogpostContent content={blogpost.content} />
 
           <section className={styles["about-the-author"]}>
             <Link
@@ -78,6 +80,7 @@ export default function page({
               <Link href={`/authors/${createAuthorUrl(blogpost.author)}`}>
                 {blogpost.author.firstname + " " + blogpost.author.lastname}
               </Link>
+              <SocialLinks socialLinks={blogpost.author.socialLinks} />
               <p>{blogpost.author.bio}</p>
             </div>
           </section>

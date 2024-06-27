@@ -27,11 +27,7 @@ export default function BlogMetaData({ blog }: { blog: Blogpost }) {
         </p>
       </Link>
       <div className={styles["date"]}>
-        {new Date(blog.dateCreated)
-          .toDateString()
-          .split(" ")
-          .slice(1)
-          .join(" ")}
+        {new Date(blog.createdAt).toDateString().split(" ").slice(1).join(" ")}
       </div>
       <div className={styles["read-time"]}>5 min read</div>
     </div>

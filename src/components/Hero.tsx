@@ -6,6 +6,7 @@ import BlogMetaData from "./BlogMetaData";
 import { categories } from "@/app/categories/page";
 import { User } from "@/services/userServices";
 import { createAuthorUrl } from "@/utils/createAuthorUrl";
+import convertToUrl from "@/utils/convertToUrl";
 
 export type Blogpost = {
   id: number;
@@ -40,7 +41,7 @@ export default function Hero({ blogposts }: { blogposts: Blogpost[] }) {
               {blogpost.category}
             </p>
             <Link
-              href={`/blog/${createAuthorUrl(blogpost.author)}`}
+              href={`/blog/${convertToUrl(blogpost.title)}_${blogpost.id}`}
               className={styles["blog-title"]}
             >
               {blogpost.title}

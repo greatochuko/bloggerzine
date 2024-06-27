@@ -93,13 +93,15 @@
 }
 
 .about-the-author .text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
   flex: 1;
 }
 
 .about-the-author .text a {
   font-size: calc(1.2rem + 0.25vw);
   font-weight: 650;
-  margin-bottom: 0.5rem;
 }
 
 .about-the-author .text a:hover {

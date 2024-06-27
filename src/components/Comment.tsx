@@ -11,7 +11,7 @@ export type CommentType = {
   blog: Blogpost;
   user: User;
   comment: string;
-  dateCreated: string;
+  createdAt: string;
   parentId: null | number;
 };
 
@@ -42,7 +42,7 @@ export default function Comment({
         <div className={styles["details"]}>
           <h3>{comment.user.firstname + " " + comment.user.lastname}</h3>
           <time>
-            {new Date(comment.dateCreated)
+            {new Date(comment.createdAt)
               .toDateString()
               .split(" ")
               .slice(1)
