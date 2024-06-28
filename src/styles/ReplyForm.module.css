@@ -10,7 +10,8 @@
 
 .reply-form textarea {
   border: solid 1px #ccc;
-  aspect-ratio: 5;
+  aspect-ratio: 3;
+  max-height: 10rem;
   font-size: 1rem;
   border-radius: 0.25rem;
   resize: none;
@@ -37,9 +38,7 @@
 }
 
 .reply-form button:hover {
-  background-color: rgb(255, 0, 55);
-  border-color: rgb(255, 0, 55);
-  color: white;
+  background-color: #ddd;
 }
 
 .reply-form button[type="submit"] {

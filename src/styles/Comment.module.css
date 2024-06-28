@@ -35,25 +35,43 @@
   font-size: 0.9rem;
 }
 
+.details time {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 .actions {
   display: flex;
   gap: 1rem;
 }
 
 .actions button {
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #fafafa;
+  border: solid 1px #ddd;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+}
+
+.actions button:hover {
+  background-color: #eaeaea;
+}
+
+.actions button:active {
+  scale: 0.95;
+}
+
+.details > button {
   width: fit-content;
   padding: 0.5rem 0;
   background-color: transparent;
   border: none;
   color: var(--blue-100);
   font-weight: 650;
-}
-
-.actions button:first-child {
-  color: #333;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
 }
 
 .replies {

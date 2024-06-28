@@ -6,6 +6,7 @@ import { useFormState, useFormStatus } from "react-dom";
 import { postComment } from "@/actions/commentActions";
 import LoadingIndicator from "./LoadingIndicator";
 import EditCommentModal from "./EditCommentModal";
+import DeleteCommentModal from "./DeleteCommentModal";
 
 export default function CommentSection({
   comments,
@@ -28,7 +29,9 @@ export default function CommentSection({
 
   const { errorMessage } = state;
 
-  const [editCommentModal, setEditCommentModal] = useState<CommentType | null>(
+  const [commentToEdit, setCommentToEdit] = useState<CommentType | null>(null);
+
+  const [commentToDelete, setCommentToDelete] = useState<CommentType | null>(
     null
   );
 
@@ -43,8 +46,8 @@ export default function CommentSection({
             .filter((c) => !c.parentId)
             .map((comment) => (
               <Comment
-                editCommentModal={editCommentModal}
-                setEditCommentModal={setEditCommentModal}
+                setCommentToDelete={setCommentToDelete}
+                setCommentToEdit={setCommentToEdit}
                 userId={userId}
                 blogId={blogId}
                 comment={comment}
@@ -71,7 +74,16 @@ export default function CommentSection({
           <Button />
         </form>
       </section>
-      <EditCommentModal comment={editCommentModal} isOpen={!!editCommentModal} closeModal={()=>setEditCommentModal(null)}/>
+      <EditCommentModal
+        comment={commentToEdit}
+        isOpen={!!commentToEdit}
+        closeModal={() => setCommentToEdit(null)}
+      />
+      <DeleteCommentModal
+        comment={commentToDelete}
+        isOpen={!!commentToDelete}
+        closeModal={() => setCommentToDelete(null)}
+      />
     </>
   );
 }

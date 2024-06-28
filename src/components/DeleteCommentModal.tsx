@@ -2,19 +2,19 @@ import React, { useEffect } from "react";
 import styles from "@/styles/DeletePostModal.module.css";
 import { useFormState, useFormStatus } from "react-dom";
 import LoadingIndicator from "./LoadingIndicator";
-import { Blogpost } from "./Hero";
-import { deletePost } from "@/actions/blogActions";
+import { deleteComment } from "@/actions/commentActions";
+import { CommentType } from "./Comment";
 
-export default function DeletePostModal({
+export default function DeleteCommentModal({
   isOpen,
   closeModal,
-  post,
+  comment,
 }: {
   isOpen: boolean;
   closeModal: () => void;
-  post: Blogpost | null;
+  comment: CommentType | null;
 }) {
-  const [state, deletePostAction] = useFormState(deletePost, {
+  const [state, deleteCommentAction] = useFormState(deleteComment, {
     done: false,
     error: "",
   });
@@ -56,17 +56,22 @@ export default function DeletePostModal({
               </g>
             </svg>
           </div>
-          <h3>Delete Post?</h3>
-          <p>Are you sure you want to delete post "{post?.title}"?</p>
+          <h3>Delete {comment?.parentId ? "Reply" : "Comment"}?</h3>
+          <p>
+            Are you sure you want to delete{" "}
+            {comment?.parentId ? "reply" : "comment"} <br />"
+            {comment?.comment.slice(0, 30)}
+            {comment && comment.comment.length > 30 ? "..." : ""}"?
+          </p>
         </div>
         <div className={styles["actions"]}>
           <button onClick={closeModal}>Cancel</button>
-          <form action={deletePostAction}>
+          <form action={deleteCommentAction}>
             <input
               type="hidden"
               hidden
-              defaultValue={post?.id!}
-              name="postId"
+              defaultValue={comment?.id!}
+              name="commentId"
             />
             <Button />
           </form>
