@@ -35,6 +35,7 @@ export default function CommentSection({
           .filter((c) => !c.parentId)
           .map((comment) => (
             <Comment
+            blogId={blogId}
               comment={comment}
               key={comment.id}
               comments={comments}

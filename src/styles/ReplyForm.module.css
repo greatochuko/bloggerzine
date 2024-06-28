@@ -31,6 +31,9 @@
   border-radius: 0.25rem;
   font-size: min(max(0.875rem, 3vw), 1rem);
   font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .reply-form button:hover {

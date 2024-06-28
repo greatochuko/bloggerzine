@@ -22,3 +22,23 @@ export async function postComment(initialState: any, formData: FormData) {
 
   return { errorMessage: error?.message };
 }
+
+export async function postReply(initialState: any, formData: FormData) {
+  const supabase = createClient();
+
+  const data = {
+    parentId: formData.get("parentId") || null,
+    blogpost: formData.get("blogpost") as string,
+    comment: formData.get("reply") as string,
+  };
+
+  const { error } = await supabase.from("comments").insert(data);
+
+  if (!error) {
+    revalidatePath("/dashboard");
+    revalidatePath("/authors/[userSlug]", "page");
+    revalidatePath("/blog/[blogTitle]", "page");
+  }
+
+  return { done: true, errorMessage: error?.message };
+}

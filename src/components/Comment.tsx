@@ -19,11 +19,13 @@ export default function Comment({
   comment,
   comments,
   replyFormId,
+  blogId,
   setReplyFormId,
 }: {
   comment: CommentType;
   comments: CommentType[];
   replyFormId: number | null;
+  blogId: string;
   setReplyFormId: React.Dispatch<React.SetStateAction<number | null>>;
 }) {
   const replies = comments.filter((c) => c.parentId === comment.id);
@@ -51,7 +53,11 @@ export default function Comment({
           <p className={styles["content"]}>{comment.comment}</p>
           <button onClick={() => setReplyFormId(comment.id)}>Reply</button>
           {replyFormId === comment.id ? (
-            <ReplyForm close={() => setReplyFormId(null)} />
+            <ReplyForm
+              closeReplyForm={() => setReplyFormId(null)}
+              blogId={blogId}
+              parentId={comment.id}
+            />
           ) : null}
         </div>
       </div>
@@ -59,6 +65,7 @@ export default function Comment({
         <ul className={styles["replies"]}>
           {replies.map((comment) => (
             <Comment
+              blogId={blogId}
               comment={comment}
               key={comment.id}
               comments={comments}
