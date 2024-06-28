@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import BlogGrid from "./BlogGrid";
 import CategoryList from "./CategoryList";
-import Paginator from "./Paginator";
 import { categories } from "@/app/categories/page";
 import convertToUrl from "@/utils/convertToUrl";
 
@@ -33,10 +32,10 @@ export default function MainArea({
             {recentPosts.map((recentPost) => (
               <Link
                 href={`/blog/${convertToUrl(recentPost.title)}_${
-                  recentPost.id
+                  recentPost._id
                 }`}
                 className={styles["recent-post"]}
-                key={recentPost.id}
+                key={recentPost._id}
               >
                 <div className={styles["image-container"]}>
                   <Image

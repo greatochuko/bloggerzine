@@ -4,8 +4,6 @@ import { createClient } from "@/utils/supabase/server";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
-// handle revalidation of blogpost details path after update of post
-
 export async function publishPost(initialState: any, formData: FormData) {
   const supabase = createClient();
 

@@ -35,7 +35,7 @@ export default async function page({
 
   if (!blogpost) notFound();
 
-  const comments = getComments(blogpost._id.toString());
+  const comments = await getComments(blogpost.id);
 
   return (
     <div className={styles["blog-page"]}>
@@ -87,7 +87,7 @@ export default async function page({
             </div>
           </section>
 
-          <CommentSection comments={comments} />
+          <CommentSection comments={comments} blogId={blogpost.id} />
         </div>
         <section className={styles["side"]}>
           <div>

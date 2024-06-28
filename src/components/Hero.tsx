@@ -9,6 +9,7 @@ import { createAuthorUrl } from "@/utils/createAuthorUrl";
 import convertToUrl from "@/utils/convertToUrl";
 
 export type Blogpost = {
+  id: string;
   _id: string;
   title: string;
   content: string;

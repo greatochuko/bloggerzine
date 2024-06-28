@@ -8,7 +8,7 @@ import { User } from "@/services/userServices";
 
 export type CommentType = {
   id: number;
-  blog: Blogpost;
+  blogpost: Blogpost;
   user: User;
   comment: string;
   createdAt: string;
