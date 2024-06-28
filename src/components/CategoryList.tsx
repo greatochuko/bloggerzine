@@ -21,7 +21,7 @@ export default function CategoryList({
             src={category.imageUrl || ""}
             alt={category.name}
             fill
-            sizes="(max-width: 640px) 100vw, 25vw"
+            sizes="90vw"
           ></Image>
           <p>{category.name}</p>
         </Link>

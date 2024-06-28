@@ -1,6 +1,6 @@
 "use server";
 
-import { revalidatePath, revalidateTag } from "next/cache";
+import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 import { createClient } from "@/utils/supabase/server";
@@ -117,7 +117,7 @@ export async function updateSocialLinks(initialState: any, formData: FormData) {
 
   revalidatePath("/settings");
   revalidatePath("/dashboard");
-  revalidateTag("/authors");
+  revalidatePath("/authors/[userSlug]", "page");
   return { errorMessage: null };
 }
 

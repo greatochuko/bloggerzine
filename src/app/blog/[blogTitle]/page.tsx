@@ -29,8 +29,9 @@ export default async function page({
 }: {
   params: { blogTitle: string };
 }) {
-  const blogpost:Blogpost = await getBlogpost(blogTitle.split("_").at(-1) as string);
-  console.log(blogpost);
+  const blogpost: Blogpost = await getBlogpost(
+    blogTitle.split("_").at(-1) as string
+  );
 
   if (!blogpost) notFound();
 

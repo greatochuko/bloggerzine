@@ -1,7 +1,7 @@
 "use server";
 
 import { createClient } from "@/utils/supabase/server";
-import { revalidatePath, revalidateTag } from "next/cache";
+import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 // handle revalidation of blogpost details path after update of post
@@ -24,7 +24,7 @@ export async function publishPost(initialState: any, formData: FormData) {
   if (!error) {
     revalidatePath("/dashboard");
     revalidatePath("/");
-    revalidateTag("/authors");
+    revalidatePath("/authors/[userSlug]", "page");
     redirect("/dashboard");
   }
 
@@ -49,7 +49,7 @@ export async function saveAsDraft(initialState: any, formData: FormData) {
   if (!error) {
     revalidatePath("/dashboard");
     revalidatePath("/");
-    revalidateTag("/authors");
+    revalidatePath("/authors/[userSlug]", "page");
     redirect("/dashboard");
   }
 
@@ -79,8 +79,8 @@ export async function updatePost(initialState: any, formData: FormData) {
   if (!error) {
     revalidatePath("/dashboard");
     revalidatePath("/");
-    revalidateTag("/authors/[userSlug]");
-    revalidateTag("/blog/[blogTitle]");
+    revalidatePath("/authors/[userSlug]", "page");
+    revalidatePath("/blog/[blogTitle]", "page");
     redirect("/dashboard");
   }
 
@@ -110,8 +110,8 @@ export async function updateAsDraft(initialState: any, formData: FormData) {
   if (!error) {
     revalidatePath("/dashboard");
     revalidatePath("/");
-    revalidateTag("/authors");
-    revalidateTag("/blog/[blogTitle]");
+    revalidatePath("/authors/[userSlug]", "page");
+    revalidatePath("/blog/[blogTitle]", "page");
     redirect("/dashboard");
   }
 
@@ -129,7 +129,7 @@ export async function deletePost(initialState: any, formData: FormData) {
     revalidatePath("/");
     revalidatePath("/search");
     revalidatePath("/dashboard");
-    revalidateTag("/authors");
+    revalidatePath("/authors/[userSlug]", "page");
   }
 
   return { done: true, error: error?.message || null };
