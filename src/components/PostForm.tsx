@@ -115,7 +115,7 @@ export default function CreatePostForm({ blogpost }: { blogpost?: Blogpost }) {
   return (
     <form className={styles["create-post-form"]}>
       {blogpost ? (
-        <input type="hidden" name="blogId" defaultValue={blogpost.id} />
+        <input type="hidden" name="blogId" defaultValue={blogpost._id} />
       ) : null}
       <div className={styles["input-group"]}>
         <label htmlFor="post-title">Post title</label>

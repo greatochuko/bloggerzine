@@ -7,13 +7,13 @@ import { categories } from "@/app/categories/page";
 import CategoryList from "@/components/CategoryList";
 import Link from "next/link";
 import CommentSection from "@/components/CommentSection";
-import convertToUrl from "@/utils/convertToUrl";
 import { getBlogpost } from "@/services/blogServices";
 import { getComments } from "@/services/commentServices";
 import { Metadata } from "next";
 import { createAuthorUrl } from "@/utils/createAuthorUrl";
 import BlogpostContent from "@/components/BlogpostContent";
 import SocialLinks from "@/components/SocialLinks";
+import { Blogpost } from "@/components/Hero";
 
 export async function generateMetadata({
   params: { blogTitle },
@@ -29,11 +29,12 @@ export default async function page({
 }: {
   params: { blogTitle: string };
 }) {
-  const blogpost = await getBlogpost(blogTitle.split("_").at(-1) as string);
+  const blogpost:Blogpost = await getBlogpost(blogTitle.split("_").at(-1) as string);
+  console.log(blogpost);
 
   if (!blogpost) notFound();
 
-  const comments = getComments(blogpost.id.toString());
+  const comments = getComments(blogpost._id.toString());
 
   return (
     <div className={styles["blog-page"]}>

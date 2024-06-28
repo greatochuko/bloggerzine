@@ -13,7 +13,6 @@ export const navLinks = [
   { name: "Finance", href: "/categories/finance" },
   { name: "Travel", href: "/categories/travel" },
   { name: "Lifestyle", href: "/categories/lifestyle" },
-  { name: "Sports", href: "/categories/sports" },
 ];
 
 export default function MainNav({

@@ -21,7 +21,7 @@ export default function ArticleList({ blogposts }: { blogposts: Blogpost[] }) {
     open: false,
     post: null,
   });
-  const [optionOpen, setOptionOpen] = useState<number | null>(null);
+  const [optionOpen, setOptionOpen] = useState<string | null>(null);
 
   let filteredPosts = blogposts.filter((post) =>
     post.title.toLowerCase().includes(searchQuery)
@@ -131,51 +131,53 @@ export default function ArticleList({ blogposts }: { blogposts: Blogpost[] }) {
                   </tr>
                 </thead>
                 <tbody>
-                  {paginatedPosts.map((blog) => (
-                    <tr key={blog.id}>
+                  {paginatedPosts.map((blogpost) => (
+                    <tr key={blogpost._id}>
                       <td>
                         <Link
-                          href={`/blog/${convertToUrl(blog.title)}_${blog.id}`}
+                          href={`/blog/${convertToUrl(blogpost.title)}_${
+                            blogpost._id
+                          }`}
                         >
-                          {blog.title}
+                          {blogpost.title}
                         </Link>
                       </td>
                       <td>
-                        {new Date(blog.createdAt)
+                        {new Date(blogpost.createdAt)
                           .toDateString()
                           .split(" ")
                           .slice(1)
                           .join(" ")}
                       </td>
-                      <td>{blog.views}</td>
+                      <td>{blogpost.views}</td>
                       <td className={styles["category"]}>
                         <Link
-                          href={`/categories/${blog.category}`}
+                          href={`/categories/${blogpost.category}`}
                           style={{
                             backgroundColor: categories.find(
                               (cat) =>
                                 cat.name.toLowerCase() ===
-                                blog.category.toLowerCase()
+                                blogpost.category.toLowerCase()
                             )?.color,
                           }}
                         >
-                          {blog.category}
+                          {blogpost.category}
                         </Link>
                       </td>
                       <td
                         className={`
                         ${styles["status"]} ${
-                          blog.isPublished
+                          blogpost.isPublished
                             ? styles["published"]
                             : styles["draft"]
                         }`}
                       >
-                        <p>{blog.isPublished ? "published" : "draft"}</p>
+                        <p>{blogpost.isPublished ? "published" : "draft"}</p>
                       </td>
                       <td className={styles["actions"]}>
                         <Link
-                          href={`/edit-post/${convertToUrl(blog.title)}_${
-                            blog.id
+                          href={`/edit-post/${convertToUrl(blogpost.title)}_${
+                            blogpost._id
                           }`}
                         >
                           <svg
@@ -211,7 +213,7 @@ export default function ArticleList({ blogposts }: { blogposts: Blogpost[] }) {
                         </Link>
                         <button
                           onClick={() =>
-                            setDeletePostModal({ open: true, post: blog })
+                            setDeletePostModal({ open: true, post: blogpost })
                           }
                         >
                           <svg
@@ -272,12 +274,12 @@ export default function ArticleList({ blogposts }: { blogposts: Blogpost[] }) {
                 </tbody>
               </table>
               <ul>
-                {paginatedPosts.map((blog) => (
-                  <li className={styles["blog-card"]} key={blog.id}>
+                {paginatedPosts.map((blogpost) => (
+                  <li className={styles["blog-card"]} key={blogpost._id}>
                     <div className={styles["image-container"]}>
                       <Image
-                        src={blog.thumbnail || ""}
-                        alt={blog.title}
+                        src={blogpost.thumbnail || ""}
+                        alt={blogpost.title}
                         fill
                         sizes="128px"
                       ></Image>
@@ -286,14 +288,16 @@ export default function ArticleList({ blogposts }: { blogposts: Blogpost[] }) {
                       <p>
                         <span>Title:</span>
                         <Link
-                          href={`/blog/${convertToUrl(blog.title)}_${blog.id}`}
+                          href={`/blog/${convertToUrl(blogpost.title)}_${
+                            blogpost._id
+                          }`}
                         >
-                          {blog.title}
+                          {blogpost.title}
                         </Link>
                       </p>
                       <p>
                         <span>Date Created:</span>
-                        {new Date(blog.createdAt)
+                        {new Date(blogpost.createdAt)
                           .toDateString()
                           .split(" ")
                           .slice(1)
@@ -301,25 +305,25 @@ export default function ArticleList({ blogposts }: { blogposts: Blogpost[] }) {
                       </p>
                       <p>
                         <span>Views:</span>
-                        {blog.views}
+                        {blogpost.views}
                       </p>
                       <p>
                         <span>Category:</span>
-                        {blog.category}
+                        {blogpost.category}
                       </p>
                       <p>
                         <span>Status:</span>
-                        {blog.isPublished ? "published" : "draft"}
+                        {blogpost.isPublished ? "published" : "draft"}
                       </p>
                     </div>
                     <div className={styles["options"]}>
                       <button
                         className={styles["options-button"]}
                         onClick={() => {
-                          if (optionOpen === blog.id) {
+                          if (optionOpen === blogpost._id) {
                             setOptionOpen(null);
                           } else {
-                            setOptionOpen(blog.id);
+                            setOptionOpen(blogpost._id);
                           }
                         }}
                       >
@@ -343,11 +347,11 @@ export default function ArticleList({ blogposts }: { blogposts: Blogpost[] }) {
                           </g>
                         </svg>
                       </button>
-                      {optionOpen === blog.id ? (
+                      {optionOpen === blogpost._id ? (
                         <div className={styles["options-list"]}>
                           <Link
-                            href={`/edit-post/${convertToUrl(blog.title)}_${
-                              blog.id
+                            href={`/edit-post/${convertToUrl(blogpost.title)}_${
+                              blogpost._id
                             }`}
                           >
                             <svg
@@ -384,7 +388,7 @@ export default function ArticleList({ blogposts }: { blogposts: Blogpost[] }) {
                           </Link>
                           <button
                             onClick={() =>
-                              setDeletePostModal({ open: true, post: blog })
+                              setDeletePostModal({ open: true, post: blogpost })
                             }
                           >
                             <svg

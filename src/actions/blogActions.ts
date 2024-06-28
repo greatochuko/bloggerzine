@@ -4,6 +4,8 @@ import { createClient } from "@/utils/supabase/server";
 import { revalidatePath, revalidateTag } from "next/cache";
 import { redirect } from "next/navigation";
 
+// handle revalidation of blogpost details path after update of post
+
 export async function publishPost(initialState: any, formData: FormData) {
   const supabase = createClient();
 
@@ -72,12 +74,13 @@ export async function updatePost(initialState: any, formData: FormData) {
   const { error } = await supabase
     .from("blogposts")
     .update(data)
-    .eq("id", blogId);
+    .eq("_id", blogId);
 
   if (!error) {
     revalidatePath("/dashboard");
     revalidatePath("/");
-    revalidateTag("/authors");
+    revalidateTag("/authors/[userSlug]");
+    revalidateTag("/blog/[blogTitle]");
     redirect("/dashboard");
   }
 
@@ -102,12 +105,13 @@ export async function updateAsDraft(initialState: any, formData: FormData) {
   const { error } = await supabase
     .from("blogposts")
     .update(data)
-    .eq("id", blogId);
+    .eq("_id", blogId);
 
   if (!error) {
     revalidatePath("/dashboard");
     revalidatePath("/");
     revalidateTag("/authors");
+    revalidateTag("/blog/[blogTitle]");
     redirect("/dashboard");
   }
 
@@ -119,7 +123,7 @@ export async function deletePost(initialState: any, formData: FormData) {
 
   const postId = formData.get("postId") as string;
 
-  const { error } = await supabase.from("blogposts").delete().eq("id", postId);
+  const { error } = await supabase.from("blogposts").delete().eq("_id", postId);
 
   if (!error) {
     revalidatePath("/");

@@ -2,10 +2,17 @@ import React from "react";
 import styles from "./page.module.css";
 import SignupForm from "@/components/SignupForm";
 import { Metadata } from "next";
+import { createClient } from "@/utils/supabase/server";
+import { redirect } from "next/navigation";
 
 export const metadata: Metadata = { title: "Signup" };
 
-export default function SignupPage() {
+export default async function SignupPage() {
+  const supabase = createClient();
+  const { data, error } = await supabase.auth.getUser();
+
+  if (data && !error) return redirect("/");
+
   return (
     <div className={styles["signup-page"]}>
       <div className={styles["form-container"]}>

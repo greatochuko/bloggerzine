@@ -18,7 +18,7 @@ export default function Blog({ blogpost }: { blogpost: Blogpost }) {
         ></Image>
       </div>
       <Link
-        href={`/blog/${convertToUrl(blogpost.title)}_${blogpost.id}`}
+        href={`/blog/${convertToUrl(blogpost.title)}_${blogpost._id}`}
         className={styles["blog-title"]}
       >
         {blogpost.title}

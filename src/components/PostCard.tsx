@@ -9,7 +9,7 @@ import convertToUrl from "@/utils/convertToUrl";
 export default function PostCard({ blogpost }: { blogpost: Blogpost }) {
   return (
     <Link
-      href={`/blog/${convertToUrl(blogpost.title)}_${blogpost.id}`}
+      href={`/blog/${convertToUrl(blogpost.title)}_${blogpost._id}`}
       className={styles["post-card"]}
     >
       <Image

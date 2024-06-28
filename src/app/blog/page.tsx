@@ -11,7 +11,7 @@ export default async function page({
   searchParams: { page: string };
 }) {
   const currentPage = Number(searchParams.page) || 1;
-  const blogposts = getBlogposts();
+  const blogposts = await getBlogposts();
   const filteredPosts = blogposts.slice((currentPage - 1) * 8, currentPage * 8);
 
   return (
@@ -56,7 +56,7 @@ export default async function page({
       </div>
       <div className={styles["blog-list"]}>
         {filteredPosts.map((blogpost) => (
-          <SearchBlog blog={blogpost} key={blogpost.id} />
+          <SearchBlog blog={blogpost} key={blogpost._id} />
         ))}
       </div>
       <Paginator numPages={Math.ceil(blogposts.length / 8) || 1} />

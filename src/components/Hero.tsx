@@ -9,7 +9,7 @@ import { createAuthorUrl } from "@/utils/createAuthorUrl";
 import convertToUrl from "@/utils/convertToUrl";
 
 export type Blogpost = {
-  id: number;
+  _id: string;
   title: string;
   content: string;
   category: string;
@@ -27,7 +27,7 @@ export default function Hero({ blogposts }: { blogposts: Blogpost[] }) {
   return (
     <div className={styles["hero"]}>
       {blogposts.map((blogpost) => (
-        <div key={blogpost.id}>
+        <div key={blogpost._id}>
           <div className={styles["overlay"]}>
             <p
               className={styles["category"]}
@@ -41,7 +41,7 @@ export default function Hero({ blogposts }: { blogposts: Blogpost[] }) {
               {blogpost.category}
             </p>
             <Link
-              href={`/blog/${convertToUrl(blogpost.title)}_${blogpost.id}`}
+              href={`/blog/${convertToUrl(blogpost.title)}_${blogpost._id}`}
               className={styles["blog-title"]}
             >
               {blogpost.title}
