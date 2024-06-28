@@ -2,23 +2,10 @@ import React from "react";
 import styles from "./page.module.css";
 import LoginForm from "@/components/LoginForm";
 import { Metadata } from "next";
-import { redirect } from "next/navigation";
-import { createClient } from "@/utils/supabase/server";
 
 export const metadata: Metadata = { title: "Login" };
 
-export default async function LoginPage({
-  searchParams,
-}: {
-  searchParams: { redirect?: string };
-}) {
-  const supabase = createClient();
-  const { data, error } = await supabase.auth.getUser();
-
-  const redirectTo = searchParams.redirect;
-
-  if (data && !error) return redirect(redirectTo || "/");
-
+export default async function LoginPage() {
   return (
     <div className={styles["login-page"]}>
       <div className={styles["form-container"]}>

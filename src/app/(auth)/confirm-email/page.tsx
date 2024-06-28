@@ -3,7 +3,6 @@ import styles from "./page.module.css";
 import EmailVerificationForm from "@/components/EmailVerificationForm";
 import jwt, { JwtPayload } from "jsonwebtoken";
 import { redirect } from "next/navigation";
-import { createClient } from "@/utils/supabase/server";
 
 export default function ConfirmEmailPage({
   searchParams,
@@ -12,8 +11,6 @@ export default function ConfirmEmailPage({
 }) {
   const token = jwt.decode(searchParams.token);
   const email = (token as JwtPayload)?.email;
-
-  const supabase = createClient();
 
   if (!email) redirect("/signup");
 
