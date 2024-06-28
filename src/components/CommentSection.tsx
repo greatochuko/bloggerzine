@@ -58,32 +58,38 @@ export default function CommentSection({
               />
             ))}
         </ul>
-        <form className={styles["comment-form"]} action={postCommentAction}>
-          <h2>Leave a Comment</h2>
-          <textarea
-            name="comment"
-            id="comment"
-            value={comment}
-            onChange={(e) => setComment(e.target.value)}
-            placeholder="Comment..."
-          ></textarea>
-          <input type="hidden" name="blogpost" hidden defaultValue={blogId} />
-          {errorMessage ? (
-            <p className={styles["error"]}>{errorMessage}</p>
-          ) : null}
-          <Button />
-        </form>
+        {userId ? (
+          <form className={styles["comment-form"]} action={postCommentAction}>
+            <h2>Leave a Comment</h2>
+            <textarea
+              name="comment"
+              id="comment"
+              value={comment}
+              onChange={(e) => setComment(e.target.value)}
+              placeholder="Comment..."
+            ></textarea>
+            <input type="hidden" name="blogpost" hidden defaultValue={blogId} />
+            {errorMessage ? (
+              <p className={styles["error"]}>{errorMessage}</p>
+            ) : null}
+            <Button />
+          </form>
+        ) : null}
       </section>
-      <EditCommentModal
-        comment={commentToEdit}
-        isOpen={!!commentToEdit}
-        closeModal={() => setCommentToEdit(null)}
-      />
-      <DeleteCommentModal
-        comment={commentToDelete}
-        isOpen={!!commentToDelete}
-        closeModal={() => setCommentToDelete(null)}
-      />
+      {userId ? (
+        <>
+          <EditCommentModal
+            comment={commentToEdit}
+            isOpen={!!commentToEdit}
+            closeModal={() => setCommentToEdit(null)}
+          />
+          <DeleteCommentModal
+            comment={commentToDelete}
+            isOpen={!!commentToDelete}
+            closeModal={() => setCommentToDelete(null)}
+          />
+        </>
+      ) : null}
     </>
   );
 }

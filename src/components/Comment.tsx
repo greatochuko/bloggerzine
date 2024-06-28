@@ -153,7 +153,9 @@ export default function Comment({
           </time>
           <p className={styles["content"]}>{comment.comment}</p>
 
-          <button onClick={() => setReplyFormId(comment.id)}>Reply</button>
+          {userId ? (
+            <button onClick={() => setReplyFormId(comment.id)}>Reply</button>
+          ) : null}
           {replyFormId === comment.id ? (
             <ReplyForm
               closeReplyForm={() => setReplyFormId(null)}
