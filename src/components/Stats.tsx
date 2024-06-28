@@ -2,7 +2,6 @@
 import React from "react";
 import styles from "@/styles/Stats.module.css";
 import { convertToAbbrString } from "@/utils/numberFormatter";
-import { getBlogpostByAuthor } from "@/services/blogServices";
 import { getCommentsByAuthor } from "@/services/commentServices";
 import { User } from "@/services/userServices";
 import { Blogpost } from "./Hero";
@@ -18,6 +17,12 @@ export default function Stats({
 
   // const authorComments = getCommentsByAuthor(authorId);
   const authorComments = [];
+
+  const reads = convertToAbbrString(
+    blogposts.reduce((acc, curr) => acc + curr.views, 0)
+  );
+
+  const likes = blogposts.reduce((acc, curr) => acc + curr.likes, 0);
 
   return (
     <div className={styles["stats"]}>
@@ -48,7 +53,7 @@ export default function Stats({
         </div>
         <div className={styles["text"]}>
           <h3>{blogposts.length}</h3>
-          <p>Posts</p>
+          <p>Post{blogposts.length !== 1 ? "s" : ""}</p>
         </div>
       </div>
       <div className={styles["stat"]}>
@@ -76,12 +81,8 @@ export default function Stats({
           </svg>
         </div>
         <div className={styles["text"]}>
-          <h3>
-            {convertToAbbrString(
-              blogposts.reduce((acc, curr) => acc + curr.views, 0)
-            )}
-          </h3>
-          <p>Reads</p>
+          <h3>{reads}</h3>
+          <p>Read{Number(reads) !== 1 ? "s" : ""}</p>
         </div>
       </div>
       <div className={styles["stat"]}>
@@ -111,8 +112,8 @@ export default function Stats({
           </svg>
         </div>
         <div className={styles["text"]}>
-          <h3>{blogposts.reduce((acc, curr) => acc + curr.likes, 0)}</h3>
-          <p>Likes</p>
+          <h3>{likes}</h3>
+          <p>Like{likes !== 1 ? "s" : ""}</p>
         </div>
       </div>
       <div className={styles["stat"]}>
@@ -147,7 +148,7 @@ export default function Stats({
         </div>
         <div className={styles["text"]}>
           <h3>{convertToAbbrString(authorComments.length)}</h3>
-          <p>Comments</p>
+          <p>Comment{authorComments.length !== 1 ? "s" : ""}</p>
         </div>
       </div>
     </div>

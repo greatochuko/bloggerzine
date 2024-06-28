@@ -37,9 +37,6 @@ export default function Comment({
 }) {
   const replies = comments.filter((c) => c.parentId === comment.id);
 
-  console.clear();
-  console.log(comments);
-
   return (
     <li className={styles["comment"]}>
       <div className={styles["main"]}>

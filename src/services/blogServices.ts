@@ -10,10 +10,21 @@ export async function getBlogposts() {
 
 export async function getBlogpost(id: string) {
   const supabase = createClient();
+
   const { data, error } = await supabase
     .from("blogposts")
     .select("*, author(*)")
     .eq("_id", id);
+
+  if (data && data[0]) {
+    const updatedViews = data[0].views + 1;
+    const { error: updateError } = await supabase
+      .from("blogposts")
+      .update({ views: updatedViews })
+      .eq("_id", id);
+
+    console.log(updateError?.message);
+  }
 
   const blogpost = data ? data[0] : null;
   return blogpost;
