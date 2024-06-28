@@ -18,7 +18,6 @@ export async function postComment(initialState: any, formData: FormData) {
 
   if (!error) {
     revalidatePath("/dashboard");
-    revalidatePath("/authors/[userSlug]", "page");
     revalidatePath("/blog/[blogTitle]", "page");
   }
 
@@ -30,18 +29,23 @@ export async function postReply(initialState: any, formData: FormData) {
 
   const data = {
     parentId: formData.get("parentId") || null,
+    rootCommentId: formData.get("rootCommentId"),
     blogpost: formData.get("blogpost") as string,
     comment: formData.get("reply") as string,
   };
 
   const { error } = await supabase.from("comments").insert(data);
 
+  if (error) {
+    console.log(error.message);
+  }
+
   if (!error) {
     revalidatePath("/dashboard");
     revalidatePath("/blog/[blogTitle]", "page");
   }
 
-  return { done: false, errorMessage: "Something went wrong" };
+  return { done: true, errorMessage: error ? "Something went wrong" : null };
 }
 
 export async function editComment(initialState: any, formData: FormData) {
@@ -60,7 +64,7 @@ export async function editComment(initialState: any, formData: FormData) {
     revalidatePath("/blog/[blogTitle]", "page");
   }
 
-  return { done: false, error: "Something went wrong" };
+  return { done: true, error: error ? "Something went wrong" : null };
 }
 
 export async function deleteComment(initialState: any, formData: FormData) {
@@ -73,10 +77,20 @@ export async function deleteComment(initialState: any, formData: FormData) {
     .delete()
     .eq("id", commentId);
 
-  if (!error) {
+  const { error: replyError } = await supabase
+    .from("comments")
+    .delete()
+    .eq("rootCommentId", commentId);
+
+  const { error: nestedReplyError } = await supabase
+    .from("comments")
+    .delete()
+    .eq("parentId", commentId);
+
+  if (!error && !replyError && !nestedReplyError) {
     revalidatePath("/dashboard");
     revalidatePath("/blog/[blogTitle]", "page");
   }
 
-  return { done: false, error: "Something went wrong" };
+  return { done: true, error: error ? "Something went wrong" : null };
 }

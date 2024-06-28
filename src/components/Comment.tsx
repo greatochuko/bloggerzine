@@ -13,6 +13,7 @@ export type CommentType = {
   comment: string;
   createdAt: string;
   parentId: null | number;
+  rootCommentId: null | number;
 };
 
 export default function Comment({
@@ -35,6 +36,9 @@ export default function Comment({
   setCommentToDelete: React.Dispatch<React.SetStateAction<CommentType | null>>;
 }) {
   const replies = comments.filter((c) => c.parentId === comment.id);
+
+  console.clear();
+  console.log(comments);
 
   return (
     <li className={styles["comment"]}>
@@ -154,6 +158,7 @@ export default function Comment({
             <ReplyForm
               closeReplyForm={() => setReplyFormId(null)}
               blogId={blogId}
+              rootCommentId={comment.rootCommentId || comment.id}
               parentId={comment.id}
             />
           ) : null}

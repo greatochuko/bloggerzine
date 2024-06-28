@@ -8,10 +8,12 @@ import LoadingIndicator from "./LoadingIndicator";
 export default function ReplyForm({
   parentId,
   blogId,
+  rootCommentId,
   closeReplyForm,
 }: {
   parentId: number;
   blogId: string;
+  rootCommentId: number;
   closeReplyForm: () => void;
 }) {
   const [reply, SetReply] = useState("");
@@ -42,6 +44,12 @@ export default function ReplyForm({
 
       <input type="hidden" name="blogpost" hidden defaultValue={blogId} />
       <input type="hidden" name="parentId" hidden defaultValue={parentId} />
+      <input
+        type="hidden"
+        name="rootCommentId"
+        hidden
+        defaultValue={rootCommentId}
+      />
 
       {errorMessage ? <p className={styles["error"]}>{errorMessage}</p> : null}
       <div className={styles["actions"]}>

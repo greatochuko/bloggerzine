@@ -11,6 +11,7 @@
 .reply-form textarea {
   border: solid 1px #ccc;
   aspect-ratio: 3;
+  min-height: 5rem;
   max-height: 10rem;
   font-size: 1rem;
   border-radius: 0.25rem;
