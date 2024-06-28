@@ -20,7 +20,7 @@ export default function DeletePostModal({
     error: "",
   });
 
-  const { done, error } = state;
+  const { done } = state;
 
   useEffect(() => {
     if (done) {

@@ -35,13 +35,25 @@
   font-size: 0.9rem;
 }
 
-.details button {
+.actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.actions button {
   width: fit-content;
   padding: 0.5rem 0;
   background-color: transparent;
   border: none;
   color: var(--blue-100);
   font-weight: 650;
+}
+
+.actions button:first-child {
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .replies {

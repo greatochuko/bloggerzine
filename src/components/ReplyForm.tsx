@@ -39,6 +39,7 @@ export default function ReplyForm({
         onChange={(e) => SetReply(e.target.value)}
         placeholder="Reply..."
       ></textarea>
+
       <input type="hidden" name="blogpost" hidden defaultValue={blogId} />
       <input type="hidden" name="parentId" hidden defaultValue={parentId} />
 

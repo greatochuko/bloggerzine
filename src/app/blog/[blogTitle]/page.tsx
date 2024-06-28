@@ -14,6 +14,7 @@ import { createAuthorUrl } from "@/utils/createAuthorUrl";
 import BlogpostContent from "@/components/BlogpostContent";
 import SocialLinks from "@/components/SocialLinks";
 import { Blogpost } from "@/components/Hero";
+import { createClient } from "@/utils/supabase/server";
 
 export async function generateMetadata({
   params: { blogTitle },
@@ -36,6 +37,12 @@ export default async function page({
   if (!blogpost) notFound();
 
   const comments = await getComments(blogpost.id);
+
+  const supabase = createClient();
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
   return (
     <div className={styles["blog-page"]}>
@@ -87,7 +94,11 @@ export default async function page({
             </div>
           </section>
 
-          <CommentSection comments={comments} blogId={blogpost.id} />
+          <CommentSection
+            comments={comments}
+            blogId={blogpost.id}
+            userId={user?.id}
+          />
         </div>
         <section className={styles["side"]}>
           <div>
