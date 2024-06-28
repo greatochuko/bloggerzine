@@ -1,0 +1,54 @@
+.update-password-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.update-password-page h1 {
+  color: #222;
+  font-size: min(max(1.5rem, 2.5vw), 1.75rem);
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background-color: var(--light-blue-100);
+  border: solid 1px var(--light-blue-200);
+  padding: 2rem;
+  border-radius: 0.25rem;
+  width: 90%;
+  max-width: 35rem;
+}
+
+.form-container > form:last-child {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button.oauth {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  padding: 0.5rem;
+  background-color: white;
+  color: #222;
+  font-weight: 700;
+  font-size: 1rem;
+  border: solid 1px #ccc;
+  border-radius: 0.25rem;
+}
+
+button.oauth:hover {
+  border-color: var(--blue-100);
+}
+
+/* ------------------------ MOBILE STYLES ----------------------------------- */
+@media screen and (max-width: 640px) {
+  .form-container {
+    padding: 1rem;
+    width: 100%;
+  }
+}

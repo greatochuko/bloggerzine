@@ -15,18 +15,17 @@ export function ResetPasswordSection() {
   return (
     <div className={styles["section"]}>
       <h2>Reset Password</h2>
-      {data ? (
-        <p className="success">
-          A link to reset your password has been sent to your email
-        </p>
-      ) : (
-        <form className={styles["reset-password"]} action={formAction}>
-          <Button />
-          {errorMessage ? (
-            <p className={styles["error"]}>{errorMessage}</p>
-          ) : null}
-        </form>
-      )}
+      <form className={styles["reset-password"]} action={formAction}>
+        <Button />
+        {errorMessage ? (
+          <p className={styles["error"]}>{errorMessage}</p>
+        ) : null}
+        {data ? (
+          <p className={styles["success"]}>
+            A link to reset your password has been sent to your email
+          </p>
+        ) : null}
+      </form>
     </div>
   );
 }

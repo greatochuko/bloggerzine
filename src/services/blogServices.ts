@@ -22,8 +22,6 @@ export async function getBlogpost(id: string) {
       .from("blogposts")
       .update({ views: updatedViews })
       .eq("_id", id);
-
-    console.log(updateError?.message);
   }
 
   const blogpost = data ? data[0] : null;

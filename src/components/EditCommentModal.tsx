@@ -25,7 +25,7 @@ export default function EditCommentModal({
     if (done) {
       closeModal();
     }
-  }, [done]);
+  }, [done, closeModal]);
 
   return (
     <div

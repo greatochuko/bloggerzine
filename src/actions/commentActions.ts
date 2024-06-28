@@ -36,10 +36,6 @@ export async function postReply(initialState: any, formData: FormData) {
 
   const { error } = await supabase.from("comments").insert(data);
 
-  if (error) {
-    console.log(error.message);
-  }
-
   if (!error) {
     revalidatePath("/dashboard");
     revalidatePath("/blog/[blogTitle]", "page");
@@ -64,7 +60,7 @@ export async function editComment(initialState: any, formData: FormData) {
     revalidatePath("/blog/[blogTitle]", "page");
   }
 
-  return { done: true, error: error ? "Something went wrong" : null };
+  return { done: true, errorMessage: error ? "Something went wrong" : null };
 }
 
 export async function deleteComment(initialState: any, formData: FormData) {
@@ -92,5 +88,5 @@ export async function deleteComment(initialState: any, formData: FormData) {
     revalidatePath("/blog/[blogTitle]", "page");
   }
 
-  return { done: true, error: error ? "Something went wrong" : null };
+  return { done: true, errorMessage: error ? "Something went wrong" : null };
 }

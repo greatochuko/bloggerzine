@@ -26,7 +26,7 @@ export default async function SearchPage({
     <div className={styles["search-page"]}>
       <div className={styles["heading"]}>
         <SearchPageForm searchQuery={searchQuery.split("-").join(" ")} />
-        <h1>Search results for "{searchQuery.split("-").join(" ")}"</h1>
+        <h1>Search results for &ldquo;{searchQuery.split("-").join(" ")}&rdquo;</h1>
       </div>
       <Suspense fallback={<LoadingIndicator />} key={searchQuery}>
         <SearchResults query={searchQuery} page={searchParams.page} />

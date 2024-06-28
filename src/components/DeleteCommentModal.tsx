@@ -16,7 +16,7 @@ export default function DeleteCommentModal({
 }) {
   const [state, deleteCommentAction] = useFormState(deleteComment, {
     done: false,
-    error: "",
+    errorMessage: "",
   });
 
   const { done } = state;
@@ -25,7 +25,7 @@ export default function DeleteCommentModal({
     if (done) {
       closeModal();
     }
-  }, [done]);
+  }, [done, closeModal]);
 
   return (
     <div
@@ -59,9 +59,9 @@ export default function DeleteCommentModal({
           <h3>Delete {comment?.parentId ? "Reply" : "Comment"}?</h3>
           <p>
             Are you sure you want to delete{" "}
-            {comment?.parentId ? "reply" : "comment"} <br />"
+            {comment?.parentId ? "reply" : "comment"} <br />&ldquo;
             {comment?.comment.slice(0, 30)}
-            {comment && comment.comment.length > 30 ? "..." : ""}"?
+            {comment && comment.comment.length > 30 ? "..." : ""}&rdquo;?
           </p>
         </div>
         <div className={styles["actions"]}>

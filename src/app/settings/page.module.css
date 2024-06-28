@@ -47,4 +47,11 @@
 .section .error {
   color: var(--red-100);
   font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.section .success {
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: rgb(56, 170, 56);
 }

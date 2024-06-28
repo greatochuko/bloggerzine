@@ -1,4 +1,5 @@
 "use server";
+import jwt from "jsonwebtoken";
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
@@ -44,7 +45,7 @@ export async function signup(initialState: any, formData: FormData) {
 
   const { error } = await supabase.auth.signUp({
     ...data,
-    options: { data: metaData },
+    options: { data: metaData, emailRedirectTo: "http://localhost:3000/login" },
   });
 
   if (error) {
@@ -52,7 +53,10 @@ export async function signup(initialState: any, formData: FormData) {
   }
 
   revalidatePath("/", "layout");
-  redirect("/confirm-email");
+
+  const jwtSecret = process.env.NEXT_PUBLIC_JWT_SECRET!;
+  const token = jwt.sign({ email: data.email }, jwtSecret);
+  redirect(`/confirm-email?token=${token}`);
 }
 
 export async function updateProfile(initialState: any, formData: FormData) {
@@ -150,4 +154,34 @@ export async function sendResetPasswordEmail(initialState: any) {
     data,
     errorMessage: error ? "An error occured please try again later" : null,
   };
+}
+
+export async function resetPassword(initialState: any, formData: FormData) {
+  const supabase = createClient();
+
+  const password = formData.get("password") as string;
+  const { error } = await supabase.auth.updateUser({
+    password,
+  });
+
+  if (error) {
+    return { errorMessage: error.message };
+  }
+
+  redirect("/");
+}
+
+export async function sendVerificationEmail(formData: FormData) {
+  const supabase = createClient();
+  const email = formData.get("email") as string;
+
+  const { error } = await supabase.auth.resend({
+    type: "signup",
+    email,
+    options: {
+      emailRedirectTo: "http://localhost:3000/login",
+    },
+  });
+
+  return { errorMessage: error ? error.message : null };
 }

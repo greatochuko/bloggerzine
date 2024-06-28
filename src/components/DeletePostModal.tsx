@@ -25,7 +25,7 @@ export default function DeletePostModal({
     if (done) {
       closeModal();
     }
-  }, [done]);
+  }, [done, closeModal]);
 
   return (
     <div
@@ -57,7 +57,7 @@ export default function DeletePostModal({
             </svg>
           </div>
           <h3>Delete Post?</h3>
-          <p>Are you sure you want to delete post "{post?.title}"?</p>
+          <p>Are you sure you want to delete post &ldquo;{post?.title}&rdquo;?</p>
         </div>
         <div className={styles["actions"]}>
           <button onClick={closeModal}>Cancel</button>

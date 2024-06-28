@@ -12,7 +12,7 @@ export default function NotFoundPage() {
     <div className={styles["not-found"]}>
       <h1>404</h1>
       <h2>Page not Found</h2>
-      <p>Either something went wrong or this page dosen't exist anymore</p>
+      <p>Either something went wrong or this page dosen&apos;t exist anymore</p>
       <BackButton />
     </div>
   );

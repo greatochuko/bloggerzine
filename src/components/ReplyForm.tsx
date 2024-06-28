@@ -29,7 +29,7 @@ export default function ReplyForm({
     if (done) {
       closeReplyForm();
     }
-  }, [done]);
+  }, [done, closeReplyForm]);
 
   return (
     <form className={styles["reply-form"]} action={postReplyAction}>
