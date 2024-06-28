@@ -18,14 +18,12 @@ export const metadata: Metadata = {
 export default async function Dashboard() {
   const supabase = createClient();
   const { data, error } = await supabase.auth.getUser();
-
-  if (!data || error) return <Navigate to="/login" />;
-
-  const { user } = await getUser(data.user.id);
+  const userId = data.user?.id;
+  const { user } = await getUser(userId as string);
 
   if (!user) notFound();
 
-  let authorBlogposts = await getBlogpostByAuthor(data.user.id);
+  let authorBlogposts = await getBlogpostByAuthor(userId as string);
 
   return (
     <div className={styles["profile-page"]}>

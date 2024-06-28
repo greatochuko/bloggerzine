@@ -1,9 +1,31 @@
-import { NextResponse, type NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { updateSession } from "@/utils/supabase/middleware";
 import { createClient } from "./utils/supabase/server";
 
 export async function middleware(request: NextRequest) {
-  // Check if request url matches login or signup routes
+  await updateSession(request);
+  const origin = request.nextUrl.origin;
+  // Check if request url matches protect routes
+  if (
+    request.url.includes("/create-post") ||
+    request.url.includes("/edit-post") ||
+    request.url.includes("/dashboard")
+  ) {
+    // Fetch user
+    const supabase = createClient();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    // If user is not authenticated redirect to the login page
+    if (!user) {
+      const redirectTo = request.nextUrl.pathname;
+      return NextResponse.redirect(`${origin}/login?redirect=${redirectTo}`);
+    } else {
+      return NextResponse.next();
+    }
+  }
+
   if (request.url.includes("/login") || request.url.includes("/signup")) {
     // Fetch user
     const supabase = createClient();
@@ -14,7 +36,6 @@ export async function middleware(request: NextRequest) {
     // If user is authenticated redirect to the redirect param or the homepage
     if (user) {
       const redirectTo = request.url.split("?redirect=%2F")[1];
-      const origin = request.nextUrl.origin;
 
       if (redirectTo) {
         return NextResponse.redirect(`${origin}/${redirectTo}`);
@@ -23,7 +44,6 @@ export async function middleware(request: NextRequest) {
       }
     }
   }
-  return await updateSession(request);
 }
 
 export const config = {

@@ -19,15 +19,13 @@ export default async function EditPostPage({
   const supabase = createClient();
   const { data, error } = await supabase.auth.getUser();
 
-  if (!data || error) return <Navigate to="/login" />;
-
   const blogpostId = params.blogId.split("_").at(-1);
   if (!blogpostId) notFound();
 
   const blogpost = await getBlogpost(blogpostId);
   if (!blogpost) notFound();
 
-  if (data.user.id !== blogpost.author.id) notFound();
+  if (data.user?.id !== blogpost.author.id) notFound();
 
   return (
     <div className={styles["edit-post-page"]}>

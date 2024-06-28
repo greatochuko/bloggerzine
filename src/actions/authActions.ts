@@ -5,7 +5,6 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 import { createClient } from "@/utils/supabase/server";
-import { createAuthorUrl } from "@/utils/createAuthorUrl";
 
 export async function login(initialState: any, formData: FormData) {
   const supabase = createClient();
@@ -27,6 +26,7 @@ export async function login(initialState: any, formData: FormData) {
   revalidatePath("/dashboard");
   revalidatePath("/create-post");
   revalidatePath("/");
+  revalidatePath("/login");
   return { user, errorMessage: null };
 }
 
@@ -88,7 +88,7 @@ export async function updateProfile(initialState: any, formData: FormData) {
 
   revalidatePath("/settings");
   revalidatePath("/dashboard");
-  revalidatePath(`/authors/${createAuthorUrl(userData[0])}`);
+  revalidatePath(`/authors/[userSlug]`, "page");
   return { errorMessage: null };
 }
 
@@ -109,7 +109,7 @@ export async function updateSocialLinks(initialState: any, formData: FormData) {
     },
   };
 
-  const { data: userData, error } = await supabase
+  const { error } = await supabase
     .from("profiles")
     .update(data)
     .eq("id", user.id)
@@ -133,6 +133,7 @@ export async function logout() {
   revalidatePath("/dashboard");
   revalidatePath("/create-post");
   revalidatePath("/edit-post/[blogId]", "page");
+  redirect("/login");
 }
 
 export async function sendResetPasswordEmail(initialState: any) {

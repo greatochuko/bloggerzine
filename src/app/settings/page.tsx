@@ -19,9 +19,9 @@ export default async function SettingsPage() {
   const supabase = createClient();
   const { data, error } = await supabase.auth.getUser();
 
-  if (!data || error) return <Navigate to="/login" />;
+  const userId = data.user?.id;
 
-  const { user } = await getUser(data.user.id);
+  const { user } = await getUser(userId as string);
 
   if (!user) notFound();
 
