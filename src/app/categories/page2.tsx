@@ -5,7 +5,14 @@ import Category from "@/components/Category";
 import { getBlogposts } from "@/services/blogServices";
 import { Blogpost } from "@/components/Hero";
 
-export const categories = [
+type Category = {
+  name: string;
+  imageUrl: string;
+  color: string;
+  description: string;
+};
+
+export const categories: Category[] = [
   {
     name: "Technology",
     imageUrl: "/tech.jpg",

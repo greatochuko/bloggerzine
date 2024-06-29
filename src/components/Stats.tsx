@@ -15,8 +15,7 @@ export default function Stats({
 }) {
   const authorId = author.id.toString() as string;
 
-  // const authorComments = getCommentsByAuthor(authorId);
-  const authorComments = [];
+  const authorComments = getCommentsByAuthor(authorId);
 
   const reads = convertToAbbrString(
     blogposts.reduce((acc, curr) => acc + curr.views, 0)

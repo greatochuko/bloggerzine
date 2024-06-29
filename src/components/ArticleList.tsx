@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "@/styles/ArticleList.module.css";
 import paginatorStyles from "@/styles/Paginator.module.css";
-import { categories } from "@/app/categories/page";
+import { categories } from "@/app/categories/page2";
 import Link from "next/link";
 import convertToUrl from "@/utils/convertToUrl";
 import Image from "next/image";

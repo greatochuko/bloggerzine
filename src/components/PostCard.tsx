@@ -2,7 +2,7 @@ import React from "react";
 import styles from "@/styles/PostCard.module.css";
 import { type Blogpost } from "./Hero";
 import Image from "next/image";
-import { categories } from "@/app/categories/page";
+import { categories } from "@/app/categories/page2";
 import Link from "next/link";
 import convertToUrl from "@/utils/convertToUrl";
 

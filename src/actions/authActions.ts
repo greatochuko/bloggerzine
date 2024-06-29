@@ -14,20 +14,20 @@ export async function login(initialState: any, formData: FormData) {
     password: formData.get("password") as string,
   };
 
-  const {
-    data: { user },
-    error,
-  } = await supabase.auth.signInWithPassword(data);
+  const { error } = await supabase.auth.signInWithPassword(data);
 
   if (error) {
-    return { user: null, errorMessage: error.message };
+    return {
+      errorMessage: error.message,
+      redirectTo: initialState.redirectTo,
+    };
   }
 
   revalidatePath("/dashboard");
   revalidatePath("/create-post");
   revalidatePath("/");
   revalidatePath("/login");
-  return { user, errorMessage: null };
+  redirect(initialState.redirectTo || `/`);
 }
 
 export async function signup(initialState: any, formData: FormData) {

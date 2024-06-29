@@ -7,7 +7,7 @@ import React, {
   useState,
 } from "react";
 import styles from "@/styles/PostForm.module.css";
-import { categories } from "@/app/categories/page";
+import { categories } from "@/app/categories/page2";
 import { Blogpost } from "./Hero";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";

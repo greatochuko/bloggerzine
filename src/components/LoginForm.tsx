@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "@/styles/LoginForm.module.css";
 import Link from "next/link";
 import { useFormState, useFormStatus } from "react-dom";
@@ -12,13 +12,11 @@ export default function LoginForm() {
   const redirectTo = searchParams.get("redirect");
 
   const [state, loginAction] = useFormState(login, {
-    user: null,
     errorMessage: "",
+    redirectTo,
   });
 
-  const { user, errorMessage } = state;
-
-  if (user) redirect(redirectTo || "/");
+  const { errorMessage } = state;
 
   return (
     <form className={styles["login-form"]} action={loginAction}>
