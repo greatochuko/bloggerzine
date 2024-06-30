@@ -11,21 +11,24 @@ export default function CategoryList({
 }) {
   return (
     <div className={styles["category-list"]}>
-      {categories.map((category) => (
-        <Link
-          href={`/categories/${category.name.toLowerCase()}`}
-          className={styles["category"]}
-          key={category.name}
-        >
-          <Image
-            src={category.imageUrl || ""}
-            alt={category.name}
-            fill
-            sizes="90vw"
-          ></Image>
-          <p>{category.name}</p>
-        </Link>
-      ))}
+      <ul>
+        {categories.map((category) => (
+          <li key={category.name}>
+            <Link
+              href={`/categories/${category.name.toLowerCase()}`}
+              className={styles["category"]}
+            >
+              <Image
+                src={category.imageUrl || ""}
+                alt={category.name}
+                fill
+                sizes="90vw"
+              ></Image>
+              <p>{category.name}</p>
+            </Link>
+          </li>
+        ))}
+      </ul>
       <Link href={"/categories"}>View all categories</Link>
     </div>
   );

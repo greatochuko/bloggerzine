@@ -24,39 +24,43 @@ export default function MainArea({
       <section className={styles["side"]}>
         <div>
           <h2 className={styles["section-heading"]}>Trending Topics</h2>
-          <CategoryList categories={categories.slice(0, 5)} />
+          <CategoryList categories={categories.slice(0, 6)} />
         </div>
         <div>
           <h2 className={styles["section-heading"]}>Recent Posts</h2>
           <div className={styles["recent-posts"]}>
-            {recentPosts.map((recentPost) => (
-              <Link
-                href={`/blog/${convertToUrl(recentPost.title)}_${
-                  recentPost._id
-                }`}
-                className={styles["recent-post"]}
-                key={recentPost._id}
-              >
-                <div className={styles["image-container"]}>
-                  <Image
-                    src={recentPost.thumbnail || ""}
-                    alt={recentPost.title}
-                    fill
-                    sizes="(max-width: 640px) 25vw, 15vw"
-                  ></Image>
-                </div>
-                <div className={styles["post-details"]}>
-                  <h3>{recentPost.title}</h3>
-                  <p>
-                    {new Date(recentPost.createdAt)
-                      .toDateString()
-                      .split(" ")
-                      .slice(1)
-                      .join(" ")}
-                  </p>
-                </div>
-              </Link>
-            ))}
+            <ul>
+              {recentPosts.map((recentPost) => (
+                <li>
+                  <Link
+                    href={`/blog/${convertToUrl(recentPost.title)}_${
+                      recentPost._id
+                    }`}
+                    className={styles["recent-post"]}
+                    key={recentPost._id}
+                  >
+                    <div className={styles["image-container"]}>
+                      <Image
+                        src={recentPost.thumbnail || ""}
+                        alt={recentPost.title}
+                        fill
+                        sizes="(max-width: 640px) 25vw, 15vw"
+                      ></Image>
+                    </div>
+                    <div className={styles["post-details"]}>
+                      <h3>{recentPost.title}</h3>
+                      <p>
+                        {new Date(recentPost.createdAt)
+                          .toDateString()
+                          .split(" ")
+                          .slice(1)
+                          .join(" ")}
+                      </p>
+                    </div>
+                  </Link>
+                </li>
+              ))}
+            </ul>
             <Link href={"/blog"}>View all Blogposts</Link>
           </div>
         </div>

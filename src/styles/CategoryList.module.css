@@ -1,11 +1,11 @@
-.category-list {
-  display: flex;
-  flex-direction: column;
+.category-list ul {
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 1rem;
 }
 
 .category {
-  width: 100%;
+  display: block;
   height: 6rem;
   border-radius: 0.5rem;
   overflow: hidden;
@@ -40,4 +40,16 @@
 
 .category-list > a:not(.category):hover {
   color: var(--blue-100);
+}
+
+@media screen and (max-width: 1024px) {
+  .category-list ul {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .category-list ul {
+    grid-template-columns: 1fr 1fr;
+  }
 }

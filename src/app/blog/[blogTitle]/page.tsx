@@ -103,7 +103,7 @@ export default async function page({
         <section className={styles["side"]}>
           <div>
             <h2 className={styles["section-heading"]}>Trending Topics</h2>
-            <CategoryList categories={categories.slice(0, 5)} />
+            <CategoryList categories={categories.slice(0, 6)} />
           </div>
         </section>
       </div>

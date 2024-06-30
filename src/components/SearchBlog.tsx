@@ -2,14 +2,13 @@ import React from "react";
 import styles from "@/styles/SearchBlog.module.css";
 import Image from "next/image";
 import { type Blogpost } from "./Hero";
-import BlogMetaData from "./BlogMetaData";
 import Link from "next/link";
 import convertToUrl from "@/utils/convertToUrl";
 
 export default function SearchBlog({ blog }: { blog: Blogpost }) {
   return (
     <Link
-      href={`/blog/${convertToUrl(blog.title)}_${blog.id}`}
+      href={`/blog/${convertToUrl(blog.title)}_${blog._id}`}
       className={styles["search-blog"]}
     >
       <div className={styles["image-container"]}>
