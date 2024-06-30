@@ -1,51 +1,8 @@
-import { NextRequest, NextResponse } from "next/server";
+import { type NextRequest } from "next/server";
 import { updateSession } from "@/utils/supabase/middleware";
-import { createClient } from "./utils/supabase/server";
 
 export async function middleware(request: NextRequest) {
-  await updateSession(request);
-  const origin = request.nextUrl.origin;
-  // Check if request url matches protect routes
-  if (
-    request.url.includes("/create-post") ||
-    request.url.includes("/edit-post") ||
-    request.url.includes("/dashboard") ||
-    request.url.includes("/comments") ||
-    request.url.includes("/update-password")
-  ) {
-    // Fetch user
-    const supabase = createClient();
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
-
-    // If user is not authenticated redirect to the login page
-    if (!user) {
-      const redirectTo = request.nextUrl.pathname;
-      return NextResponse.redirect(`${origin}/login?redirect=${redirectTo}`);
-    } else {
-      return NextResponse.next();
-    }
-  }
-
-  if (request.url.includes("/login") || request.url.includes("/signup")) {
-    // Fetch user
-    const supabase = createClient();
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
-
-    // If user is authenticated redirect to the redirect param or the homepage
-    if (user) {
-      const redirectTo = request.url.split("?redirect=%2F")[1];
-
-      if (redirectTo) {
-        return NextResponse.redirect(`${origin}/${redirectTo}`);
-      } else {
-        return NextResponse.redirect(origin);
-      }
-    }
-  }
+  return await updateSession(request);
 }
 
 export const config = {
