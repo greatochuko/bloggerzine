@@ -10,7 +10,7 @@ import { toast } from "react-toastify";
 export default function SocialLinksForm({ user }: { user: User }) {
   const [state, updateSocialLinksAction] = useFormState(updateSocialLinks, {
     done: "",
-    errorMessage: "",
+    errorMessage: null,
   });
   const [facebook, setFacebook] = useState(user.socialLinks.facebook);
   const [twitter, setTwitter] = useState(user.socialLinks.twitter);
@@ -27,16 +27,17 @@ export default function SocialLinksForm({ user }: { user: User }) {
   }
 
   useEffect(() => {
-    if (done)
+    if (done) {
       if (errorMessage) {
         toast.error(errorMessage, {
           position: "top-right",
         });
       }
-    toast.success("Profile Updated Successfully", {
-      position: "top-right",
-    });
-  }, [done]);
+      toast.success("Profile Updated Successfully", {
+        position: "top-right",
+      });
+    }
+  }, [done, errorMessage]);
 
   return (
     <form

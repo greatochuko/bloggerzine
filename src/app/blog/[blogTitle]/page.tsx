@@ -89,8 +89,13 @@ export default async function page({
               <Link href={`/authors/${createAuthorUrl(blogpost.author)}`}>
                 {blogpost.author.firstname + " " + blogpost.author.lastname}
               </Link>
+              {blogpost.author.jobTitle ? (
+                <p className={styles["jobTitle"]}>{blogpost.author.jobTitle}</p>
+              ) : null}
+              {blogpost.author.bio ? (
+                <p className={styles["bio"]}>{blogpost.author.bio}</p>
+              ) : null}
               <SocialLinks socialLinks={blogpost.author.socialLinks} />
-              <p>{blogpost.author.bio}</p>
             </div>
           </section>
 

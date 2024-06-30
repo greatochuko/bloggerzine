@@ -85,10 +85,29 @@
   color: #aaa;
 }
 
-.profile-form textarea {
+.bio {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.bio textarea {
   aspect-ratio: 2;
   max-height: 10rem;
   resize: none;
+}
+
+.bio .word-counter {
+  position: absolute;
+  bottom: 1rem;
+  right: 0.5rem;
+  background-color: #f1f1f1;
+  border: solid 1px #e1e1e1;
+  border-radius: 9999px;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #222;
 }
 
 .profile-form .actions {

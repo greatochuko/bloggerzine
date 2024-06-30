@@ -52,23 +52,26 @@ export default function ProfileForm({ user }: { user: User }) {
 
   const [state, updateProfileAction] = useFormState(updateProfile, {
     done: "",
-    errorMessage: "",
+    errorMessage: null,
   });
 
   const { done, errorMessage } = state;
 
   useEffect(() => {
-    if (done)
+    if (done) {
       if (errorMessage) {
         toast.error(errorMessage, {
           position: "top-right",
         });
-      } else {
-        toast.success("Profile Updated Successfully", {
-          position: "top-right",
-        });
       }
-  }, [done]);
+      toast.success("Profile Updated Successfully", {
+        position: "top-right",
+      });
+    }
+  }, [done, errorMessage]);
+
+  console.clear();
+  console.log(bio.length);
 
   return (
     <form className={styles["profile-form"]} action={updateProfileAction}>
@@ -208,14 +211,21 @@ export default function ProfileForm({ user }: { user: User }) {
         onChange={(e) => setJobTitle(e.target.value)}
         placeholder="Enter job title"
       />
-      <label htmlFor="bio">Bio</label>
-      <textarea
-        name="bio"
-        id="bio"
-        value={bio}
-        onChange={(e) => setBio(e.target.value)}
-        placeholder="Write about yourself"
-      ></textarea>
+      <div className={styles["bio"]}>
+        <label htmlFor="bio">Bio</label>
+
+        <textarea
+          name="bio"
+          id="bio"
+          value={bio}
+          onChange={(e) => {
+            if (e.target.value.length >= 150) return;
+            setBio(e.target.value);
+          }}
+          placeholder="Write about yourself"
+        ></textarea>
+        <p className={styles["word-counter"]}>{bio.length}/150</p>
+      </div>
       {errorMessage && <p className={styles["error"]}>{errorMessage}</p>}
       <div className={styles["actions"]}>
         <button type="button" onClick={handleResetForm}>

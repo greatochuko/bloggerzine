@@ -28,7 +28,7 @@ export function ResetPasswordSection() {
           }
         );
       }
-  }, [done]);
+  }, [done, errorMessage]);
 
   return (
     <div className={styles["section"]}>

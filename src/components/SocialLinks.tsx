@@ -17,8 +17,8 @@ export default function SocialLinks({
       {socialLinks.facebook ? (
         <Link href={socialLinks.facebook}>
           <svg
-            height={25}
-            width={25}
+            height={18}
+            width={18}
             viewBox="0 0 48 48"
             version="1.1"
             xmlns="http://www.w3.org/2000/svg"
@@ -64,8 +64,8 @@ export default function SocialLinks({
       {socialLinks.instagram ? (
         <Link href={socialLinks.instagram}>
           <svg
-            height={27}
-            width={27}
+            height={20}
+            width={20}
             viewBox="0 0 32 32"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -169,8 +169,8 @@ export default function SocialLinks({
       {socialLinks.twitter ? (
         <Link href={socialLinks.twitter}>
           <svg
-            height={25}
-            width={25}
+            height={18}
+            width={18}
             xmlns="http://www.w3.org/2000/svg"
             aria-label="Twitter"
             role="img"
@@ -198,8 +198,8 @@ export default function SocialLinks({
         <Link href={socialLinks.linkedIn}>
           <svg
             style={{ marginTop: "1px" }}
-            height={32}
-            width={32}
+            height={25}
+            width={25}
             viewBox="0 0 16 16"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

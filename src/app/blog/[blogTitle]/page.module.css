@@ -95,18 +95,28 @@
 .about-the-author .text {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
   flex: 1;
 }
 
 .about-the-author .text a {
   font-size: calc(1.2rem + 0.25vw);
   font-weight: 650;
+  width: fit-content;
 }
 
 .about-the-author .text a:hover {
   color: var(--blue-100);
   text-decoration: underline;
+}
+
+.about-the-author .text p.jobTitle {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 500;
+}
+
+.about-the-author .text p.bio {
+  margin-bottom: 0.25rem;
 }
 
 /* ------------------------ MOBILE STYLES ----------------------------------- */
