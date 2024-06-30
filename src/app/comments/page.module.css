@@ -55,7 +55,7 @@
 
 .comments-page table tr {
   display: grid;
-  grid-template-columns: 2fr 1fr 4fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 4fr 1fr 0.5fr;
   gap: 1rem;
 }
 

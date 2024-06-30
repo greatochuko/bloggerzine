@@ -25,7 +25,7 @@ export default function ViewCommentModal({
         <div className={styles["comment"]}>
           <div className={styles["image-container"]}>
             <Image
-              src={comment!.user.imageUrl}
+              src={comment ? comment.user.imageUrl : ""}
               alt={comment?.user.firstname + " " + comment?.user.lastname}
               fill
               sizes="64px"
@@ -34,7 +34,7 @@ export default function ViewCommentModal({
           <div className={styles["details"]}>
             <h3>{comment?.user.firstname + " " + comment?.user.lastname}</h3>
             <p>
-              {new Date(comment!.createdAt)
+              {new Date(comment?.createdAt || "")
                 .toDateString()
                 .split(" ")
                 .slice(1)
