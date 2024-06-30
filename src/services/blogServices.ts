@@ -4,7 +4,8 @@ export async function getBlogposts() {
   const supabase = createClient();
   const { data: blogposts, error } = await supabase
     .from("blogposts")
-    .select("*, author(*)");
+    .select("*, author(*)")
+    .eq("isPublished", true);
   return blogposts || [];
 }
 
@@ -28,13 +29,25 @@ export async function getBlogpost(id: string) {
   return blogpost;
 }
 
-export async function getBlogpostByAuthor(authorId: string) {
+export async function getBlogpostToUpdate(id: string) {
+  const supabase = createClient();
+
+  const { data, error } = await supabase
+    .from("blogposts")
+    .select("*, author(*)")
+    .eq("_id", id);
+
+  const blogpost = data ? data[0] : null;
+  return blogpost;
+}
+
+export async function getBlogpostByAuthor(authorId: string, showDraft = false) {
   const supabase = createClient();
   const { data: blogposts } = await supabase
     .from("blogposts")
     .select("*, author(*)")
     .eq("author", authorId)
-    .eq("isPublished", true);
+    .eq("isPublished", !showDraft);
   return blogposts || [];
 }
 

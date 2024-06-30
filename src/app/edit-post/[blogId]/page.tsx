@@ -3,7 +3,7 @@ import styles from "./page.module.css";
 import Navigate from "@/components/Navigate";
 import { Metadata } from "next";
 import PostForm from "@/components/PostForm";
-import { getBlogpost } from "@/services/blogServices";
+import { getBlogpostToUpdate } from "@/services/blogServices";
 import { notFound } from "next/navigation";
 import { createClient } from "@/utils/supabase/server";
 
@@ -22,7 +22,7 @@ export default async function EditPostPage({
   const blogpostId = params.blogId.split("_").at(-1);
   if (!blogpostId) notFound();
 
-  const blogpost = await getBlogpost(blogpostId);
+  const blogpost = await getBlogpostToUpdate(blogpostId);
   if (!blogpost) notFound();
 
   if (data.user?.id !== blogpost.author.id) notFound();

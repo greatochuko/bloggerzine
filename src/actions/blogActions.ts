@@ -4,7 +4,7 @@ import { createClient } from "@/utils/supabase/server";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
-export async function publishPost(initialState: any, formData: FormData) {
+export async function publishPost(formData: FormData) {
   const supabase = createClient();
 
   const data = {
@@ -29,7 +29,7 @@ export async function publishPost(initialState: any, formData: FormData) {
   return { errorMessage: error.message };
 }
 
-export async function saveAsDraft(initialState: any, formData: FormData) {
+export async function saveAsDraft(formData: FormData) {
   const supabase = createClient();
 
   const data = {
@@ -54,7 +54,7 @@ export async function saveAsDraft(initialState: any, formData: FormData) {
   return { errorMessage: error.message };
 }
 
-export async function updatePost(initialState: any, formData: FormData) {
+export async function updatePost(formData: FormData) {
   const supabase = createClient();
 
   const blogId = formData.get("blogId") as string;
@@ -85,7 +85,7 @@ export async function updatePost(initialState: any, formData: FormData) {
   return { errorMessage: error.message };
 }
 
-export async function updateAsDraft(initialState: any, formData: FormData) {
+export async function updateAsDraft(formData: FormData) {
   const supabase = createClient();
 
   const blogId = formData.get("blogId") as string;
@@ -116,7 +116,7 @@ export async function updateAsDraft(initialState: any, formData: FormData) {
   return { errorMessage: error.message };
 }
 
-export async function deletePost(initialState: any, formData: FormData) {
+export async function deletePost(formData: FormData) {
   const supabase = createClient();
 
   const postId = formData.get("postId") as string;

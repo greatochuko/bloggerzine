@@ -27,6 +27,21 @@ export default function CreatePostForm({ blogpost }: { blogpost?: Blogpost }) {
   const [category, setCategory] = useState(blogpost?.category || "");
   const [isFeatured, setIsFeatured] = useState(blogpost?.isFeatured || false);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [pending, setPending] = useState({
+    publish: false,
+    saveAsDraft: false,
+    update: false,
+    updateAsDraft: false,
+    loadingThumbnail: false,
+  });
+  const [error, setError] = useState("");
+  const postFormRef = useRef<HTMLFormElement | null>(null);
+  const isLoading =
+    pending.publish ||
+    pending.saveAsDraft ||
+    pending.update ||
+    pending.updateAsDraft ||
+    pending.loadingThumbnail;
 
   useEffect(() => {
     setIsLoaded(true);
@@ -74,45 +89,53 @@ export default function CreatePostForm({ blogpost }: { blogpost?: Blogpost }) {
   };
 
   async function handleChangeThumbnail(e: React.ChangeEvent<HTMLInputElement>) {
+    setPending((curr) => ({ ...curr, loadingThumbnail: true }));
     setThumbnail((curr) => ({ ...curr, loading: true }));
     const file = e.target.files && e.target.files[0];
     if (!file) return;
     const { url } = await uploadImage(file);
     setThumbnail({ loading: false, url });
+    setPending((curr) => ({ ...curr, loadingThumbnail: false }));
   }
 
-  const [publishState, publishAction] = useFormState(publishPost, {
-    errorMessage: "",
-  });
+  async function handlePublish() {
+    setError("");
+    setPending((curr) => ({ ...curr, publish: true }));
+    const formData = new FormData(postFormRef.current || undefined);
+    const data = await publishPost(formData);
+    if (data) setError(data.errorMessage);
+    setPending((curr) => ({ ...curr, publish: false }));
+  }
 
-  const { errorMessage } = publishState;
+  async function handleSaveAsDraft() {
+    setError("");
+    setPending((curr) => ({ ...curr, saveAsDraft: true }));
+    const formData = new FormData(postFormRef.current || undefined);
+    const data = await saveAsDraft(formData);
+    if (data) setError(data.errorMessage);
+    setPending((curr) => ({ ...curr, saveAsDraft: false }));
+  }
 
-  const [saveState, saveAsDraftAction] = useFormState(saveAsDraft, {
-    errorMessage: "",
-  });
+  async function handleUpdate() {
+    setError("");
+    setPending((curr) => ({ ...curr, update: true }));
+    const formData = new FormData(postFormRef.current || undefined);
+    const data = await updatePost(formData);
+    if (data) setError(data.errorMessage);
+    setPending((curr) => ({ ...curr, update: false }));
+  }
 
-  const { errorMessage: saveErrorMessage } = saveState;
-
-  const [updateAsDraftState, updateAsDraftAction] = useFormState(
-    updateAsDraft,
-    {
-      errorMessage: "",
-    }
-  );
-
-  const { errorMessage: updateAsDraftError } = updateAsDraftState;
-
-  const [updatePostState, updatePostAction] = useFormState(updatePost, {
-    errorMessage: "",
-  });
-
-  const { errorMessage: updatePostError } = updatePostState;
-
-  const error =
-    errorMessage || saveErrorMessage || updatePostError || updateAsDraftError;
+  async function handleUpdateAsDraft() {
+    setError("");
+    setPending((curr) => ({ ...curr, updateAsDraft: true }));
+    const formData = new FormData(postFormRef.current || undefined);
+    const data = await updateAsDraft(formData);
+    if (data) setError(data.errorMessage);
+    setPending((curr) => ({ ...curr, updateAsDraft: false }));
+  }
 
   return (
-    <form className={styles["create-post-form"]}>
+    <form className={styles["post-form"]} ref={postFormRef}>
       {blogpost ? (
         <input type="hidden" name="blogId" defaultValue={blogpost._id} />
       ) : null}
@@ -204,58 +227,36 @@ export default function CreatePostForm({ blogpost }: { blogpost?: Blogpost }) {
       </div>
       {error ? <p className={styles["error"]}>{error}</p> : null}
       <div className={styles["actions"]}>
-        <SaveAsDraftButton
-          formAction={blogpost ? updateAsDraftAction : saveAsDraftAction}
-        />
-        <PublishButton
-          formAction={blogpost ? updatePostAction : publishAction}
-        />
+        <button
+          onClick={blogpost ? handleUpdateAsDraft : handleSaveAsDraft}
+          disabled={isLoading}
+        >
+          {pending.saveAsDraft || pending.updateAsDraft ? (
+            <>
+              <LoadingIndicator size={20} color="#333" flex={0} />
+              Saving...
+            </>
+          ) : (
+            "Save as draft"
+          )}
+        </button>
+        <button
+          onClick={blogpost ? handleUpdate : handlePublish}
+          disabled={isLoading}
+          className={styles["submit"]}
+        >
+          {pending.publish || pending.update ? (
+            <>
+              <LoadingIndicator size={20} color="white" flex={0} />
+              {blogpost ? "Updating..." : "Publishing..."}
+            </>
+          ) : blogpost ? (
+            "Update"
+          ) : (
+            "Publish"
+          )}
+        </button>
       </div>
     </form>
-  );
-}
-
-function PublishButton({
-  formAction,
-}: {
-  formAction: (formData: FormData) => void;
-}) {
-  const { pending } = useFormStatus();
-  return (
-    <button
-      formAction={formAction}
-      disabled={pending}
-      className={styles["submit"]}
-    >
-      {pending ? (
-        <>
-          <LoadingIndicator size={20} color="white" flex={0} />
-          Publishing...
-        </>
-      ) : (
-        "Publish"
-      )}
-    </button>
-  );
-}
-
-function SaveAsDraftButton({
-  formAction,
-}: {
-  formAction: (formData: FormData) => void;
-}) {
-  const { pending, action } = useFormStatus();
-
-  return (
-    <button formAction={formAction} disabled={pending}>
-      {pending ? (
-        <>
-          <LoadingIndicator size={20} color="#333" flex={0} />
-          Saving...
-        </>
-      ) : (
-        "Save as draft"
-      )}
-    </button>
   );
 }

@@ -6,7 +6,6 @@ import RecentComments from "@/components/RecentComments";
 import ArticleList from "@/components/ArticleList";
 import { Metadata } from "next";
 import { createClient } from "@/utils/supabase/server";
-import Navigate from "@/components/Navigate";
 import { getBlogpostByAuthor } from "@/services/blogServices";
 import { getUser } from "@/services/userServices";
 import { notFound } from "next/navigation";
@@ -23,7 +22,7 @@ export default async function Dashboard() {
 
   if (!user) notFound();
 
-  let authorBlogposts = await getBlogpostByAuthor(userId as string);
+  let authorBlogposts = await getBlogpostByAuthor(userId as string, true);
 
   return (
     <div className={styles["profile-page"]}>

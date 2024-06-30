@@ -149,6 +149,10 @@
 }
 
 .main table tbody td a:hover {
+  text-decoration: underline;
+}
+
+.main table tbody td:first-child a:hover {
   color: var(--blue-100);
 }
 
