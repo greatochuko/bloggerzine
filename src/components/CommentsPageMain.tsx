@@ -7,6 +7,7 @@ import { createAuthorUrl } from "@/utils/createAuthorUrl";
 import paginatorStyles from "@/styles/Paginator.module.css";
 import { CommentType } from "./Comment";
 import styles from "@/app/comments/page.module.css";
+import ViewCommentModal from "./ViewCommentModal";
 
 export default function CommentsPageMain({
   comments,
@@ -14,6 +15,7 @@ export default function CommentsPageMain({
   comments: CommentType[];
 }) {
   const [currentPage, setCurrentPage] = useState(1);
+  const [commentToView, setCommentToView] = useState<CommentType | null>(null);
 
   const postPerPage = comments.length > 10 ? 10 : comments.length;
   const maxPage = Math.ceil(comments.length / postPerPage) || 1;
@@ -72,7 +74,7 @@ export default function CommentsPageMain({
                   .join(" ")}
               </td>
               <td>
-                <button>
+                <button onClick={() => setCommentToView(comment)}>
                   <svg
                     height={20}
                     width={20}
@@ -102,6 +104,11 @@ export default function CommentsPageMain({
                   </svg>
                 </button>
               </td>
+              <ViewCommentModal
+                isOpen={!!commentToView}
+                comment={comment}
+                closeModal={() => setCommentToView(null)}
+              />
             </tr>
           ))}
         </tbody>

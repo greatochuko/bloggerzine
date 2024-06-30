@@ -1,0 +1,94 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  visibility: hidden;
+  display: flex;
+  align-items: center;
+  z-index: 100;
+  justify-content: center;
+}
+
+.overlay.open {
+  visibility: visible;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.view-comment-modal {
+  max-width: 30rem;
+  width: 90%;
+  background-color: white;
+  border-radius: 0.5rem;
+  visibility: hidden;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.overlay.open .view-comment-modal {
+  visibility: visible;
+  opacity: 1;
+}
+
+.view-comment-modal h2 {
+  padding: 0.75rem;
+}
+
+.view-comment-modal .comment {
+  padding: 1rem;
+  border: 2px solid #ddd;
+  border-width: 1px 0;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.view-comment-modal .image-container {
+  width: 3rem;
+  border-radius: 50%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.view-comment-modal .comment .details {
+  flex: 1;
+}
+
+.view-comment-modal .comment .details p {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.view-comment-modal .comment .details p.content {
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+.view-comment-modal .actions {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem;
+}
+
+.view-comment-modal .actions button {
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.25rem;
+  border: solid 1px #ffced2;
+  background-color: #ffeaec;
+  color: var(--red-100);
+  font-weight: 500;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: bold;
+}
+
+.view-comment-modal .actions button:hover {
+  background-color: var(--red-100);
+  color: white;
+}
