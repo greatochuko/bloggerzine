@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import styles from "@/styles/ProfileForm.module.css";
 import { uploadImage } from "@/utils/imageUploader";
 import LoadingIndicator from "./LoadingIndicator";
@@ -17,6 +17,10 @@ export default function ProfileForm({ user }: { user: User }) {
     loading: false,
     url: user.coverImageUrl,
   });
+  const [jobTitle, setJobTitle] = useState(user.jobTitle || "");
+  const [bio, setBio] = useState(user.bio || "");
+
+  const isLoadingImage = profileImage.loading || coverImage.loading;
 
   async function handleChangeProfileImage(
     e: React.ChangeEvent<HTMLInputElement>
@@ -36,6 +40,13 @@ export default function ProfileForm({ user }: { user: User }) {
     if (!file) return;
     const { url } = await uploadImage(file);
     setCoverImage({ loading: false, url });
+  }
+
+  function handleResetForm() {
+    setProfileImage({ loading: false, url: user.imageUrl });
+    setCoverImage({ loading: false, url: user.coverImageUrl });
+    setJobTitle(user.jobTitle);
+    setBio(user.bio);
   }
 
   const [state, updateProfileAction] = useFormState(updateProfile, {
@@ -178,30 +189,36 @@ export default function ProfileForm({ user }: { user: User }) {
         type="text"
         id="job-title"
         name="job-title"
-        defaultValue={user.jobTitle}
+        value={jobTitle}
+        onChange={(e) => setJobTitle(e.target.value)}
         placeholder="Enter job title"
       />
       <label htmlFor="bio">Bio</label>
       <textarea
         name="bio"
         id="bio"
-        defaultValue={user.bio}
+        value={bio}
+        onChange={(e) => setBio(e.target.value)}
         placeholder="Write about yourself"
       ></textarea>
       {errorMessage && <p className={styles["error"]}>{errorMessage}</p>}
       <div className={styles["actions"]}>
-        <button type="reset">Reset</button>
-        <Button />
+        <button type="button" onClick={handleResetForm}>
+          Reset
+        </button>
+        <Button isLoadingImage={isLoadingImage} />
       </div>
     </form>
   );
 }
 
-function Button() {
+function Button({ isLoadingImage }: { isLoadingImage: boolean }) {
   const { pending } = useFormStatus();
 
+  const isLoading = pending || isLoadingImage;
+
   return (
-    <button type="submit" disabled={pending}>
+    <button type="submit" disabled={isLoading}>
       {pending ? (
         <>
           <LoadingIndicator size={20} color="white" />
