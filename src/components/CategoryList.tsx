@@ -2,12 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import styles from "@/styles/CategoryList.module.css";
-import { type Category } from "./Category";
+import { type CategoryType } from "./Category";
 
 export default function CategoryList({
   categories,
 }: {
-  categories: Category[];
+  categories: CategoryType[];
 }) {
   return (
     <div className={styles["category-list"]}>

@@ -5,7 +5,7 @@ import Link from "next/link";
 import convertToUrl from "@/utils/convertToUrl";
 import { Blogpost } from "./Hero";
 
-export type Category = {
+export type CategoryType = {
   name: string;
   imageUrl: string;
   color: string;
@@ -16,7 +16,7 @@ export default function Category({
   category,
   categoryPosts,
 }: {
-  category: Category;
+  category: CategoryType;
   categoryPosts: Blogpost[];
 }) {
   return (

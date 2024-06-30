@@ -1,18 +1,11 @@
 import React from "react";
 import styles from "./page.module.css";
 import Link from "next/link";
-import Category from "@/components/Category";
+import Category, { CategoryType } from "@/components/Category";
 import { getBlogposts } from "@/services/blogServices";
 import { Blogpost } from "@/components/Hero";
 
-type Category = {
-  name: string;
-  imageUrl: string;
-  color: string;
-  description: string;
-};
-
-export const categories: Category[] = [
+export const categories: CategoryType[] = [
   {
     name: "Technology",
     imageUrl: "/tech.jpg",

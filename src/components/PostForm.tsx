@@ -1,11 +1,5 @@
 "use client";
-import React, {
-  FormHTMLAttributes,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import styles from "@/styles/PostForm.module.css";
 import { categories } from "@/app/categories/page2";
 import { Blogpost } from "./Hero";
@@ -32,6 +26,11 @@ export default function CreatePostForm({ blogpost }: { blogpost?: Blogpost }) {
   const [tags, setTags] = useState(blogpost?.tags || "");
   const [category, setCategory] = useState(blogpost?.category || "");
   const [isFeatured, setIsFeatured] = useState(blogpost?.isFeatured || false);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
 
   const reactQuillRef = useRef<ReactQuill | null>(null);
 
@@ -153,14 +152,16 @@ export default function CreatePostForm({ blogpost }: { blogpost?: Blogpost }) {
       </div>
       <div className={styles["input-group"]}>
         <label>Post body</label>
-        <ReactQuill
-          ref={reactQuillRef}
-          theme="snow"
-          value={content}
-          onChange={setContent}
-          style={{ marginBottom: "0", minHeight: "20rem" }}
-          modules={modules}
-        />
+        {isLoaded && (
+          <ReactQuill
+            ref={reactQuillRef}
+            theme="snow"
+            value={content}
+            onChange={setContent}
+            style={{ marginBottom: "0", minHeight: "20rem" }}
+            modules={modules}
+          />
+        )}
         <input type="hidden" name="content" value={content} />
       </div>
       <section>

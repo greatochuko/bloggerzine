@@ -147,7 +147,7 @@ export async function sendResetPasswordEmail(initialState: any) {
   const { data, error } = await supabase.auth.resetPasswordForEmail(
     user.email as string,
     {
-      redirectTo: "http://localhost:3000/account/update-password",
+      redirectTo: "http://localhost:3000/update-password",
     }
   );
 

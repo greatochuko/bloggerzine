@@ -10,7 +10,8 @@ export async function middleware(request: NextRequest) {
     request.url.includes("/create-post") ||
     request.url.includes("/edit-post") ||
     request.url.includes("/dashboard") ||
-    request.url.includes("/comments")
+    request.url.includes("/comments") ||
+    request.url.includes("/update-password")
   ) {
     // Fetch user
     const supabase = createClient();
