@@ -12,7 +12,7 @@ export async function getBlogposts() {
 export async function getBlogpost(id: string) {
   const supabase = createClient();
 
-  const { data, error } = await supabase
+  const { data } = await supabase
     .from("blogposts")
     .select("*, author(*)")
     .eq("_id", id);
@@ -43,11 +43,16 @@ export async function getBlogpostToUpdate(id: string) {
 
 export async function getBlogpostByAuthor(authorId: string, showDraft = false) {
   const supabase = createClient();
-  const { data: blogposts } = await supabase
-    .from("blogposts")
-    .select("*, author(*)")
-    .eq("author", authorId)
-    .eq("isPublished", !showDraft);
+  const { data: blogposts, error } = showDraft
+    ? await supabase
+        .from("blogposts")
+        .select("*, author(*)")
+        .eq("author", authorId)
+    : await supabase
+        .from("blogposts")
+        .select("*, author(*)")
+        .eq("author", authorId)
+        .eq("isPublished", true);
   return blogposts || [];
 }
 

@@ -34,7 +34,7 @@
 
 .image-container {
   position: relative;
-  width: 5rem;
+  width: 4rem;
   aspect-ratio: 1;
   border-radius: 50%;
   overflow: hidden;
@@ -68,7 +68,7 @@
 }
 
 .main > div:first-child > p {
-  background-color: var(--light-blue-200);
+  background-color: #80aaff;
   color: white;
   font-weight: bold;
   padding: 0.5rem 1rem;

@@ -69,10 +69,10 @@ function SubmitButton() {
       {pending ? (
         <>
           <LoadingIndicator color="white" size={20} />
-          Editing...
+          Saving...
         </>
       ) : (
-        "Edit"
+        "Save"
       )}
     </button>
   );

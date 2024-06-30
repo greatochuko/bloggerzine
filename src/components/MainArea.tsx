@@ -31,13 +31,12 @@ export default function MainArea({
           <div className={styles["recent-posts"]}>
             <ul>
               {recentPosts.map((recentPost) => (
-                <li>
+                <li key={recentPost._id}>
                   <Link
                     href={`/blog/${convertToUrl(recentPost.title)}_${
                       recentPost._id
                     }`}
                     className={styles["recent-post"]}
-                    key={recentPost._id}
                   >
                     <div className={styles["image-container"]}>
                       <Image

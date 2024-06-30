@@ -2,21 +2,17 @@
 import React from "react";
 import styles from "@/styles/Stats.module.css";
 import { convertToAbbrString } from "@/utils/numberFormatter";
-import { getCommentsByAuthor } from "@/services/commentServices";
 import { User } from "@/services/userServices";
 import { Blogpost } from "./Hero";
+import { CommentType } from "./Comment";
 
 export default function Stats({
-  author,
+  comments,
   blogposts,
 }: {
-  author: User;
+  comments: CommentType[];
   blogposts: Blogpost[];
 }) {
-  const authorId = author.id.toString() as string;
-
-  const authorComments = getCommentsByAuthor(authorId);
-
   const reads = convertToAbbrString(
     blogposts.reduce((acc, curr) => acc + curr.views, 0)
   );
@@ -146,8 +142,8 @@ export default function Stats({
           </svg>
         </div>
         <div className={styles["text"]}>
-          <h3>{convertToAbbrString(authorComments.length)}</h3>
-          <p>Comment{authorComments.length !== 1 ? "s" : ""}</p>
+          <h3>{convertToAbbrString(comments.length)}</h3>
+          <p>Comment{comments.length !== 1 ? "s" : ""}</p>
         </div>
       </div>
     </div>

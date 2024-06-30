@@ -46,13 +46,18 @@
 .recent-comment .image-container {
   position: relative;
   overflow: hidden;
-  border-radius: 50%;
+  border-radius: 0.5rem;
   width: 4rem;
   aspect-ratio: 1;
 }
 
 .recent-comment .text {
   flex: 1;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.9rem;
 }
 
 .recent-comment .text :first-child {
@@ -60,6 +65,7 @@
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .recent-comment .text :nth-child(2) {

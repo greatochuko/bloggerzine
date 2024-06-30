@@ -4,13 +4,13 @@ import styles from "@/styles/RecentComments.module.css";
 import Link from "next/link";
 import convertToUrl from "@/utils/convertToUrl";
 import Image from "next/image";
-import { User } from "@/services/userServices";
 import { CommentType } from "./Comment";
 
-export default function RecentComments({ author }: { author: User }) {
-  const authorId = author.id;
-  const comments: CommentType[] = [];
-
+export default function RecentComments({
+  comments,
+}: {
+  comments: CommentType[];
+}) {
   return (
     <div className={styles["recent-comments"]}>
       <div className={styles["header"]}>
@@ -34,7 +34,7 @@ export default function RecentComments({ author }: { author: User }) {
                   ></Image>
                 </div>
                 <div className={styles["text"]}>
-                  <p>{comment.comment}...</p>
+                  <p>{comment.comment}</p>
                   <p>
                     by {comment.user.firstname + " " + comment.user.lastname}
                   </p>

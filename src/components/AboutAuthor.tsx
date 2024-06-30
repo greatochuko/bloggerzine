@@ -3,12 +3,16 @@ import React from "react";
 import styles from "@/styles/AboutAuthor.module.css";
 import Link from "next/link";
 import Image from "next/image";
-import { getBlogposts } from "@/services/blogServices";
 import { User } from "@/services/userServices";
+import { Blogpost } from "./Hero";
 
-export default function AboutAuthor({ author }: { author: User }) {
-  const blogposts = getBlogposts();
-
+export default function AboutAuthor({
+  author,
+  blogposts,
+}: {
+  author: User;
+  blogposts: Blogpost[];
+}) {
   return (
     <div className={styles["about-author"]}>
       <div className={styles["header"]}>
@@ -34,8 +38,7 @@ export default function AboutAuthor({ author }: { author: User }) {
             </div>
           </div>
           <p>
-            {/* {blogposts.filter((blog) => blog.author.id === author.id).length}{" "} */}
-            Posts
+            {blogposts.length} Post{blogposts.length === 1 ? "" : "s"}
           </p>
         </div>
         <div className={styles["bio"]}>

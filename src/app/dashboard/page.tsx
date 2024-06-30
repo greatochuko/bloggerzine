@@ -9,6 +9,7 @@ import { createClient } from "@/utils/supabase/server";
 import { getBlogpostByAuthor } from "@/services/blogServices";
 import { getUser } from "@/services/userServices";
 import { notFound } from "next/navigation";
+import { getCommentsByAuthor } from "@/services/commentServices";
 
 export const metadata: Metadata = {
   title: "Dashboard",
@@ -16,21 +17,22 @@ export const metadata: Metadata = {
 
 export default async function Dashboard() {
   const supabase = createClient();
-  const { data, error } = await supabase.auth.getUser();
+  const { data } = await supabase.auth.getUser();
   const userId = data.user?.id;
   const { user } = await getUser(userId as string);
 
   if (!user) notFound();
 
-  let authorBlogposts = await getBlogpostByAuthor(userId as string, true);
+  const authorBlogposts = await getBlogpostByAuthor(userId as string, true);
+  const authorComments = await getCommentsByAuthor(userId as string);
 
   return (
     <div className={styles["profile-page"]}>
-      <Stats author={user} blogposts={authorBlogposts || []} />
+      <Stats comments={authorComments} blogposts={authorBlogposts} />
       <div className={styles["main"]}>
-        <AboutAuthor author={user} />
-        <RecentComments author={user} />
-        <ArticleList blogposts={authorBlogposts || []} />
+        <AboutAuthor author={user} blogposts={authorBlogposts} />
+        <RecentComments comments={authorComments} />
+        <ArticleList blogposts={authorBlogposts} />
       </div>
     </div>
   );

@@ -10,7 +10,7 @@ export default async function CommentsPage() {
     data: { user },
     error,
   } = await supabase.auth.getUser();
-  const comments = getCommentsByAuthor(user?.id!);
+  const comments = await getCommentsByAuthor(user?.id!);
 
   return (
     <div className={styles["comments-page"]}>
