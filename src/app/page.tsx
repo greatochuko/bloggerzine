@@ -6,20 +6,22 @@ import { getBlogposts } from "@/services/blogServices";
 export default async function Home() {
   const blogposts: Blogpost[] = await getBlogposts();
 
+  const featuredPosts = blogposts
+    .filter((post) => post.isFeatured)
+    .sort((a, b) => b.views - a.views)
+    .slice(0, 4);
+  const topPosts = [...blogposts].sort((a, b) => b.views - a.views).slice(0, 6);
+  const recentPosts = [...blogposts]
+    .sort(
+      (a, b) =>
+        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+    )
+    .slice(0, 6);
+
   return (
     <div className={styles["home-page"]}>
-      <Hero
-        blogposts={blogposts.filter((post) => post.isFeatured).slice(0, 4)}
-      />
-      <MainArea
-        topPosts={blogposts.sort((a, b) => b.views - a.views).slice(0, 6)}
-        recentPosts={blogposts
-          .sort(
-            (a, b) =>
-              new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-          )
-          .slice(0, 6)}
-      />
+      <Hero blogposts={featuredPosts} />
+      <MainArea topPosts={topPosts} recentPosts={recentPosts} />
     </div>
   );
 }

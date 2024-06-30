@@ -18,30 +18,6 @@ export type User = {
   createdAt: string;
 };
 
-const users: User[] = [
-  {
-    id: "e0ef9ea8-a7c1-4cc3-8985-7700b373854c",
-    email: "greatochuko123@gmail.com",
-    bio: "",
-    imageUrl: "/default-profile-image.jpg",
-    jobTitle: "",
-    lastname: "Ogheneochuko",
-    firstname: "Great",
-    socialLinks: {
-      twitter: "",
-      facebook: "",
-      linkedIn: "",
-      instagram: "",
-    },
-    coverImageUrl: "/default-cover-image.jpg",
-    createdAt: "2024-06-24 23:08:22.820636+00",
-  },
-];
-
-export function getUsers() {
-  return users;
-}
-
 export async function getUser(userId: string) {
   const supabase = createClient();
   const { data, error } = await supabase

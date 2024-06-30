@@ -27,7 +27,13 @@
   align-items: center;
 }
 
-button.oauth {
+.oauth {
+  display: flex;
+  width: 100%;
+}
+
+.oauth button {
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -41,7 +47,7 @@ button.oauth {
   border-radius: 0.25rem;
 }
 
-button.oauth:hover {
+.oauth button:hover {
   border-color: var(--blue-100);
 }
 
