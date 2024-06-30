@@ -66,7 +66,10 @@ export async function searchBlog(query: string) {
   const { data: blogposts } = await supabase
     .from("blogposts")
     .select("*, author(*)")
-    .ilike("title", `%${query}%`)
+    .ilikeAnyOf(
+      "tags, title",
+      query.split("-").map((q) => `%${q}%`)
+    )
     .eq("isPublished", true);
   return blogposts || [];
 }
