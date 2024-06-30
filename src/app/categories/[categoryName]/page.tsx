@@ -53,7 +53,9 @@ export default async function CategoryPage({
 
         <div className={styles["category-info"]}>
           <h1 style={{ backgroundColor: category.color }}>{category.name}</h1>
-          <p>{categoryPosts.length} posts</p>
+          <p>
+            {categoryPosts.length} post{categoryPosts.length === 1 ? "" : "s"}
+          </p>
         </div>
       </div>
       <div className={styles["category-page-main"]}>

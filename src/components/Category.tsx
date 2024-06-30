@@ -8,7 +8,7 @@ import { Blogpost } from "./Hero";
 export const categories: CategoryType[] = [
   {
     name: "Technology",
-    imageUrl: "/tech.jpg",
+    imageUrl: "/technology.jpg",
     color: "#d83939",
     description:
       "Explore the latest in tech! From AI and gadgets to cybersecurity and blockchain.",

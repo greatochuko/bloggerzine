@@ -8,7 +8,9 @@ export default async function Home() {
 
   return (
     <div className={styles["home-page"]}>
-      <Hero blogposts={blogposts.slice(0, 4)} />
+      <Hero
+        blogposts={blogposts.filter((post) => post.isFeatured).slice(0, 4)}
+      />
       <MainArea
         topPosts={blogposts.sort((a, b) => b.views - a.views).slice(0, 6)}
         recentPosts={blogposts
