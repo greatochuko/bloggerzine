@@ -116,7 +116,7 @@ export async function updateAsDraft(formData: FormData) {
   return { errorMessage: error.message };
 }
 
-export async function deletePost(formData: FormData) {
+export async function deletePost(initialState: any, formData: FormData) {
   const supabase = createClient();
 
   const postId = formData.get("postId") as string;

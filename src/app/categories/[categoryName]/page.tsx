@@ -6,7 +6,7 @@ import BlogGrid from "@/components/BlogGrid";
 import CategoryList from "@/components/CategoryList";
 import { Metadata } from "next";
 import { categories } from "../page2";
-import { getBlogpostByCategory, getBlogposts } from "@/services/blogServices";
+import { getBlogpostByCategory } from "@/services/blogServices";
 
 export function generateMetadata({
   params: { categoryName },
@@ -48,7 +48,7 @@ export default async function CategoryPage({
           src={category.imageUrl || ""}
           alt={category.name}
           fill
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 33vw, 25vw"
+          sizes="90vw"
         ></Image>
 
         <div className={styles["category-info"]}>

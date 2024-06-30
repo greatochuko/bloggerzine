@@ -56,7 +56,7 @@ export async function getBlogpostByCategory(category: string) {
   const { data: blogposts } = await supabase
     .from("blogposts")
     .select("*, author(*)")
-    .eq("category", category.toLowerCase())
+    .ilike("category", category)
     .eq("isPublished", true);
   return blogposts || [];
 }

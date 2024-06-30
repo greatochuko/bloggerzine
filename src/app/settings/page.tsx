@@ -2,13 +2,10 @@ import React from "react";
 import styles from "./page.module.css";
 import { getUser } from "@/services/userServices";
 import ProfileForm from "@/components/ProfileForm";
-import Navigate from "@/components/Navigate";
 import SocialLinksForm from "@/components/SocialLinksForm";
 import { Metadata } from "next";
-import ChangePasswordForm from "@/components/ChangePasswordForm";
 import { createClient } from "@/utils/supabase/server";
 import { notFound } from "next/navigation";
-import Link from "next/link";
 import { ResetPasswordSection } from "@/components/ResetPasswordSection";
 
 export const metadata: Metadata = {
