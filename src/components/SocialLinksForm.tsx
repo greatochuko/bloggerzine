@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import styles from "@/styles/SocialLinksForm.module.css";
 import { User } from "@/services/userServices";
 import { updateSocialLinks } from "@/actions/authActions";
@@ -10,8 +10,19 @@ export default function SocialLinksForm({ user }: { user: User }) {
   const [state, updateSocialLinksAction] = useFormState(updateSocialLinks, {
     errorMessage: "",
   });
+  const [facebook, setFacebook] = useState(user.socialLinks.facebook);
+  const [twitter, setTwitter] = useState(user.socialLinks.twitter);
+  const [instagram, setInstagram] = useState(user.socialLinks.instagram);
+  const [linkedIn, setlinkedIn] = useState(user.socialLinks.linkedIn);
 
   const { errorMessage } = state;
+
+  function handleResetForm() {
+    setFacebook(user.socialLinks.facebook);
+    setTwitter(user.socialLinks.twitter);
+    setInstagram(user.socialLinks.instagram);
+    setlinkedIn(user.socialLinks.linkedIn);
+  }
 
   return (
     <form
@@ -23,7 +34,8 @@ export default function SocialLinksForm({ user }: { user: User }) {
         type="text"
         id="facebook"
         name="facebook"
-        defaultValue={user.socialLinks.facebook}
+        value={facebook}
+        onChange={(e) => setFacebook(e.target.value)}
         placeholder="Enter facebook URL"
       />
       <label htmlFor="twitter">Twitter</label>
@@ -31,7 +43,8 @@ export default function SocialLinksForm({ user }: { user: User }) {
         type="text"
         id="twitter"
         name="twitter"
-        defaultValue={user.socialLinks.twitter}
+        value={twitter}
+        onChange={(e) => setTwitter(e.target.value)}
         placeholder="Enter twitter URL"
       />
       <label htmlFor="instagram">Instagram</label>
@@ -39,7 +52,8 @@ export default function SocialLinksForm({ user }: { user: User }) {
         type="text"
         id="instagram"
         name="instagram"
-        defaultValue={user.socialLinks.instagram}
+        value={instagram}
+        onChange={(e) => setInstagram(e.target.value)}
         placeholder="Enter instagram URL"
       />
       <label htmlFor="linkedIn">Linkedin</label>
@@ -47,12 +61,15 @@ export default function SocialLinksForm({ user }: { user: User }) {
         type="text"
         id="linkedIn"
         name="linkedIn"
-        defaultValue={user.socialLinks.linkedIn}
+        value={linkedIn}
+        onChange={(e) => setlinkedIn(e.target.value)}
         placeholder="Enter linkedIn URL"
       />
       {errorMessage && <p className={styles["error"]}>{errorMessage}</p>}
       <div className={styles["actions"]}>
-        <button type="reset">Reset</button>
+        <button type="button" onClick={handleResetForm}>
+          Reset
+        </button>
         <Button />
       </div>
     </form>
