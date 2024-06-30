@@ -18,6 +18,7 @@ export async function postComment(initialState: any, formData: FormData) {
 
   if (!error) {
     revalidatePath("/dashboard");
+    revalidatePath("/comments");
     revalidatePath("/blog/[blogTitle]", "page");
   }
 
@@ -38,6 +39,7 @@ export async function postReply(initialState: any, formData: FormData) {
 
   if (!error) {
     revalidatePath("/dashboard");
+    revalidatePath("/comments");
     revalidatePath("/blog/[blogTitle]", "page");
   }
 
@@ -57,6 +59,7 @@ export async function editComment(initialState: any, formData: FormData) {
 
   if (!error) {
     revalidatePath("/dashboard");
+    revalidatePath("/comments");
     revalidatePath("/blog/[blogTitle]", "page");
   }
 
@@ -85,6 +88,7 @@ export async function deleteComment(initialState: any, formData: FormData) {
 
   if (!error && !replyError && !nestedReplyError) {
     revalidatePath("/dashboard");
+    revalidatePath("/comments");
     revalidatePath("/blog/[blogTitle]", "page");
   }
 

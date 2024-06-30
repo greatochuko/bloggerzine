@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import BlogGrid from "./BlogGrid";
 import CategoryList from "./CategoryList";
-import { categories } from "@/app/categories/page2";
+import { categories } from "./Category";
 import convertToUrl from "@/utils/convertToUrl";
 
 export default function MainArea({

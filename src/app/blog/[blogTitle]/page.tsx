@@ -3,7 +3,7 @@ import styles from "./page.module.css";
 import { notFound } from "next/navigation";
 import BlogMetaData from "@/components/BlogMetaData";
 import Image from "next/image";
-import { categories } from "@/app/categories/page2";
+import { categories } from "@/components/Category";
 import CategoryList from "@/components/CategoryList";
 import Link from "next/link";
 import CommentSection from "@/components/CommentSection";

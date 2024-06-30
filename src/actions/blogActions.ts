@@ -20,9 +20,7 @@ export async function publishPost(formData: FormData) {
   const { error } = await supabase.from("blogposts").insert(data);
 
   if (!error) {
-    revalidatePath("/dashboard");
-    revalidatePath("/");
-    revalidatePath("/authors/[userSlug]", "page");
+    revalidatePath("/", "layout");
     redirect("/dashboard");
   }
 
@@ -45,9 +43,7 @@ export async function saveAsDraft(formData: FormData) {
   const { error } = await supabase.from("blogposts").insert(data);
 
   if (!error) {
-    revalidatePath("/dashboard");
-    revalidatePath("/");
-    revalidatePath("/authors/[userSlug]", "page");
+    revalidatePath("/", "layout");
     redirect("/dashboard");
   }
 
@@ -75,10 +71,7 @@ export async function updatePost(formData: FormData) {
     .eq("_id", blogId);
 
   if (!error) {
-    revalidatePath("/dashboard");
-    revalidatePath("/");
-    revalidatePath("/authors/[userSlug]", "page");
-    revalidatePath("/blog/[blogTitle]", "page");
+    revalidatePath("/", "layout");
     redirect("/dashboard");
   }
 
@@ -106,10 +99,7 @@ export async function updateAsDraft(formData: FormData) {
     .eq("_id", blogId);
 
   if (!error) {
-    revalidatePath("/dashboard");
-    revalidatePath("/");
-    revalidatePath("/authors/[userSlug]", "page");
-    revalidatePath("/blog/[blogTitle]", "page");
+    revalidatePath("/", "layout");
     redirect("/dashboard");
   }
 
@@ -124,10 +114,7 @@ export async function deletePost(initialState: any, formData: FormData) {
   const { error } = await supabase.from("blogposts").delete().eq("_id", postId);
 
   if (!error) {
-    revalidatePath("/");
-    revalidatePath("/search");
-    revalidatePath("/dashboard");
-    revalidatePath("/authors/[userSlug]", "page");
+    revalidatePath("/", "layout");
   }
 
   return { done: true, error: error?.message || null };

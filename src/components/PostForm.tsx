@@ -1,7 +1,7 @@
 "use client";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import styles from "@/styles/PostForm.module.css";
-import { categories } from "@/app/categories/page2";
+import { categories } from "./Category";
 import { Blogpost } from "./Hero";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";

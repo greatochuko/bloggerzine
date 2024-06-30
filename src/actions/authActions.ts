@@ -23,10 +23,7 @@ export async function login(initialState: any, formData: FormData) {
     };
   }
 
-  revalidatePath("/dashboard");
-  revalidatePath("/create-post");
-  revalidatePath("/");
-  revalidatePath("/login");
+  revalidatePath("/", "layout");
   redirect(initialState.redirectTo || `/`);
 }
 
@@ -86,9 +83,7 @@ export async function updateProfile(initialState: any, formData: FormData) {
     return { errorMessage: error.message };
   }
 
-  revalidatePath("/settings");
-  revalidatePath("/dashboard");
-  revalidatePath(`/authors/[userSlug]`, "page");
+  revalidatePath("/", "layout");
   return { errorMessage: null };
 }
 
@@ -119,9 +114,7 @@ export async function updateSocialLinks(initialState: any, formData: FormData) {
     return { errorMessage: error.message };
   }
 
-  revalidatePath("/settings");
-  revalidatePath("/dashboard");
-  revalidatePath("/authors/[userSlug]", "page");
+  revalidatePath("/", "layout");
   return { errorMessage: null };
 }
 
@@ -129,10 +122,7 @@ export async function logout() {
   const supabase = createClient();
   await supabase.auth.signOut();
 
-  revalidatePath("/settings");
-  revalidatePath("/dashboard");
-  revalidatePath("/create-post");
-  revalidatePath("/edit-post/[blogId]", "page");
+  revalidatePath("/", "layout");
   redirect("/login");
 }
 

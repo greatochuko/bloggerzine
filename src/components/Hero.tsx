@@ -3,7 +3,7 @@ import styles from "@/styles/Hero.module.css";
 import Image from "next/image";
 import Link from "next/link";
 import BlogMetaData from "./BlogMetaData";
-import { categories } from "@/app/categories/page2";
+import { categories } from "./Category";
 import { User } from "@/services/userServices";
 import { createAuthorUrl } from "@/utils/createAuthorUrl";
 import convertToUrl from "@/utils/convertToUrl";
