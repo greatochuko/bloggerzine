@@ -3,14 +3,32 @@ import { useFormState, useFormStatus } from "react-dom";
 import { sendResetPasswordEmail } from "@/actions/authActions";
 import styles from "@/app/settings/page.module.css";
 import LoadingIndicator from "./LoadingIndicator";
+import { toast } from "react-toastify";
+import { useEffect } from "react";
 
 export function ResetPasswordSection() {
   const [state, formAction] = useFormState(sendResetPasswordEmail, {
-    data: null,
+    done: "",
     errorMessage: null,
   });
 
-  const { data, errorMessage } = state;
+  const { done, errorMessage } = state;
+
+  useEffect(() => {
+    if (done)
+      if (errorMessage) {
+        toast.error(errorMessage, {
+          position: "top-right",
+        });
+      } else {
+        toast.success(
+          "A link to reset your password has been sent to your email",
+          {
+            position: "top-right",
+          }
+        );
+      }
+  }, [done]);
 
   return (
     <div className={styles["section"]}>
@@ -19,11 +37,6 @@ export function ResetPasswordSection() {
         <Button />
         {errorMessage ? (
           <p className={styles["error"]}>{errorMessage}</p>
-        ) : null}
-        {data ? (
-          <p className={styles["success"]}>
-            A link to reset your password has been sent to your email
-          </p>
         ) : null}
       </form>
     </div>

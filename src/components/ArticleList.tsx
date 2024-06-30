@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import styles from "@/styles/ArticleList.module.css";
 import paginatorStyles from "@/styles/Paginator.module.css";
 import { categories } from "./Category";
@@ -79,6 +79,10 @@ export default function ArticleList({ blogposts }: { blogposts: Blogpost[] }) {
     if (currentPage <= 1) return;
     setCurrentPage((curr) => curr - 1);
   }
+  const closeModal = useCallback(
+    () => setDeletePostModal({ post: null, open: false }),
+    []
+  );
 
   return (
     <>
@@ -495,7 +499,7 @@ export default function ArticleList({ blogposts }: { blogposts: Blogpost[] }) {
       </div>
       <DeletePostModal
         isOpen={deletePostModal.open}
-        closeModal={() => setDeletePostModal({ post: null, open: false })}
+        closeModal={closeModal}
         post={deletePostModal.post}
       />
     </>

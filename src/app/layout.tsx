@@ -4,6 +4,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { getUser, User } from "@/services/userServices";
 import { createClient } from "@/utils/supabase/server";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const metadata: Metadata = {
   title: { absolute: "Bloggerzine", template: "%s - Bloggerzine" },
@@ -34,6 +36,7 @@ export default async function RootLayout({
         <Header user={user} />
         <main>{children}</main>
         <Footer />
+        <ToastContainer />
       </body>
     </html>
   );

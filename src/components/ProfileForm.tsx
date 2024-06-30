@@ -1,12 +1,13 @@
 "use client";
 import Image from "next/image";
-import React, { use, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import styles from "@/styles/ProfileForm.module.css";
 import { uploadImage } from "@/utils/imageUploader";
 import LoadingIndicator from "./LoadingIndicator";
 import { useFormState, useFormStatus } from "react-dom";
 import { User } from "@/services/userServices";
 import { updateProfile } from "@/actions/authActions";
+import { toast } from "react-toastify";
 
 export default function ProfileForm({ user }: { user: User }) {
   const [profileImage, setProfileImage] = useState({
@@ -50,10 +51,24 @@ export default function ProfileForm({ user }: { user: User }) {
   }
 
   const [state, updateProfileAction] = useFormState(updateProfile, {
+    done: "",
     errorMessage: "",
   });
 
-  const { errorMessage } = state;
+  const { done, errorMessage } = state;
+
+  useEffect(() => {
+    if (done)
+      if (errorMessage) {
+        toast.error(errorMessage, {
+          position: "top-right",
+        });
+      } else {
+        toast.success("Profile Updated Successfully", {
+          position: "top-right",
+        });
+      }
+  }, [done]);
 
   return (
     <form className={styles["profile-form"]} action={updateProfileAction}>

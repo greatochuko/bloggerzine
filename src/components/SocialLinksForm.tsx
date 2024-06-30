@@ -1,13 +1,15 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "@/styles/SocialLinksForm.module.css";
 import { User } from "@/services/userServices";
 import { updateSocialLinks } from "@/actions/authActions";
 import { useFormState, useFormStatus } from "react-dom";
 import LoadingIndicator from "./LoadingIndicator";
+import { toast } from "react-toastify";
 
 export default function SocialLinksForm({ user }: { user: User }) {
   const [state, updateSocialLinksAction] = useFormState(updateSocialLinks, {
+    done: "",
     errorMessage: "",
   });
   const [facebook, setFacebook] = useState(user.socialLinks.facebook);
@@ -15,7 +17,7 @@ export default function SocialLinksForm({ user }: { user: User }) {
   const [instagram, setInstagram] = useState(user.socialLinks.instagram);
   const [linkedIn, setlinkedIn] = useState(user.socialLinks.linkedIn);
 
-  const { errorMessage } = state;
+  const { done, errorMessage } = state;
 
   function handleResetForm() {
     setFacebook(user.socialLinks.facebook);
@@ -23,6 +25,18 @@ export default function SocialLinksForm({ user }: { user: User }) {
     setInstagram(user.socialLinks.instagram);
     setlinkedIn(user.socialLinks.linkedIn);
   }
+
+  useEffect(() => {
+    if (done)
+      if (errorMessage) {
+        toast.error(errorMessage, {
+          position: "top-right",
+        });
+      }
+    toast.success("Profile Updated Successfully", {
+      position: "top-right",
+    });
+  }, [done]);
 
   return (
     <form

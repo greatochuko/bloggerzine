@@ -5,6 +5,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 import { createClient } from "@/utils/supabase/server";
+import { randomUUID } from "crypto";
 
 export async function login(initialState: any, formData: FormData) {
   const supabase = createClient();
@@ -95,11 +96,11 @@ export async function updateProfile(initialState: any, formData: FormData) {
     .select();
 
   if (error) {
-    return { errorMessage: error.message };
+    return { done: randomUUID().toString(), errorMessage: error.message };
   }
 
   revalidatePath("/", "layout");
-  return { errorMessage: null };
+  return { done: randomUUID().toString(), errorMessage: null };
 }
 
 export async function updateSocialLinks(initialState: any, formData: FormData) {
@@ -126,11 +127,11 @@ export async function updateSocialLinks(initialState: any, formData: FormData) {
     .select();
 
   if (error) {
-    return { errorMessage: error.message };
+    return { done: randomUUID().toString(), errorMessage: error.message };
   }
 
   revalidatePath("/", "layout");
-  return { errorMessage: null };
+  return { done: randomUUID().toString(), errorMessage: null };
 }
 
 export async function logout() {
@@ -157,7 +158,7 @@ export async function sendResetPasswordEmail(initialState: any) {
   );
 
   return {
-    data,
+    done: randomUUID().toString(),
     errorMessage: error ? "An error occured please try again later" : null,
   };
 }
