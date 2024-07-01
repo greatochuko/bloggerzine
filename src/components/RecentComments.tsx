@@ -5,6 +5,7 @@ import Link from "next/link";
 import convertToUrl from "@/utils/convertToUrl";
 import Image from "next/image";
 import { CommentType } from "./Comment";
+import { createAuthorUrl } from "@/utils/createAuthorUrl";
 
 export default function RecentComments({
   comments,
@@ -20,26 +21,30 @@ export default function RecentComments({
         <ul className={styles["main"]}>
           {comments.map((comment) => (
             <li className={styles["recent-comment"]} key={comment.id}>
-              <Link
-                href={`/blog/${convertToUrl(comment.blogpost.title)}_${
-                  comment.blogpost.id
-                }`}
-              >
-                <div className={styles["image-container"]}>
-                  <Image
-                    src={comment.user.imageUrl || ""}
-                    alt={comment.user.firstname + " " + comment.user.lastname}
-                    fill
-                    sizes="80px"
-                  ></Image>
-                </div>
-                <div className={styles["text"]}>
-                  <p>{comment.comment}</p>
-                  <p>
-                    by {comment.user.firstname + " " + comment.user.lastname}
-                  </p>
-                </div>
-              </Link>
+              <div className={styles["image-container"]}>
+                <Image
+                  src={comment.user.imageUrl || ""}
+                  alt={comment.user.firstname + " " + comment.user.lastname}
+                  fill
+                  sizes="80px"
+                ></Image>
+              </div>
+              <div className={styles["text"]}>
+                <Link
+                  href={`/blog/${convertToUrl(comment.blogpost.title)}_${
+                    comment.blogpost.id
+                  }`}
+                  className={styles["comment-content"]}
+                >
+                  {comment.comment}
+                </Link>
+                <p>
+                  by{" "}
+                  <Link href={createAuthorUrl(comment.user)}>
+                    {comment.user.firstname + " " + comment.user.lastname}
+                  </Link>
+                </p>
+              </div>
             </li>
           ))}
         </ul>

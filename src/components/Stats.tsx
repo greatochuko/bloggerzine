@@ -2,7 +2,6 @@
 import React from "react";
 import styles from "@/styles/Stats.module.css";
 import { convertToAbbrString } from "@/utils/numberFormatter";
-import { User } from "@/services/userServices";
 import { Blogpost } from "./Hero";
 import { CommentType } from "./Comment";
 
@@ -17,7 +16,7 @@ export default function Stats({
     blogposts.reduce((acc, curr) => acc + curr.views, 0)
   );
 
-  const likes = blogposts.reduce((acc, curr) => acc + curr.likes, 0);
+  const likes = blogposts.reduce((acc, curr) => acc + curr.likes.length, 0);
 
   return (
     <div className={styles["stats"]}>

@@ -67,7 +67,7 @@ export default function MobileNav({
           ) : (
             <>
               <Link
-                href={`/authors/${createAuthorUrl(user)}`}
+                href={createAuthorUrl(user)}
                 className={styles["profile"]}
                 onClick={closeMobileNav}
               >

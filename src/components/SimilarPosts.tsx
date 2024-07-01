@@ -6,7 +6,7 @@ import Blog from "./Blog";
 
 export default function SimilarPosts({ blogposts }: { blogposts: Blogpost[] }) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  const [screenWidth, setScreenWidth] = useState(0);
 
   useEffect(() => {
     function changeWidth() {

@@ -31,15 +31,21 @@
   padding: 1rem;
 }
 
-.recent-comment a {
+.recent-comment {
   padding: 1rem;
   border-bottom: solid 1px #ddd;
   display: flex;
   align-items: flex-start;
   gap: 1rem;
 }
+.recent-comment:last-child {
+  border: none;
+}
+.recent-comment .text a.comment-content {
+  font-size: 1rem;
+}
 
-.recent-comment a:hover .text :first-child {
+.recent-comment .text a.comment-content:hover {
   color: var(--blue-100);
 }
 
@@ -60,6 +66,15 @@
   font-size: 0.9rem;
 }
 
+.recent-comment .text p {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.recent-comment .text p a:hover {
+  color: var(--blue-100);
+}
+
 .recent-comment .text :first-child {
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -74,6 +89,7 @@
 }
 
 .footer {
+  border-top: solid 1px #ddd;
   padding: 1rem;
   display: flex;
   justify-content: center;

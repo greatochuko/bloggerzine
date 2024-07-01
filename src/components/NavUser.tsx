@@ -43,7 +43,7 @@ export default function NavUser({ user }: { user: User }) {
             onClick={(e) => e.stopPropagation()}
           >
             <Link
-              href={`/authors/${createAuthorUrl(user)}`}
+              href={createAuthorUrl(user)}
               className={styles["user-details"]}
             >
               <div className={styles["image-container"]}>
@@ -106,7 +106,7 @@ export default function NavUser({ user }: { user: User }) {
                 </Link>
               </li>
               <li>
-                <Link href={`/authors/${createAuthorUrl(user)}`}>
+                <Link href={createAuthorUrl(user)}>
                   <svg
                     height={20}
                     width={20}

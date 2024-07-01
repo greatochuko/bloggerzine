@@ -10,7 +10,7 @@ export default function BlogMetaData({ blog }: { blog: Blogpost }) {
   return (
     <div className={styles["blog-meta-data"]}>
       <Link
-        href={`/authors/${createAuthorUrl(blog.author)}`}
+        href={createAuthorUrl(blog.author)}
         className={styles["author"]}
       >
         <div className={styles["image-container"]}>

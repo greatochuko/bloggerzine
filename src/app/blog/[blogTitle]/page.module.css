@@ -71,6 +71,37 @@
   gap: 2rem;
 }
 
+.like {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.like p {
+  font-weight: 600;
+}
+
+.like button {
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.25rem;
+  border: solid 1px #ddd;
+  background-color: #eee;
+  color: #333;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.like button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.like button:is(:hover, .active) {
+  color: var(--blue-100);
+  border-color: var(--light-blue-200);
+  background-color: var(--light-blue-100);
+}
+
 .section-heading {
   margin-bottom: 1.5rem;
 }

@@ -1,4 +1,5 @@
 import { createClient } from "@/utils/supabase/client";
+import { revalidatePath } from "next/cache";
 
 export async function getBlogposts() {
   const supabase = createClient();

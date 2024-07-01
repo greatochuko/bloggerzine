@@ -16,6 +16,7 @@ import SocialLinks from "@/components/SocialLinks";
 import { Blogpost } from "@/components/Hero";
 import { createClient } from "@/utils/supabase/server";
 import SimilarPosts from "@/components/SimilarPosts";
+import LikeSection from "@/components/LikeSection";
 
 export async function generateMetadata({
   params: { blogTitle },
@@ -76,9 +77,18 @@ export default async function page({
         <div className={styles["blog-content"]}>
           <BlogpostContent content={blogpost.content} />
 
+          {user ? (
+            <LikeSection
+              blogId={blogpost._id}
+              userId={user.id}
+              isLiked={blogpost.likes.includes(user.id)}
+              isDisliked={blogpost.dislikes.includes(user.id)}
+            />
+          ) : null}
+
           <section className={styles["about-the-author"]}>
             <Link
-              href={`/authors/${createAuthorUrl(blogpost.author)}`}
+              href={createAuthorUrl(blogpost.author)}
               className={styles["image-container"]}
             >
               <Image
@@ -89,7 +99,7 @@ export default async function page({
               ></Image>
             </Link>
             <div className={styles["text"]}>
-              <Link href={`/authors/${createAuthorUrl(blogpost.author)}`}>
+              <Link href={createAuthorUrl(blogpost.author)}>
                 {blogpost.author.firstname + " " + blogpost.author.lastname}
               </Link>
               {blogpost.author.jobTitle ? (

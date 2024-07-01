@@ -18,7 +18,8 @@ export type Blogpost = {
   author: User;
   tags: string;
   views: number;
-  likes: number;
+  likes: string[];
+  dislikes: string[];
   isFeatured: boolean;
   isPublished: boolean;
   createdAt: string;

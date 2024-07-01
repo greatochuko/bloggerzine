@@ -69,7 +69,7 @@ export default function CommentsPageMain({
                   </Link>
                 </td>
                 <td>
-                  <Link href={`/authors/${createAuthorUrl(comment.user)}`}>
+                  <Link href={createAuthorUrl(comment.user)}>
                     {comment.user.firstname + " " + comment.user.lastname}
                   </Link>
                 </td>

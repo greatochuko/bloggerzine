@@ -119,3 +119,67 @@ export async function deletePost(initialState: any, formData: FormData) {
 
   return { done: true, error: error?.message || null };
 }
+
+export async function toggleLikePost(userId: string, blogId: string) {
+  const supabase = createClient();
+  const { data } = await supabase
+    .from("blogposts")
+    .select("likes, dislikes")
+    .eq("_id", blogId);
+
+  if (data && data[0]) {
+    let newLikedPosts: string[] = [];
+    let newDislikedPosts: string[] = [];
+    const oldLikedPosts = data[0].likes;
+    const oldDislikedPosts = data[0].dislikes;
+    if (oldLikedPosts.includes(userId)) {
+      newLikedPosts = oldLikedPosts.filter((user: string) => user !== userId);
+    } else {
+      newLikedPosts = [...oldLikedPosts, userId];
+    }
+    if (oldDislikedPosts.includes(userId)) {
+      newDislikedPosts = oldDislikedPosts.filter(
+        (user: string) => user !== userId
+      );
+    }
+    const { error } = await supabase
+      .from("blogposts")
+      .update({ likes: newLikedPosts, dislikes: newDislikedPosts })
+      .eq("_id", blogId);
+  }
+
+  revalidatePath("/blog/[blogTitle]", "page");
+  revalidatePath("/dashboard");
+}
+
+export async function toggleDislikePost(userId: string, blogId: string) {
+  const supabase = createClient();
+  const { data } = await supabase
+    .from("blogposts")
+    .select("likes, dislikes")
+    .eq("_id", blogId);
+
+  if (data && data[0]) {
+    let newLikedPosts: string[] = [];
+    let newDislikedPosts: string[] = [];
+    const oldLikedPosts = data[0].likes;
+    const oldDislikedPosts = data[0].dislikes;
+    if (oldDislikedPosts.includes(blogId)) {
+      newDislikedPosts = oldDislikedPosts.filter(
+        (user: string) => user !== userId
+      );
+    } else {
+      newDislikedPosts = [...oldDislikedPosts, userId];
+    }
+    if (oldLikedPosts.includes(userId)) {
+      newLikedPosts = oldLikedPosts.filter((user: string) => user !== userId);
+    }
+    const { error } = await supabase
+      .from("blogposts")
+      .update({ likes: newLikedPosts, dislikes: newDislikedPosts })
+      .eq("_id", blogId);
+  }
+
+  revalidatePath("/blog/[blogTitle]", "page");
+  revalidatePath("/dashboard");
+}
