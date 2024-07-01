@@ -39,7 +39,7 @@ export default async function CategoryPage({
 
   const otherCategories = categories
     .filter((c) => c.name.toLowerCase() !== category.name.toLowerCase())
-    .slice(0, 5);
+    .slice(0, 6);
 
   return (
     <div className={styles["category-page"]}>
