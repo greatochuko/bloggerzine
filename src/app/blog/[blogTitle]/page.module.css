@@ -134,14 +134,25 @@
   .side {
     grid-column: span 3;
   }
+
+  .overlay h1 {
+    font-size: calc(1.5rem + 0.25vw);
+  }
 }
 
 @media screen and (max-width: 640px) {
+  .header {
+    aspect-ratio: 1.5;
+  }
+
   .overlay h1 {
-    font-size: calc(1rem + 0.25vw);
+    font-size: calc(1.1rem + 0.25vw);
   }
 
   .about-the-author .image-container {
     width: 3rem;
+  }
+  .blog-category {
+    font-size: calc(0.8rem + 0.25vw);
   }
 }

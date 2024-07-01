@@ -78,3 +78,16 @@ export async function searchBlog(query: string) {
     .eq("isPublished", true);
   return blogposts || [];
 }
+
+export async function getSimilarPosts(query: string) {
+  const supabase = createClient();
+  const { data: blogposts } = await supabase
+    .from("blogposts")
+    .select("*, author(*)")
+    .ilikeAnyOf(
+      "tags, title",
+      query.split(" ").map((q) => `%${q}%`)
+    )
+    .eq("isPublished", true);
+  return blogposts || [];
+}

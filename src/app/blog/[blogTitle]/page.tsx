@@ -7,7 +7,7 @@ import { categories } from "@/components/Category";
 import CategoryList from "@/components/CategoryList";
 import Link from "next/link";
 import CommentSection from "@/components/CommentSection";
-import { getBlogpost } from "@/services/blogServices";
+import { getBlogpost, getSimilarPosts } from "@/services/blogServices";
 import { getComments } from "@/services/commentServices";
 import { Metadata } from "next";
 import { createAuthorUrl } from "@/utils/createAuthorUrl";
@@ -15,6 +15,7 @@ import BlogpostContent from "@/components/BlogpostContent";
 import SocialLinks from "@/components/SocialLinks";
 import { Blogpost } from "@/components/Hero";
 import { createClient } from "@/utils/supabase/server";
+import SimilarPosts from "@/components/SimilarPosts";
 
 export async function generateMetadata({
   params: { blogTitle },
@@ -35,6 +36,8 @@ export default async function page({
   );
 
   if (!blogpost) notFound();
+
+  const similarPosts = await getSimilarPosts(blogpost.title);
 
   const comments = await getComments(blogpost.id);
 
@@ -111,6 +114,7 @@ export default async function page({
             <CategoryList categories={categories.slice(0, 6)} />
           </div>
         </section>
+        <SimilarPosts blogposts={similarPosts} />
       </div>
     </div>
   );

@@ -1,0 +1,81 @@
+.similar-posts {
+  overflow: hidden;
+  grid-column: span 4;
+  position: relative;
+}
+
+.similar-posts > h2 {
+  margin-bottom: 1rem;
+}
+
+.similar-posts button {
+  position: absolute;
+  top: 30%;
+  z-index: 5;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(2px);
+  width: 3rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.similar-posts button:disabled {
+  opacity: 0.5;
+}
+
+.similar-posts .left-btn {
+  left: 0.5rem;
+  transform: translateX(-200%);
+}
+
+.similar-posts .right-btn {
+  transform: translateX(200%);
+  right: 0.5rem;
+}
+
+.similar-posts button:hover {
+  backdrop-filter: none;
+}
+
+.similar-posts:hover button {
+  transform: none;
+}
+
+.carousel {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+}
+
+.carousel > div {
+  flex: 0 0 calc(100% / 3 - 0.67rem);
+}
+
+/* Style for touch devices */
+@media (pointer: coarse) {
+  .similar-posts :is(.left-btn, .right-btn) {
+    transform: none;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .similar-posts {
+    grid-column: span 3;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .carousel > div {
+    flex: 0 0 calc(100% / 2 - 0.5rem);
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .carousel > div {
+    flex: 0 0 100%;
+  }
+}
