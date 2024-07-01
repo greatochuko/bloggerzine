@@ -70,9 +70,6 @@ export default function ProfileForm({ user }: { user: User }) {
     }
   }, [done, errorMessage]);
 
-  console.clear();
-  console.log(bio.length);
-
   return (
     <form className={styles["profile-form"]} action={updateProfileAction}>
       <input type="hidden" name="userId" value={user.id} />
