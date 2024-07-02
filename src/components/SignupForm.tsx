@@ -7,8 +7,8 @@ import LoadingIndicator from "./LoadingIndicator";
 import { signup } from "@/actions/authActions";
 
 export default function SignupForm() {
-  const [password, setPassword] = useState("14122003");
-  const [confirmPassword, setConfirmPassword] = useState("14122003");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const [state, signupAction] = useFormState(signup, {
     errorMessage: "",
@@ -34,7 +34,6 @@ export default function SignupForm() {
             placeholder="First Name"
             id="firstname"
             name="firstname"
-            defaultValue={"Great"}
             required
           />
         </div>
@@ -45,7 +44,6 @@ export default function SignupForm() {
             placeholder="Last Name"
             id="lastname"
             name="lastname"
-            defaultValue={"Ogheneochuko"}
             required
           />
         </div>
@@ -58,7 +56,6 @@ export default function SignupForm() {
           placeholder="Email"
           id="email"
           name="email"
-          defaultValue={"greatochuko123@gmail.com"}
           required
         />
       </div>
