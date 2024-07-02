@@ -43,7 +43,10 @@ export async function signup(initialState: any, formData: FormData) {
 
   const { error } = await supabase.auth.signUp({
     ...data,
-    options: { data: metaData, emailRedirectTo: "http://localhost:3000/login" },
+    options: {
+      data: metaData,
+      emailRedirectTo: `${process.env.NEXT_PUBLIC_ORIGIN}/login`,
+    },
   });
 
   if (error) {
@@ -62,7 +65,7 @@ export async function loginWithGoogle() {
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: "google",
     options: {
-      redirectTo: "http://localhost:3000/auth/callback",
+      redirectTo: `${process.env.NEXT_PUBLIC_ORIGIN}/auth/callback`,
       queryParams: {
         access_type: "offline",
         prompt: "consent",
@@ -153,7 +156,7 @@ export async function sendResetPasswordEmail(initialState: any) {
   const { data, error } = await supabase.auth.resetPasswordForEmail(
     user.email as string,
     {
-      redirectTo: "http://localhost:3000/update-password",
+      redirectTo: `${process.env.NEXT_PUBLIC_ORIGIN}/update-password`,
     }
   );
 
@@ -186,7 +189,7 @@ export async function sendVerificationEmail(formData: FormData) {
     type: "signup",
     email,
     options: {
-      emailRedirectTo: "http://localhost:3000/login",
+      emailRedirectTo: `${process.env.NEXT_PUBLIC_ORIGIN}/login`,
     },
   });
 
