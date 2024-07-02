@@ -165,7 +165,7 @@ export default function Footer() {
         <ul className={styles["social-links"]}>
           {socialLinks.map((socialLink) => (
             <li key={socialLink.name}>
-              <Link href={socialLink.href} target="__blank">
+              <Link href={socialLink.href} target="_blank">
                 {socialLink.icon}
               </Link>
             </li>
