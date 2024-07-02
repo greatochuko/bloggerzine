@@ -8,7 +8,10 @@ export default async function Home() {
 
   const featuredPosts = blogposts
     .filter((post) => post.isFeatured)
-    .sort((a, b) => b.views - a.views)
+    .sort(
+      (a, b) =>
+        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+    )
     .slice(0, 4);
   const topPosts = [...blogposts].sort((a, b) => b.views - a.views).slice(0, 6);
   const recentPosts = [...blogposts]

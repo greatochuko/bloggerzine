@@ -94,7 +94,7 @@
     grid-column: span 3;
   }
 
-  .recent-posts {
+  .recent-posts ul {
     grid-template-columns: 1fr 1fr;
   }
 
@@ -109,7 +109,7 @@
     grid-template-columns: 1fr;
   }
 
-  .recent-posts {
+  .recent-posts ul {
     grid-template-columns: 1fr;
   }
 
