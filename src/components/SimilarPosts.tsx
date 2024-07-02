@@ -17,7 +17,7 @@ export default function SimilarPosts({ blogposts }: { blogposts: Blogpost[] }) {
   }, []);
 
   const postPerView = screenWidth > 992 ? 3 : screenWidth > 640 ? 2 : 1;
-  const padding = screenWidth > 992 ? 0.33 : screenWidth > 640 ? 0.5 : 0;
+  const padding = screenWidth > 992 ? 0.33 : screenWidth > 640 ? 0.5 : 1;
 
   function nextSlide() {
     if (currentIndex >= blogposts.length - postPerView) return;

@@ -60,7 +60,8 @@ export default async function page({
 
   if (!blogpost) notFound();
 
-  const similarPosts = await getSimilarPosts(blogpost.title);
+  let similarPosts: Blogpost[] = await getSimilarPosts(blogpost.title);
+  similarPosts = similarPosts.filter((post) => post._id !== blogpost._id);
 
   const comments = await getComments(blogpost.id);
 
@@ -146,7 +147,7 @@ export default async function page({
             <CategoryList categories={categories.slice(0, 6)} />
           </div>
         </section>
-        <SimilarPosts blogposts={similarPosts} />
+        {similarPosts.length ? <SimilarPosts blogposts={similarPosts} /> : null}
       </div>
     </div>
   );
