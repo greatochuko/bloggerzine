@@ -15,7 +15,7 @@ export default function SocialLinks({
   return (
     <div className={styles["social-links"]}>
       {socialLinks.facebook ? (
-        <Link href={socialLinks.facebook}>
+        <Link href={socialLinks.facebook} target="_blank">
           <svg
             height={18}
             width={18}
@@ -62,7 +62,7 @@ export default function SocialLinks({
       ) : null}
 
       {socialLinks.instagram ? (
-        <Link href={socialLinks.instagram}>
+        <Link href={socialLinks.instagram} target="_blank">
           <svg
             height={20}
             width={20}
@@ -167,7 +167,7 @@ export default function SocialLinks({
       ) : null}
 
       {socialLinks.twitter ? (
-        <Link href={socialLinks.twitter}>
+        <Link href={socialLinks.twitter} target="_blank">
           <svg
             height={18}
             width={18}
@@ -195,7 +195,7 @@ export default function SocialLinks({
       ) : null}
 
       {socialLinks.linkedIn ? (
-        <Link href={socialLinks.linkedIn}>
+        <Link href={socialLinks.linkedIn} target="_blank">
           <svg
             style={{ marginTop: "1px" }}
             height={25}
