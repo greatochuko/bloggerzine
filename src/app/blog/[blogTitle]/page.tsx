@@ -23,8 +23,30 @@ export async function generateMetadata({
 }: {
   params: { blogTitle: string };
 }): Promise<Metadata> {
-  const blogpost = await getBlogpost(blogTitle.split("_").at(-1) as string);
-  return { title: blogpost?.title };
+  const blogpost: Blogpost = await getBlogpost(
+    blogTitle.split("_").at(-1) as string
+  );
+  return {
+    title: blogpost.title,
+    description: blogpost.title,
+    keywords: blogpost.tags,
+    authors: [
+      { name: `${blogpost.author.firstname} ${blogpost.author.lastname}` },
+    ],
+    openGraph: {
+      title: blogpost.title,
+      description: blogpost.title,
+      type: "website",
+      url: "https://bloggerzine.vercel.app",
+      images: [blogpost.thumbnail],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: blogpost.title,
+      description: blogpost.title,
+      images: [blogpost.thumbnail],
+    },
+  };
 }
 
 export default async function page({

@@ -5,6 +5,10 @@ import Paginator from "@/components/Paginator";
 import SearchBlog from "@/components/SearchBlog";
 import { getBlogposts } from "@/services/blogServices";
 
+export const metadata = {
+  title: "Blogposts",
+};
+
 export default async function page({
   searchParams,
 }: {

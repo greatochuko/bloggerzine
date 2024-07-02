@@ -9,6 +9,7 @@ import SearchBlog from "@/components/SearchBlog";
 import Paginator from "@/components/Paginator";
 import { Blogpost } from "@/components/Hero";
 import SocialLinks from "@/components/SocialLinks";
+import { PostgrestError } from "@supabase/supabase-js";
 
 export async function generateMetadata({
   params,
@@ -16,13 +17,27 @@ export async function generateMetadata({
   params: { userSlug: string };
 }): Promise<Metadata> {
   const userId = params.userSlug.split("_").at(-1) as string;
-  const { user: author } = await getUser(userId);
-  if (author)
-    return {
-      title: author?.firstname + " " + author?.lastname,
-    };
-
-  return { title: "Author" };
+  const { user } = await getUser(userId);
+  const author = user as User;
+  return {
+    title: author?.firstname + " " + author?.lastname,
+    description: author.bio,
+    keywords: author.bio,
+    authors: [{ name: `${author.firstname} ${author.lastname}` }],
+    openGraph: {
+      title: `${author?.firstname} ${author?.lastname} - Bloggerzine`,
+      description: author.bio,
+      type: "website",
+      url: "https://bloggerzine.vercel.app",
+      images: [author.imageUrl],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${author?.firstname} ${author?.lastname} - Bloggerzine`,
+      description: author.bio,
+      images: [author.imageUrl],
+    },
+  };
 }
 
 export default async function AuthorPage({
