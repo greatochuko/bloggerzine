@@ -14,15 +14,11 @@ export async function getComments(blogId: string) {
 
 export async function getCommentsByAuthor(authorId: string) {
   const supabase = createClient();
-  const blogposts: Blogpost[] = await getBlogpostByAuthor(authorId);
 
   const { data, error } = await supabase
     .from("comments")
     .select("*, blogpost(*), user(*)")
-    .eq(
-      "blogpost",
-      blogposts.map((post) => post.id)
-    );
+    .eq("user", authorId);
 
   return data || [];
 }
