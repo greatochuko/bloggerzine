@@ -16,6 +16,22 @@
   transform: translateX(0);
 }
 
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--blue-100);
+  color: #333;
+  font-weight: 600;
+}
+
+.logo img {
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 0.25rem;
+  aspect-ratio: 1;
+}
+
 .subtitle {
   font-size: 0.9rem;
   color: #999;

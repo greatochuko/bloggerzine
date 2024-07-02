@@ -6,9 +6,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Overlay from "./Overlay";
 import { navLinks } from "./MainNav";
-import convertToUrl from "@/utils/convertToUrl";
 import { User } from "@/services/userServices";
 import { createAuthorUrl } from "@/utils/createAuthorUrl";
+import Image from "next/image";
+import logo from "../../public/logo.png";
 
 export default function MobileNav({
   user,
@@ -27,7 +28,8 @@ export default function MobileNav({
         className={`${styles["mobile-nav"]} ${isOpen ? styles["open"] : ""}`}
         onClick={(e) => e.stopPropagation()}
       >
-        <Link href={"/"} className="logo">
+        <Link href={"/"} className={styles["logo"]}>
+          <Image src={logo} alt="Bloggerzine"></Image>
           Bloggerzine
         </Link>
         <p className={styles["subtitle"]}>

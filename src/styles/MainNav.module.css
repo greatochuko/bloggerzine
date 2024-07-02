@@ -9,7 +9,19 @@
 }
 
 .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
   color: var(--blue-100);
+  color: #333;
+  font-weight: 600;
+}
+
+.logo img {
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: 0.25rem;
+  aspect-ratio: 1;
 }
 
 .nav-links-mobile {

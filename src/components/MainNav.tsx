@@ -5,6 +5,8 @@ import styles from "@/styles/MainNav.module.css";
 import SearchForm from "./SearchForm";
 import NavUser from "./NavUser";
 import { User } from "@/services/userServices";
+import Image from "next/image";
+import logo from "../../public/logo.png";
 
 export const navLinks = [
   { name: "Home", href: "/" },
@@ -28,6 +30,7 @@ export default function MainNav({
   return (
     <div className={styles["header-container"]}>
       <Link href={"/"} className={styles["logo"]}>
+        <Image src={logo} alt="Bloggerzine"></Image>
         Bloggerzine
       </Link>
       <ul className={styles["nav-links"]}>
