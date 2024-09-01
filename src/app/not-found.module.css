@@ -19,7 +19,7 @@
   text-align: center;
 }
 
-.not-found button {
+.not-found a {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -32,15 +32,15 @@
   font-weight: 700;
 }
 
-.not-found button:hover {
+.not-found a:hover {
   background-color: var(--blue-100);
   color: white;
 }
 
-.not-found button svg {
+.not-found a svg {
   fill: var(--blue-100);
 }
 
-.not-found button:hover svg {
+.not-found a:hover svg {
   fill: white;
 }

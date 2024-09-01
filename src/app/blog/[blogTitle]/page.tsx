@@ -26,6 +26,9 @@ export async function generateMetadata({
   const blogpost: Blogpost = await getBlogpost(
     blogTitle.split("_").at(-1) as string
   );
+
+  if (!blogpost) return {};
+
   return {
     title: blogpost.title,
     description: blogpost.title,
