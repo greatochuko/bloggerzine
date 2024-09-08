@@ -5,7 +5,6 @@ import Link from "next/link";
 import BlogMetaData from "./BlogMetaData";
 import { categories } from "./Category";
 import { UserType } from "@/services/userServices";
-import { createAuthorUrl } from "@/utils/createAuthorUrl";
 import convertToUrl from "@/utils/convertToUrl";
 
 export type BlogpostType = {
@@ -17,8 +16,6 @@ export type BlogpostType = {
   author: UserType;
   tags: string;
   views: number;
-  likes: string[];
-  dislikes: string[];
   isFeatured: boolean;
   isPublished: boolean;
   createdAt: string;
