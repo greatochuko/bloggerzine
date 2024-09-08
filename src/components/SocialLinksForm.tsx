@@ -3,21 +3,18 @@ import React, { useEffect, useState } from "react";
 import styles from "@/styles/SocialLinksForm.module.css";
 import { User } from "@/services/userServices";
 import { updateSocialLinks } from "@/actions/authActions";
-import { useFormState, useFormStatus } from "react-dom";
+import { useFormStatus } from "react-dom";
 import LoadingIndicator from "./LoadingIndicator";
 import { toast } from "react-toastify";
 
 export default function SocialLinksForm({ user }: { user: User }) {
-  const [state, updateSocialLinksAction] = useFormState(updateSocialLinks, {
-    done: "",
-    errorMessage: null,
-  });
   const [facebook, setFacebook] = useState(user.socialLinks.facebook);
   const [twitter, setTwitter] = useState(user.socialLinks.twitter);
   const [instagram, setInstagram] = useState(user.socialLinks.instagram);
   const [linkedIn, setlinkedIn] = useState(user.socialLinks.linkedIn);
 
-  const { done, errorMessage } = state;
+  const done = false;
+  const errorMessage = "";
 
   function handleResetForm() {
     setFacebook(user.socialLinks.facebook);
@@ -40,10 +37,7 @@ export default function SocialLinksForm({ user }: { user: User }) {
   }, [done, errorMessage]);
 
   return (
-    <form
-      className={styles["social-links-form"]}
-      action={updateSocialLinksAction}
-    >
+    <form className={styles["social-links-form"]} action={updateSocialLinks}>
       <label htmlFor="facebook">Facebook</label>
       <input
         type="text"

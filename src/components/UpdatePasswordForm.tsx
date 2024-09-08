@@ -1,21 +1,15 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "@/styles/UpdatePasswordForm.module.css";
-import { useFormState, useFormStatus } from "react-dom";
+import { useFormStatus } from "react-dom";
 import LoadingIndicator from "./LoadingIndicator";
-import { redirect, useSearchParams } from "next/navigation";
 import { resetPassword } from "@/actions/authActions";
 
 export default function UpdatePasswordForm() {
-  const searchParams = useSearchParams();
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  const [state, loginAction] = useFormState(resetPassword, {
-    errorMessage: "",
-  });
-
-  const { errorMessage } = state;
+  const errorMessage = "";
 
   let passwordError;
   if (confirmPassword.length && password !== confirmPassword) {
@@ -29,7 +23,7 @@ export default function UpdatePasswordForm() {
   const cannotSubmit = !password || !confirmPassword || !!passwordError;
 
   return (
-    <form className={styles["update-password-form"]} action={loginAction}>
+    <form className={styles["update-password-form"]} action={resetPassword}>
       <div className={styles["input-group"]}>
         <label htmlFor="password">New password</label>
         <input

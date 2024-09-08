@@ -3,7 +3,6 @@ import React from "react";
 import { useFormStatus } from "react-dom";
 import { sendVerificationEmail } from "@/actions/authActions";
 import LoadingIndicator from "@/components/LoadingIndicator";
-import { useSearchParams } from "next/navigation";
 
 export default function EmailVerificationForm({ email }: { email: string }) {
   return (
@@ -16,7 +15,6 @@ export default function EmailVerificationForm({ email }: { email: string }) {
 
 function Button() {
   const { pending } = useFormStatus();
-  // const pending = true;
   return (
     <button type="submit">
       {pending ? (

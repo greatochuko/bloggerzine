@@ -12,7 +12,7 @@ export default async function LoginPage() {
       <div className={styles["form-container"]}>
         <h1>Log in to your account</h1>
         <LoginForm />
-        <hr />
+        <hr hidden />
         <form action={loginWithGoogle} className={styles["oauth"]}>
           <button type="submit">
             <svg

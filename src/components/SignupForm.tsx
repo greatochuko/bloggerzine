@@ -1,20 +1,14 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "@/styles/SignupForm.module.css";
 import Link from "next/link";
-import { useFormState, useFormStatus } from "react-dom";
+import { useFormStatus } from "react-dom";
 import LoadingIndicator from "./LoadingIndicator";
 import { signup } from "@/actions/authActions";
 
 export default function SignupForm() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-
-  const [state, signupAction] = useFormState(signup, {
-    errorMessage: "",
-  });
-
-  const { errorMessage } = state;
 
   let passwordError;
   if (confirmPassword.length && password !== confirmPassword) {
@@ -24,8 +18,10 @@ export default function SignupForm() {
     passwordError = "Password must be at least 6 characters long";
   }
 
+  const errorMessage = "";
+
   return (
-    <form className={styles["signup-form"]} action={signupAction}>
+    <form className={styles["signup-form"]} action={signup}>
       <div className={styles["flex-group"]}>
         <div className={styles["input-group"]}>
           <label htmlFor="firstname">First Name</label>

@@ -1,5 +1,5 @@
 "use client";
-import { useFormState, useFormStatus } from "react-dom";
+import { useFormStatus } from "react-dom";
 import { sendResetPasswordEmail } from "@/actions/authActions";
 import styles from "@/app/settings/page.module.css";
 import LoadingIndicator from "./LoadingIndicator";
@@ -7,12 +7,8 @@ import { toast } from "react-toastify";
 import { useEffect } from "react";
 
 export function ResetPasswordSection() {
-  const [state, formAction] = useFormState(sendResetPasswordEmail, {
-    done: "",
-    errorMessage: null,
-  });
-
-  const { done, errorMessage } = state;
+  const done = false;
+  const errorMessage = "";
 
   useEffect(() => {
     if (done)
@@ -33,7 +29,10 @@ export function ResetPasswordSection() {
   return (
     <div className={styles["section"]}>
       <h2>Reset Password</h2>
-      <form className={styles["reset-password"]} action={formAction}>
+      <form
+        className={styles["reset-password"]}
+        action={sendResetPasswordEmail}
+      >
         <Button />
         {errorMessage ? (
           <p className={styles["error"]}>{errorMessage}</p>

@@ -1,10 +1,10 @@
 "use client";
 import Image from "next/image";
-import React, { use, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "@/styles/ProfileForm.module.css";
 import { uploadImage } from "@/utils/imageUploader";
 import LoadingIndicator from "./LoadingIndicator";
-import { useFormState, useFormStatus } from "react-dom";
+import { useFormStatus } from "react-dom";
 import { User } from "@/services/userServices";
 import { updateProfile } from "@/actions/authActions";
 import { toast } from "react-toastify";
@@ -50,12 +50,8 @@ export default function ProfileForm({ user }: { user: User }) {
     setBio(user.bio);
   }
 
-  const [state, updateProfileAction] = useFormState(updateProfile, {
-    done: "",
-    errorMessage: null,
-  });
-
-  const { done, errorMessage } = state;
+  const done = false;
+  const errorMessage = "";
 
   useEffect(() => {
     if (done) {
@@ -71,7 +67,7 @@ export default function ProfileForm({ user }: { user: User }) {
   }, [done, errorMessage]);
 
   return (
-    <form className={styles["profile-form"]} action={updateProfileAction}>
+    <form className={styles["profile-form"]} action={updateProfile}>
       <input type="hidden" name="userId" value={user.id} />
       <label htmlFor="firstname">Firstname</label>
       <input
