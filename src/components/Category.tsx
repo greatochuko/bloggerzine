@@ -3,7 +3,7 @@ import styles from "@/styles/Category.module.css";
 import Image from "next/image";
 import Link from "next/link";
 import convertToUrl from "@/utils/convertToUrl";
-import { Blogpost } from "./Hero";
+import { BlogpostType } from "./Hero";
 
 export const categories: CategoryType[] = [
   {
@@ -90,7 +90,7 @@ export default function Category({
   categoryPosts,
 }: {
   category: CategoryType;
-  categoryPosts: Blogpost[];
+  categoryPosts: BlogpostType[];
 }) {
   return (
     <div className={styles["category"]}>

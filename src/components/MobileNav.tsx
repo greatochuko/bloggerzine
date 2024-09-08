@@ -6,7 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Overlay from "./Overlay";
 import { navLinks } from "./MainNav";
-import { User } from "@/services/userServices";
+import { UserType } from "@/services/userServices";
 import { createAuthorUrl } from "@/utils/createAuthorUrl";
 import Image from "next/image";
 import logo from "../../public/logo.png";
@@ -16,7 +16,7 @@ export default function MobileNav({
   closeMobileNav,
   isOpen,
 }: {
-  user: User | null;
+  user: UserType | null;
   closeMobileNav: () => void;
   isOpen: boolean;
 }) {

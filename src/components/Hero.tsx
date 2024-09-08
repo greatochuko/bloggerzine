@@ -4,18 +4,17 @@ import Image from "next/image";
 import Link from "next/link";
 import BlogMetaData from "./BlogMetaData";
 import { categories } from "./Category";
-import { User } from "@/services/userServices";
+import { UserType } from "@/services/userServices";
 import { createAuthorUrl } from "@/utils/createAuthorUrl";
 import convertToUrl from "@/utils/convertToUrl";
 
-export type Blogpost = {
+export type BlogpostType = {
   id: string;
-  _id: string;
   title: string;
   content: string;
   category: string;
   thumbnail: string;
-  author: User;
+  author: UserType;
   tags: string;
   views: number;
   likes: string[];
@@ -25,11 +24,11 @@ export type Blogpost = {
   createdAt: string;
 };
 
-export default function Hero({ blogposts }: { blogposts: Blogpost[] }) {
+export default function Hero({ blogposts }: { blogposts: BlogpostType[] }) {
   return (
     <div className={styles["hero"]}>
       {blogposts.map((blogpost) => (
-        <div key={blogpost._id}>
+        <div key={blogpost.id}>
           <div className={styles["overlay"]}>
             <p
               className={styles["category"]}
@@ -43,7 +42,7 @@ export default function Hero({ blogposts }: { blogposts: Blogpost[] }) {
               {blogpost.category}
             </p>
             <Link
-              href={`/blog/${convertToUrl(blogpost.title)}_${blogpost._id}`}
+              href={`/blog/${convertToUrl(blogpost.title)}_${blogpost.id}`}
               className={styles["blog-title"]}
             >
               {blogpost.title}

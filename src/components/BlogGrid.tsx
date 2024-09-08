@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Blogpost } from "./Hero";
+import { BlogpostType } from "./Hero";
 import Blog from "./Blog";
 import styles from "@/styles/BlogGrid.module.css";
 import Paginator from "./Paginator";
@@ -10,7 +10,7 @@ export default function BlogGrid({
   blogposts,
   showPaginator,
 }: {
-  blogposts: Blogpost[];
+  blogposts: BlogpostType[];
   showPaginator?: boolean;
 }) {
   const searchParams = useSearchParams();
@@ -24,7 +24,7 @@ export default function BlogGrid({
   return (
     <div className={styles["blog-grid"]}>
       {filteredPosts.map((blogpost) => (
-        <Blog key={blogpost._id} blogpost={blogpost} />
+        <Blog key={blogpost.id} blogpost={blogpost} />
       ))}
       {showPaginator ? (
         <Paginator numPages={Math.ceil(blogposts.length / 8) || 1} />

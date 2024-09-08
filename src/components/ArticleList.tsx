@@ -6,17 +6,17 @@ import { categories } from "./Category";
 import Link from "next/link";
 import convertToUrl from "@/utils/convertToUrl";
 import Image from "next/image";
-import { Blogpost } from "./Hero";
+import { BlogpostType } from "./Hero";
 import DeletePostModal from "./DeletePostModal";
 
-export default function ArticleList({ blogposts }: { blogposts: Blogpost[] }) {
+export default function ArticleList({ blogposts }: { blogposts: BlogpostType[] }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState("newest");
   const [filter, setFilter] = useState("all");
   const [deletePostModal, setDeletePostModal] = useState<{
     open: boolean;
-    post: Blogpost | null;
+    post: BlogpostType | null;
   }>({
     open: false,
     post: null,
@@ -136,11 +136,11 @@ export default function ArticleList({ blogposts }: { blogposts: Blogpost[] }) {
                 </thead>
                 <tbody>
                   {paginatedPosts.map((blogpost) => (
-                    <tr key={blogpost._id}>
+                    <tr key={blogpost.id}>
                       <td>
                         <Link
                           href={`/blog/${convertToUrl(blogpost.title)}_${
-                            blogpost._id
+                            blogpost.id
                           }`}
                         >
                           {blogpost.title}
@@ -181,7 +181,7 @@ export default function ArticleList({ blogposts }: { blogposts: Blogpost[] }) {
                       <td className={styles["actions"]}>
                         <Link
                           href={`/edit-post/${convertToUrl(blogpost.title)}_${
-                            blogpost._id
+                            blogpost.id
                           }`}
                         >
                           <svg
@@ -279,7 +279,7 @@ export default function ArticleList({ blogposts }: { blogposts: Blogpost[] }) {
               </table>
               <ul>
                 {paginatedPosts.map((blogpost) => (
-                  <li className={styles["blog-card"]} key={blogpost._id}>
+                  <li className={styles["blog-card"]} key={blogpost.id}>
                     <div className={styles["image-container"]}>
                       <Image
                         src={blogpost.thumbnail || ""}
@@ -293,7 +293,7 @@ export default function ArticleList({ blogposts }: { blogposts: Blogpost[] }) {
                         <span>Title:</span>
                         <Link
                           href={`/blog/${convertToUrl(blogpost.title)}_${
-                            blogpost._id
+                            blogpost.id
                           }`}
                         >
                           {blogpost.title}
@@ -324,10 +324,10 @@ export default function ArticleList({ blogposts }: { blogposts: Blogpost[] }) {
                       <button
                         className={styles["options-button"]}
                         onClick={() => {
-                          if (optionOpen === blogpost._id) {
+                          if (optionOpen === blogpost.id) {
                             setOptionOpen(null);
                           } else {
-                            setOptionOpen(blogpost._id);
+                            setOptionOpen(blogpost.id);
                           }
                         }}
                       >
@@ -351,11 +351,11 @@ export default function ArticleList({ blogposts }: { blogposts: Blogpost[] }) {
                           </g>
                         </svg>
                       </button>
-                      {optionOpen === blogpost._id ? (
+                      {optionOpen === blogpost.id ? (
                         <div className={styles["options-list"]}>
                           <Link
                             href={`/edit-post/${convertToUrl(blogpost.title)}_${
-                              blogpost._id
+                              blogpost.id
                             }`}
                           >
                             <svg

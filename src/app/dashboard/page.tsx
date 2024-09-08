@@ -10,7 +10,7 @@ import { getBlogpostByAuthor } from "@/services/blogServices";
 import { getUser } from "@/services/userServices";
 import { notFound } from "next/navigation";
 import { getCommentsByAuthor } from "@/services/commentServices";
-import { Blogpost } from "@/components/Hero";
+import { BlogpostType } from "@/components/Hero";
 import { CommentType } from "@/components/Comment";
 
 export const metadata: Metadata = {
@@ -25,7 +25,7 @@ export default async function Dashboard() {
 
   if (!user) notFound();
 
-  const authorBlogposts: Blogpost[] = await getBlogpostByAuthor(
+  const authorBlogposts: BlogpostType[] = await getBlogpostByAuthor(
     userId as string,
     true
   );

@@ -1,4 +1,4 @@
-import { getUser, User } from "@/services/userServices";
+import { getUser, UserType } from "@/services/userServices";
 import { Metadata } from "next";
 import React from "react";
 import styles from "./page.module.css";
@@ -18,7 +18,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const userId = params.userSlug.split("_").at(-1) as string;
   const { user } = await getUser(userId);
-  const author = user as User;
+  const author = user as UserType;
   return {
     title: author?.firstname + " " + author?.lastname,
     description: author.bio,
@@ -48,7 +48,7 @@ export default async function AuthorPage({
   searchParams: { page: string };
 }) {
   const userId = params.userSlug.split("_").at(-1) as string;
-  const { user: author }: { user: User | null } = await getUser(userId);
+  const { user: author }: { user: UserType | null } = await getUser(userId);
 
   if (!author) notFound();
 
@@ -83,7 +83,7 @@ export default async function AuthorPage({
           </div>
           <div className={styles["text"]}>
             <h1>{author.firstname + " " + author.lastname}</h1>
-            <SocialLinks socialLinks={author.socialLinks} />
+            <SocialLinks author={author} />
             <p>
               {author.jobTitle ? (
                 <span>

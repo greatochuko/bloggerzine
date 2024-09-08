@@ -5,11 +5,11 @@ import styles from "@/styles/ProfileForm.module.css";
 import { uploadImage } from "@/utils/imageUploader";
 import LoadingIndicator from "./LoadingIndicator";
 import { useFormStatus } from "react-dom";
-import { User } from "@/services/userServices";
+import { UserType } from "@/services/userServices";
 import { updateProfile } from "@/actions/authActions";
 import { toast } from "react-toastify";
 
-export default function ProfileForm({ user }: { user: User }) {
+export default function ProfileForm({ user }: { user: UserType }) {
   const [profileImage, setProfileImage] = useState({
     loading: false,
     url: user.imageUrl,

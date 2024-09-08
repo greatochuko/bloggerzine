@@ -3,10 +3,10 @@ import Image from "next/image";
 import styles from "@/styles/NavUser.module.css";
 import Link from "next/link";
 import SignoutModal from "./SignoutModal";
-import { User } from "@/services/userServices";
+import { UserType } from "@/services/userServices";
 import { createAuthorUrl } from "@/utils/createAuthorUrl";
 
-export default function NavUser({ user }: { user: User }) {
+export default function NavUser({ user }: { user: UserType }) {
   const [showDropdown, setShowDropdown] = useState(false);
   const [signoutModal, setSignoutModal] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);

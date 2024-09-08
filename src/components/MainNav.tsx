@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import styles from "@/styles/MainNav.module.css";
 import SearchForm from "./SearchForm";
 import NavUser from "./NavUser";
-import { User } from "@/services/userServices";
+import { UserType } from "@/services/userServices";
 import Image from "next/image";
 import logo from "../../public/logo.png";
 
@@ -21,7 +21,7 @@ export default function MainNav({
   user,
   openMobileNav,
 }: {
-  user: User | null;
+  user: UserType | null;
   openMobileNav: () => void;
 }) {
   const pathname = usePathname();

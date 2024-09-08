@@ -1,12 +1,12 @@
 import React from "react";
-import { Blogpost } from "@/components/Hero";
+import { BlogpostType } from "@/components/Hero";
 import { getBlogposts } from "@/services/blogServices";
 import styles from "./page.module.css";
 import Link from "next/link";
 import Category, { categories, CategoryType } from "@/components/Category";
 
 export default async function CategoryPage() {
-  const blogposts: Blogpost[] = await getBlogposts();
+  const blogposts: BlogpostType[] = await getBlogposts();
 
   return (
     <div className={styles["categories-page"]}>

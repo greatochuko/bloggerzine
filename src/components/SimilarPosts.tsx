@@ -1,10 +1,10 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import { Blogpost } from "./Hero";
+import { BlogpostType } from "./Hero";
 import styles from "@/styles/SimilarPosts.module.css";
 import Blog from "./Blog";
 
-export default function SimilarPosts({ blogposts }: { blogposts: Blogpost[] }) {
+export default function SimilarPosts({ blogposts }: { blogposts: BlogpostType[] }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [screenWidth, setScreenWidth] = useState(0);
 

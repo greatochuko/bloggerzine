@@ -3,15 +3,15 @@ import React from "react";
 import styles from "@/styles/AboutAuthor.module.css";
 import Link from "next/link";
 import Image from "next/image";
-import { User } from "@/services/userServices";
-import { Blogpost } from "./Hero";
+import { UserType } from "@/services/userServices";
+import { BlogpostType } from "./Hero";
 
 export default function AboutAuthor({
   author,
   blogposts,
 }: {
-  author: User;
-  blogposts: Blogpost[];
+  author: UserType;
+  blogposts: BlogpostType[];
 }) {
   return (
     <div className={styles["about-author"]}>

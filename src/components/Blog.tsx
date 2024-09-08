@@ -1,12 +1,12 @@
 import React from "react";
 import styles from "@/styles/Blog.module.css";
 import Image from "next/image";
-import { type Blogpost } from "./Hero";
+import { BlogpostType } from "./Hero";
 import BlogMetaData from "./BlogMetaData";
 import Link from "next/link";
 import convertToUrl from "@/utils/convertToUrl";
 
-export default function Blog({ blogpost }: { blogpost: Blogpost }) {
+export default function Blog({ blogpost }: { blogpost: BlogpostType }) {
   return (
     <div className={styles["blog"]}>
       <div className={styles["image-container"]}>
@@ -18,7 +18,7 @@ export default function Blog({ blogpost }: { blogpost: Blogpost }) {
         ></Image>
       </div>
       <Link
-        href={`/blog/${convertToUrl(blogpost.title)}_${blogpost._id}`}
+        href={`/blog/${convertToUrl(blogpost.title)}_${blogpost.id}`}
         className={styles["blog-title"]}
       >
         {blogpost.title}

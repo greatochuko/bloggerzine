@@ -2,13 +2,12 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import styles from "@/styles/PostForm.module.css";
 import { categories } from "./Category";
-import { Blogpost } from "./Hero";
+import { BlogpostType } from "./Hero";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { uploadImage } from "@/utils/imageUploader";
 import Image from "next/image";
 import LoadingIndicator from "./LoadingIndicator";
-import { useFormState, useFormStatus } from "react-dom";
 import {
   publishPost,
   saveAsDraft,
@@ -16,7 +15,7 @@ import {
   updatePost,
 } from "@/actions/blogActions";
 
-export default function CreatePostForm({ blogpost }: { blogpost?: Blogpost }) {
+export default function CreatePostForm({ blogpost }: { blogpost?: BlogpostType }) {
   const [title, setTitle] = useState(blogpost?.title || "");
   const [thumbnail, setThumbnail] = useState({
     loading: false,
@@ -137,7 +136,7 @@ export default function CreatePostForm({ blogpost }: { blogpost?: Blogpost }) {
   return (
     <form className={styles["post-form"]} ref={postFormRef}>
       {blogpost ? (
-        <input type="hidden" name="blogId" defaultValue={blogpost._id} />
+        <input type="hidden" name="blogId" defaultValue={blogpost.id} />
       ) : null}
       <div className={styles["input-group"]}>
         <label htmlFor="post-title">Post title</label>

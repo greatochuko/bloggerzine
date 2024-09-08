@@ -68,7 +68,7 @@ export async function updatePost(formData: FormData) {
   const { error } = await supabase
     .from("blogposts")
     .update(data)
-    .eq("_id", blogId);
+    .eq("id", blogId);
 
   if (!error) {
     revalidatePath("/", "layout");
@@ -96,7 +96,7 @@ export async function updateAsDraft(formData: FormData) {
   const { error } = await supabase
     .from("blogposts")
     .update(data)
-    .eq("_id", blogId);
+    .eq("id", blogId);
 
   if (!error) {
     revalidatePath("/", "layout");
@@ -111,7 +111,7 @@ export async function deletePost(initialState: any, formData: FormData) {
 
   const postId = formData.get("postId") as string;
 
-  const { error } = await supabase.from("blogposts").delete().eq("_id", postId);
+  const { error } = await supabase.from("blogposts").delete().eq("id", postId);
 
   if (!error) {
     revalidatePath("/", "layout");
@@ -125,7 +125,7 @@ export async function toggleLikePost(userId: string, blogId: string) {
   const { data } = await supabase
     .from("blogposts")
     .select("likes, dislikes")
-    .eq("_id", blogId);
+    .eq("id", blogId);
 
   if (data && data[0]) {
     let newLikedPosts: string[] = [];
@@ -145,7 +145,7 @@ export async function toggleLikePost(userId: string, blogId: string) {
     const { error } = await supabase
       .from("blogposts")
       .update({ likes: newLikedPosts, dislikes: newDislikedPosts })
-      .eq("_id", blogId);
+      .eq("id", blogId);
   }
 
   revalidatePath("/blog/[blogTitle]", "page");
@@ -157,7 +157,7 @@ export async function toggleDislikePost(userId: string, blogId: string) {
   const { data } = await supabase
     .from("blogposts")
     .select("likes, dislikes")
-    .eq("_id", blogId);
+    .eq("id", blogId);
 
   if (data && data[0]) {
     let newLikedPosts: string[] = [];
@@ -177,7 +177,7 @@ export async function toggleDislikePost(userId: string, blogId: string) {
     const { error } = await supabase
       .from("blogposts")
       .update({ likes: newLikedPosts, dislikes: newDislikedPosts })
-      .eq("_id", blogId);
+      .eq("id", blogId);
   }
 
   revalidatePath("/blog/[blogTitle]", "page");

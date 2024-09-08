@@ -1,26 +1,26 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import styles from "@/styles/SocialLinksForm.module.css";
-import { User } from "@/services/userServices";
+import { UserType } from "@/services/userServices";
 import { updateSocialLinks } from "@/actions/authActions";
 import { useFormStatus } from "react-dom";
 import LoadingIndicator from "./LoadingIndicator";
 import { toast } from "react-toastify";
 
-export default function SocialLinksForm({ user }: { user: User }) {
-  const [facebook, setFacebook] = useState(user.socialLinks.facebook);
-  const [twitter, setTwitter] = useState(user.socialLinks.twitter);
-  const [instagram, setInstagram] = useState(user.socialLinks.instagram);
-  const [linkedIn, setlinkedIn] = useState(user.socialLinks.linkedIn);
+export default function SocialLinksForm({ user }: { user: UserType }) {
+  const [facebook, setFacebook] = useState(user.facebookUrl);
+  const [twitter, setTwitter] = useState(user.twitterUrl);
+  const [instagram, setInstagram] = useState(user.instagramUrl);
+  const [linkedIn, setlinkedIn] = useState(user.linkedInUrl);
 
   const done = false;
   const errorMessage = "";
 
   function handleResetForm() {
-    setFacebook(user.socialLinks.facebook);
-    setTwitter(user.socialLinks.twitter);
-    setInstagram(user.socialLinks.instagram);
-    setlinkedIn(user.socialLinks.linkedIn);
+    setFacebook(user.facebookUrl);
+    setTwitter(user.twitterUrl);
+    setInstagram(user.instagramUrl);
+    setlinkedIn(user.linkedInUrl);
   }
 
   useEffect(() => {

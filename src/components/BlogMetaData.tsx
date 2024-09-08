@@ -1,12 +1,12 @@
 import React from "react";
-import { type Blogpost } from "./Hero";
+import { type BlogpostType } from "./Hero";
 import Link from "next/link";
 import Image from "next/image";
 import styles from "@/styles/BlogMetaData.module.css";
 import convertToUrl from "@/utils/convertToUrl";
 import { createAuthorUrl } from "@/utils/createAuthorUrl";
 
-export default function BlogMetaData({ blog }: { blog: Blogpost }) {
+export default function BlogMetaData({ blog }: { blog: BlogpostType }) {
   return (
     <div className={styles["blog-meta-data"]}>
       <Link

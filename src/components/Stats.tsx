@@ -2,7 +2,7 @@
 import React from "react";
 import styles from "@/styles/Stats.module.css";
 import { convertToAbbrString } from "@/utils/numberFormatter";
-import { Blogpost } from "./Hero";
+import { BlogpostType } from "./Hero";
 import { CommentType } from "./Comment";
 
 export default function Stats({
@@ -10,7 +10,7 @@ export default function Stats({
   blogposts,
 }: {
   comments: CommentType[];
-  blogposts: Blogpost[];
+  blogposts: BlogpostType[];
 }) {
   const reads = convertToAbbrString(
     blogposts.reduce((acc, curr) => acc + curr.views, 0)

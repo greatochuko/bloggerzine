@@ -1,21 +1,13 @@
 import Link from "next/link";
 import React from "react";
 import styles from "@/styles/SocialLinks.module.css";
+import { UserType } from "@/services/userServices";
 
-export default function SocialLinks({
-  socialLinks,
-}: {
-  socialLinks: {
-    facebook: string;
-    twitter: string;
-    linkedIn: string;
-    instagram: string;
-  };
-}) {
+export default function SocialLinks({ author }: { author: UserType }) {
   return (
     <div className={styles["social-links"]}>
-      {socialLinks.facebook ? (
-        <Link href={socialLinks.facebook} target="_blank">
+      {author.facebookUrl ? (
+        <Link href={author.facebookUrl} target="_blank">
           <svg
             height={18}
             width={18}
@@ -61,8 +53,8 @@ export default function SocialLinks({
         </Link>
       ) : null}
 
-      {socialLinks.instagram ? (
-        <Link href={socialLinks.instagram} target="_blank">
+      {author.instagramUrl ? (
+        <Link href={author.instagramUrl} target="_blank">
           <svg
             height={20}
             width={20}
@@ -125,7 +117,7 @@ export default function SocialLinks({
                   cx="0"
                   cy="0"
                   r="1"
-                  gradientUnits="userSpaceOnUse"
+                  gradientUnits="authorSpaceOnUse"
                   gradientTransform="translate(12 23) rotate(-55.3758) scale(25.5196)"
                 >
                   {" "}
@@ -138,7 +130,7 @@ export default function SocialLinks({
                   cx="0"
                   cy="0"
                   r="1"
-                  gradientUnits="userSpaceOnUse"
+                  gradientUnits="authorSpaceOnUse"
                   gradientTransform="translate(11 31) rotate(-65.1363) scale(22.5942)"
                 >
                   {" "}
@@ -152,7 +144,7 @@ export default function SocialLinks({
                   cx="0"
                   cy="0"
                   r="1"
-                  gradientUnits="userSpaceOnUse"
+                  gradientUnits="authorSpaceOnUse"
                   gradientTransform="translate(0.500002 3) rotate(-8.1301) scale(38.8909 8.31836)"
                 >
                   {" "}
@@ -166,8 +158,8 @@ export default function SocialLinks({
         </Link>
       ) : null}
 
-      {socialLinks.twitter ? (
-        <Link href={socialLinks.twitter} target="_blank">
+      {author.twitterUrl ? (
+        <Link href={author.twitterUrl} target="_blank">
           <svg
             height={18}
             width={18}
@@ -194,8 +186,8 @@ export default function SocialLinks({
         </Link>
       ) : null}
 
-      {socialLinks.linkedIn ? (
-        <Link href={socialLinks.linkedIn} target="_blank">
+      {author.linkedInUrl ? (
+        <Link href={author.linkedInUrl} target="_blank">
           <svg
             style={{ marginTop: "1px" }}
             height={25}

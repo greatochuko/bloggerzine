@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "@/styles/MainArea.module.css";
-import { Blogpost } from "./Hero";
+import { BlogpostType } from "./Hero";
 import Image from "next/image";
 import Link from "next/link";
 import BlogGrid from "./BlogGrid";
@@ -12,8 +12,8 @@ export default function MainArea({
   topPosts,
   recentPosts,
 }: {
-  topPosts: Blogpost[];
-  recentPosts: Blogpost[];
+  topPosts: BlogpostType[];
+  recentPosts: BlogpostType[];
 }) {
   return (
     <div className={styles["main-area"]}>
@@ -31,10 +31,10 @@ export default function MainArea({
           <div className={styles["recent-posts"]}>
             <ul>
               {recentPosts.map((recentPost) => (
-                <li key={recentPost._id}>
+                <li key={recentPost.id}>
                   <Link
                     href={`/blog/${convertToUrl(recentPost.title)}_${
-                      recentPost._id
+                      recentPost.id
                     }`}
                     className={styles["recent-post"]}
                   >

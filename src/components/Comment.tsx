@@ -3,13 +3,13 @@ import React, { useState } from "react";
 import styles from "@/styles/Comment.module.css";
 import Image from "next/image";
 import ReplyForm from "./ReplyForm";
-import { Blogpost } from "./Hero";
-import { User } from "@/services/userServices";
+import { BlogpostType } from "./Hero";
+import { UserType } from "@/services/userServices";
 
 export type CommentType = {
   id: number;
-  blogpost: Blogpost;
-  user: User;
+  blogpost: BlogpostType;
+  user: UserType;
   comment: string;
   createdAt: string;
   parentId: null | number;

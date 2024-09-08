@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import styles from "@/styles/DeletePostModal.module.css";
 import { useFormState, useFormStatus } from "react-dom";
 import LoadingIndicator from "./LoadingIndicator";
-import { Blogpost } from "./Hero";
+import { BlogpostType } from "./Hero";
 import { deletePost } from "@/actions/blogActions";
 
 export default function DeletePostModal({
@@ -12,7 +12,7 @@ export default function DeletePostModal({
 }: {
   isOpen: boolean;
   closeModal: () => void;
-  post: Blogpost | null;
+  post: BlogpostType | null;
 }) {
   const [state, deletePostAction] = useFormState(deletePost, {
     done: false,

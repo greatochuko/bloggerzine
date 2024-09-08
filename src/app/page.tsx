@@ -1,10 +1,10 @@
-import Hero, { Blogpost } from "@/components/Hero";
+import Hero, { BlogpostType } from "@/components/Hero";
 import styles from "./page.module.css";
 import MainArea from "@/components/MainArea";
 import { getBlogposts } from "@/services/blogServices";
 
 export default async function Home() {
-  const blogposts: Blogpost[] = await getBlogposts();
+  const blogposts: BlogpostType[] = await getBlogposts();
 
   const featuredPosts = blogposts
     .filter((post) => post.isFeatured)

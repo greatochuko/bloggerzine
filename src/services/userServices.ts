@@ -1,6 +1,6 @@
 import { createClient } from "@/utils/supabase/client";
 
-export type User = {
+export type UserType = {
   id: string;
   firstname: string;
   lastname: string;
@@ -9,12 +9,10 @@ export type User = {
   coverImageUrl: string;
   bio: string;
   jobTitle: string;
-  socialLinks: {
-    facebook: string;
-    twitter: string;
-    linkedIn: string;
-    instagram: string;
-  };
+  facebookUrl: string;
+  twitterUrl: string;
+  linkedInUrl: string;
+  instagramUrl: string;
   createdAt: string;
 };
 

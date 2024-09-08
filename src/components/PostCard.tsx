@@ -1,15 +1,15 @@
 import React from "react";
 import styles from "@/styles/PostCard.module.css";
-import { type Blogpost } from "./Hero";
+import { type BlogpostType } from "./Hero";
 import Image from "next/image";
 import { categories } from "./Category";
 import Link from "next/link";
 import convertToUrl from "@/utils/convertToUrl";
 
-export default function PostCard({ blogpost }: { blogpost: Blogpost }) {
+export default function PostCard({ blogpost }: { blogpost: BlogpostType }) {
   return (
     <Link
-      href={`/blog/${convertToUrl(blogpost.title)}_${blogpost._id}`}
+      href={`/blog/${convertToUrl(blogpost.title)}_${blogpost.id}`}
       className={styles["post-card"]}
     >
       <Image

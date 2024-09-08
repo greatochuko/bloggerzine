@@ -13,7 +13,7 @@ import { Metadata } from "next";
 import { createAuthorUrl } from "@/utils/createAuthorUrl";
 import BlogpostContent from "@/components/BlogpostContent";
 import SocialLinks from "@/components/SocialLinks";
-import { Blogpost } from "@/components/Hero";
+import { BlogpostType } from "@/components/Hero";
 import { createClient } from "@/utils/supabase/server";
 import SimilarPosts from "@/components/SimilarPosts";
 import LikeSection from "@/components/LikeSection";
@@ -23,7 +23,7 @@ export async function generateMetadata({
 }: {
   params: { blogTitle: string };
 }): Promise<Metadata> {
-  const blogpost: Blogpost = await getBlogpost(
+  const blogpost: BlogpostType = await getBlogpost(
     blogTitle.split("_").at(-1) as string
   );
 
@@ -57,14 +57,14 @@ export default async function page({
 }: {
   params: { blogTitle: string };
 }) {
-  const blogpost: Blogpost = await getBlogpost(
+  const blogpost: BlogpostType = await getBlogpost(
     blogTitle.split("_").at(-1) as string
   );
 
   if (!blogpost) notFound();
 
-  let similarPosts: Blogpost[] = await getSimilarPosts(blogpost.title);
-  similarPosts = similarPosts.filter((post) => post._id !== blogpost._id);
+  let similarPosts: BlogpostType[] = await getSimilarPosts(blogpost.title);
+  similarPosts = similarPosts.filter((post) => post.id !== blogpost.id);
 
   const comments = await getComments(blogpost.id);
 
@@ -105,7 +105,7 @@ export default async function page({
 
           {user ? (
             <LikeSection
-              blogId={blogpost._id}
+              blogId={blogpost.id}
               userId={user.id}
               isLiked={blogpost.likes.includes(user.id)}
               isDisliked={blogpost.dislikes.includes(user.id)}
@@ -134,7 +134,7 @@ export default async function page({
               {blogpost.author.bio ? (
                 <p className={styles["bio"]}>{blogpost.author.bio}</p>
               ) : null}
-              <SocialLinks socialLinks={blogpost.author.socialLinks} />
+              <SocialLinks author={blogpost.author} />
             </div>
           </section>
 
