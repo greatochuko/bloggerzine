@@ -19,7 +19,7 @@ export type UserType = {
 export async function getUser(userId: string) {
   const supabase = createClient();
   const { data, error } = await supabase
-    .from("profiles")
+    .from("users")
     .select("*")
     .eq("id", userId);
 

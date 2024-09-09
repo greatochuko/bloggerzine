@@ -2,13 +2,16 @@
 import React, { useState } from "react";
 import styles from "@/styles/SignupForm.module.css";
 import Link from "next/link";
-import { useFormStatus } from "react-dom";
+import { useFormState, useFormStatus } from "react-dom";
 import LoadingIndicator from "./LoadingIndicator";
 import { signup } from "@/actions/authActions";
 
 export default function SignupForm() {
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [firstname, setFirstname] = useState("Great");
+  const [lastname, setLastname] = useState("Ogheneochuko");
+  const [email, setEmail] = useState("greatochuko123@gmail.com");
+  const [password, setPassword] = useState("14122003");
+  const [confirmPassword, setConfirmPassword] = useState("14122003");
 
   let passwordError;
   if (confirmPassword.length && password !== confirmPassword) {
@@ -18,10 +21,20 @@ export default function SignupForm() {
     passwordError = "Password must be at least 6 characters long";
   }
 
-  const errorMessage = "";
+  const [state, signupAction] = useFormState(signup, { errorMessage: "" });
+
+  const errorMessage = state?.errorMessage;
+
+  const cannotSubmit =
+    !!passwordError ||
+    !email ||
+    !password ||
+    !firstname ||
+    !lastname ||
+    !confirmPassword;
 
   return (
-    <form className={styles["signup-form"]} action={signup}>
+    <form className={styles["signup-form"]} action={signupAction}>
       <div className={styles["flex-group"]}>
         <div className={styles["input-group"]}>
           <label htmlFor="firstname">First Name</label>
@@ -30,6 +43,8 @@ export default function SignupForm() {
             placeholder="First Name"
             id="firstname"
             name="firstname"
+            value={firstname}
+            onChange={(e) => setFirstname(e.target.value)}
             required
           />
         </div>
@@ -40,6 +55,8 @@ export default function SignupForm() {
             placeholder="Last Name"
             id="lastname"
             name="lastname"
+            value={lastname}
+            onChange={(e) => setLastname(e.target.value)}
             required
           />
         </div>
@@ -52,6 +69,8 @@ export default function SignupForm() {
           placeholder="Email"
           id="email"
           name="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           required
         />
       </div>
@@ -82,7 +101,7 @@ export default function SignupForm() {
         ) : null}
       </div>
       <div className={styles["actions"]}>
-        <Button passwordError={passwordError} />
+        <SubmitButton cannotSubmit={cannotSubmit} />
         <p>
           Already have an account? <Link href={"/login"}>Login</Link>
         </p>
@@ -91,10 +110,10 @@ export default function SignupForm() {
   );
 }
 
-function Button({ passwordError }: { passwordError?: string }) {
+function SubmitButton({ cannotSubmit }: { cannotSubmit: boolean }) {
   const { pending } = useFormStatus();
   return (
-    <button type="submit" disabled={!!passwordError}>
+    <button type="submit" disabled={cannotSubmit}>
       {pending ? <LoadingIndicator size={20} color="#fff" /> : "Sign Up"}
     </button>
   );
