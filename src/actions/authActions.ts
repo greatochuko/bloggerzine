@@ -4,10 +4,10 @@ import { createClient } from "@/utils/supabase/server";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import bcrypt from "bcrypt";
-import { sendMail } from "@/utils/sendMail";
+import { sendMail, sendPasswordMail } from "@/utils/sendMail";
 import jwt from "jsonwebtoken";
 import { cookies } from "next/headers";
-import { getUserIdFromCookies } from "@/services/userServices";
+import { getSession, getUserIdFromCookies } from "@/services/userServices";
 
 export async function login(initialState: any, formData: FormData) {
   const email = formData.get("email") as string;
@@ -125,17 +125,79 @@ export async function updateProfile(formData: FormData) {
     .from("users")
     .update(updateData)
     .eq("id", userId);
+  revalidatePath("/", "layout");
+}
+
+export async function updateSocialLinks(formData: FormData) {
+  const updateData = {
+    facebookUrl: formData.get("facebook"),
+    twitterUrl: formData.get("twitter"),
+    instagramUrl: formData.get("instagram"),
+    linkedInUrl: formData.get("linkedIn"),
+  };
+
+  const userId = getUserIdFromCookies();
+  if (!userId) return revalidatePath("/", "layout");
+
+  const supabase = createClient();
+  const { error } = await supabase
+    .from("users")
+    .update(updateData)
+    .eq("id", userId);
   console.log(error?.message);
   revalidatePath("/", "layout");
 }
 
-export async function updateSocialLinks(formData: FormData) {}
-
 export async function logout() {}
 
-export async function sendResetPasswordEmail() {}
+export async function sendResetPasswordEmail() {
+  const user = await getSession();
+  if (!user) return revalidatePath("", "layout");
 
-export async function resetPassword(formData: FormData) {}
+  const token = jwt.sign(
+    {
+      email: user.email,
+      firstname: user.firstname,
+    },
+    process.env.JWT_SECRET!
+  );
+
+  const emailToken = jwt.sign(
+    {
+      email: user.email,
+      firstname: user.firstname,
+    },
+    process.env.JWT_SECRET!,
+    { expiresIn: "1h" }
+  );
+
+  const { error } = await sendPasswordMail(
+    user.firstname,
+    user.email,
+    token,
+    emailToken
+  );
+  console.log(error);
+}
+
+export async function resetPassword(formData: FormData) {
+  const newPassword = formData.get("newPassword") as string;
+  const email = formData.get("email");
+
+  const encryptedPassword = await bcrypt.hash(newPassword, 10);
+
+  const supabase = createClient();
+  const { error } = await supabase
+    .from("users")
+    .update({ password: encryptedPassword })
+    .eq("email", email);
+  console.log(error?.message);
+
+  if (error) return { done: false, errorMessage: error.message };
+
+  revalidatePath("/", "layout");
+  redirect("/");
+}
 
 export async function sendVerificationEmail(formData: FormData) {
   const email = formData.get("email") as string;
