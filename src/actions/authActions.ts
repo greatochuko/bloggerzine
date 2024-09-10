@@ -20,7 +20,12 @@ export async function signup(initialState: any, formData: FormData) {
 
   // Check if user exists
   const { data } = await supabase.from("users").select("*").eq("email", email);
-  if (data && data[0]) return { errorMessage: "User with email exists!" };
+
+  if (data && data[0])
+    return {
+      errorMessage:
+        "An account with this email address already exists. Please use a different email or log in to your existing account.",
+    };
 
   const signupData = {
     firstname,
@@ -30,18 +35,38 @@ export async function signup(initialState: any, formData: FormData) {
   };
 
   // Create new user
-  // const { error } = await supabase.from("users").insert(signupData);
+  const { error: signupError } = await supabase
+    .from("users")
+    .insert(signupData);
 
-  // if (error) {
-  //   return { errorMessage: error.message };
-  // }
+  if (signupError) {
+    return { errorMessage: signupError.message };
+  }
 
-  const token = jwt.sign({ email }, process.env.JWT_SECRET!);
+  const token = jwt.sign(
+    {
+      email,
+      firstname,
+    },
+    process.env.JWT_SECRET!
+  );
+  const emailToken = jwt.sign(
+    {
+      email,
+      firstname,
+    },
+    process.env.JWT_SECRET!,
+    { expiresIn: "1h" }
+  );
 
-  sendMail(firstname, email, token);
+  const { done, error } = await sendMail(firstname, email, token, emailToken);
 
-  revalidatePath("/", "layout");
-  redirect("/confirm-email");
+  if (done) {
+    revalidatePath("/", "layout");
+    redirect(`/confirm-email?token=${token}`);
+  }
+
+  return { errorMessage: error };
 }
 
 export async function loginWithGoogle() {}
@@ -56,4 +81,30 @@ export async function sendResetPasswordEmail() {}
 
 export async function resetPassword(formData: FormData) {}
 
-export async function sendVerificationEmail(formData: FormData) {}
+export async function sendVerificationEmail(formData: FormData) {
+  const email = formData.get("email") as string;
+  const firstname = formData.get("firstname") as string;
+
+  const token = jwt.sign(
+    {
+      email,
+      firstname,
+    },
+    process.env.JWT_SECRET!
+  );
+  const emailToken = jwt.sign(
+    {
+      email,
+      firstname,
+    },
+    process.env.JWT_SECRET!,
+    { expiresIn: "1h" }
+  );
+
+  const { done } = await sendMail(firstname, email, token, emailToken);
+
+  if (done) {
+    revalidatePath("/", "layout");
+    redirect(`/confirm-email?token=${token}`);
+  }
+}

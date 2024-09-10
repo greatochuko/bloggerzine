@@ -14,6 +14,7 @@ export type UserType = {
   linkedInUrl: string;
   instagramUrl: string;
   createdAt: string;
+  emailVerified: boolean;
 };
 
 export async function getUser(userId: string) {

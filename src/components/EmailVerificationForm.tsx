@@ -4,10 +4,17 @@ import { useFormStatus } from "react-dom";
 import { sendVerificationEmail } from "@/actions/authActions";
 import LoadingIndicator from "@/components/LoadingIndicator";
 
-export default function EmailVerificationForm({ email }: { email: string }) {
+export default function EmailVerificationForm({
+  email,
+  firstname,
+}: {
+  email: string;
+  firstname: string;
+}) {
   return (
     <form action={sendVerificationEmail}>
       <input type="hidden" name="email" defaultValue={email} />
+      <input type="hidden" name="firstname" defaultValue={firstname} />
       <Button />
     </form>
   );
