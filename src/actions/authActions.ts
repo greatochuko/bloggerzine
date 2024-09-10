@@ -7,6 +7,7 @@ import bcrypt from "bcrypt";
 import { sendMail } from "@/utils/sendMail";
 import jwt from "jsonwebtoken";
 import { cookies } from "next/headers";
+import { getUserIdFromCookies } from "@/services/userServices";
 
 export async function login(initialState: any, formData: FormData) {
   const email = formData.get("email") as string;
@@ -106,7 +107,27 @@ export async function signup(initialState: any, formData: FormData) {
 
 export async function loginWithGoogle() {}
 
-export async function updateProfile(formData: FormData) {}
+export async function updateProfile(formData: FormData) {
+  const updateData = {
+    firstname: formData.get("firstname"),
+    lastname: formData.get("lastname"),
+    imageUrl: formData.get("imageUrl"),
+    coverImageUrl: formData.get("coverImageUrl"),
+    jobTitle: formData.get("jobTitle"),
+    bio: formData.get("bio"),
+  };
+
+  const userId = getUserIdFromCookies();
+  if (!userId) return revalidatePath("/", "layout");
+
+  const supabase = createClient();
+  const { error } = await supabase
+    .from("users")
+    .update(updateData)
+    .eq("id", userId);
+  console.log(error?.message);
+  revalidatePath("/", "layout");
+}
 
 export async function updateSocialLinks(formData: FormData) {}
 

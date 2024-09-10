@@ -74,6 +74,7 @@ export default function ProfileForm({ user }: { user: UserType }) {
         type="text"
         id="firstname"
         name="firstname"
+        autoComplete="off"
         placeholder="Enter firstname"
         defaultValue={user.firstname}
         required
@@ -83,6 +84,7 @@ export default function ProfileForm({ user }: { user: UserType }) {
         type="text"
         id="lastname"
         name="lastname"
+        autoComplete="off"
         placeholder="Enter lastname"
         defaultValue={user.lastname}
         required
@@ -199,7 +201,8 @@ export default function ProfileForm({ user }: { user: UserType }) {
       <input
         type="text"
         id="job-title"
-        name="job-title"
+        name="jobTitle"
+        autoComplete="off"
         value={jobTitle}
         onChange={(e) => setJobTitle(e.target.value)}
         placeholder="Enter job title"
@@ -210,6 +213,7 @@ export default function ProfileForm({ user }: { user: UserType }) {
         <textarea
           name="bio"
           id="bio"
+          autoComplete="off"
           value={bio}
           onChange={(e) => {
             if (e.target.value.length >= 150) return;

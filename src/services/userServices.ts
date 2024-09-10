@@ -49,3 +49,13 @@ export async function getSession(): Promise<UserType | null> {
   if (data) return data[0];
   return null;
 }
+
+export function getUserIdFromCookies(): string | null {
+  const token = cookies().get("token")?.value;
+  if (!token) return null;
+
+  const payload = jwt.verify(token, process.env.JWT_SECRET!);
+  if (typeof payload === "string") return null;
+
+  return payload.userId;
+}
