@@ -6,8 +6,43 @@ import { redirect } from "next/navigation";
 import bcrypt from "bcrypt";
 import { sendMail } from "@/utils/sendMail";
 import jwt from "jsonwebtoken";
+import { cookies } from "next/headers";
 
-export async function login(formData: FormData) {}
+export async function login(initialState: any, formData: FormData) {
+  const email = formData.get("email") as string;
+  const password = formData.get("password") as string;
+  const redirectTo = formData.get("redirectTo") as string;
+
+  const supabase = createClient();
+  const { data } = await supabase.from("users").select("*").eq("email", email);
+  if (!data)
+    return {
+      errorMessage:
+        "Invalid email or password. Please check your credentials and try again.",
+    };
+
+  const passwordIsCorrect = await bcrypt.compare(password, data[0].password);
+  if (!passwordIsCorrect)
+    return {
+      errorMessage:
+        "Invalid email or password. Please check your credentials and try again.",
+    };
+
+  const token = jwt.sign(
+    {
+      userId: data[0].id,
+    },
+    process.env.JWT_SECRET!
+  );
+
+  cookies().set("token", token, {
+    maxAge: 3600,
+    httpOnly: true,
+  });
+
+  revalidatePath("/", "layout");
+  redirect(redirectTo);
+}
 
 export async function signup(initialState: any, formData: FormData) {
   const supabase = createClient();

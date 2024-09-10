@@ -7,11 +7,13 @@ import LoadingIndicator from "./LoadingIndicator";
 import { signup } from "@/actions/authActions";
 
 export default function SignupForm() {
-  const [firstname, setFirstname] = useState("Great");
-  const [lastname, setLastname] = useState("Ogheneochuko");
-  const [email, setEmail] = useState("greatochuko123@gmail.com");
-  const [password, setPassword] = useState("14122003");
-  const [confirmPassword, setConfirmPassword] = useState("14122003");
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [pending, setPending] = useState(false);
+  const [error, setError] = useState("");
 
   let passwordError;
   if (confirmPassword.length && password !== confirmPassword) {
@@ -21,9 +23,16 @@ export default function SignupForm() {
     passwordError = "Password must be at least 6 characters long";
   }
 
-  const [state, signupAction] = useFormState(signup, { errorMessage: "" });
-
-  const errorMessage = state?.errorMessage;
+  async function handleSignup(e: React.FormEvent) {
+    e.preventDefault();
+    const eventTarget = e.target as HTMLFormElement;
+    const formData = new FormData(eventTarget);
+    setError("");
+    setPending(true);
+    const { errorMessage } = await signup(null, formData);
+    if (errorMessage) setError(errorMessage);
+    setPending(false);
+  }
 
   const cannotSubmit =
     !!passwordError ||
@@ -34,7 +43,7 @@ export default function SignupForm() {
     !confirmPassword;
 
   return (
-    <form className={styles["signup-form"]} action={signupAction}>
+    <form className={styles["signup-form"]} onSubmit={handleSignup}>
       <div className={styles["flex-group"]}>
         <div className={styles["input-group"]}>
           <label htmlFor="firstname">First Name</label>
@@ -96,25 +105,18 @@ export default function SignupForm() {
           onChange={(e) => setConfirmPassword(e.target.value)}
           required
         />
-        {passwordError || errorMessage ? (
-          <p className={styles["error"]}>{passwordError || errorMessage}</p>
+        {passwordError || error ? (
+          <p className={styles["error"]}>{passwordError || error}</p>
         ) : null}
       </div>
       <div className={styles["actions"]}>
-        <SubmitButton cannotSubmit={cannotSubmit} />
+        <button type="submit" disabled={cannotSubmit || pending}>
+          {pending ? <LoadingIndicator size={20} color="#fff" /> : "Sign Up"}
+        </button>
         <p>
           Already have an account? <Link href={"/login"}>Login</Link>
         </p>
       </div>
     </form>
-  );
-}
-
-function SubmitButton({ cannotSubmit }: { cannotSubmit: boolean }) {
-  const { pending } = useFormStatus();
-  return (
-    <button type="submit" disabled={cannotSubmit}>
-      {pending ? <LoadingIndicator size={20} color="#fff" /> : "Sign Up"}
-    </button>
   );
 }

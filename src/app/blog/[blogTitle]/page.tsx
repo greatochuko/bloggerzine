@@ -17,6 +17,7 @@ import { BlogpostType } from "@/components/Hero";
 import { createClient } from "@/utils/supabase/server";
 import SimilarPosts from "@/components/SimilarPosts";
 import LikeSection from "@/components/LikeSection";
+import { getSession } from "@/services/userServices";
 
 export async function generateMetadata({
   params: { blogTitle },
@@ -68,11 +69,7 @@ export default async function page({
 
   const comments = await getComments(blogpost.id);
 
-  const supabase = createClient();
-
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const user = await getSession();
 
   return (
     <div className={styles["blog-page"]}>
@@ -107,8 +104,10 @@ export default async function page({
             <LikeSection
               blogId={blogpost.id}
               userId={user.id}
-              isLiked={blogpost.likes.includes(user.id)}
-              isDisliked={blogpost.dislikes.includes(user.id)}
+              // isLiked={blogpost.likes.includes(user.id)}
+              // isDisliked={blogpost.dislikes.includes(user.id)}
+              isLiked={true}
+              isDisliked={false}
             />
           ) : null}
 

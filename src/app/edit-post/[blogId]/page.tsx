@@ -5,6 +5,7 @@ import PostForm from "@/components/PostForm";
 import { getBlogpost } from "@/services/blogServices";
 import { notFound } from "next/navigation";
 import { createClient } from "@/utils/supabase/server";
+import { getSession } from "@/services/userServices";
 
 export const metadata: Metadata = {
   title: "Edit Post",
@@ -15,8 +16,7 @@ export default async function EditPostPage({
 }: {
   params: { blogId: string };
 }) {
-  const supabase = createClient();
-  const { data, error } = await supabase.auth.getUser();
+  const user = await getSession();
 
   const blogpostId = params.blogId.split("_").at(-1);
   if (!blogpostId) notFound();
@@ -24,7 +24,7 @@ export default async function EditPostPage({
   const blogpost = await getBlogpost(blogpostId);
   if (!blogpost) notFound();
 
-  if (data.user?.id !== blogpost.author.id) notFound();
+  if (user?.id !== blogpost.author.id) notFound();
 
   return (
     <div className={styles["edit-post-page"]}>

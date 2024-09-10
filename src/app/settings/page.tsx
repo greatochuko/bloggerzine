@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./page.module.css";
-import { getUser } from "@/services/userServices";
+import { getSession, getUser } from "@/services/userServices";
 import ProfileForm from "@/components/ProfileForm";
 import SocialLinksForm from "@/components/SocialLinksForm";
 import { Metadata } from "next";
@@ -13,12 +13,7 @@ export const metadata: Metadata = {
 };
 
 export default async function SettingsPage() {
-  const supabase = createClient();
-  const { data, error } = await supabase.auth.getUser();
-
-  const userId = data.user?.id;
-
-  const { user } = await getUser(userId as string);
+  const user = await getSession();
 
   if (!user) notFound();
 

@@ -1,6 +1,7 @@
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
 import { createClient } from "@/utils/supabase/server";
+import { cookies } from "next/headers";
 
 export async function GET(request: NextRequest) {
   const url = new URL(request.url);
@@ -14,13 +15,26 @@ export async function GET(request: NextRequest) {
     const email = payload.email;
 
     const supabase = createClient();
-    const { error } = await supabase
+    const { data, error } = await supabase
       .from("users")
       .update({ emailVerified: true })
-      .eq("email", email);
+      .eq("email", email)
+      .select();
     if (error) {
       throw error;
     }
+
+    const token = jwt.sign(
+      {
+        userId: data[0].id,
+      },
+      process.env.JWT_SECRET!
+    );
+
+    cookies().set("token", token, {
+      maxAge: 3600,
+      httpOnly: true,
+    });
 
     return Response.redirect(url.origin);
   } catch (err) {

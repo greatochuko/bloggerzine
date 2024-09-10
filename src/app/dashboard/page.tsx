@@ -7,7 +7,7 @@ import ArticleList from "@/components/ArticleList";
 import { Metadata } from "next";
 import { createClient } from "@/utils/supabase/server";
 import { getBlogpostByAuthor } from "@/services/blogServices";
-import { getUser } from "@/services/userServices";
+import { getSession } from "@/services/userServices";
 import { notFound } from "next/navigation";
 import { getCommentsByAuthor } from "@/services/commentServices";
 import { BlogpostType } from "@/components/Hero";
@@ -19,19 +19,15 @@ export const metadata: Metadata = {
 
 export default async function Dashboard() {
   const supabase = createClient();
-  const { data } = await supabase.auth.getUser();
-  const userId = data.user?.id;
-  const { user } = await getUser(userId as string);
+  const user = await getSession();
 
   if (!user) notFound();
 
   const authorBlogposts: BlogpostType[] = await getBlogpostByAuthor(
-    userId as string,
+    user.id,
     true
   );
-  const authorComments: CommentType[] = await getCommentsByAuthor(
-    userId as string
-  );
+  const authorComments: CommentType[] = await getCommentsByAuthor(user.id);
 
   return (
     <div className={styles["profile-page"]}>
