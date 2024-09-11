@@ -15,7 +15,7 @@ export async function publishPost(formData: FormData) {
     category: formData.get("category") as string,
     thumbnail: formData.get("thumbnail") as string,
     tags: formData.get("tags") as string,
-    isFeatured: formData.get("isFeatured") as string,
+    isFeatured: !!(formData.get("isFeatured") as string),
     isPublished: true,
     author: userId,
   };
@@ -42,7 +42,7 @@ export async function saveAsDraft(formData: FormData) {
     category: formData.get("category") as string,
     thumbnail: formData.get("thumbnail") as string,
     tags: formData.get("tags") as string,
-    isFeatured: formData.get("isFeatured") as string,
+    isFeatured: !!(formData.get("isFeatured") as string),
     isPublished: false,
     author: userId,
   };
@@ -70,7 +70,7 @@ export async function updatePost(formData: FormData) {
     category: formData.get("category") as string,
     thumbnail: formData.get("thumbnail") as string,
     tags: formData.get("tags") as string,
-    isFeatured: formData.get("isFeatured") as string,
+    isFeatured: !!(formData.get("isFeatured") as string),
     isPublished: true,
   };
 
@@ -100,7 +100,7 @@ export async function updateAsDraft(formData: FormData) {
     category: formData.get("category") as string,
     thumbnail: formData.get("thumbnail") as string,
     tags: formData.get("tags") as string,
-    isFeatured: formData.get("isFeatured") as string,
+    isFeatured: !!(formData.get("isFeatured") as string),
     isPublished: false,
   };
 
@@ -120,13 +120,17 @@ export async function updateAsDraft(formData: FormData) {
 }
 
 export async function deletePost(initialState: any, formData: FormData) {
-  const supabase = createClient();
   const userId = getUserIdFromCookies();
   if (!userId) return revalidatePath("/", "layout");
 
   const postId = formData.get("postId") as string;
 
-  const { error } = await supabase.from("blogposts").delete().eq("id", postId);
+  const supabase = createClient();
+  const { error } = await supabase
+    .from("blogposts")
+    .delete()
+    .eq("id", postId)
+    .eq("author", userId);
 
   if (!error) {
     revalidatePath("/", "layout");
