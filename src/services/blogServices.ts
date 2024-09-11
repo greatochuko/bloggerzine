@@ -1,4 +1,14 @@
 import { createClient } from "@/utils/supabase/client";
+import { getUserIdFromCookies } from "./userServices";
+import { revalidatePath } from "next/cache";
+
+export type LikeType = {
+  id: string;
+  user: string;
+  author: string;
+  blogpost: string;
+  createdAt: string;
+};
 
 export async function getBlogposts() {
   const supabase = createClient();
@@ -90,4 +100,22 @@ export async function getSimilarPosts(query: string) {
     )
     .eq("isPublished", true);
   return blogposts || [];
+}
+
+export async function getBlogpostIsLiked(blogpostId: string): Promise<boolean> {
+  const userId = getUserIdFromCookies();
+  if (!userId) revalidatePath("/", "layout");
+
+  const supabase = createClient();
+  const { data, error } = await supabase
+    .from("likes")
+    .select("*")
+    .eq("blogpost", blogpostId)
+    .eq("user", userId);
+
+  const blogpostIsLiked = !!data?.length;
+
+  if (error) return false;
+
+  return blogpostIsLiked;
 }

@@ -7,14 +7,17 @@ import { categories } from "@/components/Category";
 import CategoryList from "@/components/CategoryList";
 import Link from "next/link";
 import CommentSection from "@/components/CommentSection";
-import { getBlogpost, getSimilarPosts } from "@/services/blogServices";
+import {
+  getBlogpost,
+  getSimilarPosts,
+  getBlogpostIsLiked,
+} from "@/services/blogServices";
 import { getComments } from "@/services/commentServices";
 import { Metadata } from "next";
 import { createAuthorUrl } from "@/utils/createAuthorUrl";
 import BlogpostContent from "@/components/BlogpostContent";
 import SocialLinks from "@/components/SocialLinks";
 import { BlogpostType } from "@/components/Hero";
-import { createClient } from "@/utils/supabase/server";
 import SimilarPosts from "@/components/SimilarPosts";
 import LikeSection from "@/components/LikeSection";
 import { getSession } from "@/services/userServices";
@@ -64,6 +67,7 @@ export default async function page({
 
   if (!blogpost) notFound();
 
+  const isLiked = await getBlogpostIsLiked(blogpost.id);
   let similarPosts: BlogpostType[] = await getSimilarPosts(blogpost.title);
   similarPosts = similarPosts.filter((post) => post.id !== blogpost.id);
 
@@ -103,11 +107,8 @@ export default async function page({
           {user ? (
             <LikeSection
               blogId={blogpost.id}
-              userId={user.id}
-              // isLiked={blogpost.likes.includes(user.id)}
-              // isDisliked={blogpost.dislikes.includes(user.id)}
-              isLiked={true}
-              isDisliked={false}
+              isLiked={isLiked}
+              authorId={blogpost.author.id}
             />
           ) : null}
 
