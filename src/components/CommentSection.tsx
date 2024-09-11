@@ -19,9 +19,6 @@ export default function CommentSection({
 }) {
   const [comment, setComment] = useState("");
   const [replyFormId, setReplyFormId] = useState<number | null>(null);
-  function handlePostComment(e: React.FormEvent) {
-    e.preventDefault();
-  }
 
   const [state, postCommentAction] = useFormState(postComment, {
     errorMessage: "",

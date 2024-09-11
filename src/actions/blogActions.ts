@@ -155,12 +155,10 @@ export async function toggleLikePost(blogId: string, authorId: string) {
       .delete()
       .eq("blogpost", blogId)
       .eq("user", userId);
-    console.log("Error: ", error?.message);
   } else {
     const { data, error } = await supabase
       .from("likes")
       .insert({ author: authorId, blogpost: blogId, user: userId });
-    console.log("Error: ", error?.message);
   }
 
   revalidatePath("/blog/[blogTitle]", "page");

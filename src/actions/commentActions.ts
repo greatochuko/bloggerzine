@@ -1,40 +1,48 @@
 "use server";
 
+import { getUserIdFromCookies } from "@/services/userServices";
 import { createClient } from "@/utils/supabase/server";
 import { revalidatePath } from "next/cache";
 
 // add field "rootCommentId" to comment to delete all replies associated with a comment on delete of that comment
 
 export async function postComment(initialState: any, formData: FormData) {
-  const supabase = createClient();
+  const userId = getUserIdFromCookies();
+  if (!userId) {
+    revalidatePath("/", "layout");
+    return { errorMessage: "User is unauthenticated" };
+  }
 
   const data = {
-    parentId: formData.get("parentId") || null,
+    user: userId,
     blogpost: formData.get("blogpost") as string,
     comment: formData.get("comment") as string,
   };
 
+  const supabase = createClient();
   const { error } = await supabase.from("comments").insert(data);
 
   if (!error) {
-    revalidatePath("/dashboard");
-    revalidatePath("/comments");
-    revalidatePath("/blog/[blogTitle]", "page");
+    revalidatePath("/", "layout");
+    return { errorMessage: null };
   }
 
   return { errorMessage: error ? "Something went wrong" : null };
 }
 
 export async function postReply(initialState: any, formData: FormData) {
-  const supabase = createClient();
+  const userId = getUserIdFromCookies();
+  if (!userId) return revalidatePath("/", "layout");
 
   const data = {
+    user: userId,
     parentId: formData.get("parentId") || null,
     rootCommentId: formData.get("rootCommentId"),
     blogpost: formData.get("blogpost") as string,
     comment: formData.get("reply") as string,
   };
 
+  const supabase = createClient();
   const { error } = await supabase.from("comments").insert(data);
 
   if (!error) {
