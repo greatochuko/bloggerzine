@@ -55,3 +55,8 @@
 .reply-form button:active {
   scale: 0.95;
 }
+
+.error {
+  color: var(--red-100);
+  font-size: 15px;
+}

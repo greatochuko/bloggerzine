@@ -30,9 +30,12 @@ export async function postComment(initialState: any, formData: FormData) {
   return { errorMessage: error ? "Something went wrong" : null };
 }
 
-export async function postReply(initialState: any, formData: FormData) {
+export async function postReply(formData: FormData) {
   const userId = getUserIdFromCookies();
-  if (!userId) return revalidatePath("/", "layout");
+  if (!userId) {
+    revalidatePath("/", "layout");
+    return { done: true, errorMessage: "User is unauthenticated" };
+  }
 
   const data = {
     user: userId,

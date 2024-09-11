@@ -1,8 +1,8 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "@/styles/ReplyForm.module.css";
 import { postReply } from "@/actions/commentActions";
-import { useFormState, useFormStatus } from "react-dom";
+import { useFormStatus } from "react-dom";
 import LoadingIndicator from "./LoadingIndicator";
 
 export default function ReplyForm({
@@ -16,29 +16,28 @@ export default function ReplyForm({
   rootCommentId: number;
   closeReplyForm: () => void;
 }) {
-  const [reply, SetReply] = useState("");
+  const [reply, setReply] = useState("");
+  const [pending, setPending] = useState(false);
+  const [error, setError] = useState("");
 
-  const [state, postReplyAction] = useFormState(postReply, {
-    done: false,
-    errorMessage: "",
-  });
-
-  const { done, errorMessage } = state;
-
-  useEffect(() => {
-    if (done) {
-      closeReplyForm();
-    }
-  }, [done, closeReplyForm]);
+  async function handlePostReply(e: React.FormEvent) {
+    e.preventDefault();
+    setPending(true);
+    const { errorMessage } = await postReply(
+      new FormData(e.target as HTMLFormElement)
+    );
+    errorMessage ? setError(errorMessage) : closeReplyForm();
+    setPending(false);
+  }
 
   return (
-    <form className={styles["reply-form"]} action={postReplyAction}>
+    <form className={styles["reply-form"]} onSubmit={handlePostReply}>
       <h2>Reply to comment</h2>
       <textarea
         name="reply"
         id="reply"
         value={reply}
-        onChange={(e) => SetReply(e.target.value)}
+        onChange={(e) => setReply(e.target.value)}
         placeholder="Reply..."
       ></textarea>
 
@@ -51,10 +50,18 @@ export default function ReplyForm({
         defaultValue={rootCommentId}
       />
 
-      {errorMessage ? <p className={styles["error"]}>{errorMessage}</p> : null}
+      {error ? <p className={styles["error"]}>{error}</p> : null}
       <div className={styles["actions"]}>
         <button onClick={closeReplyForm}>Close</button>
-        <SubmitButton />
+        <button disabled={pending} type="submit">
+          {pending ? (
+            <>
+              <LoadingIndicator size={20} color="white" /> Replying...
+            </>
+          ) : (
+            "Post Reply"
+          )}
+        </button>
       </div>
     </form>
   );
