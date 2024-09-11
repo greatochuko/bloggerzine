@@ -83,10 +83,6 @@ export default function MainNav({
             </g>
           </svg>
         </button>
-        <SearchForm
-          show={showSearchForm}
-          close={() => setShowSearchForm(false)}
-        />
 
         {user ? (
           <NavUser user={user} />
@@ -155,6 +151,10 @@ export default function MainNav({
             </g>
           </svg>
         </button>
+        <SearchForm
+          show={showSearchForm}
+          close={() => setShowSearchForm(false)}
+        />
       </div>
     </div>
   );

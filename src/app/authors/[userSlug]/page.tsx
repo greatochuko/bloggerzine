@@ -7,9 +7,7 @@ import { notFound } from "next/navigation";
 import { getBlogpostByAuthor } from "@/services/blogServices";
 import SearchBlog from "@/components/SearchBlog";
 import Paginator from "@/components/Paginator";
-import { Blogpost } from "@/components/Hero";
 import SocialLinks from "@/components/SocialLinks";
-import { PostgrestError } from "@supabase/supabase-js";
 
 export async function generateMetadata({
   params,
