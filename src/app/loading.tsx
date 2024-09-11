@@ -10,7 +10,7 @@ export default function loading() {
         justifyContent: "center",
       }}
     >
-      <LoadingIndicator color="2163e8" />
+      <LoadingIndicator color="#2163e8" />
     </div>
   );
 }

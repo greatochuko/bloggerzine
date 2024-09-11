@@ -16,7 +16,7 @@ export default function Stats({
     blogposts.reduce((acc, curr) => acc + curr.views, 0)
   );
 
-  const likes = blogposts.reduce((acc, curr) => acc + curr.likes.length, 0);
+  const likes = Math.ceil(Math.random() * 10);
 
   return (
     <div className={styles["stats"]}>

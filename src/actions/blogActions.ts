@@ -1,11 +1,13 @@
 "use server";
 
+import { getUserIdFromCookies } from "@/services/userServices";
 import { createClient } from "@/utils/supabase/server";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 export async function publishPost(formData: FormData) {
-  const supabase = createClient();
+  const userId = getUserIdFromCookies();
+  if (!userId) return revalidatePath("/", "layout");
 
   const data = {
     title: formData.get("title") as string,
@@ -15,8 +17,10 @@ export async function publishPost(formData: FormData) {
     tags: formData.get("tags") as string,
     isFeatured: formData.get("isFeatured") as string,
     isPublished: true,
+    author: userId,
   };
 
+  const supabase = createClient();
   const { error } = await supabase.from("blogposts").insert(data);
 
   if (!error) {
@@ -29,6 +33,8 @@ export async function publishPost(formData: FormData) {
 
 export async function saveAsDraft(formData: FormData) {
   const supabase = createClient();
+  const userId = getUserIdFromCookies();
+  if (!userId) return revalidatePath("/", "layout");
 
   const data = {
     title: formData.get("title") as string,
@@ -52,6 +58,8 @@ export async function saveAsDraft(formData: FormData) {
 
 export async function updatePost(formData: FormData) {
   const supabase = createClient();
+  const userId = getUserIdFromCookies();
+  if (!userId) return revalidatePath("/", "layout");
 
   const blogId = formData.get("blogId") as string;
 
@@ -80,6 +88,8 @@ export async function updatePost(formData: FormData) {
 
 export async function updateAsDraft(formData: FormData) {
   const supabase = createClient();
+  const userId = getUserIdFromCookies();
+  if (!userId) return revalidatePath("/", "layout");
 
   const blogId = formData.get("blogId") as string;
 
@@ -108,6 +118,8 @@ export async function updateAsDraft(formData: FormData) {
 
 export async function deletePost(initialState: any, formData: FormData) {
   const supabase = createClient();
+  const userId = getUserIdFromCookies();
+  if (!userId) return revalidatePath("/", "layout");
 
   const postId = formData.get("postId") as string;
 
