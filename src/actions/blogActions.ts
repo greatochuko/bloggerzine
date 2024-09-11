@@ -44,6 +44,7 @@ export async function saveAsDraft(formData: FormData) {
     tags: formData.get("tags") as string,
     isFeatured: formData.get("isFeatured") as string,
     isPublished: false,
+    author: userId,
   };
 
   const { error } = await supabase.from("blogposts").insert(data);
@@ -76,7 +77,8 @@ export async function updatePost(formData: FormData) {
   const { error } = await supabase
     .from("blogposts")
     .update(data)
-    .eq("id", blogId);
+    .eq("id", blogId)
+    .eq("author", userId);
 
   if (!error) {
     revalidatePath("/", "layout");
@@ -87,7 +89,6 @@ export async function updatePost(formData: FormData) {
 }
 
 export async function updateAsDraft(formData: FormData) {
-  const supabase = createClient();
   const userId = getUserIdFromCookies();
   if (!userId) return revalidatePath("/", "layout");
 
@@ -103,10 +104,12 @@ export async function updateAsDraft(formData: FormData) {
     isPublished: false,
   };
 
+  const supabase = createClient();
   const { error } = await supabase
     .from("blogposts")
     .update(data)
-    .eq("id", blogId);
+    .eq("id", blogId)
+    .eq("author", userId);
 
   if (!error) {
     revalidatePath("/", "layout");
