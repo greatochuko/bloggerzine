@@ -144,15 +144,17 @@ export async function updateSocialLinks(formData: FormData) {
     .from("users")
     .update(updateData)
     .eq("id", userId);
-  console.log(error?.message);
   revalidatePath("/", "layout");
 }
 
-export async function logout() {}
+export async function logout() {
+  cookies().delete("token");
+  revalidatePath("/", "layout");
+}
 
 export async function sendResetPasswordEmail() {
   const user = await getSession();
-  if (!user) return revalidatePath("", "layout");
+  if (!user) return revalidatePath("/", "layout");
 
   const token = jwt.sign(
     {
@@ -177,7 +179,6 @@ export async function sendResetPasswordEmail() {
     token,
     emailToken
   );
-  console.log(error);
 }
 
 export async function resetPassword(formData: FormData) {
@@ -191,7 +192,6 @@ export async function resetPassword(formData: FormData) {
     .from("users")
     .update({ password: encryptedPassword })
     .eq("email", email);
-  console.log(error?.message);
 
   if (error) return { done: false, errorMessage: error.message };
 

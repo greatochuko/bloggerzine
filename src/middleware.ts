@@ -25,7 +25,6 @@ export async function middleware(request: NextRequest) {
   }
 
   if (!token && protectedRoutes.includes(url.pathname)) {
-    console.log("Inside protected route");
     return NextResponse.redirect(
       url.origin + `/login?redirect=${url.pathname}`
     );

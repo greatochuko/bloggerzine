@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styles from "./page.module.css";
 import { getCommentsByAuthor } from "@/services/commentServices";
 import CommentsPageMain from "@/components/CommentsPageMain";
-import { createClient } from "@/utils/supabase/server";
 import { getSession } from "@/services/userServices";
 
 export default async function CommentsPage() {

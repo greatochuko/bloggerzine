@@ -5,10 +5,9 @@ import AboutAuthor from "@/components/AboutAuthor";
 import RecentComments from "@/components/RecentComments";
 import ArticleList from "@/components/ArticleList";
 import { Metadata } from "next";
-import { createClient } from "@/utils/supabase/server";
 import { getBlogpostByAuthor } from "@/services/blogServices";
 import { getSession } from "@/services/userServices";
-import { notFound } from "next/navigation";
+import { redirect } from "next/navigation";
 import { getCommentsByAuthor } from "@/services/commentServices";
 import { BlogpostType } from "@/components/Hero";
 import { CommentType } from "@/components/Comment";
@@ -18,10 +17,9 @@ export const metadata: Metadata = {
 };
 
 export default async function Dashboard() {
-  const supabase = createClient();
   const user = await getSession();
 
-  if (!user) notFound();
+  if (!user) redirect("/login?redirect=/dashboard");
 
   const authorBlogposts: BlogpostType[] = await getBlogpostByAuthor(
     user.id,

@@ -4,8 +4,7 @@ import { getSession, getUser } from "@/services/userServices";
 import ProfileForm from "@/components/ProfileForm";
 import SocialLinksForm from "@/components/SocialLinksForm";
 import { Metadata } from "next";
-import { createClient } from "@/utils/supabase/server";
-import { notFound } from "next/navigation";
+import { redirect } from "next/navigation";
 import { ResetPasswordSection } from "@/components/ResetPasswordSection";
 
 export const metadata: Metadata = {
@@ -15,7 +14,7 @@ export const metadata: Metadata = {
 export default async function SettingsPage() {
   const user = await getSession();
 
-  if (!user) notFound();
+  if (!user) redirect("/login?redirect=/settings");
 
   return (
     <div className={styles["settings-page"]}>
