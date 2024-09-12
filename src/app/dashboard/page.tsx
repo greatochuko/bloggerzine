@@ -5,7 +5,10 @@ import AboutAuthor from "@/components/AboutAuthor";
 import RecentComments from "@/components/RecentComments";
 import ArticleList from "@/components/ArticleList";
 import { Metadata } from "next";
-import { getBlogpostByAuthor } from "@/services/blogServices";
+import {
+  getBlogpostByAuthor,
+  getLikedBlogposts,
+} from "@/services/blogServices";
 import { getSession } from "@/services/userServices";
 import { redirect } from "next/navigation";
 import { getCommentsByAuthor } from "@/services/commentServices";
@@ -26,10 +29,15 @@ export default async function Dashboard() {
     true
   );
   const authorComments: CommentType[] = await getCommentsByAuthor(user.id);
+  const authorLikes = await getLikedBlogposts();
 
   return (
     <div className={styles["profile-page"]}>
-      <Stats comments={authorComments} blogposts={authorBlogposts} />
+      <Stats
+        comments={authorComments}
+        blogposts={authorBlogposts}
+        likes={authorLikes.length}
+      />
       <div className={styles["main"]}>
         <AboutAuthor author={user} blogposts={authorBlogposts} />
         <RecentComments comments={authorComments} />

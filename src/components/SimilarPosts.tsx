@@ -12,12 +12,10 @@ export default function SimilarPosts({
   const [currentIndex, setCurrentIndex] = useState(0);
   const [screenWidth, setScreenWidth] = useState(0);
   const [domLoaded, setDomLoaded] = useState(false);
-  console.log("Dom loaded? ", domLoaded);
 
   useEffect(() => {
     function changeWidth() {
       setScreenWidth(window.innerWidth);
-      console.log(window.innerWidth);
     }
     if (!domLoaded) {
       changeWidth();
@@ -38,8 +36,6 @@ export default function SimilarPosts({
     if (currentIndex <= 0) return;
     setCurrentIndex((curr) => curr - 1);
   }
-
-  console.log(postPerView);
 
   return (
     <div className={styles["similar-posts"]}>

@@ -119,3 +119,21 @@ export async function getBlogpostIsLiked(blogpostId: string): Promise<boolean> {
 
   return blogpostIsLiked;
 }
+
+export async function getLikedBlogposts() {
+  const userId = getUserIdFromCookies();
+  if (!userId) {
+    revalidatePath("/", "layout");
+    return [];
+  }
+
+  const supabase = createClient();
+  const { data, error } = await supabase
+    .from("likes")
+    .select("*")
+    .eq("author", userId);
+
+  if (error) return [];
+
+  return data;
+}

@@ -216,12 +216,12 @@ export default function ProfileForm({ user }: { user: UserType }) {
           autoComplete="off"
           value={bio}
           onChange={(e) => {
-            if (e.target.value.length >= 150) return;
+            if (e.target.value.length >= 300) return;
             setBio(e.target.value);
           }}
           placeholder="Write about yourself"
         ></textarea>
-        <p className={styles["word-counter"]}>{bio.length}/150</p>
+        <p className={styles["word-counter"]}>{bio.length}/300</p>
       </div>
       {errorMessage && <p className={styles["error"]}>{errorMessage}</p>}
       <div className={styles["actions"]}>
