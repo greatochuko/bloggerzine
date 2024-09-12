@@ -51,6 +51,21 @@
   border-color: var(--blue-100);
 }
 
+.demo-signin-button {
+  background-color: var(--blue-100);
+  color: white;
+  font: bold;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.25rem;
+  width: 100%;
+}
+
+.demo-signin-button:hover {
+  background-color: var(--blue-200);
+}
+
 /* ------------------------ MOBILE STYLES ----------------------------------- */
 @media screen and (max-width: 640px) {
   .form-container {

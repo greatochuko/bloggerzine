@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./page.module.css";
 import SignupForm from "@/components/SignupForm";
 import { Metadata } from "next";
-import { loginWithGoogle } from "@/actions/authActions";
+import SignInWithDemoAccountForm from "@/components/SignInWithDemoAccountForm";
 
 export const metadata: Metadata = { title: "Signup" };
 
@@ -13,7 +13,8 @@ export default async function SignupPage() {
         <h1>Create an account for free</h1>
         <SignupForm />
         <hr />
-        <form action={loginWithGoogle} className={styles["oauth"]}>
+        <SignInWithDemoAccountForm />
+        {/* <form action={loginWithGoogle} className={styles["oauth"]}>
           <button type="submit">
             <svg
               height={20}
@@ -62,7 +63,7 @@ export default async function SignupPage() {
             </svg>
             Sign Up with Google
           </button>
-        </form>
+        </form> */}
       </div>
     </div>
   );

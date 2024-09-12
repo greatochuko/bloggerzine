@@ -7,20 +7,37 @@ import bcrypt from "bcrypt";
 import { sendMail, sendPasswordMail } from "@/utils/sendMail";
 import jwt from "jsonwebtoken";
 import { cookies } from "next/headers";
-import { getSession, getUserIdFromCookies } from "@/services/userServices";
+import {
+  getSession,
+  getUserIdFromCookies,
+  UserType,
+} from "@/services/userServices";
 
 export async function login(initialState: any, formData: FormData) {
   const email = formData.get("email") as string;
   const password = formData.get("password") as string;
-  const redirectTo = formData.get("redirectTo") as string;
+  const redirectTo = (formData.get("redirectTo") as string) || "/";
 
   const supabase = createClient();
-  const { data } = await supabase.from("users").select("*").eq("email", email);
+  const { data }: { data: UserType[] | null } = await supabase
+    .from("users")
+    .select("*")
+    .eq("email", email);
   if (!data)
     return {
       errorMessage:
         "Invalid email or password. Please check your credentials and try again.",
     };
+
+  if (!data[0].emailVerified) {
+    const formData = new FormData();
+    formData.set("email", data[0].email);
+    formData.set("firstname", data[0].firstname);
+    await sendVerificationEmail(formData);
+    return {
+      errorMessage: "User email unverified.",
+    };
+  }
 
   const passwordIsCorrect = await bcrypt.compare(password, data[0].password);
   if (!passwordIsCorrect)

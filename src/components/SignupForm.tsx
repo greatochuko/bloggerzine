@@ -29,7 +29,8 @@ export default function SignupForm() {
     const formData = new FormData(eventTarget);
     setError("");
     setPending(true);
-    const { errorMessage } = await signup(null, formData);
+    const data = await signup(null, formData);
+    const errorMessage = data?.errorMessage;
     if (errorMessage) setError(errorMessage);
     setPending(false);
   }

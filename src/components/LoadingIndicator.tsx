@@ -3,7 +3,7 @@ import styles from "@/styles/LoadingIndicator.module.css";
 
 export default function LoadingIndicator({
   size = 30,
-  color = "#000",
+  color = "#fff",
   flex = 1,
 }) {
   return (

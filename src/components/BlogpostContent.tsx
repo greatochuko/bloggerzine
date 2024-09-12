@@ -8,7 +8,13 @@ export default function BlogpostContent({ content }: { content: string }) {
     setDomLoaded(true);
   }, []);
   return domLoaded ? (
-    <p dangerouslySetInnerHTML={{ __html: content }}></p>
+    <p
+      dangerouslySetInnerHTML={{ __html: content }}
+      style={{
+        fontSize: "1.25rem",
+        lineHeight: 1.5,
+      }}
+    ></p>
   ) : (
     <LoadingIndicator />
   );

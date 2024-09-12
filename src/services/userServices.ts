@@ -7,6 +7,7 @@ export type UserType = {
   firstname: string;
   lastname: string;
   email: string;
+  password: string;
   imageUrl: string;
   coverImageUrl: string;
   bio: string;
