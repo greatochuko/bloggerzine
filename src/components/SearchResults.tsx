@@ -1,5 +1,4 @@
 import React from "react";
-import { Blogpost } from "./Hero";
 import styles from "@/styles/SearchResults.module.css";
 import SearchBlog from "./SearchBlog";
 import { searchBlog } from "@/services/blogServices";

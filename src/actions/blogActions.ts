@@ -119,9 +119,12 @@ export async function updateAsDraft(formData: FormData) {
   return { errorMessage: error.message };
 }
 
-export async function deletePost(initialState: any, formData: FormData) {
+export async function deletePost(formData: FormData) {
   const userId = getUserIdFromCookies();
-  if (!userId) return revalidatePath("/", "layout");
+  if (!userId) {
+    revalidatePath("/", "layout");
+    return { errorMessage: "User is unauthenticated" };
+  }
 
   const postId = formData.get("postId") as string;
 
@@ -136,7 +139,7 @@ export async function deletePost(initialState: any, formData: FormData) {
     revalidatePath("/", "layout");
   }
 
-  return { done: true, error: error?.message || null };
+  return { errorMessage: error?.message || null };
 }
 
 export async function toggleLikePost(blogId: string, authorId: string) {

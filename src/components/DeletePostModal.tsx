@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import styles from "@/styles/DeletePostModal.module.css";
-import { useFormState, useFormStatus } from "react-dom";
 import LoadingIndicator from "./LoadingIndicator";
 import { BlogpostType } from "./Hero";
 import { deletePost } from "@/actions/blogActions";
@@ -14,19 +13,16 @@ export default function DeletePostModal({
   closeModal: () => void;
   post: BlogpostType | null;
 }) {
-  const [state, deletePostAction] = useFormState(deletePost, {
-    done: false,
-    error: "",
-  });
-
-  const { done } = state;
-
-  useEffect(() => {
-    if (done) {
-      closeModal();
-    }
-  }, [done, closeModal]);
-
+  const [pending, setPending] = useState(false);
+  const [error, setError] = useState("");
+  async function handleDeletePost(e: React.FormEvent) {
+    const formData = new FormData(e.target as HTMLFormElement);
+    setPending(true);
+    setError("");
+    const { errorMessage } = await deletePost(formData);
+    errorMessage && setError(errorMessage);
+    setPending(false);
+  }
   return (
     <div
       className={`${styles["overlay"]} ${isOpen ? styles["open"] : ""}`}
@@ -63,34 +59,26 @@ export default function DeletePostModal({
         </div>
         <div className={styles["actions"]}>
           <button onClick={closeModal}>Cancel</button>
-          <form action={deletePostAction}>
+          <form onSubmit={handleDeletePost}>
             <input
               type="hidden"
               hidden
               defaultValue={post?.id!}
               name="postId"
             />
-            <Button />
+            <button>
+              {pending ? (
+                <>
+                  <LoadingIndicator color="white" size={20} />
+                  Deleting...
+                </>
+              ) : (
+                "Delete"
+              )}
+            </button>
           </form>
         </div>
       </div>
     </div>
-  );
-}
-
-function Button() {
-  const { pending } = useFormStatus();
-
-  return (
-    <button>
-      {pending ? (
-        <>
-          <LoadingIndicator color="white" size={20} />
-          Deleting...
-        </>
-      ) : (
-        "Delete"
-      )}
-    </button>
   );
 }

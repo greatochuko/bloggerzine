@@ -1,5 +1,3 @@
-import { Blogpost } from "@/components/Hero";
-import { getBlogpostByAuthor } from "./blogServices";
 import { createClient } from "@/utils/supabase/client";
 
 export async function getComments(blogId: string) {
