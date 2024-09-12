@@ -9,7 +9,11 @@ import Image from "next/image";
 import { BlogpostType } from "./Hero";
 import DeletePostModal from "./DeletePostModal";
 
-export default function ArticleList({ blogposts }: { blogposts: BlogpostType[] }) {
+export default function ArticleList({
+  blogposts,
+}: {
+  blogposts: BlogpostType[];
+}) {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState("newest");
@@ -128,7 +132,7 @@ export default function ArticleList({ blogposts }: { blogposts: BlogpostType[] }
                   <tr>
                     <th>Blog Title</th>
                     <th>Date</th>
-                    <th>Total Views</th>
+                    <th>Views</th>
                     <th>Category</th>
                     <th>Status</th>
                     <th>Actions</th>

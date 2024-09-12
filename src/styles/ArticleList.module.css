@@ -91,6 +91,7 @@
   padding: 0.5rem;
   display: block;
   border-radius: 0.25rem;
+  text-align: left;
 }
 
 .main table tbody {
@@ -99,7 +100,8 @@
 }
 
 .main table tr {
-  display: flex;
+  display: grid;
+  grid-template-columns: 3fr 1fr 5rem 1fr 6rem 6rem;
   align-items: center;
   gap: 0.5rem;
   padding: 1rem 0.5rem;
@@ -116,11 +118,6 @@
 .main table tbody tr:hover {
   background-color: #eee;
   border-radius: 0.25rem;
-}
-
-.main table :is(th, td) {
-  flex: 1;
-  text-align: left;
 }
 
 .main table tr :first-child {
@@ -247,6 +244,7 @@
 .blog-card .text p:first-child {
   display: -webkit-box;
   overflow: hidden;
+  line-clamp: 2;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
