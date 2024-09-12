@@ -4,17 +4,28 @@ import { BlogpostType } from "./Hero";
 import styles from "@/styles/SimilarPosts.module.css";
 import Blog from "./Blog";
 
-export default function SimilarPosts({ blogposts }: { blogposts: BlogpostType[] }) {
+export default function SimilarPosts({
+  blogposts,
+}: {
+  blogposts: BlogpostType[];
+}) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [screenWidth, setScreenWidth] = useState(0);
+  const [domLoaded, setDomLoaded] = useState(false);
+  console.log("Dom loaded? ", domLoaded);
 
   useEffect(() => {
     function changeWidth() {
       setScreenWidth(window.innerWidth);
+      console.log(window.innerWidth);
+    }
+    if (!domLoaded) {
+      changeWidth();
+      setDomLoaded(true);
     }
     window.addEventListener("resize", changeWidth);
     return () => window.removeEventListener("resize", changeWidth);
-  }, []);
+  }, [domLoaded, setDomLoaded]);
 
   const postPerView = screenWidth > 992 ? 3 : screenWidth > 640 ? 2 : 1;
   const padding = screenWidth > 992 ? 0.33 : screenWidth > 640 ? 0.5 : 1;
@@ -27,6 +38,8 @@ export default function SimilarPosts({ blogposts }: { blogposts: BlogpostType[] 
     if (currentIndex <= 0) return;
     setCurrentIndex((curr) => curr - 1);
   }
+
+  console.log(postPerView);
 
   return (
     <div className={styles["similar-posts"]}>
