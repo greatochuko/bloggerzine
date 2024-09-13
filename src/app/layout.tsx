@@ -12,14 +12,14 @@ export const metadata: Metadata = {
     "Welcome to our next-generation blog, your ultimate destination for the latest news and captivating stories!",
   authors: [{ name: "Great Ogheneochuko" }],
   openGraph: {
-    title: "Great Ogheneochuko",
+    title: "Bloggerzine",
     type: "website",
     url: "https://bloggerzine.vercel.app",
     images: ["https://bloggerzine.vercel.app/logo.png"],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Great Ogheneochuko",
+    title: "Bloggerzine",
     images: ["https://bloggerzine.vercel.app/logo.png"],
   },
 };
