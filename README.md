@@ -1,6 +1,6 @@
 # Bloggerzine
 
-![Bloggerzine Logo](/public/logo.png)
+![Bloggerzine Logo](/public/homepage.png)
 
 Bloggerzine is a modern, sleek, and fully responsive blogging platform built with **Next.js 14**, **Supabase**, and **Tailwind CSS**. The platform allows users to read, write, and engage with articles on various topics. This project was developed as part of an internship at ABR Technologies LTD.
 
