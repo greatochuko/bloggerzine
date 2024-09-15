@@ -39,6 +39,7 @@ export async function sendMail(
         token,
         emailToken,
         recipient,
+        origin: process.env.NEXT_PUBLIC_ORIGIN,
       },
       { publicKey: "JvRXVPlNfGP4R_4B6", privateKey: "eKJIKYk6ZhDX5LDj0uqKq" }
     );
@@ -67,6 +68,7 @@ export async function sendPasswordMail(
         token,
         emailToken,
         recipient,
+        origin: process.env.NEXT_PUBLIC_ORIGIN,
       },
       { publicKey: "JvRXVPlNfGP4R_4B6", privateKey: "eKJIKYk6ZhDX5LDj0uqKq" }
     );
