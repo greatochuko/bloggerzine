@@ -15,12 +15,12 @@ export const metadata: Metadata = {
     title: "Bloggerzine",
     type: "website",
     url: "https://bloggerzine.vercel.app",
-    images: ["https://bloggerzine.vercel.app/logo.png"],
+    images: ["https://bloggerzine.vercel.app/bloggerzine.jpg"],
   },
   twitter: {
     card: "summary_large_image",
     title: "Bloggerzine",
-    images: ["https://bloggerzine.vercel.app/logo.png"],
+    images: ["https://bloggerzine.vercel.app/bloggerzine.jpg"],
   },
 };
 
