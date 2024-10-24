@@ -28,7 +28,7 @@ const socialLinks = [
         </g>
       </svg>
     ),
-    href: "https://twitter.com/greatochuko4",
+    href: "https://twitter.com/officialochuko",
   },
   {
     name: "github",
