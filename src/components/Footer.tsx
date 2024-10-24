@@ -8,7 +8,7 @@ const socialLinks = [
     icon: (
       <svg
         fill="#333"
-        className="group-hover:fill-blue-500 duration-300 group-focus-visible:fill-blue-500 "
+        className="group-hover:fill-blue-500 group-focus-visible:fill-blue-500 duration-300"
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 512 512"
@@ -40,7 +40,7 @@ const socialLinks = [
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
         fill="#333"
-        className="group-hover:fill-blue-500 duration-300 group-focus-visible:fill-blue-500 "
+        className="group-hover:fill-blue-500 group-focus-visible:fill-blue-500 duration-300"
       >
         <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
         <g
@@ -62,7 +62,7 @@ const socialLinks = [
               id="Dribbble-Light-Preview"
               transform="translate(-140.000000, -7559.000000)"
               fill="#333"
-              className="group-hover:fill-blue-500 duration-300 group-focus-visible:fill-blue-500 "
+              className="group-hover:fill-blue-500 group-focus-visible:fill-blue-500 duration-300"
             >
               <g id="icons" transform="translate(56.000000, 160.000000)">
                 <path
@@ -86,7 +86,7 @@ const socialLinks = [
         width={18}
         version="1.1"
         fill="#333"
-        className="group-hover:fill-blue-500 duration-300 group-focus-visible:fill-blue-500 "
+        className="group-hover:fill-blue-500 group-focus-visible:fill-blue-500 duration-300"
       >
         <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
         <g
@@ -108,7 +108,7 @@ const socialLinks = [
               id="Dribbble-Light-Preview"
               transform="translate(-180.000000, -7479.000000)"
               fill="#333"
-              className="group-hover:fill-blue-500 duration-300 group-focus-visible:fill-blue-500 "
+              className="group-hover:fill-blue-500 group-focus-visible:fill-blue-500 duration-300"
             >
               <g id="icons" transform="translate(56.000000, 160.000000)">
                 <path
@@ -128,7 +128,7 @@ const socialLinks = [
     icon: (
       <svg
         fill="#000000"
-        className="group-hover:fill-blue-500 duration-300 group-focus-visible:fill-blue-500 "
+        className="group-hover:fill-blue-500 group-focus-visible:fill-blue-500 duration-300"
         viewBox="0 0 24 24"
         height={18}
         width={18}
@@ -148,7 +148,7 @@ const socialLinks = [
         </g>
       </svg>
     ),
-    href: "mailto:greatochuko123@gmail.com",
+    href: "mailto:officialgreatochuko@gmail.com",
   },
 ];
 
