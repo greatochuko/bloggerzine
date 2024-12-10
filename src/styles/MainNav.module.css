@@ -137,4 +137,7 @@
   .auth-links {
     display: none;
   }
+    .header-container{
+      width: 92.5%;
+    }
 }

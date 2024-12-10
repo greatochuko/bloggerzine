@@ -28,7 +28,7 @@
 }
 
 .overlay h1 {
-  font-size: calc(2rem + 0.5vw);
+  font-size: calc(1.8rem + 0.5vw);
   text-align: center;
 }
 
@@ -177,7 +177,7 @@
   }
 
   .overlay h1 {
-    font-size: calc(1.1rem + 0.25vw);
+    font-size: calc(1rem + 0.25vw);
   }
 
   .about-the-author .image-container {

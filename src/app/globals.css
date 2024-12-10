@@ -74,3 +74,9 @@ textarea {
 img {
   object-fit: cover;
 }
+
+@media screen and (max-width: 640px) {
+  main{
+    width: 92.5%;
+  }
+}

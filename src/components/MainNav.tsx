@@ -29,10 +29,60 @@ export default function MainNav({
 
   return (
     <div className={styles["header-container"]}>
+      <button className={styles["menu-btn"]} onClick={openMobileNav}>
+        <svg
+          viewBox="0 0 24 24"
+          height={28}
+          width={28}
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+          <g
+            id="SVGRepo_tracerCarrier"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          ></g>
+          <g id="SVGRepo_iconCarrier">
+            <line
+              x1="5"
+              y1="7"
+              x2="19"
+              y2="7"
+              stroke="#000000"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            ></line>
+            <line
+              x1="5"
+              y1="12"
+              x2="19"
+              y2="12"
+              stroke="#000000"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            ></line>
+            <line
+              x1="5"
+              y1="17"
+              x2="19"
+              y2="17"
+              stroke="#000000"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            ></line>
+          </g>
+        </svg>
+      </button>
+
       <Link href={"/"} className={styles["logo"]}>
         <Image src={logo} alt="Bloggerzine"></Image>
         Bloggerzine
       </Link>
+
       <ul className={styles["nav-links"]}>
         {navLinks.map((navLink) => (
           <li key={navLink.name}>
@@ -45,6 +95,7 @@ export default function MainNav({
           </li>
         ))}
       </ul>
+
       <div className={styles["right-container"]}>
         <button
           className={styles["search-btn"]}
@@ -103,54 +154,6 @@ export default function MainNav({
           </div>
         )}
 
-        <button className={styles["menu-btn"]} onClick={openMobileNav}>
-          <svg
-            viewBox="0 0 24 24"
-            height={28}
-            width={28}
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-            <g
-              id="SVGRepo_tracerCarrier"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            ></g>
-            <g id="SVGRepo_iconCarrier">
-              <line
-                x1="5"
-                y1="7"
-                x2="19"
-                y2="7"
-                stroke="#000000"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              ></line>
-              <line
-                x1="5"
-                y1="12"
-                x2="19"
-                y2="12"
-                stroke="#000000"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              ></line>
-              <line
-                x1="5"
-                y1="17"
-                x2="19"
-                y2="17"
-                stroke="#000000"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              ></line>
-            </g>
-          </svg>
-        </button>
         <SearchForm
           show={showSearchForm}
           close={() => setShowSearchForm(false)}

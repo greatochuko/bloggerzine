@@ -1,6 +1,6 @@
 .blog {
   display: flex;
-  gap: 0.8rem;
+  gap: 0.7rem;
   flex-direction: column;
   color: #333;
 }
@@ -13,7 +13,7 @@
 }
 
 .blog-title {
-  font-size: min(max(1.2rem, 2vw), 1.5rem);
+  font-size: min(max(1rem, 2vw), 1.3rem);
   font-weight: 700;
 }
 

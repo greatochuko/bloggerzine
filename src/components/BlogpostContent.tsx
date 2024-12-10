@@ -11,7 +11,7 @@ export default function BlogpostContent({ content }: { content: string }) {
     <p
       dangerouslySetInnerHTML={{ __html: content }}
       style={{
-        fontSize: "1.25rem",
+        fontSize: "1.1rem",
         lineHeight: 1.5,
       }}
     ></p>
