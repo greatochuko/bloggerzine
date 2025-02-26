@@ -2,47 +2,51 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 14px;
 }
 
 .signup-page h1 {
-  color: #222;
-  font-size: min(max(1.5rem, 2.5vw), 1.75rem);
+  color: #333;
+  font-size: min(max(1.25rem, 2.5vw), 1.5rem);
+  text-align: center;
 }
 
 .form-container {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  background-color: var(--light-blue-100);
-  border: solid 1px var(--light-blue-200);
-  padding: 2rem;
-  border-radius: 0.25rem;
+  gap: 1.25rem;
+  border: solid 1px #f6f6f6;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
   width: 90%;
-  max-width: 35rem;
+  max-width: 440px;
 }
 
-.oauth {
+.form-container > form:last-child {
   display: flex;
-  width: 100%;
-}
-
-.oauth button {
-  flex: 1;
-  display: flex;
-  align-items: center;
   justify-content: center;
-  gap: 0.25rem;
-  padding: 0.5rem;
-  background-color: white;
-  color: #222;
-  font-weight: 700;
-  font-size: 1rem;
-  border: solid 1px #ccc;
-  border-radius: 0.25rem;
+  align-items: center;
 }
 
-.oauth button:hover {
-  border-color: var(--blue-100);
+.divider {
+  position: relative;
+}
+
+.divider > p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 0.25rem;
+  background-color: white;
+  font-weight: 500;
+  color: #666;
+}
+
+.divider > hr {
+  border-style: dashed;
+  border-color: #aaa;
 }
 
 .demo-signin-button {
@@ -53,6 +57,12 @@
   font-size: 1rem;
   border: none;
   border-radius: 0.25rem;
+  font-size: 14px;
+  width: 100%;
+}
+
+.demo-signin-button:hover {
+  background-color: var(--blue-200);
 }
 
 /* ------------------------ MOBILE STYLES ----------------------------------- */

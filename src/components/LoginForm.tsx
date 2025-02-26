@@ -22,11 +22,11 @@ export default function LoginForm() {
   return (
     <form className={styles["login-form"]} action={loginAction}>
       <div className={styles["input-group"]}>
-        <label htmlFor="email">Email Address</label>
+        <label htmlFor="email">Email</label>
         <input
           type="email"
           id="email"
-          placeholder="Email"
+          placeholder="Enter your email"
           name="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
