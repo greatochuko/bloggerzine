@@ -31,7 +31,7 @@ export default function Hero({ blogposts }: { blogposts: BlogpostType[] }) {
       } else {
         setCurrentIndex(currentIndex + 1);
       }
-    }, 5000);
+    }, 10000);
 
     return () => {
       clearTimeout(timeout);
