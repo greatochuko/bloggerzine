@@ -1,7 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap");
-
 :root {
-  --blue-100: #2163e8;
+  --blue-100: #256af4;
   --blue-200: #1c54c5;
   --blue-300: #1a4fba;
   --light-blue-100: #f0f5ff;
@@ -20,7 +18,8 @@
   outline: none;
 }
 
-a {
+a,
+button {
   transition-duration: 200ms;
 }
 
@@ -28,7 +27,8 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  font-family: "nunito sans";
+  /* font-family: "Lexend", serif; */
+  color: #222;
 }
 
 main {

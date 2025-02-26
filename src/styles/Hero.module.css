@@ -1,141 +1,49 @@
 .hero {
-  width: 100%;
-  aspect-ratio: 16/9;
-  max-height: 560px;
-  border-radius: 0.5rem;
-  background-color: #eee;
-  overflow: hidden;
-  position: relative;
-}
-
-.blogpost {
-  visibility: hidden;
-  position: relative;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.blogpost.show {
-  visibility: visible;
-}
-
-.overlay {
-  background: linear-gradient(
-    to top,
-    #000000cc,
-    #00000010,
-    transparent,
-    transparent
-  );
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  padding: 3rem 2rem 4rem;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  gap: 0.5rem;
-  color: white;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
 }
 
-.overlay > p {
-  font-size: 14px;
+.hero h1 {
   font-weight: 600;
-  border: solid 1.5px white;
-  padding: 0.35rem 0.7rem;
-  border-radius: 999px;
-  width: fit-content;
-  text-transform: capitalize;
+  font-size: max(1.5rem, min(3.5vw, 2.2rem));
 }
 
-.overlay a {
-  font-size: 1.4rem;
-  margin-bottom: 0.2rem;
-  font-weight: bold;
-}
-
-.overlay a:hover {
-  text-decoration: underline;
-}
-
-.user {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-}
-
-.user img {
-  border-radius: 50%;
-  border: solid 2px #ccc;
-}
-
-.user .details h4 {
-  font-size: 1rem;
-  font-weight: 500;
-}
-
-.user .details p {
+.hero p {
   font-size: 14px;
-  color: #ccc;
-  font-weight: 500;
+  color: #666;
 }
 
-.indicators {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
+.hero form {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+
+.hero form input {
+  padding: 0.75rem;
+  padding-right: 6rem;
+  border-radius: 0.5rem;
+  border: solid 1px #ccc;
+  width: 100%;
+}
+
+.hero form button {
   position: absolute;
-  bottom: 2rem;
-  left: 2rem;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  background-color: var(--blue-100);
+  color: #fff;
+  border: none;
+  cursor: pointer;
 }
 
-.indicators > div {
-  width: 8px;
-  height: 8px;
-  aspect-ratio: 1;
-  background-color: transparent;
-  border: solid 1px #aaa;
-  border-radius: 50%;
-}
-
-.indicators > div.active {
-  background-color: white;
-  border-color: white;
-}
-
-@media screen and (max-width: 768px) {
-  .overlay a {
-    font-size: 1.2rem;
-    font-weight: 600;
-  }
-}
-
-@media screen and (max-width: 640px) {
-  .indicators {
-    bottom: 1rem;
-    left: 1rem;
-  }
-
-  .overlay {
-    padding: 1.5rem 1rem 2rem;
-  }
-
-  .overlay > div {
-    height: 6px;
-    width: 6px;
-  }
-
-  .overlay a {
-    font-size: 1rem;
-    font-weight: 600;
-  }
-
-  .user {
-    display: none;
-  }
+.hero form button:hover {
+  background-color: var(--blue-200);
 }

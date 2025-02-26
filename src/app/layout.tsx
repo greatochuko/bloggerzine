@@ -5,6 +5,11 @@ import Footer from "@/components/Footer";
 import { getSession } from "@/services/userServices";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Public_Sans } from "next/font/google";
+
+const inter = Public_Sans({
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: { absolute: "Bloggerzine", template: "%s - Bloggerzine" },
@@ -33,7 +38,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body>
+      <body className={inter.className}>
         <Header user={user} />
         <main>{children}</main>
         <Footer />

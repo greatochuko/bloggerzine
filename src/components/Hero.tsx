@@ -1,11 +1,10 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styles from "@/styles/Hero.module.css";
-import Image from "next/image";
 import { UserType } from "@/services/userServices";
-import Link from "next/link";
 import convertToUrl from "@/utils/convertToUrl";
+import { useRouter } from "next/navigation";
 
 export type BlogpostType = {
   id: string;
@@ -21,75 +20,30 @@ export type BlogpostType = {
   createdAt: string;
 };
 
-export default function Hero({ blogposts }: { blogposts: BlogpostType[] }) {
-  const [currentIndex, setCurrentIndex] = useState(0);
+export default function Hero() {
+  const router = useRouter();
 
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      if (currentIndex >= 2) {
-        setCurrentIndex(0);
-      } else {
-        setCurrentIndex(currentIndex + 1);
-      }
-    }, 10000);
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
 
-    return () => {
-      clearTimeout(timeout);
-    };
-  }, [currentIndex]);
+    const formData = new FormData(e.target as HTMLFormElement);
+    const query = formData.get("query") as string;
+    if (!query || query.trim() === "") return;
 
-  const selectedBlog = blogposts[currentIndex];
+    router.push(`/search?query=${convertToUrl(query)}`);
+  };
 
   return (
     <div className={styles["hero"]}>
-      {blogposts.map((blogpost, index) => (
-        <div
-          key={blogpost.id}
-          className={[
-            styles["blogpost"],
-            currentIndex === index ? styles["show"] : "",
-          ].join(" ")}
-        >
-          <Image
-            src={blogpost.thumbnail}
-            alt={blogpost.title}
-            fill
-            sizes="90vw"
-          />
-          <div className={styles["overlay"]}>
-            <p>{selectedBlog.category}</p>
-            <Link href={`/blog/${convertToUrl(blogpost.title)}_${blogpost.id}`}>
-              {selectedBlog.title}
-            </Link>
-            <div className={styles["user"]}>
-              <Image
-                src={selectedBlog.author.imageUrl}
-                alt={`${selectedBlog.author.firstname}'s profile picture`}
-                width={44}
-                height={44}
-              />
-              <div className={styles["details"]}>
-                <h4>
-                  {selectedBlog.author.firstname} {selectedBlog.author.lastname}
-                </h4>
-                <p>
-                  {new Date(selectedBlog.createdAt).toDateString()} &middot;{" "}
-                  {selectedBlog.views} Reads
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      ))}
-      <div className={styles["indicators"]}>
-        {new Array(3).fill("").map((_, index) => (
-          <div
-            key={index}
-            className={currentIndex === index ? styles["active"] : ""}
-            onClick={() => setCurrentIndex(index)}
-          ></div>
-        ))}
-      </div>
+      <h1>Bloggerzine: Write, Share, Discover</h1>
+      <p>
+        Easily search and explore blog posts on any topic, connecting you with
+        the content that matters most.
+      </p>
+      <form onSubmit={handleSearch}>
+        <input type="text" placeholder="Search anything..." name="query" />
+        <button type="submit">Search</button>
+      </form>
     </div>
   );
 }
