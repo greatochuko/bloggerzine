@@ -153,13 +153,13 @@ export async function toggleLikePost(blogId: string, authorId: string) {
     .eq("user", userId);
 
   if (data?.length) {
-    const { data, error } = await supabase
+    await supabase
       .from("likes")
       .delete()
       .eq("blogpost", blogId)
       .eq("user", userId);
   } else {
-    const { data, error } = await supabase
+    await supabase
       .from("likes")
       .insert({ author: authorId, blogpost: blogId, user: userId });
   }

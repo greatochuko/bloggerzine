@@ -4,7 +4,6 @@ import { Metadata } from "next";
 import PostForm from "@/components/PostForm";
 import { getBlogpost } from "@/services/blogServices";
 import { notFound } from "next/navigation";
-import { createClient } from "@/utils/supabase/server";
 import { getSession } from "@/services/userServices";
 
 export const metadata: Metadata = {

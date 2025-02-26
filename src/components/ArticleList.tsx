@@ -1,5 +1,5 @@
 "use client";
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useState } from "react";
 import styles from "@/styles/ArticleList.module.css";
 import paginatorStyles from "@/styles/Paginator.module.css";
 import { categories } from "./Category";

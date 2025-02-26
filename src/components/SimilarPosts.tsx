@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BlogpostType } from "./Hero";
 import styles from "@/styles/SimilarPosts.module.css";
 import Blog from "./Blog";

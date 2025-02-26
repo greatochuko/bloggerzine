@@ -3,7 +3,6 @@ import { type BlogpostType } from "./Hero";
 import Link from "next/link";
 import Image from "next/image";
 import styles from "@/styles/BlogMetaData.module.css";
-import convertToUrl from "@/utils/convertToUrl";
 import { createAuthorUrl } from "@/utils/createAuthorUrl";
 
 export default function BlogMetaData({ blog }: { blog: BlogpostType }) {

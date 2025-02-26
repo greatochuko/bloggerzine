@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./page.module.css";
 import { getCommentsByAuthor } from "@/services/commentServices";
 import CommentsPageMain from "@/components/CommentsPageMain";
 import { getSession } from "@/services/userServices";
 
 export default async function CommentsPage() {
-  const user = await getSession()
+  const user = await getSession();
   const comments = await getCommentsByAuthor(user!.id);
 
   return (

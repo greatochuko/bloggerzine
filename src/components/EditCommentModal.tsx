@@ -19,7 +19,7 @@ export default function EditCommentModal({
     errorMessage: "",
   });
 
-  const { done, errorMessage } = state;
+  const { done } = state;
 
   useEffect(() => {
     if (done) {

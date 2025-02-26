@@ -3,7 +3,6 @@ import React from "react";
 import { useFormStatus } from "react-dom";
 import {
   sendResetPasswordEmail,
-  sendVerificationEmail,
 } from "@/actions/authActions";
 import LoadingIndicator from "@/components/LoadingIndicator";
 

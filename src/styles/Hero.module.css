@@ -50,11 +50,17 @@
   padding: 0.35rem 0.7rem;
   border-radius: 999px;
   width: fit-content;
+  text-transform: capitalize;
 }
 
-.overlay h3 {
+.overlay a {
   font-size: 1.4rem;
   margin-bottom: 0.2rem;
+  font-weight: bold;
+}
+
+.overlay a:hover {
+  text-decoration: underline;
 }
 
 .user {
@@ -103,7 +109,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .overlay h3 {
+  .overlay a {
     font-size: 1.2rem;
     font-weight: 600;
   }
@@ -124,7 +130,7 @@
     width: 6px;
   }
 
-  .overlay h3 {
+  .overlay a {
     font-size: 1rem;
     font-weight: 600;
   }

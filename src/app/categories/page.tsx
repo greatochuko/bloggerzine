@@ -3,7 +3,7 @@ import { BlogpostType } from "@/components/Hero";
 import { getBlogposts } from "@/services/blogServices";
 import styles from "./page.module.css";
 import Link from "next/link";
-import Category, { categories, CategoryType } from "@/components/Category";
+import Category, { categories } from "@/components/Category";
 
 export default async function CategoryPage() {
   const blogposts: BlogpostType[] = await getBlogposts();

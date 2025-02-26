@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import styles from "@/styles/SignupForm.module.css";
 import Link from "next/link";
-import { useFormState, useFormStatus } from "react-dom";
 import LoadingIndicator from "./LoadingIndicator";
 import { signup } from "@/actions/authActions";
 

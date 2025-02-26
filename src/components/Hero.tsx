@@ -4,6 +4,8 @@ import React, { useEffect, useState } from "react";
 import styles from "@/styles/Hero.module.css";
 import Image from "next/image";
 import { UserType } from "@/services/userServices";
+import Link from "next/link";
+import convertToUrl from "@/utils/convertToUrl";
 
 export type BlogpostType = {
   id: string;
@@ -56,7 +58,9 @@ export default function Hero({ blogposts }: { blogposts: BlogpostType[] }) {
           />
           <div className={styles["overlay"]}>
             <p>{selectedBlog.category}</p>
-            <h3>{selectedBlog.title}</h3>
+            <Link href={`/blog/${convertToUrl(blogpost.title)}_${blogpost.id}`}>
+              {selectedBlog.title}
+            </Link>
             <div className={styles["user"]}>
               <Image
                 src={selectedBlog.author.imageUrl}
