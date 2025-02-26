@@ -97,7 +97,7 @@ export default function MainNav({
       </ul>
 
       <div className={styles["right-container"]}>
-        <button
+        {/* <button
           className={styles["search-btn"]}
           onClick={() => setShowSearchForm((curr) => !curr)}
         >
@@ -133,7 +133,7 @@ export default function MainNav({
               ></path>
             </g>
           </svg>
-        </button>
+        </button> */}
 
         {user ? (
           <NavUser user={user} />

@@ -4,7 +4,6 @@
   align-items: center;
   justify-content: space-between;
   max-width: 80rem;
-  width: 90%;
   margin: 0 auto;
   font-size: 14px;
 }
@@ -122,18 +121,20 @@
 
 @media screen and (max-width: 1024px) {
   .nav-links {
-    display: none;
+    gap: 0.25rem;
   }
-  .menu-btn {
-    display: flex;
+
+  .auth-links :first-child {
+    display: none;
   }
 }
 
-@media screen and (max-width: 640px) {
-  .auth-links {
-    display: none;
+@media screen and (max-width: 768px) {
+  .menu-btn {
+    display: flex;
   }
-  .header-container {
-    width: 92.5%;
+
+  .nav-links {
+    display: none;
   }
 }
