@@ -5,6 +5,7 @@ import styles from "@/styles/Hero.module.css";
 import { UserType } from "@/services/userServices";
 import convertToUrl from "@/utils/convertToUrl";
 import { useRouter } from "next/navigation";
+import { SearchIcon } from "lucide-react";
 
 export type BlogpostType = {
   id: string;
@@ -42,7 +43,10 @@ export default function Hero() {
       </p>
       <form onSubmit={handleSearch}>
         <input type="text" placeholder="Search anything..." name="query" />
-        <button type="submit">Search</button>
+        <button type="submit">
+          <SearchIcon width={16} height={16} />
+          Search
+        </button>
       </form>
     </div>
   );

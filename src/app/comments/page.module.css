@@ -74,6 +74,7 @@
 
 .comments-page table tbody tr td {
   display: -webkit-box;
+  line-clamp: 2;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
@@ -122,13 +123,18 @@
 
 .comments-page .user-info {
   display: flex;
-  gap: 1rem;
+  gap: 0.5rem;
   align-items: center;
+}
+
+.user-info .text p {
+  font-size: 0.8rem;
+  color: #666;
 }
 
 .image-container {
   position: relative;
-  width: 3.5rem;
+  width: 2.5rem;
   overflow: hidden;
   aspect-ratio: 1;
   border-radius: 50%;

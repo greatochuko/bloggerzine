@@ -16,10 +16,11 @@
   flex-direction: column;
   gap: 1.25rem;
   border: solid 1px #f6f6f6;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -2px rgba(0, 0, 0, 0.1);
   padding: 2rem 1.5rem;
   border-radius: 0.5rem;
-  width: 90%;
+  width: 100%;
   max-width: 440px;
 }
 
@@ -53,7 +54,7 @@
   background-color: var(--blue-100);
   color: white;
   font: bold;
-  padding: 0.5rem;
+  padding: 10px;
   font-size: 1rem;
   border: none;
   border-radius: 0.25rem;

@@ -63,7 +63,7 @@ function SubmitButton({ cannotSubmit }: { cannotSubmit: boolean }) {
   const { pending } = useFormStatus();
   return (
     <button type="submit" disabled={cannotSubmit || pending}>
-      {pending ? <LoadingIndicator size={20} color="#fff" /> : "Sign In"}
+      {pending ? <LoadingIndicator size={16} color="#fff" /> : "Sign In"}
     </button>
   );
 }

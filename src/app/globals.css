@@ -4,8 +4,8 @@
   --blue-300: #1a4fba;
   --light-blue-100: #f0f5ff;
   --light-blue-200: #99bbff;
-  --red-100: #e32636;
-  --red-200: #ce202e;
+  --red-100: #f43f5e;
+  --red-200: #e11d48;
 }
 
 * {
@@ -18,17 +18,25 @@
   outline: none;
 }
 
+svg {
+  transition-duration: 0ms;
+}
+
 a,
 button {
   transition-duration: 200ms;
+}
+
+p {
+  line-height: 1.2rem;
 }
 
 body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  /* font-family: "Lexend", serif; */
-  color: #222;
+  color: #262626;
+  font-size: 14px;
 }
 
 main {

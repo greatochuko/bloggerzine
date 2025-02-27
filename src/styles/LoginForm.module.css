@@ -17,7 +17,7 @@
 }
 
 .login-form input {
-  padding: 0.5rem;
+  padding: 9px;
   border: solid 1px #ddd;
   border-radius: 0.25rem;
 }
@@ -43,9 +43,9 @@
 
 .login-form button {
   background-color: var(--blue-100);
-  padding: 8px;
+  padding: 10px;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 500;
   color: white;
   border: none;
   border-radius: 0.25rem;
@@ -84,7 +84,7 @@
     align-items: stretch;
   }
 
-  .actions p {
-    font-size: 0.9rem;
+  .login-form button {
+    width: 100%;
   }
 }

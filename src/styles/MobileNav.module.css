@@ -23,17 +23,17 @@
   color: var(--blue-100);
   color: #333;
   font-weight: 600;
+  font-size: 1rem;
 }
 
 .logo img {
-  width: 1.8rem;
-  height: 1.8rem;
+  width: 1.5rem;
+  height: 1.5rem;
   border-radius: 0.25rem;
   aspect-ratio: 1;
 }
 
 .subtitle {
-  font-size: 0.9rem;
   color: #999;
 }
 
@@ -59,7 +59,7 @@
 }
 
 .auth-links {
-  display: none;
+  display: flex;
   flex-direction: column;
   width: fit-content;
   gap: 1rem;
@@ -109,12 +109,6 @@
 
 @media screen and (max-width: 1024px) {
   .mobile-nav {
-    display: flex;
-  }
-}
-
-@media screen and (max-width: 640px) {
-  .auth-links {
     display: flex;
   }
 }
