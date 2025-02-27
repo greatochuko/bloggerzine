@@ -2,9 +2,9 @@ import Link from "next/link";
 import React from "react";
 import styles from "./page.module.css";
 import Paginator from "@/components/Paginator";
-import SearchBlog from "@/components/SearchBlog";
 import { getBlogposts } from "@/services/blogServices";
 import { HouseIcon } from "lucide-react";
+import Blog from "@/components/Blog";
 
 export const metadata = {
   title: "Blogposts",
@@ -33,7 +33,7 @@ export default async function page({
       </div>
       <div className={styles["blog-list"]}>
         {filteredPosts.map((blogpost) => (
-          <SearchBlog blog={blogpost} key={blogpost.id} />
+          <Blog blogpost={blogpost} key={blogpost.id} />
         ))}
       </div>
       <Paginator numPages={Math.ceil(blogposts.length / 8) || 1} />

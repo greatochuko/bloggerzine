@@ -5,10 +5,10 @@ import styles from "./page.module.css";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getBlogpostByAuthor } from "@/services/blogServices";
-import SearchBlog from "@/components/SearchBlog";
 import Paginator from "@/components/Paginator";
 import SocialLinks from "@/components/SocialLinks";
 import { BriefcaseBusinessIcon, CalendarIcon } from "lucide-react";
+import Blog from "@/components/Blog";
 
 export async function generateMetadata({
   params,
@@ -108,8 +108,8 @@ export default async function AuthorPage({
           Articles <span>{blogposts.length}</span>
         </h2>
         <div className={styles["blog-list"]}>
-          {paginatedPosts.map((blog) => (
-            <SearchBlog blog={blog} key={blog.id} />
+          {paginatedPosts.map((blogpost) => (
+            <Blog blogpost={blogpost} key={blogpost.id} />
           ))}
         </div>
         {blogposts.length ? <Paginator numPages={maxPage} /> : null}

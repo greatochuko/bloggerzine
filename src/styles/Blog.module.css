@@ -21,8 +21,9 @@
 }
 
 .metadata span {
-  color: #999;
+  color: #666;
   font-weight: 500;
+  font-size: 0.8rem;
 }
 
 .blog-title {

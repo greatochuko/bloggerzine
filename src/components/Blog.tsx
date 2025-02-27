@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "@/styles/Blog.module.css";
-import Image from "next/image";
 import { BlogpostType } from "./Hero";
 import Link from "next/link";
 import convertToUrl from "@/utils/convertToUrl";
@@ -11,12 +10,12 @@ export default function Blog({ blogpost }: { blogpost: BlogpostType }) {
   return (
     <div className={styles["blog"]}>
       <div className={styles["image-container"]}>
-        <Image
+        <CustomImage
           src={blogpost.thumbnail || ""}
           alt={blogpost.title}
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-        ></Image>
+        ></CustomImage>
       </div>
       <div className={styles["metadata"]}>
         <span>{formatDate(blogpost.createdAt)}</span>
