@@ -7,7 +7,6 @@
 .category {
   display: block;
   height: 6rem;
-  border-radius: 0.5rem;
   overflow: hidden;
   position: relative;
 }
@@ -23,17 +22,22 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: calc(1rem + 0.25vw);
+  font-size: 14px;
+  font-size: max(14px, min(2.6vw, 1rem));
+
   text-transform: capitalize;
   font-weight: 600;
+}
+
+.category:hover p {
+  text-decoration: underline;
 }
 
 .category-list > a:not(.category) {
   text-align: center;
   color: #666;
-  font-weight: 700;
+  font-weight: 600;
   text-decoration: underline;
-  text-underline-offset: 0.2rem;
   display: block;
   padding: 0.5rem;
 }

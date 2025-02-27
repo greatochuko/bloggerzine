@@ -1,12 +1,13 @@
 import React from "react";
-import styles from "@/styles/RecentPosts.module.css";
+import styles from "@/styles/FeaturedPosts.module.css";
 import { BlogpostType } from "./Hero";
 import Link from "next/link";
 import convertToUrl from "@/utils/convertToUrl";
 import { createAuthorUrl } from "@/utils/createAuthorUrl";
 import CustomImage from "./CustomImage";
+import { formatDate } from "@/lib/utils";
 
-export default function RecentPosts({
+export default function FeaturedPosts({
   blogposts,
 }: {
   blogposts: BlogpostType[];
@@ -36,12 +37,7 @@ export default function RecentPosts({
                 >
                   {blogpost.author.firstname} {blogpost.author.lastname}
                 </Link>{" "}
-                &middot;{" "}
-                {new Date(blogpost.createdAt).toLocaleDateString("en-GB", {
-                  day: "2-digit",
-                  month: "short",
-                  year: "numeric",
-                })}
+                &middot; {formatDate(blogpost.createdAt)}
               </div>
               <Link
                 href={`/blog/${convertToUrl(blogpost.title)}_${blogpost.id}`}
@@ -51,7 +47,7 @@ export default function RecentPosts({
               </Link>
               <Link
                 href={`/categories/${blogpost.category}`}
-                className={styles["category"]}
+                className="category-badge"
               >
                 {blogpost.category}
               </Link>

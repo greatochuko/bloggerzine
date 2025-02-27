@@ -7,14 +7,28 @@
 
 .image-container {
   position: relative;
-  aspect-ratio: 15/9;
-  border-radius: 0.5rem;
   overflow: hidden;
 }
 
+.blog > .image-container {
+  aspect-ratio: 16/9;
+}
+
+.metadata {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.metadata span {
+  color: #999;
+  font-weight: 500;
+}
+
 .blog-title {
-  font-size: min(max(1rem, 2vw), 1.3rem);
-  font-weight: 700;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: max(min(1.5rem, 2vw), 1.2rem);
 }
 
 .blog-title:hover {
@@ -25,4 +39,26 @@
 .blog > p {
   color: #999;
   font-weight: 600;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.user .image-container {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+}
+
+.user p {
+  font-weight: 600;
+}
+
+@media screen and (max-width: 640px) {
+  .blog-title {
+    font-size: 0.9rem;
+  }
 }

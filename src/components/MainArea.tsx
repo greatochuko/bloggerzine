@@ -3,31 +3,34 @@ import styles from "@/styles/MainArea.module.css";
 import { BlogpostType } from "./Hero";
 import Image from "next/image";
 import Link from "next/link";
-import BlogGrid from "./BlogGrid";
 import CategoryList from "./CategoryList";
 import { categories } from "./Category";
 import convertToUrl from "@/utils/convertToUrl";
+import BlogpostSection from "./BlogpostSection";
 
 export default function MainArea({
-  topPosts,
+  popularPosts,
   recentPosts,
 }: {
-  topPosts: BlogpostType[];
+  popularPosts: BlogpostType[];
   recentPosts: BlogpostType[];
 }) {
   return (
     <div className={styles["main-area"]}>
       <div className={styles["highlights"]}>
-        <h2>Top highlights</h2>
-        <BlogGrid blogposts={topPosts} />
+        <BlogpostSection blogposts={popularPosts} title="Popular Posts" />
       </div>
       <section className={styles["side"]}>
         <div>
-          <h2 className={styles["section-heading"]}>Trending Topics</h2>
+          <h2 className={`category-title ${styles["section-heading"]}`}>
+            Trending Topics
+          </h2>
           <CategoryList categories={categories.slice(0, 6)} />
         </div>
         <div>
-          <h2 className={styles["section-heading"]}>Recent Posts</h2>
+          <h2 className={`category-title ${styles["section-heading"]}`}>
+            Recent Posts
+          </h2>
           <div className={styles["recent-posts"]}>
             <ul>
               {recentPosts.map((recentPost) => (

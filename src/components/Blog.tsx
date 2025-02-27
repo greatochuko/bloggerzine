@@ -2,9 +2,10 @@ import React from "react";
 import styles from "@/styles/Blog.module.css";
 import Image from "next/image";
 import { BlogpostType } from "./Hero";
-import BlogMetaData from "./BlogMetaData";
 import Link from "next/link";
 import convertToUrl from "@/utils/convertToUrl";
+import CustomImage from "./CustomImage";
+import { formatDate } from "@/lib/utils";
 
 export default function Blog({ blogpost }: { blogpost: BlogpostType }) {
   return (
@@ -17,13 +18,33 @@ export default function Blog({ blogpost }: { blogpost: BlogpostType }) {
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         ></Image>
       </div>
+      <div className={styles["metadata"]}>
+        <span>{formatDate(blogpost.createdAt)}</span>
+        <Link
+          href={`/categories/${blogpost.category}`}
+          className="category-badge"
+        >
+          {blogpost.category}
+        </Link>
+      </div>
       <Link
         href={`/blog/${convertToUrl(blogpost.title)}_${blogpost.id}`}
         className={styles["blog-title"]}
       >
         {blogpost.title}
       </Link>
-      <BlogMetaData blog={blogpost} />
+      <div className={styles["user"]}>
+        <div className={styles["image-container"]}>
+          <CustomImage
+            src={blogpost.author.imageUrl}
+            alt={`${blogpost.author.firstname}'s profile picture`}
+            sizes="320px"
+          />
+        </div>
+        <p>
+          {blogpost.author.firstname} {blogpost.author.lastname}
+        </p>
+      </div>
     </div>
   );
 }

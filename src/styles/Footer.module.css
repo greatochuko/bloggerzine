@@ -10,7 +10,6 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  font-size: 0.9rem;
   justify-content: space-between;
 }
 
@@ -38,7 +37,7 @@
 }
 
 .social-links a * {
-  fill: #333;
+  fill: #111;
 }
 
 /* ------------------------ MOBILE STYLES ----------------------------------- */

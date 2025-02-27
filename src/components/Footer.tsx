@@ -36,7 +36,7 @@ const socialLinks = [
   {
     name: "linkedin",
     icon: (
-      <svg viewBox="0 0 20 20" height={18} width={18} version="1.1" fill="#333">
+      <svg viewBox="0 0 20 20" height={18} width={18} version="1.1" fill="#111">
         <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
         <g
           id="SVGRepo_tracerCarrier"
@@ -44,7 +44,6 @@ const socialLinks = [
           strokeLinejoin="round"
         ></g>
         <g id="SVGRepo_iconCarrier">
-          <title>linkedin [#161]</title> <desc>Created with Sketch.</desc>
           <defs> </defs>
           <g
             id="Page-1"
@@ -56,7 +55,7 @@ const socialLinks = [
             <g
               id="Dribbble-Light-Preview"
               transform="translate(-180.000000, -7479.000000)"
-              fill="#333"
+              fill="#111"
             >
               <g id="icons" transform="translate(56.000000, 160.000000)">
                 <path
