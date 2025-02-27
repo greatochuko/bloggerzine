@@ -8,7 +8,7 @@ import { useFormStatus } from "react-dom";
 import { UserType } from "@/services/userServices";
 import { updateProfile } from "@/actions/authActions";
 import { toast } from "react-toastify";
-import { CameraIcon, ImageIcon } from "lucide-react";
+import { CameraIcon } from "lucide-react";
 
 export default function ProfileForm({ user }: { user: UserType }) {
   const [profileImage, setProfileImage] = useState({

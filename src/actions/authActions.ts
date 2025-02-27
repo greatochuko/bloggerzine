@@ -54,7 +54,7 @@ export async function login(initialState: any, formData: FormData) {
   );
 
   cookies().set("token", token, {
-    maxAge: 3600,
+    maxAge: 60 * 60 * 24 * 7,
     httpOnly: true,
   });
 

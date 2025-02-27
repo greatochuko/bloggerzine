@@ -32,7 +32,7 @@ export async function GET(request: NextRequest) {
     );
 
     cookies().set("token", token, {
-      maxAge: 3600,
+      maxAge: 60 * 60 * 24 * 7,
       httpOnly: true,
     });
 
