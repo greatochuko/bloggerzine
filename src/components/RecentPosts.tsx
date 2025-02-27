@@ -1,10 +1,10 @@
 import React from "react";
 import styles from "@/styles/RecentPosts.module.css";
 import { BlogpostType } from "./Hero";
-import Image from "next/image";
 import Link from "next/link";
 import convertToUrl from "@/utils/convertToUrl";
 import { createAuthorUrl } from "@/utils/createAuthorUrl";
+import CustomImage from "./CustomImage";
 
 export default function RecentPosts({
   blogposts,
@@ -18,10 +18,10 @@ export default function RecentPosts({
         {blogposts.map((blogpost) => (
           <div key={blogpost.id} className={styles["blog"]}>
             <Link
-              href={`/blog/${convertToUrl(blogpost.title)}_${blogpost.id}`}
               className={styles["image-container"]}
+              href={`/blog/${convertToUrl(blogpost.title)}_${blogpost.id}`}
             >
-              <Image
+              <CustomImage
                 src={blogpost.thumbnail}
                 alt={blogpost.title}
                 fill
