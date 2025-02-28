@@ -27,6 +27,10 @@ export default function MainNav({
 }) {
   const pathname = usePathname();
 
+  function isInRoute(href: string) {
+    return href === "/" ? pathname === href : pathname.startsWith(href);
+  }
+
   return (
     <div className={styles["header-container"]}>
       <button className={styles["menu-btn"]} onClick={openMobileNav}>
@@ -43,7 +47,7 @@ export default function MainNav({
           <li key={navLink.name}>
             <Link
               href={navLink.href}
-              className={pathname === navLink.href ? styles["active"] : ""}
+              className={isInRoute(navLink.href) ? styles["active"] : ""}
             >
               {navLink.name}
             </Link>
