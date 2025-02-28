@@ -2,13 +2,13 @@ import { getUser, UserType } from "@/services/userServices";
 import { Metadata } from "next";
 import React from "react";
 import styles from "./page.module.css";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getBlogpostByAuthor } from "@/services/blogServices";
 import Paginator from "@/components/Paginator";
 import SocialLinks from "@/components/SocialLinks";
 import { BriefcaseBusinessIcon, CalendarIcon } from "lucide-react";
 import Blog from "@/components/Blog";
+import CustomImage from "@/components/CustomImage";
 
 export async function generateMetadata({
   params,
@@ -64,25 +64,24 @@ export default async function AuthorPage({
     <div className={styles["author-page"]}>
       <div className={styles["header"]}>
         <div className={styles["cover-photo-container"]}>
-          <Image
+          <CustomImage
             src={author.coverImageUrl || ""}
             alt={author.firstname + " " + author.lastname}
             fill
             sizes=""
-          ></Image>
+          ></CustomImage>
         </div>
         <div className={styles["author-details"]}>
           <div className={styles["image-container"]}>
-            <Image
+            <CustomImage
               src={author.imageUrl || ""}
               alt={author.firstname + " " + author.lastname}
               fill
               sizes=""
-            ></Image>
+            ></CustomImage>
           </div>
           <div className={styles["text"]}>
             <h1>{author.firstname + " " + author.lastname}</h1>
-            <SocialLinks author={author} />
             <p>
               {author.jobTitle ? (
                 <span>
@@ -100,6 +99,7 @@ export default async function AuthorPage({
                   .join(" ")}
               </span>
             </p>
+            <SocialLinks author={author} />
           </div>
         </div>
       </div>

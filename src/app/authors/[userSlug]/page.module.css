@@ -1,7 +1,7 @@
 .author-page {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
   color: #333;
 }
 
@@ -14,7 +14,6 @@
 .cover-photo-container {
   position: relative;
   aspect-ratio: 4;
-  border-radius: 0.5rem;
   overflow: hidden;
 }
 
@@ -30,16 +29,17 @@
 .author-details .text {
   display: flex;
   flex-direction: column;
+  gap: 0.5rem;
 }
 
 .author-details .text h1 {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
 }
 
 .author-details .text p {
-  font-size: 0.9rem;
   color: #666;
-  font-weight: 600;
+  font-weight: 500;
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -57,8 +57,8 @@
   top: 0;
   left: 0;
   width: 8rem;
-  aspect-ratio: 1;
-  border-radius: 50%;
+  aspect-ratio: 0.9;
+  /* border-radius: 50%; */
   overflow: hidden;
   transform: translateY(-30%);
   border: solid 3px white;
@@ -76,6 +76,8 @@
   align-items: center;
   width: fit-content;
   margin: 0 auto;
+  font-weight: 600;
+  font-size: 1.125rem;
 }
 
 .main h2 span {
@@ -83,7 +85,7 @@
   color: var(--blue-100);
   font-weight: 600;
   border-radius: 0.25rem;
-  padding: 0.25rem 0.75rem;
+  padding: 0.25rem 0.5rem;
 }
 
 .blog-list {
@@ -130,6 +132,10 @@
   }
 
   .author-details .text h1 {
-    font-size: 1.2rem;
+    font-size: 1rem;
+  }
+
+  .header .image-container {
+    aspect-ratio: 1;
   }
 }
