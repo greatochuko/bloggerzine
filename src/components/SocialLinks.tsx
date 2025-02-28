@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import styles from "@/styles/SocialLinks.module.css";
-import { UserType } from "@/services/userServices";
+import { UserType } from "@/lib/types";
 
 export default function SocialLinks({ author }: { author: UserType }) {
   return (

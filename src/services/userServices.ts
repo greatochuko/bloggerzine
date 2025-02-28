@@ -1,24 +1,7 @@
 import { createClient } from "@/utils/supabase/client";
 import { cookies } from "next/headers";
 import jwt from "jsonwebtoken";
-
-export type UserType = {
-  id: string;
-  firstname: string;
-  lastname: string;
-  email: string;
-  password: string;
-  imageUrl: string;
-  coverImageUrl: string;
-  bio: string;
-  jobTitle: string;
-  facebookUrl: string;
-  twitterUrl: string;
-  linkedInUrl: string;
-  instagramUrl: string;
-  createdAt: string;
-  emailVerified: boolean;
-};
+import { UserType } from "@/lib/types";
 
 export async function getUser(userId: string) {
   const supabase = createClient();

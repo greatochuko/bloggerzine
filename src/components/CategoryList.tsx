@@ -1,8 +1,8 @@
 import Link from "next/link";
 import React from "react";
 import styles from "@/styles/CategoryList.module.css";
-import { type CategoryType } from "./Category";
 import CustomImage from "./CustomImage";
+import { CategoryType } from "@/lib/types";
 
 export default function CategoryList({
   categories,

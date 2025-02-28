@@ -12,8 +12,7 @@ import {
 import { getSession } from "@/services/userServices";
 import { redirect } from "next/navigation";
 import { getCommentsByAuthor } from "@/services/commentServices";
-import { BlogpostType } from "@/components/Hero";
-import { CommentType } from "@/components/Comment";
+import { BlogpostType, CommentType } from "@/lib/types";
 
 export const metadata: Metadata = {
   title: "Dashboard",

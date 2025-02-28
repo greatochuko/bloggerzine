@@ -1,17 +1,14 @@
 import React from "react";
-import { type BlogpostType } from "./Hero";
 import Link from "next/link";
 import Image from "next/image";
 import styles from "@/styles/BlogMetaData.module.css";
 import { createAuthorUrl } from "@/utils/createAuthorUrl";
+import { BlogpostType } from "@/lib/types";
 
 export default function BlogMetaData({ blog }: { blog: BlogpostType }) {
   return (
     <div className={styles["blog-meta-data"]}>
-      <Link
-        href={createAuthorUrl(blog.author)}
-        className={styles["author"]}
-      >
+      <Link href={createAuthorUrl(blog.author)} className={styles["author"]}>
         <div className={styles["image-container"]}>
           <Image
             src={blog.author.imageUrl || ""}

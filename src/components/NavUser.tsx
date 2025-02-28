@@ -3,7 +3,6 @@ import Image from "next/image";
 import styles from "@/styles/NavUser.module.css";
 import Link from "next/link";
 import SignoutModal from "./SignoutModal";
-import { UserType } from "@/services/userServices";
 import { createAuthorUrl } from "@/utils/createAuthorUrl";
 import {
   ChevronDownIcon,
@@ -13,6 +12,7 @@ import {
   SettingsIcon,
   UserIcon,
 } from "lucide-react";
+import { UserType } from "@/lib/types";
 
 export default function NavUser({ user }: { user: UserType }) {
   const [showDropdown, setShowDropdown] = useState(false);

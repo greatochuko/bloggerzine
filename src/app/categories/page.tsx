@@ -1,10 +1,11 @@
 import React from "react";
-import { BlogpostType } from "@/components/Hero";
 import { getBlogposts } from "@/services/blogServices";
 import styles from "./page.module.css";
 import Link from "next/link";
-import Category, { categories } from "@/components/Category";
+import Category from "@/components/Category";
 import { HouseIcon } from "lucide-react";
+import { categories } from "@/lib/data";
+import { BlogpostType } from "@/lib/types";
 
 export default async function CategoryPage() {
   const blogposts: BlogpostType[] = await getBlogposts();

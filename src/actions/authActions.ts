@@ -7,11 +7,8 @@ import bcrypt from "bcrypt";
 import { sendMail, sendPasswordMail } from "@/utils/sendMail";
 import jwt from "jsonwebtoken";
 import { cookies } from "next/headers";
-import {
-  getSession,
-  getUserIdFromCookies,
-  UserType,
-} from "@/services/userServices";
+import { getSession, getUserIdFromCookies } from "@/services/userServices";
+import { UserType } from "@/lib/types";
 
 export async function login(initialState: any, formData: FormData) {
   const email = formData.get("email") as string;
@@ -199,7 +196,8 @@ export async function resetPassword(formData: FormData) {
     .update({ password: encryptedPassword })
     .eq("email", email);
 
-  if (error) return { done: false, errorMessage: error.message };
+  if (error) return;
+  // if (error) return { done: false, errorMessage: error.message };
 
   revalidatePath("/", "layout");
   redirect("/");

@@ -3,19 +3,8 @@ import React from "react";
 import styles from "@/styles/Comment.module.css";
 import Image from "next/image";
 import ReplyForm from "./ReplyForm";
-import { BlogpostType } from "./Hero";
-import { UserType } from "@/services/userServices";
 import { PencilIcon, Trash2Icon } from "lucide-react";
-
-export type CommentType = {
-  id: number;
-  blogpost: BlogpostType;
-  user: UserType;
-  comment: string;
-  createdAt: string;
-  parentId: null | number;
-  rootCommentId: null | number;
-};
+import { CommentType } from "@/lib/types";
 
 export default function Comment({
   comment,

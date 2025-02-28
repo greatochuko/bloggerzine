@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "@/styles/Blog.module.css";
-import { BlogpostType } from "./Hero";
+import { BlogpostType } from "@/lib/types";
 import Link from "next/link";
 import convertToUrl from "@/utils/convertToUrl";
 import CustomImage from "./CustomImage";

@@ -3,20 +3,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styles from "@/styles/MainNav.module.css";
 import NavUser from "./NavUser";
-import { UserType } from "@/services/userServices";
 import Image from "next/image";
 import logo from "../../public/logo.png";
 import { MenuIcon } from "lucide-react";
-
-export const navLinks = [
-  { name: "Home", href: "/" },
-  { name: "Blogposts", href: "/blog" },
-  { name: "Categories", href: "/categories" },
-  // { name: "Technology", href: "/categories/technology" },
-  // { name: "Finance", href: "/categories/finance" },
-  // { name: "Travel", href: "/categories/travel" },
-  // { name: "Lifestyle", href: "/categories/lifestyle" },
-];
+import { navLinks } from "@/lib/data";
+import { UserType } from "@/lib/types";
 
 export default function MainNav({
   user,

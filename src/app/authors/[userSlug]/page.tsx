@@ -1,4 +1,4 @@
-import { getUser, UserType } from "@/services/userServices";
+import { getUser } from "@/services/userServices";
 import { Metadata } from "next";
 import React from "react";
 import styles from "./page.module.css";
@@ -9,6 +9,7 @@ import SocialLinks from "@/components/SocialLinks";
 import { BriefcaseBusinessIcon, CalendarIcon } from "lucide-react";
 import Blog from "@/components/Blog";
 import CustomImage from "@/components/CustomImage";
+import { UserType } from "@/lib/types";
 
 export async function generateMetadata({
   params,

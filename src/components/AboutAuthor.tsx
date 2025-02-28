@@ -3,8 +3,7 @@ import React from "react";
 import styles from "@/styles/AboutAuthor.module.css";
 import Link from "next/link";
 import Image from "next/image";
-import { UserType } from "@/services/userServices";
-import { BlogpostType } from "./Hero";
+import { BlogpostType, UserType } from "@/lib/types";
 
 export default function AboutAuthor({
   author,

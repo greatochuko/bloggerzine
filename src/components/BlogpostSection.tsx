@@ -1,5 +1,5 @@
 import React from "react";
-import { BlogpostType } from "./Hero";
+import { BlogpostType } from "@/lib/types";
 import styles from "@/styles/BlogpostSection.module.css";
 import Link from "next/link";
 import Blog from "./Blog";

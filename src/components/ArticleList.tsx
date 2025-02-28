@@ -2,13 +2,13 @@
 import React, { useCallback, useState } from "react";
 import styles from "@/styles/ArticleList.module.css";
 import paginatorStyles from "@/styles/Paginator.module.css";
-import { categories } from "./Category";
 import Link from "next/link";
 import convertToUrl from "@/utils/convertToUrl";
 import Image from "next/image";
-import { BlogpostType } from "./Hero";
 import DeletePostModal from "./DeletePostModal";
 import { EllipsisVerticalIcon, PencilIcon, Trash2Icon } from "lucide-react";
+import { categories } from "@/lib/data";
+import { BlogpostType } from "@/lib/types";
 
 export default function ArticleList({
   blogposts,

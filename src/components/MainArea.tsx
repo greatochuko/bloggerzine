@@ -1,12 +1,12 @@
 import React from "react";
 import styles from "@/styles/MainArea.module.css";
-import { BlogpostType } from "./Hero";
 import Image from "next/image";
 import Link from "next/link";
 import CategoryList from "./CategoryList";
-import { categories } from "./Category";
 import convertToUrl from "@/utils/convertToUrl";
 import BlogpostSection from "./BlogpostSection";
+import { BlogpostType } from "@/lib/types";
+import { categories } from "@/lib/data";
 
 export default function MainArea({
   popularPosts,

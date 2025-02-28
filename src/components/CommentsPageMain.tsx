@@ -5,10 +5,10 @@ import Link from "next/link";
 import convertToUrl from "@/utils/convertToUrl";
 import { createAuthorUrl } from "@/utils/createAuthorUrl";
 import paginatorStyles from "@/styles/Paginator.module.css";
-import { CommentType } from "./Comment";
 import styles from "@/app/comments/page.module.css";
 import ViewCommentModal from "./ViewCommentModal";
 import { EyeIcon } from "lucide-react";
+import { CommentType } from "@/lib/types";
 
 export default function CommentsPageMain({
   comments,

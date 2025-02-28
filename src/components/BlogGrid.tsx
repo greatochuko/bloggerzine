@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { BlogpostType } from "./Hero";
+import { BlogpostType } from "@/lib/types";
 import Blog from "./Blog";
 import styles from "@/styles/BlogGrid.module.css";
 import Paginator from "./Paginator";

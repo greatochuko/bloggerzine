@@ -5,10 +5,10 @@ import styles from "@/styles/ProfileForm.module.css";
 import { uploadImage } from "@/utils/imageUploader";
 import LoadingIndicator from "./LoadingIndicator";
 import { useFormStatus } from "react-dom";
-import { UserType } from "@/services/userServices";
 import { updateProfile } from "@/actions/authActions";
 import { toast } from "react-toastify";
 import { CameraIcon } from "lucide-react";
+import { UserType } from "@/lib/types";
 
 export default function ProfileForm({ user }: { user: UserType }) {
   const [profileImage, setProfileImage] = useState({

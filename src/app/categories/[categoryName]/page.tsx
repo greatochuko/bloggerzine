@@ -4,9 +4,9 @@ import { notFound } from "next/navigation";
 import BlogGrid from "@/components/BlogGrid";
 import CategoryList from "@/components/CategoryList";
 import { Metadata } from "next";
-import { categories } from "@/components/Category";
 import { getBlogpostByCategory } from "@/services/blogServices";
 import CustomImage from "@/components/CustomImage";
+import { categories } from "@/lib/data";
 
 export function generateMetadata({
   params: { categoryName },

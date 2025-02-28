@@ -1,10 +1,10 @@
 import React from "react";
 import styles from "@/styles/PostCard.module.css";
-import { type BlogpostType } from "./Hero";
 import Image from "next/image";
-import { categories } from "./Category";
 import Link from "next/link";
 import convertToUrl from "@/utils/convertToUrl";
+import { BlogpostType } from "@/lib/types";
+import { categories } from "@/lib/data";
 
 export default function PostCard({ blogpost }: { blogpost: BlogpostType }) {
   return (

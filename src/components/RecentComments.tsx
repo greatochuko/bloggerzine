@@ -4,7 +4,7 @@ import styles from "@/styles/RecentComments.module.css";
 import Link from "next/link";
 import convertToUrl from "@/utils/convertToUrl";
 import Image from "next/image";
-import { CommentType } from "./Comment";
+import { CommentType } from "@/lib/types";
 import { createAuthorUrl } from "@/utils/createAuthorUrl";
 
 export default function RecentComments({

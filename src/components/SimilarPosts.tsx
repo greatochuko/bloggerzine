@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { BlogpostType } from "./Hero";
+import { BlogpostType } from "@/lib/types";
 import styles from "@/styles/SimilarPosts.module.css";
 import Blog from "./Blog";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";

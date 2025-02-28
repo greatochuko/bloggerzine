@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "@/styles/DeletePostModal.module.css";
 import LoadingIndicator from "./LoadingIndicator";
-import { BlogpostType } from "./Hero";
+import { BlogpostType } from "@/lib/types";
 import { deletePost } from "@/actions/blogActions";
 
 export default function DeletePostModal({

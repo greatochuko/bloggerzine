@@ -2,24 +2,9 @@
 
 import React from "react";
 import styles from "@/styles/Hero.module.css";
-import { UserType } from "@/services/userServices";
 import convertToUrl from "@/utils/convertToUrl";
 import { useRouter } from "next/navigation";
 import { SearchIcon } from "lucide-react";
-
-export type BlogpostType = {
-  id: string;
-  title: string;
-  content: string;
-  category: string;
-  thumbnail: string;
-  author: UserType;
-  tags: string;
-  views: number;
-  isFeatured: boolean;
-  isPublished: boolean;
-  createdAt: string;
-};
 
 export default function Hero() {
   const router = useRouter();

@@ -1,8 +1,9 @@
-import Hero, { BlogpostType } from "@/components/Hero";
+import Hero from "@/components/Hero";
 import styles from "./page.module.css";
 import MainArea from "@/components/MainArea";
 import { getBlogposts } from "@/services/blogServices";
 import RecentPosts from "@/components/RecentPosts";
+import { BlogpostType } from "@/lib/types";
 
 export default async function Home() {
   const blogposts: BlogpostType[] = await getBlogposts();
