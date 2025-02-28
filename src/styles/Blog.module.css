@@ -58,6 +58,10 @@
   font-weight: 600;
 }
 
+.user:hover p {
+  text-decoration: underline;
+}
+
 @media screen and (max-width: 640px) {
   .blog-title {
     font-size: 0.9rem;

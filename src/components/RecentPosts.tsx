@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "@/styles/FeaturedPosts.module.css";
+import styles from "@/styles/RecentPosts.module.css";
 import { BlogpostType } from "./Hero";
 import Link from "next/link";
 import convertToUrl from "@/utils/convertToUrl";
@@ -7,7 +7,7 @@ import { createAuthorUrl } from "@/utils/createAuthorUrl";
 import CustomImage from "./CustomImage";
 import { formatDate } from "@/lib/utils";
 
-export default function FeaturedPosts({
+export default function RecentPosts({
   blogposts,
 }: {
   blogposts: BlogpostType[];
@@ -32,7 +32,7 @@ export default function FeaturedPosts({
             <div className={styles["text"]}>
               <div className={styles["metadata"]}>
                 <Link
-                  href={`/author/${createAuthorUrl(blogpost.author)}`}
+                  href={createAuthorUrl(blogpost.author)}
                   className={styles["author"]}
                 >
                   {blogpost.author.firstname} {blogpost.author.lastname}

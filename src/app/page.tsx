@@ -2,7 +2,7 @@ import Hero, { BlogpostType } from "@/components/Hero";
 import styles from "./page.module.css";
 import MainArea from "@/components/MainArea";
 import { getBlogposts } from "@/services/blogServices";
-import FeaturedPosts from "@/components/FeaturedPosts";
+import RecentPosts from "@/components/RecentPosts";
 
 export default async function Home() {
   const blogposts: BlogpostType[] = await getBlogposts();
@@ -29,8 +29,8 @@ export default async function Home() {
   return (
     <div className={styles["home-page"]}>
       <Hero />
-      <FeaturedPosts blogposts={featuredPosts} />
-      <MainArea popularPosts={popularPosts} recentPosts={recentPosts} />
+      <RecentPosts blogposts={recentPosts} />
+      <MainArea popularPosts={popularPosts} featuredPosts={featuredPosts} />
     </div>
   );
 }

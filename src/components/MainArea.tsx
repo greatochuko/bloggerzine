@@ -10,10 +10,10 @@ import BlogpostSection from "./BlogpostSection";
 
 export default function MainArea({
   popularPosts,
-  recentPosts,
+  featuredPosts,
 }: {
   popularPosts: BlogpostType[];
-  recentPosts: BlogpostType[];
+  featuredPosts: BlogpostType[];
 }) {
   return (
     <div className={styles["main-area"]}>
@@ -29,30 +29,30 @@ export default function MainArea({
         </div>
         <div>
           <h2 className={`category-title ${styles["section-heading"]}`}>
-            Recent Posts
+            Featured Posts
           </h2>
-          <div className={styles["recent-posts"]}>
+          <div className={styles["featured-posts"]}>
             <ul>
-              {recentPosts.map((recentPost) => (
-                <li key={recentPost.id}>
+              {featuredPosts.map((featuredPost) => (
+                <li key={featuredPost.id}>
                   <Link
-                    href={`/blog/${convertToUrl(recentPost.title)}_${
-                      recentPost.id
+                    href={`/blog/${convertToUrl(featuredPost.title)}_${
+                      featuredPost.id
                     }`}
-                    className={styles["recent-post"]}
+                    className={styles["featured-post"]}
                   >
                     <div className={styles["image-container"]}>
                       <Image
-                        src={recentPost.thumbnail || ""}
-                        alt={recentPost.title}
+                        src={featuredPost.thumbnail || ""}
+                        alt={featuredPost.title}
                         fill
                         sizes="(max-width: 640px) 25vw, 15vw"
                       ></Image>
                     </div>
                     <div className={styles["post-details"]}>
-                      <h3>{recentPost.title}</h3>
+                      <h3>{featuredPost.title}</h3>
                       <p>
-                        {new Date(recentPost.createdAt)
+                        {new Date(featuredPost.createdAt)
                           .toDateString()
                           .split(" ")
                           .slice(1)

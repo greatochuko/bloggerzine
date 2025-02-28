@@ -5,6 +5,7 @@ import Link from "next/link";
 import convertToUrl from "@/utils/convertToUrl";
 import CustomImage from "./CustomImage";
 import { formatDate } from "@/lib/utils";
+import { createAuthorUrl } from "@/utils/createAuthorUrl";
 
 export default function Blog({ blogpost }: { blogpost: BlogpostType }) {
   return (
@@ -32,7 +33,7 @@ export default function Blog({ blogpost }: { blogpost: BlogpostType }) {
       >
         {blogpost.title}
       </Link>
-      <div className={styles["user"]}>
+      <Link href={createAuthorUrl(blogpost.author)} className={styles["user"]}>
         <div className={styles["image-container"]}>
           <CustomImage
             src={blogpost.author.imageUrl}
@@ -43,7 +44,7 @@ export default function Blog({ blogpost }: { blogpost: BlogpostType }) {
         <p>
           {blogpost.author.firstname} {blogpost.author.lastname}
         </p>
-      </div>
+      </Link>
     </div>
   );
 }
