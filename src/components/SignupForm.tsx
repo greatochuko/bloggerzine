@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import styles from "@/styles/SignupForm.module.css";
 import Link from "next/link";
-import { useFormState, useFormStatus } from "react-dom";
 import LoadingIndicator from "./LoadingIndicator";
 import { signup } from "@/actions/authActions";
 
@@ -50,7 +49,7 @@ export default function SignupForm() {
           <label htmlFor="firstname">First Name</label>
           <input
             type="text"
-            placeholder="First Name"
+            placeholder="John"
             id="firstname"
             name="firstname"
             value={firstname}
@@ -62,7 +61,7 @@ export default function SignupForm() {
           <label htmlFor="lastname">Last Name</label>
           <input
             type="text"
-            placeholder="Last Name"
+            placeholder="Doe"
             id="lastname"
             name="lastname"
             value={lastname}
@@ -76,7 +75,7 @@ export default function SignupForm() {
         <label htmlFor="email">Email Address</label>
         <input
           type="email"
-          placeholder="Email"
+          placeholder="johndoe@example.com"
           id="email"
           name="email"
           value={email}
@@ -112,7 +111,7 @@ export default function SignupForm() {
       </div>
       <div className={styles["actions"]}>
         <button type="submit" disabled={cannotSubmit || pending}>
-          {pending ? <LoadingIndicator size={20} color="#fff" /> : "Sign Up"}
+          {pending ? <LoadingIndicator size={16} color="#fff" /> : "Sign Up"}
         </button>
         <p>
           Already have an account? <Link href={"/login"}>Login</Link>

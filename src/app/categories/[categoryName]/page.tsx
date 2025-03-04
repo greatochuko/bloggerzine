@@ -1,12 +1,12 @@
 import React from "react";
 import styles from "./page.module.css";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import BlogGrid from "@/components/BlogGrid";
 import CategoryList from "@/components/CategoryList";
 import { Metadata } from "next";
-import { categories } from "@/components/Category";
 import { getBlogpostByCategory } from "@/services/blogServices";
+import CustomImage from "@/components/CustomImage";
+import { categories } from "@/lib/data";
 
 export function generateMetadata({
   params: { categoryName },
@@ -44,12 +44,12 @@ export default async function CategoryPage({
   return (
     <div className={styles["category-page"]}>
       <div className={styles["category-banner"]}>
-        <Image
+        <CustomImage
           src={category.imageUrl || ""}
           alt={category.name}
           fill
           sizes="90vw"
-        ></Image>
+        ></CustomImage>
 
         <div className={styles["category-info"]}>
           <h1 style={{ backgroundColor: category.color }}>{category.name}</h1>

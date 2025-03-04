@@ -3,7 +3,6 @@ import styles from "./page.module.css";
 import { notFound } from "next/navigation";
 import BlogMetaData from "@/components/BlogMetaData";
 import Image from "next/image";
-import { categories } from "@/components/Category";
 import CategoryList from "@/components/CategoryList";
 import Link from "next/link";
 import CommentSection from "@/components/CommentSection";
@@ -17,10 +16,11 @@ import { Metadata } from "next";
 import { createAuthorUrl } from "@/utils/createAuthorUrl";
 import BlogpostContent from "@/components/BlogpostContent";
 import SocialLinks from "@/components/SocialLinks";
-import { BlogpostType } from "@/components/Hero";
 import SimilarPosts from "@/components/SimilarPosts";
 import LikeSection from "@/components/LikeSection";
 import { getSession } from "@/services/userServices";
+import { categories } from "@/lib/data";
+import { BlogpostType } from "@/lib/types";
 
 export async function generateMetadata({
   params: { blogTitle },

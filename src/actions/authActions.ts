@@ -7,11 +7,8 @@ import bcrypt from "bcrypt";
 import { sendMail, sendPasswordMail } from "@/utils/sendMail";
 import jwt from "jsonwebtoken";
 import { cookies } from "next/headers";
-import {
-  getSession,
-  getUserIdFromCookies,
-  UserType,
-} from "@/services/userServices";
+import { getSession, getUserIdFromCookies } from "@/services/userServices";
+import { UserType } from "@/lib/types";
 
 export async function login(initialState: any, formData: FormData) {
   const email = formData.get("email") as string;
@@ -54,7 +51,7 @@ export async function login(initialState: any, formData: FormData) {
   );
 
   cookies().set("token", token, {
-    maxAge: 3600,
+    maxAge: 60 * 60 * 24 * 7,
     httpOnly: true,
   });
 
@@ -138,10 +135,7 @@ export async function updateProfile(formData: FormData) {
   if (!userId) return revalidatePath("/", "layout");
 
   const supabase = createClient();
-  const { error } = await supabase
-    .from("users")
-    .update(updateData)
-    .eq("id", userId);
+  await supabase.from("users").update(updateData).eq("id", userId);
   revalidatePath("/", "layout");
 }
 
@@ -157,10 +151,7 @@ export async function updateSocialLinks(formData: FormData) {
   if (!userId) return revalidatePath("/", "layout");
 
   const supabase = createClient();
-  const { error } = await supabase
-    .from("users")
-    .update(updateData)
-    .eq("id", userId);
+  await supabase.from("users").update(updateData).eq("id", userId);
   revalidatePath("/", "layout");
 }
 
@@ -190,12 +181,7 @@ export async function sendResetPasswordEmail() {
     { expiresIn: "1h" }
   );
 
-  const { error } = await sendPasswordMail(
-    user.firstname,
-    user.email,
-    token,
-    emailToken
-  );
+  await sendPasswordMail(user.firstname, user.email, token, emailToken);
 }
 
 export async function resetPassword(formData: FormData) {
@@ -210,7 +196,8 @@ export async function resetPassword(formData: FormData) {
     .update({ password: encryptedPassword })
     .eq("email", email);
 
-  if (error) return { done: false, errorMessage: error.message };
+  if (error) return;
+  // if (error) return { done: false, errorMessage: error.message };
 
   revalidatePath("/", "layout");
   redirect("/");

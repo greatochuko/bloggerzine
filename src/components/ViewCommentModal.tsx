@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styles from "@/styles/ViewCommentModal.module.css";
-import { CommentType } from "./Comment";
+import { CommentType } from "@/lib/types";
 import Image from "next/image";
 
 export default function ViewCommentModal({

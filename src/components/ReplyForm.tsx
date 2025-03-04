@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import styles from "@/styles/ReplyForm.module.css";
 import { postReply } from "@/actions/commentActions";
-import { useFormStatus } from "react-dom";
 import LoadingIndicator from "./LoadingIndicator";
 
 export default function ReplyForm({
@@ -64,21 +63,5 @@ export default function ReplyForm({
         </button>
       </div>
     </form>
-  );
-}
-
-function SubmitButton() {
-  const { pending } = useFormStatus();
-
-  return (
-    <button disabled={pending} type="submit">
-      {pending ? (
-        <>
-          <LoadingIndicator size={20} color="white" /> Replying...
-        </>
-      ) : (
-        "Post Reply"
-      )}
-    </button>
   );
 }

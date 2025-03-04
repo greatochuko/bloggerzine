@@ -14,7 +14,7 @@
   max-height: 10rem;
   background-color: #222;
   color: white;
-  border-radius: 1rem;
+  /* border-radius: 1rem; */
 }
 
 .header p {
@@ -38,7 +38,7 @@
 }
 
 .header h1 {
-  font-size: calc(1.5rem + 0.5vw);
+  font-size: calc(1.25rem + 0.5vw);
 }
 
 .categories-list {

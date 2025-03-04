@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "@/styles/SearchResults.module.css";
-import SearchBlog from "./SearchBlog";
 import { searchBlog } from "@/services/blogServices";
 import Paginator from "./Paginator";
+import Blog from "./Blog";
 
 export default async function SearchResults({
   query,
@@ -25,7 +25,7 @@ export default async function SearchResults({
       {searchResults.length ? (
         <div className={styles["search-results"]}>
           {paginatedResults.map((blogpost) => (
-            <SearchBlog blog={blogpost} key={blogpost.id} />
+            <Blog blogpost={blogpost} key={blogpost.id} />
           ))}
         </div>
       ) : (

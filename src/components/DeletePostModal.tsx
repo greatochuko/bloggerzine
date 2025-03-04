@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "@/styles/DeletePostModal.module.css";
 import LoadingIndicator from "./LoadingIndicator";
-import { BlogpostType } from "./Hero";
+import { BlogpostType } from "@/lib/types";
 import { deletePost } from "@/actions/blogActions";
 
 export default function DeletePostModal({
@@ -14,15 +14,17 @@ export default function DeletePostModal({
   post: BlogpostType | null;
 }) {
   const [pending, setPending] = useState(false);
-  const [error, setError] = useState("");
+
   async function handleDeletePost(e: React.FormEvent) {
     const formData = new FormData(e.target as HTMLFormElement);
     setPending(true);
-    setError("");
     const { errorMessage } = await deletePost(formData);
-    errorMessage && setError(errorMessage);
+    if (errorMessage) {
+      console.log("Error deleting post: ", errorMessage);
+    }
     setPending(false);
   }
+
   return (
     <div
       className={`${styles["overlay"]} ${isOpen ? styles["open"] : ""}`}

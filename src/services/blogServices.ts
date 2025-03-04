@@ -2,17 +2,9 @@ import { createClient } from "@/utils/supabase/client";
 import { getUserIdFromCookies } from "./userServices";
 import { revalidatePath } from "next/cache";
 
-export type LikeType = {
-  id: string;
-  user: string;
-  author: string;
-  blogpost: string;
-  createdAt: string;
-};
-
 export async function getBlogposts() {
   const supabase = createClient();
-  const { data: blogposts, error } = await supabase
+  const { data: blogposts } = await supabase
     .from("blogposts")
     .select("*, author(*)")
     .eq("isPublished", true);
@@ -29,7 +21,7 @@ export async function getBlogpost(id: string) {
 
   if (data && data[0]) {
     const updatedViews = data[0].views + 1;
-    const { error: updateError } = await supabase
+    await supabase
       .from("blogposts")
       .update({ views: updatedViews })
       .eq("id", id);
@@ -42,7 +34,7 @@ export async function getBlogpost(id: string) {
 export async function getBlogpostToUpdate(id: string) {
   const supabase = createClient();
 
-  const { data, error } = await supabase
+  const { data } = await supabase
     .from("blogposts")
     .select("*, author(*)")
     .eq("id", id);
@@ -53,7 +45,7 @@ export async function getBlogpostToUpdate(id: string) {
 
 export async function getBlogpostByAuthor(authorId: string, showDraft = false) {
   const supabase = createClient();
-  const { data: blogposts, error } = showDraft
+  const { data: blogposts } = showDraft
     ? await supabase
         .from("blogposts")
         .select("*, author(*)")

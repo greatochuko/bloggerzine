@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
 import jwt from "jsonwebtoken";
 import { createClient } from "@/utils/supabase/server";
 import { cookies } from "next/headers";
@@ -32,13 +32,14 @@ export async function GET(request: NextRequest) {
     );
 
     cookies().set("token", token, {
-      maxAge: 3600,
+      maxAge: 60 * 60 * 24 * 7,
       httpOnly: true,
     });
 
     return Response.redirect(url.origin);
   } catch (err) {
     const error = err as Error;
+    console.log(error.message);
     return Response.redirect(
       `${url.origin}/confirm-email-error?token=${token}`
     );

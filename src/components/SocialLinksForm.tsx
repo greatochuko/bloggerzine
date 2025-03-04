@@ -1,11 +1,11 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import styles from "@/styles/SocialLinksForm.module.css";
-import { UserType } from "@/services/userServices";
 import { updateSocialLinks } from "@/actions/authActions";
 import { useFormStatus } from "react-dom";
 import LoadingIndicator from "./LoadingIndicator";
 import { toast } from "react-toastify";
+import { UserType } from "@/lib/types";
 
 export default function SocialLinksForm({ user }: { user: UserType }) {
   const [facebook, setFacebook] = useState(user.facebookUrl);

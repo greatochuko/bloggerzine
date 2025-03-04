@@ -6,8 +6,7 @@
 
 .category-banner {
   position: relative;
-  height: 22rem;
-  border-radius: 1rem;
+  aspect-ratio: 4;
   overflow: hidden;
 }
 .category-info {
@@ -86,8 +85,18 @@
   }
 }
 
+@media screen and (max-width: 768px) {
+  .category-banner {
+    aspect-ratio: 3;
+  }
+}
+
 @media screen and (max-width: 640px) {
   .category-banner {
-    height: 15rem;
+    aspect-ratio: 2.5;
+  }
+
+  .category-info h1::before {
+    height: 1rem;
   }
 }

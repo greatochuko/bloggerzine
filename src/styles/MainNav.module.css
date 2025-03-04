@@ -3,9 +3,10 @@
   gap: 1rem;
   align-items: center;
   justify-content: space-between;
-  max-width: 80rem;
   width: 90%;
+  max-width: 80rem;
   margin: 0 auto;
+  font-size: 14px;
 }
 
 .logo {
@@ -14,12 +15,13 @@
   gap: 0.25rem;
   color: var(--blue-100);
   color: #333;
-  font-weight: 600;
+  font-weight: 500;
+  font-size: 1rem;
 }
 
 .logo img {
-  width: 1.7rem;
-  height: 1.7rem;
+  width: 1.5rem;
+  height: 1.5rem;
   border-radius: 0.25rem;
   aspect-ratio: 1;
 }
@@ -37,7 +39,7 @@
 .nav-links a {
   padding: 0.5rem;
   display: block;
-  color: #666;
+  color: #333;
   font-weight: 500;
 }
 
@@ -72,7 +74,7 @@
   border: none;
 }
 
-:is(.search-btn, .menu-btn) * {
+:is(.search-btn, .menu-btn) > * {
   stroke: #666;
 }
 
@@ -80,7 +82,7 @@
   transform: scale(1.1);
 }
 
-:is(.search-btn, .menu-btn):hover * {
+:is(.search-btn, .menu-btn):hover > * {
   stroke: var(--blue-100);
 }
 
@@ -94,13 +96,17 @@
 }
 
 .auth-links a {
-  font-weight: 500;
   display: block;
-  padding: 0.5rem 1rem;
+  padding: 6px 12px;
   border-radius: 0.25rem;
+  font-weight: 500;
   color: var(--blue-100);
-  background-color: var(--light-blue-100);
+  background-color: white;
   border: solid 1px var(--light-blue-200);
+}
+
+.auth-links a:hover {
+  background-color: var(--light-blue-100);
 }
 
 .auth-links a.active {
@@ -113,31 +119,35 @@
   background-color: var(--blue-200);
 }
 
-.auth-links a:hover {
-  background-color: var(--blue-100);
-  color: white;
-}
-
-.auth-links a:active {
-  background-color: var(--blue-300);
-}
-
 /* ------------------------ MOBILE STYLES ----------------------------------- */
 
 @media screen and (max-width: 1024px) {
   .nav-links {
+    gap: 0.5rem;
+  }
+
+  /* .nav-links li:last-child {
     display: none;
-  }
-  .menu-btn {
-    display: flex;
-  }
+  } */
+}
+
+@media screen and (max-width: 768px) {
 }
 
 @media screen and (max-width: 640px) {
-  .auth-links {
+  .menu-btn {
+    display: flex;
+  }
+
+  .nav-links {
     display: none;
   }
-    .header-container{
-      width: 92.5%;
-    }
+
+  .auth-links :last-child {
+    display: none;
+  }
+
+  .header-container {
+    width: 95%;
+  }
 }

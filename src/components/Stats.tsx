@@ -2,8 +2,8 @@
 import React from "react";
 import styles from "@/styles/Stats.module.css";
 import { convertToAbbrString } from "@/utils/numberFormatter";
-import { BlogpostType } from "./Hero";
-import { CommentType } from "./Comment";
+import { BlogpostType } from "@/lib/types";
+import { CommentType } from "@/lib/types";
 
 export default function Stats({
   comments,

@@ -1,12 +1,13 @@
 "use client";
 import React, { useState } from "react";
-import Comment, { CommentType } from "./Comment";
+import Comment from "./Comment";
 import styles from "@/styles/CommentSection.module.css";
 import { useFormState, useFormStatus } from "react-dom";
 import { postComment } from "@/actions/commentActions";
 import LoadingIndicator from "./LoadingIndicator";
 import EditCommentModal from "./EditCommentModal";
 import DeleteCommentModal from "./DeleteCommentModal";
+import { CommentType } from "@/lib/types";
 
 export default function CommentSection({
   comments,

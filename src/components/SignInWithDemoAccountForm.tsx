@@ -6,7 +6,7 @@ import styles from "@/app/(auth)/login/page.module.css";
 import LoadingIndicator from "./LoadingIndicator";
 
 export default function SignInWithDemoAccountForm() {
-  const [state, loginAction] = useFormState(login, null);
+  const [_, loginAction] = useFormState(login, null);
 
   return (
     <form action={loginAction}>

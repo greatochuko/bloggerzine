@@ -1,55 +1,58 @@
 import React from "react";
 import styles from "@/styles/MainArea.module.css";
-import { BlogpostType } from "./Hero";
 import Image from "next/image";
 import Link from "next/link";
-import BlogGrid from "./BlogGrid";
 import CategoryList from "./CategoryList";
-import { categories } from "./Category";
 import convertToUrl from "@/utils/convertToUrl";
+import BlogpostSection from "./BlogpostSection";
+import { BlogpostType } from "@/lib/types";
+import { categories } from "@/lib/data";
 
 export default function MainArea({
-  topPosts,
-  recentPosts,
+  popularPosts,
+  featuredPosts,
 }: {
-  topPosts: BlogpostType[];
-  recentPosts: BlogpostType[];
+  popularPosts: BlogpostType[];
+  featuredPosts: BlogpostType[];
 }) {
   return (
     <div className={styles["main-area"]}>
       <div className={styles["highlights"]}>
-        <h2>Top highlights</h2>
-        <BlogGrid blogposts={topPosts} />
+        <BlogpostSection blogposts={popularPosts} title="Popular Posts" />
       </div>
       <section className={styles["side"]}>
         <div>
-          <h2 className={styles["section-heading"]}>Trending Topics</h2>
+          <h2 className={`category-title ${styles["section-heading"]}`}>
+            Trending Topics
+          </h2>
           <CategoryList categories={categories.slice(0, 6)} />
         </div>
         <div>
-          <h2 className={styles["section-heading"]}>Recent Posts</h2>
-          <div className={styles["recent-posts"]}>
+          <h2 className={`category-title ${styles["section-heading"]}`}>
+            Featured Posts
+          </h2>
+          <div className={styles["featured-posts"]}>
             <ul>
-              {recentPosts.map((recentPost) => (
-                <li key={recentPost.id}>
+              {featuredPosts.map((featuredPost) => (
+                <li key={featuredPost.id}>
                   <Link
-                    href={`/blog/${convertToUrl(recentPost.title)}_${
-                      recentPost.id
+                    href={`/blog/${convertToUrl(featuredPost.title)}_${
+                      featuredPost.id
                     }`}
-                    className={styles["recent-post"]}
+                    className={styles["featured-post"]}
                   >
                     <div className={styles["image-container"]}>
                       <Image
-                        src={recentPost.thumbnail || ""}
-                        alt={recentPost.title}
+                        src={featuredPost.thumbnail || ""}
+                        alt={featuredPost.title}
                         fill
                         sizes="(max-width: 640px) 25vw, 15vw"
                       ></Image>
                     </div>
                     <div className={styles["post-details"]}>
-                      <h3>{recentPost.title}</h3>
+                      <h3>{featuredPost.title}</h3>
                       <p>
-                        {new Date(recentPost.createdAt)
+                        {new Date(featuredPost.createdAt)
                           .toDateString()
                           .split(" ")
                           .slice(1)

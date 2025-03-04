@@ -1,13 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap");
-
 :root {
-  --blue-100: #2163e8;
+  --blue-100: #256af4;
   --blue-200: #1c54c5;
   --blue-300: #1a4fba;
   --light-blue-100: #f0f5ff;
   --light-blue-200: #99bbff;
-  --red-100: #e32636;
-  --red-200: #ce202e;
+  --red-100: #f43f5e;
+  --red-200: #e11d48;
+  --muted: #f5f5f5;
 }
 
 * {
@@ -16,15 +15,24 @@
   box-sizing: border-box;
   text-decoration: none;
   list-style: none;
-  transition-duration: 300ms;
+  transition-duration: 200ms;
   outline: none;
+}
+
+svg {
+  transition-duration: 0ms;
+}
+
+p {
+  line-height: 1.2rem;
 }
 
 body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  font-family: "nunito sans";
+  color: #262626;
+  font-size: 14px;
 }
 
 main {
@@ -75,8 +83,28 @@ img {
   object-fit: cover;
 }
 
+.category-title {
+  font-size: max(1.125rem, min(2.6vw, 1.25rem));
+  font-weight: 600;
+}
+
+.category-badge {
+  font-size: 12px;
+  font-weight: normal;
+  border: solid 0.1rem #444;
+  color: #444;
+  border-radius: 999px;
+  padding: 0.2rem 0.5rem;
+  text-transform: capitalize;
+}
+
+.category-badge:hover {
+  background-color: #222;
+  color: white;
+}
+
 @media screen and (max-width: 640px) {
-  main{
+  main {
     width: 92.5%;
   }
 }

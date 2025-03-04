@@ -7,25 +7,13 @@ const socialLinks = [
     name: "twitter",
     icon: (
       <svg
-        fill="#333"
-        className="group-hover:fill-blue-500 group-focus-visible:fill-blue-500 duration-300"
-        version="1.1"
+        width={16}
+        height={16}
+        role="img"
+        viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 512 512"
-        height={18}
-        width={18}
       >
-        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-        <g
-          id="SVGRepo_tracerCarrier"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        ></g>
-        <g id="SVGRepo_iconCarrier">
-          <g id="7935ec95c421cee6d86eb22ecd12f847">
-            <path d="M459.186,151.787c0.203,4.501,0.305,9.023,0.305,13.565 c0,138.542-105.461,298.285-298.274,298.285c-59.209,0-114.322-17.357-160.716-47.104c8.212,0.973,16.546,1.47,25.012,1.47 c49.121,0,94.318-16.759,130.209-44.884c-45.887-0.841-84.596-31.154-97.938-72.804c6.408,1.227,12.968,1.886,19.73,1.886 c9.55,0,18.816-1.287,27.617-3.68c-47.955-9.633-84.1-52.001-84.1-102.795c0-0.446,0-0.882,0.011-1.318 c14.133,7.847,30.294,12.562,47.488,13.109c-28.134-18.796-46.637-50.885-46.637-87.262c0-19.212,5.16-37.218,14.193-52.7 c51.707,63.426,128.941,105.156,216.072,109.536c-1.784-7.675-2.718-15.674-2.718-23.896c0-57.891,46.941-104.832,104.832-104.832 c30.173,0,57.404,12.734,76.525,33.102c23.887-4.694,46.313-13.423,66.569-25.438c-7.827,24.485-24.434,45.025-46.089,58.002 c21.209-2.535,41.426-8.171,60.222-16.505C497.448,118.542,479.666,137.004,459.186,151.787z"></path>
-          </g>
-        </g>
+        <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />
       </svg>
     ),
     href: "https://twitter.com/greatochuko123",
@@ -34,45 +22,13 @@ const socialLinks = [
     name: "github",
     icon: (
       <svg
-        viewBox="0 0 20 20"
-        height={18}
-        width={18}
-        version="1.1"
+        width={16}
+        height={16}
+        role="img"
+        viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
-        fill="#333"
-        className="group-hover:fill-blue-500 group-focus-visible:fill-blue-500 duration-300"
       >
-        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-        <g
-          id="SVGRepo_tracerCarrier"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        ></g>
-        <g id="SVGRepo_iconCarrier">
-          <title>github [#142]</title> <desc>Created with Sketch.</desc>
-          <defs> </defs>
-          <g
-            id="Page-1"
-            stroke="none"
-            strokeWidth="1"
-            fill="none"
-            fillRule="evenodd"
-          >
-            <g
-              id="Dribbble-Light-Preview"
-              transform="translate(-140.000000, -7559.000000)"
-              fill="#333"
-              className="group-hover:fill-blue-500 group-focus-visible:fill-blue-500 duration-300"
-            >
-              <g id="icons" transform="translate(56.000000, 160.000000)">
-                <path
-                  d="M94,7399 C99.523,7399 104,7403.59 104,7409.253 C104,7413.782 101.138,7417.624 97.167,7418.981 C96.66,7419.082 96.48,7418.762 96.48,7418.489 C96.48,7418.151 96.492,7417.047 96.492,7415.675 C96.492,7414.719 96.172,7414.095 95.813,7413.777 C98.04,7413.523 100.38,7412.656 100.38,7408.718 C100.38,7407.598 99.992,7406.684 99.35,7405.966 C99.454,7405.707 99.797,7404.664 99.252,7403.252 C99.252,7403.252 98.414,7402.977 96.505,7404.303 C95.706,7404.076 94.85,7403.962 94,7403.958 C93.15,7403.962 92.295,7404.076 91.497,7404.303 C89.586,7402.977 88.746,7403.252 88.746,7403.252 C88.203,7404.664 88.546,7405.707 88.649,7405.966 C88.01,7406.684 87.619,7407.598 87.619,7408.718 C87.619,7412.646 89.954,7413.526 92.175,7413.785 C91.889,7414.041 91.63,7414.493 91.54,7415.156 C90.97,7415.418 89.522,7415.871 88.63,7414.304 C88.63,7414.304 88.101,7413.319 87.097,7413.247 C87.097,7413.247 86.122,7413.234 87.029,7413.87 C87.029,7413.87 87.684,7414.185 88.139,7415.37 C88.139,7415.37 88.726,7417.2 91.508,7416.58 C91.513,7417.437 91.522,7418.245 91.522,7418.489 C91.522,7418.76 91.338,7419.077 90.839,7418.982 C86.865,7417.627 84,7413.783 84,7409.253 C84,7403.59 88.478,7399 94,7399"
-                  id="github-[#142]"
-                ></path>
-              </g>
-            </g>
-          </g>
-        </g>
+        <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
       </svg>
     ),
     href: "https://github.com/greatochuko",
@@ -80,14 +36,7 @@ const socialLinks = [
   {
     name: "linkedin",
     icon: (
-      <svg
-        viewBox="0 0 20 20"
-        height={18}
-        width={18}
-        version="1.1"
-        fill="#333"
-        className="group-hover:fill-blue-500 group-focus-visible:fill-blue-500 duration-300"
-      >
+      <svg viewBox="0 0 20 20" height={18} width={18} version="1.1" fill="#111">
         <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
         <g
           id="SVGRepo_tracerCarrier"
@@ -95,7 +44,6 @@ const socialLinks = [
           strokeLinejoin="round"
         ></g>
         <g id="SVGRepo_iconCarrier">
-          <title>linkedin [#161]</title> <desc>Created with Sketch.</desc>
           <defs> </defs>
           <g
             id="Page-1"
@@ -107,8 +55,7 @@ const socialLinks = [
             <g
               id="Dribbble-Light-Preview"
               transform="translate(-180.000000, -7479.000000)"
-              fill="#333"
-              className="group-hover:fill-blue-500 group-focus-visible:fill-blue-500 duration-300"
+              fill="#111"
             >
               <g id="icons" transform="translate(56.000000, 160.000000)">
                 <path
@@ -127,25 +74,13 @@ const socialLinks = [
     name: "email",
     icon: (
       <svg
-        fill="#000000"
-        className="group-hover:fill-blue-500 group-focus-visible:fill-blue-500 duration-300"
-        viewBox="0 0 24 24"
-        height={18}
-        width={18}
+        width={16}
+        height={16}
         role="img"
+        viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-        <g
-          id="SVGRepo_tracerCarrier"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        ></g>
-        <g id="SVGRepo_iconCarrier">
-          <title>Gmail icon</title>
-
-          <path d="M24 4.5v15c0 .85-.65 1.5-1.5 1.5H21V7.387l-9 6.463-9-6.463V21H1.5C.649 21 0 20.35 0 19.5v-15c0-.425.162-.8.431-1.068C.7 3.16 1.076 3 1.5 3H2l10 7.25L22 3h.5c.425 0 .8.162 1.069.432.27.268.431.643.431 1.068z"></path>
-        </g>
+        <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z" />
       </svg>
     ),
     href: "mailto:greatochuko123@gmail.com",

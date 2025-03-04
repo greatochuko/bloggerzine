@@ -3,7 +3,7 @@ import styles from "@/styles/DeletePostModal.module.css";
 import { useFormState, useFormStatus } from "react-dom";
 import LoadingIndicator from "./LoadingIndicator";
 import { deleteComment } from "@/actions/commentActions";
-import { CommentType } from "./Comment";
+import { CommentType } from "@/lib/types";
 
 export default function DeleteCommentModal({
   isOpen,

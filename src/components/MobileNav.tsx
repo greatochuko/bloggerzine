@@ -5,11 +5,11 @@ import styles from "@/styles/MobileNav.module.css";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Overlay from "./Overlay";
-import { navLinks } from "./MainNav";
-import { UserType } from "@/services/userServices";
 import { createAuthorUrl } from "@/utils/createAuthorUrl";
 import Image from "next/image";
 import logo from "../../public/logo.png";
+import { UserType } from "@/lib/types";
+import { navLinks } from "@/lib/data";
 
 export default function MobileNav({
   user,

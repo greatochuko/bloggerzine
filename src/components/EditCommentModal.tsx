@@ -3,7 +3,7 @@ import styles from "@/styles/EditCommentModal.module.css";
 import { useFormState, useFormStatus } from "react-dom";
 import LoadingIndicator from "./LoadingIndicator";
 import { editComment } from "@/actions/commentActions";
-import { CommentType } from "./Comment";
+import { CommentType } from "@/lib/types";
 
 export default function EditCommentModal({
   isOpen,
@@ -19,7 +19,7 @@ export default function EditCommentModal({
     errorMessage: "",
   });
 
-  const { done, errorMessage } = state;
+  const { done } = state;
 
   useEffect(() => {
     if (done) {

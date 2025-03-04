@@ -1,8 +1,6 @@
 "use client";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import styles from "@/styles/PostForm.module.css";
-import { categories } from "./Category";
-import { BlogpostType } from "./Hero";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { uploadImage } from "@/utils/imageUploader";
@@ -14,8 +12,14 @@ import {
   updateAsDraft,
   updatePost,
 } from "@/actions/blogActions";
+import { BlogpostType } from "@/lib/types";
+import { categories } from "@/lib/data";
 
-export default function CreatePostForm({ blogpost }: { blogpost?: BlogpostType }) {
+export default function CreatePostForm({
+  blogpost,
+}: {
+  blogpost?: BlogpostType;
+}) {
   const [title, setTitle] = useState(blogpost?.title || "");
   const [thumbnail, setThumbnail] = useState({
     loading: false,

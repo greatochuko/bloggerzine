@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./page.module.css";
-import { getSession, getUser } from "@/services/userServices";
+import { getSession } from "@/services/userServices";
 import ProfileForm from "@/components/ProfileForm";
 import SocialLinksForm from "@/components/SocialLinksForm";
 import { Metadata } from "next";

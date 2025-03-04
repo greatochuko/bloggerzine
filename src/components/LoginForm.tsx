@@ -22,11 +22,11 @@ export default function LoginForm() {
   return (
     <form className={styles["login-form"]} action={loginAction}>
       <div className={styles["input-group"]}>
-        <label htmlFor="email">Email Address</label>
+        <label htmlFor="email">Email</label>
         <input
           type="email"
           id="email"
-          placeholder="Email"
+          placeholder="Enter your email"
           name="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -63,7 +63,7 @@ function SubmitButton({ cannotSubmit }: { cannotSubmit: boolean }) {
   const { pending } = useFormStatus();
   return (
     <button type="submit" disabled={cannotSubmit || pending}>
-      {pending ? <LoadingIndicator size={20} color="#fff" /> : "Sign In"}
+      {pending ? <LoadingIndicator size={16} color="#fff" /> : "Sign In"}
     </button>
   );
 }
